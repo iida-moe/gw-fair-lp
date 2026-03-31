@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GWスロットクーポンフェア 2026 | アイメガネ</title>
+  <meta name="description" content="GW期間限定！ご来店者全員にチャンス！最大5,500円OFFのスロットクーポンフェア開催。ハズレなし！2人に1人は1,100円以上お得に！">
+  <meta property="og:title" content="GWスロットクーポンフェア 2026 | アイメガネ">
+  <meta property="og:description" content="ご来店者全員にチャンス！最大5,500円OFFスロットクーポン。ハズレなし！">
+  <meta property="og:type" content="website">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#8b1a2b',
+            'brand-dark': '#6d1422',
+            accent: '#e63946',
+            'accent-dark': '#c62828',
+            gold: '#D4A017',
+            'gold-light': '#FFE082',
+            'gold-dark': '#B8860B',
+            sky: '#4fc3f7',
+            'sky-light': '#b3e5fc',
+            navy: '#0d1b3e',
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            en: ['"Montserrat"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #1a1a1a;
+      line-height: 1.8;
+      background: #fafafa;
+    }
+
+    /* ===== ヒーロー（青空×ポップ）===== */
+    .hero-section {
+      background: linear-gradient(180deg, #4FC3F7, #81D4FA, #B3E5FC, #E1F5FE);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-shimmer {
+      position: absolute; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: repeating-linear-gradient(120deg, transparent, transparent 40px, rgba(255,255,255,0.06) 40px, rgba(255,255,255,0.06) 80px);
+      animation: shimmerMove 8s linear infinite;
+      pointer-events: none;
+    }
+    .hero-shimmer2 {
+      position: absolute; top: -50%; left: -100%;
+      width: 300%; height: 200%;
+      background: repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(255,255,255,0.08) 60px, rgba(255,255,255,0.08) 90px);
+      animation: shimmerMove2 12s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmerMove { 0%{transform:translateX(-20%) translateY(-10%)} 100%{transform:translateX(20%) translateY(10%)} }
+    @keyframes shimmerMove2 { 0%{transform:translateX(-10%) translateY(-5%)} 100%{transform:translateX(15%) translateY(5%)} }
+
+    /* 紙吹雪 */
+    .confetti-piece {
+      position: absolute; top: -10px; opacity: 0;
+      animation: confetti-drop linear infinite;
+      pointer-events: none; z-index: 1;
+    }
+    @keyframes confetti-drop {
+      0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(100vh) rotate(720deg) scale(0.5); }
+    }
+
+    /* キラキラ星 */
+    .sparkle {
+      position: absolute; pointer-events: none; z-index: 2;
+      animation: sparkleAnim ease-in-out infinite;
+    }
+    .sparkle::before, .sparkle::after {
+      content: ''; position: absolute;
+    }
+    .sparkle::before { width: 100%; height: 30%; top: 35%; left: 0; border-radius: 50%; }
+    .sparkle::after { width: 30%; height: 100%; top: 0; left: 35%; border-radius: 50%; }
+    .sparkle-gold::before, .sparkle-gold::after { background: #FFD700; }
+    .sparkle-white::before, .sparkle-white::after { background: #fff; }
+    @keyframes sparkleAnim {
+      0%, 100% { opacity: 0.3; transform: scale(0.5) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+    }
+
+    /* 装飾リング */
+    .deco-ring {
+      position: absolute; border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%; pointer-events: none; z-index: 1;
+    }
+    .ring1 { width:300px;height:300px;top:-50px;right:-80px;animation:floatRing 8s ease-in-out infinite; }
+    .ring2 { width:200px;height:200px;bottom:10%;left:-60px;animation:floatRing 10s ease-in-out infinite reverse; }
+    .ring3 { width:150px;height:150px;top:40%;right:5%;animation:floatRing 12s ease-in-out infinite 2s; }
+    @keyframes floatRing {
+      0%,100%{transform:translate(0,0) rotate(0deg)} 25%{transform:translate(15px,-20px) rotate(5deg)}
+      50%{transform:translate(-10px,-30px) rotate(-3deg)} 75%{transform:translate(20px,-10px) rotate(4deg)}
+    }
+
+    /* CTAボタン */
+    .cta-btn-main {
+      background: linear-gradient(135deg, #e53935, #c62828);
+      color: #fff;
+      font-weight: 900;
+      border-radius: 60px;
+      box-shadow: 0 4px 20px rgba(229,57,53,0.3);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .cta-btn-main::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -60%; width: 40%; height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg);
+      animation: btn-shine 3s ease-in-out infinite;
+    }
+    @keyframes btn-shine { 0%,100%{left:-60%} 50%{left:120%} }
+    .cta-btn-main:hover { transform: scale(1.04) translateY(-2px); box-shadow: 0 6px 30px rgba(229,57,53,0.4); }
+
+    /* セクション矢印 */
+    .section-arrow {
+      width: 0; height: 0;
+      border-left: 30px solid transparent;
+      border-right: 30px solid transparent;
+      border-top: 20px solid;
+      margin: 0 auto;
+    }
+
+    /* フェードイン */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* 等級カード光る枠 */
+    .prize-glow-1 { border-color: #FFD54F; box-shadow: 0 0 24px rgba(255,213,79,0.3); }
+    .prize-glow-2 { border-color: #90CAF9; box-shadow: 0 0 20px rgba(144,202,249,0.25); }
+    .prize-glow-3 { border-color: #CE93D8; box-shadow: 0 0 16px rgba(206,147,216,0.2); }
+    .prize-glow-4 { border-color: #A5D6A7; box-shadow: 0 0 12px rgba(165,214,167,0.2); }
+
+    /* スクロールダウン */
+    .scroll-hint { animation: bounce-down 2s ease-in-out infinite; }
+    @keyframes bounce-down {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+
+    /* ===== チケット風カード ===== */
+    .ticket {
+      display: flex;
+      align-items: stretch;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      position: relative;
+      overflow: visible;
+    }
+    /* ミシン線（左の円形ノッチ間）*/
+    .ticket::before {
+      content: '';
+      position: absolute;
+      left: 80px;
+      top: 16px;
+      bottom: 16px;
+      border-left: 2px dashed rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+    /* ノッチ上 */
+    .ticket::after {
+      content: '';
+      position: absolute;
+      left: 70px;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 10px 0 0 white;
+      z-index: 2;
+    }
+    .ticket-notch-b {
+      position: absolute;
+      left: 70px;
+      bottom: -10px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .ticket-label {
+      flex-shrink: 0;
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px 0 0 16px;
+      overflow: hidden;
+    }
+    .ticket-label span {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: 0.1em;
+    }
+    .ticket-body {
+      flex: 1;
+      padding: 18px 20px 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @media (max-width: 640px) {
+      .ticket::before { left: 64px; }
+      .ticket::after { left: 54px; }
+      .ticket-notch-b { left: 54px; }
+      .ticket-label { width: 64px; }
+      .ticket-label span { font-size: 15px; }
+      .ticket-body { padding: 14px 14px 14px 24px; }
+    }
+
+    /* カード光沢エフェクト */
+    .prize-card { transition: transform 0.3s; }
+    .prize-card:hover { transform: translateY(-3px); }
+    .prize-shine {
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+      animation: card-shine 4s ease-in-out infinite;
+      z-index: 1;
+    }
+    @keyframes card-shine {
+      0% { left: -100%; }
+      40%, 100% { left: 150%; }
+    }
+    .prize-card:nth-child(2) .prize-shine { animation-delay: 1s; }
+    .prize-card:nth-child(3) .prize-shine { animation-delay: 2s; }
+    .prize-card:nth-child(4) .prize-shine { animation-delay: 3s; }
+
+    /* フローティングCTA */
+    .floating-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid #eee;
+      padding: 10px 16px;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .floating-bar.show { transform: translateY(0); }
+
+    @media (max-width: 640px) {
+      .slot-reel { width: 68px; height: 48px; }
+      .slot-sym { height: 48px; font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== ヘッダー ===== -->
+  <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50" style="overflow:visible">
+    <div class="max-w-5xl mx-auto px-4 flex items-center justify-between" style="height:56px"
+      <a href="https://www.aimegane.com/" target="_blank" rel="noopener" class="flex-shrink-0">
+        <img src="logo.gif" alt="アイメガネ" style="width:160px;height:auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-5 text-sm font-bold text-gray-500 ml-auto mr-6">
+        <a href="#coupon" class="hover:text-accent transition">クーポン内容</a>
+        <a href="#howto" class="hover:text-accent transition">参加方法</a>
+        <a href="#faq" class="hover:text-accent transition">よくある質問</a>
+      </nav>
+      <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener"
+         class="text-xs md:text-sm bg-accent text-white font-bold px-4 py-2 rounded-full hover:bg-accent-dark transition shadow">
+        店舗を探す
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ===== ヒーロー（青空×ポップ）===== -->
+  <section class="hero-section" id="heroSection" style="display:flex;align-items:flex-start;justify-content:center;padding:0 16px 32px;">
+    <div class="hero-shimmer"></div>
+    <div class="hero-shimmer2"></div>
+    <div class="deco-ring ring1"></div>
+    <div class="deco-ring ring2"></div>
+    <div class="deco-ring ring3"></div>
+
+    <div class="max-w-2xl mx-auto text-center relative z-10 w-full" style="padding-top:clamp(20px, 4vh, 48px)">
+
+      <!-- 期間バッジ -->
+      <div class="mb-2 md:mb-3">
+        <span class="inline-block bg-white/50 backdrop-blur-sm border border-white/70 text-[#1565C0] text-[11px] md:text-sm font-bold px-5 py-1.5 rounded-full tracking-wider">
+          4/29（火祝）〜 5/6（火振休）
+        </span>
+      </div>
+
+      <!-- GWフェア -->
+      <h1 class="mb-1 md:mb-3">
+        <span class="block font-en font-black leading-none" style="font-size:clamp(72px,22vw,140px);letter-spacing:-0.02em;color:#1565C0;text-shadow:0 4px 20px rgba(21,101,192,0.2),0 0 40px rgba(255,255,255,0.5);">
+          GW
+        </span>
+        <span class="block font-black tracking-[0.15em]" style="font-size:clamp(28px,7vw,52px);line-height:1.2;color:#1565C0;text-shadow:0 2px 10px rgba(21,101,192,0.15);">
+          フェア
+        </span>
+      </h1>
+
+      <!-- 金額 -->
+      <div class="mb-2 md:mb-3">
+        <p class="text-xs md:text-base font-bold mb-0.5 tracking-wide" style="color:#1565C0">スロットを回して</p>
+        <div class="flex items-baseline justify-center">
+          <span class="font-bold text-sm md:text-xl mr-0.5" style="color:#e53935">最大</span>
+          <span class="font-en font-black tracking-tight" style="font-size:clamp(48px,14vw,96px);color:#e53935;-webkit-text-stroke:2px #fff;paint-order:stroke fill;text-shadow:0 4px 30px rgba(229,57,53,0.3),0 0 60px rgba(255,255,255,0.3);">5,500</span>
+          <span class="font-black text-base md:text-2xl ml-0.5" style="color:#e53935">円OFF</span>
+        </div>
+      </div>
+
+      <!-- バッジ -->
+      <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-3 md:mb-5">
+        <span class="bg-white/50 backdrop-blur-sm border border-white/70 text-[#1565C0] text-[11px] md:text-sm font-black px-4 md:px-5 py-1.5 md:py-2 rounded-full">
+          ハズレなし
+        </span>
+        <span class="bg-white/50 backdrop-blur-sm border border-white/70 text-[#1565C0] text-[11px] md:text-sm font-black px-4 md:px-5 py-1.5 md:py-2 rounded-full">
+          2人に1人は1,100円以上OFF
+        </span>
+      </div>
+
+      <!-- CTA -->
+      <div class="mb-2 md:mb-3 px-4">
+        <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener"
+           class="cta-btn-main block md:inline-block text-center text-sm md:text-lg px-8 md:px-14 py-3 md:py-4">
+          お近くの店舗を探す
+        </a>
+      </div>
+
+      <p class="text-[9px] md:text-[11px] font-medium leading-relaxed" style="color:rgba(21,101,192,0.4)">
+        税込11,000円以上のメガネ・サングラスが対象 ｜ クーポン有効期限 6/7まで
+      </p>
+
+      <!-- スクロール -->
+      <div class="scroll-hint mt-3 md:mt-6">
+        <a href="#coupon" class="flex flex-col items-center gap-0.5 transition" style="color:rgba(21,101,192,0.35)">
+          <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== クーポン内容 ===== -->
+  <section id="coupon" class="py-12 md:py-20 relative overflow-hidden" style="background:#FFF9F0">
+    <!-- 背景装飾（丸） -->
+    <div class="absolute top-[-40px] left-[-40px] w-[180px] h-[180px] rounded-full opacity-40" style="background:#FFE0B2"></div>
+    <div class="absolute bottom-[-60px] right-[-30px] w-[220px] h-[220px] rounded-full opacity-30" style="background:#FFCCBC"></div>
+
+    <div class="max-w-xl mx-auto px-5 relative z-10">
+
+      <div class="text-center mb-8 md:mb-10 fade-in">
+        <p class="font-en text-accent font-bold text-[10px] md:text-xs tracking-[0.2em] mb-1.5">SLOT COUPON</p>
+        <h2 class="text-xl md:text-3xl font-black">スロットクーポンの内容</h2>
+      </div>
+
+      <!-- 2x2カード（メタリック＋光沢） -->
+      <div class="grid grid-cols-2 gap-4 md:gap-5 mb-6 fade-in">
+
+        <!-- 1等：ゴールド -->
+        <div class="prize-card rounded-2xl p-5 md:p-7 text-center relative overflow-hidden" style="background:linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);box-shadow:0 6px 24px rgba(170,119,28,0.3)">
+          <div class="prize-shine"></div>
+          <span class="relative z-10 inline-block bg-white/90 text-amber-700 text-[10px] md:text-xs font-black px-3 py-0.5 rounded-full mb-3 shadow-sm">1等</span>
+          <p class="relative z-10 font-en font-black text-[30px] md:text-5xl text-white leading-none tracking-tight drop-shadow-md">5,500</p>
+          <p class="relative z-10 text-xs md:text-sm text-white/80 font-bold mt-1.5">円 OFF</p>
+        </div>
+
+        <!-- 2等：シルバー -->
+        <div class="prize-card rounded-2xl p-5 md:p-7 text-center relative overflow-hidden" style="background:linear-gradient(135deg, #9E9E9E, #E8E8E8, #757575, #E0E0E0, #6D6D6D);box-shadow:0 6px 24px rgba(100,100,100,0.25)">
+          <div class="prize-shine"></div>
+          <span class="relative z-10 inline-block bg-white/90 text-gray-600 text-[10px] md:text-xs font-black px-3 py-0.5 rounded-full mb-3 shadow-sm">2等</span>
+          <p class="relative z-10 font-en font-black text-[30px] md:text-5xl text-white leading-none tracking-tight drop-shadow-md">3,300</p>
+          <p class="relative z-10 text-xs md:text-sm text-white/80 font-bold mt-1.5">円 OFF</p>
+        </div>
+
+        <!-- 3等：ブロンズ -->
+        <div class="prize-card rounded-2xl p-5 md:p-7 text-center relative overflow-hidden" style="background:linear-gradient(135deg, #804A00, #D4894E, #6A3805, #C47B3B, #5C2D00);box-shadow:0 6px 24px rgba(100,60,0,0.25)">
+          <div class="prize-shine"></div>
+          <span class="relative z-10 inline-block bg-white/90 text-amber-800 text-[10px] md:text-xs font-black px-3 py-0.5 rounded-full mb-3 shadow-sm">3等</span>
+          <p class="relative z-10 font-en font-black text-[30px] md:text-5xl text-white leading-none tracking-tight drop-shadow-md">1,100</p>
+          <p class="relative z-10 text-xs md:text-sm text-white/80 font-bold mt-1.5">円 OFF</p>
+        </div>
+
+        <!-- 4等：グリーン -->
+        <div class="prize-card rounded-2xl p-5 md:p-7 text-center relative overflow-hidden" style="background:linear-gradient(135deg, #1B5E20, #66BB6A, #2E7D32, #81C784, #1B5E20);box-shadow:0 6px 24px rgba(27,94,32,0.25)">
+          <div class="prize-shine"></div>
+          <span class="relative z-10 inline-block bg-white/90 text-green-700 text-[10px] md:text-xs font-black px-3 py-0.5 rounded-full mb-3 shadow-sm">4等</span>
+          <p class="relative z-10 font-en font-black text-[30px] md:text-5xl text-white leading-none tracking-tight drop-shadow-md">550</p>
+          <p class="relative z-10 text-xs md:text-sm text-white/80 font-bold mt-1.5">円 OFF</p>
+        </div>
+
+      </div>
+
+      <!-- ハズレなし + 条件 -->
+      <div class="bg-white rounded-2xl p-4 md:p-5 text-center fade-in" style="box-shadow:0 4px 24px rgba(0,0,0,0.06)">
+        <p class="text-accent font-black text-sm md:text-base mb-1">ハズレなし！全員にクーポンが当たる</p>
+        <p class="text-[11px] md:text-xs text-gray-400">税込11,000円以上のメガネ・サングラスが対象 ／ 有効期限 6/7まで</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== 参加方法 + お得な理由（統合・ゴールド背景）===== -->
+  <section id="howto" class="py-10 md:py-16" style="background:linear-gradient(180deg, #FFF8E1, #FFECB3)">
+    <div class="max-w-xl mx-auto px-4">
+
+      <!-- 参加方法 -->
+      <div class="text-center mb-6 md:mb-8 fade-in">
+        <h2 class="text-xl md:text-3xl font-black text-amber-900">かんたん3ステップ</h2>
+      </div>
+
+      <div class="flex items-start justify-center gap-2 md:gap-4 mb-8 md:mb-10 fade-in">
+        <div class="flex-1 text-center">
+          <div class="w-11 h-11 md:w-14 md:h-14 bg-amber-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-en font-black text-base md:text-xl">1</div>
+          <p class="font-black text-xs md:text-sm text-amber-900">来店</p>
+        </div>
+        <div class="pt-4 md:pt-5 text-amber-400 font-bold">&rarr;</div>
+        <div class="flex-1 text-center">
+          <div class="w-11 h-11 md:w-14 md:h-14 bg-amber-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-en font-black text-base md:text-xl">2</div>
+          <p class="font-black text-xs md:text-sm text-amber-900">スロット</p>
+        </div>
+        <div class="pt-4 md:pt-5 text-amber-400 font-bold">&rarr;</div>
+        <div class="flex-1 text-center">
+          <div class="w-11 h-11 md:w-14 md:h-14 bg-amber-600 text-white rounded-full flex items-center justify-center mx-auto mb-2 font-en font-black text-base md:text-xl">3</div>
+          <p class="font-black text-xs md:text-sm text-amber-900">お得に購入</p>
+        </div>
+      </div>
+
+      <!-- お得ポイント -->
+      <div class="grid grid-cols-3 gap-2 md:gap-3 fade-in">
+        <div class="bg-white rounded-xl p-3 md:p-4 text-center shadow-sm">
+          <p class="text-xl md:text-2xl mb-1">&#x1f3b0;</p>
+          <p class="font-black text-[11px] md:text-sm text-gray-800 leading-tight">ハズレ<br>なし</p>
+        </div>
+        <div class="bg-white rounded-xl p-3 md:p-4 text-center shadow-sm">
+          <p class="text-xl md:text-2xl mb-1">&#x1f4b0;</p>
+          <p class="font-black text-[11px] md:text-sm text-gray-800 leading-tight">2人に1人<br>1,100円以上</p>
+        </div>
+        <div class="bg-white rounded-xl p-3 md:p-4 text-center shadow-sm">
+          <p class="text-xl md:text-2xl mb-1">&#x1f4c5;</p>
+          <p class="font-black text-[11px] md:text-sm text-gray-800 leading-tight">クーポン<br>6/7まで有効</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== FAQ（薄グレー背景）===== -->
+  <section id="faq" class="bg-gray-50 py-10 md:py-16">
+    <div class="max-w-3xl mx-auto px-4">
+
+      <div class="text-center mb-10 fade-in">
+        <p class="font-en text-accent font-bold text-xs tracking-[0.2em] mb-2">FAQ</p>
+        <h2 class="text-2xl md:text-4xl font-black">よくある質問</h2>
+      </div>
+
+      <div class="space-y-3 fade-in">
+        <details class="bg-gray-50 rounded-xl group">
+          <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer font-bold text-sm md:text-base hover:text-accent transition list-none">
+            <span class="flex items-center gap-3">
+              <span class="text-white bg-accent font-en font-black text-xs px-2 py-0.5 rounded">Q</span>
+              クーポンは当日その場で使えますか？
+            </span>
+            <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-4 md:px-5 pb-4 md:pb-5 text-sm text-gray-500">
+            はい、その場ですぐにご利用OK。6月7日まで有効なので後日でも使えます。
+          </div>
+        </details>
+        <details class="bg-gray-50 rounded-xl group">
+          <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer font-bold text-sm md:text-base hover:text-accent transition list-none">
+            <span class="flex items-center gap-3">
+              <span class="text-white bg-accent font-en font-black text-xs px-2 py-0.5 rounded">Q</span>
+              家族で来店したら全員参加できますか？
+            </span>
+            <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-4 md:px-5 pb-4 md:pb-5 text-sm text-gray-500">
+            はい、お一人様1回参加できます。ご家族それぞれクーポンを獲得できます。
+          </div>
+        </details>
+        <details class="bg-gray-50 rounded-xl group">
+          <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer font-bold text-sm md:text-base hover:text-accent transition list-none">
+            <span class="flex items-center gap-3">
+              <span class="text-white bg-accent font-en font-black text-xs px-2 py-0.5 rounded">Q</span>
+              いくら以上の購入で使えますか？
+            </span>
+            <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-4 md:px-5 pb-4 md:pb-5 text-sm text-gray-500">
+            11,000円（税込）以上のメガネ・サングラスが対象です。
+          </div>
+        </details>
+        <details class="bg-gray-50 rounded-xl group">
+          <summary class="flex items-center justify-between p-4 md:p-5 cursor-pointer font-bold text-sm md:text-base hover:text-accent transition list-none">
+            <span class="flex items-center gap-3">
+              <span class="text-white bg-accent font-en font-black text-xs px-2 py-0.5 rounded">Q</span>
+              予約なしでも参加できますか？
+            </span>
+            <svg class="w-4 h-4 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-4 md:px-5 pb-4 md:pb-5 text-sm text-gray-500">
+            はい、予約不要です。GW期間中は混雑が予想されますので、お電話いただくとスムーズです。
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===== CTA（青空系）===== -->
+  <section class="py-14 md:py-20 relative overflow-hidden" style="background:linear-gradient(180deg, #4FC3F7, #81D4FA, #B3E5FC)">
+    <div class="deco-ring" style="width:200px;height:200px;top:10%;left:-50px;opacity:0.2;animation:floatRing 8s ease-in-out infinite"></div>
+    <div class="deco-ring" style="width:150px;height:150px;bottom:10%;right:-30px;opacity:0.15;animation:floatRing 10s ease-in-out infinite reverse"></div>
+
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 fade-in">
+      <p class="text-sm font-bold mb-3 tracking-wider" style="color:rgba(21,101,192,0.5)">4/29 〜 5/6 期間限定</p>
+      <h2 class="text-2xl md:text-4xl font-black mb-4" style="color:#1565C0">
+        この<span class="font-en">GW</span>はアイメガネへ！
+      </h2>
+      <p class="text-base md:text-lg mb-8" style="color:rgba(21,101,192,0.7)">
+        スロットを回してクーポンをGET！
+      </p>
+      <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener"
+         class="cta-btn-main inline-block text-base md:text-xl px-10 md:px-16 py-3.5 md:py-5">
+        今すぐ店舗を探す
+      </a>
+      <p class="text-xs mt-6 leading-relaxed" style="color:rgba(21,101,192,0.3)">
+        ※ 税込11,000円以上が対象 ／ クーポン有効期限 6/7まで ／ 他割引との併用不可
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ===== フッター ===== -->
+  <footer class="bg-brand-dark text-white py-10">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <a href="https://www.aimegane.com/" target="_blank" rel="noopener">
+        <img src="logo.gif" alt="アイメガネ" class="h-8 mx-auto mb-3 brightness-0 invert">
+      </a>
+      <p class="text-xs text-red-200 opacity-70">GWスロットクーポンフェア 2026</p>
+      <p class="text-xs text-red-300 opacity-50 mt-4">&copy; 2026 アイメガネ All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- ===== フローティングCTA ===== -->
+  <div class="floating-bar" id="floatingBar">
+    <div class="max-w-lg mx-auto flex items-center justify-between gap-3">
+      <div class="text-xs font-bold text-gray-600 leading-tight hidden sm:block">
+        <span class="text-accent">GWフェア</span> 最大5,500円OFF
+      </div>
+      <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener"
+         class="cta-btn-main flex-1 sm:flex-none text-center text-sm md:text-base px-8 py-3">
+        店舗を探す
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    // 紙吹雪（青空パターン）
+    (function() {
+      const hero = document.getElementById('heroSection');
+      if (!hero) return;
+      const colors = ['#fff','#FFD700','#FF69B4','#e53935','#FF8C00','#CE93D8'];
+      const shapes = ['square','rect','circle'];
+      for (let i = 0; i < 75; i++) {
+        const p = document.createElement('div');
+        p.classList.add('confetti-piece');
+        const color = colors[Math.floor(Math.random()*colors.length)];
+        const shape = shapes[Math.floor(Math.random()*shapes.length)];
+        const size = Math.random()*8+4;
+        p.style.left = Math.random()*100+'%';
+        p.style.backgroundColor = color;
+        p.style.animationDuration = (Math.random()*4+4)+'s';
+        p.style.animationDelay = (Math.random()*8)+'s';
+        if (shape==='rect') { p.style.width=size*0.5+'px'; p.style.height=size*1.5+'px'; }
+        else if (shape==='circle') { p.style.width=size+'px'; p.style.height=size+'px'; p.style.borderRadius='50%'; }
+        else { p.style.width=size+'px'; p.style.height=size+'px'; }
+        hero.appendChild(p);
+      }
+      // キラキラ星
+      for (let i = 0; i < 14; i++) {
+        const star = document.createElement('div');
+        star.classList.add('sparkle', i%2===0 ? 'sparkle-gold' : 'sparkle-white');
+        const size = Math.random()*20+10;
+        star.style.width = size+'px';
+        star.style.height = size+'px';
+        star.style.top = Math.random()*90+'%';
+        star.style.left = Math.random()*95+'%';
+        star.style.animationDuration = (Math.random()*2+1.5)+'s';
+        star.style.animationDelay = (Math.random()*3)+'s';
+        hero.appendChild(star);
+      }
+    })();
+
+    // フローティングCTA
+    (function() {
+      const bar = document.getElementById('floatingBar');
+      const hero = document.querySelector('.hero-section');
+      if (!bar || !hero) return;
+      new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          bar.classList.toggle('show', !e.isIntersecting);
+        });
+      }, { threshold: 0.1 }).observe(hero);
+    })();
+
+    // フェードイン
+    (function() {
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+    })();
+
+  </script>
+
+</body>
+</html>

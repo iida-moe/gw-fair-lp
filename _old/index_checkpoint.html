@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GWスロットクーポンフェア 2026 | アイメガネ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --navy:     #1A237E;
+  --navy-mid: #283593;
+  --navy-lt:  #C5CAE9;
+  --navy-bg:  #E8EAF6;
+  --orange:   #FF6D00;
+  --orange-dk:#E65100;
+  --orange-lt:#FFF3E0;
+  --white:    #ffffff;
+  --bg:       #F5F5F5;
+  --ink:      #1a1a2e;
+  --ink-mid:  #555;
+  --ink-lt:   #999;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family:'Zen Maru Gothic',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; }
+
+/* ══ HERO ══ */
+#hero {
+  min-height:100svh;
+  background:#E8EAF6;
+  position:relative; overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:88px 24px 48px;
+}
+/* 集中線 */
+#hero::before {
+  content:'';position:absolute;top:50%;left:50%;
+  width:200%;height:200%;
+  transform:translate(-50%,-50%);
+  background:repeating-conic-gradient(
+    rgba(26,35,126,0.07) 0deg 5deg,
+    transparent 5deg 10deg
+  );
+  pointer-events:none;
+}
+/* 価格バンド */
+.hero-deal-band {
+  background:var(--navy);
+  padding:18px 24px;
+  text-align:center;
+  width:100%;
+}
+.deal-main {
+  font-weight:900;
+  font-size:clamp(16px,4vw,22px);
+  color:#fff;line-height:1.4;
+}
+.deal-main span { color:var(--orange); }
+.deal-sub {
+  font-size:12px;color:rgba(255,255,255,0.45);margin-top:6px;font-weight:700;
+}
+@media(max-width:640px){
+  #hero { padding:72px 20px 36px;min-height:auto; }
+}
+
+/* キラキラ（光沢・静的） */
+.sparkle {
+  position:absolute;pointer-events:none;z-index:1;
+  color:var(--orange);
+  font-size:clamp(14px,3vw,22px);
+  opacity:0.55;
+  filter:drop-shadow(0 0 3px rgba(255,109,0,0.5));
+}
+/* 紙吹雪 */
+.confetti {
+  position:absolute;pointer-events:none;z-index:1;
+  border-radius:2px;opacity:0.45;
+}
+
+/* ─ hero content ─ */
+.hw {
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;max-width:680px;width:100%;
+}
+.h-tag {
+  font-weight:700;font-size:clamp(14px,3.5vw,18px);letter-spacing:.1em;
+  color:#fff;background:var(--navy);
+  border-radius:4px;padding:12px 28px;margin-bottom:20px;
+  display:inline-block;width:fit-content;
+}
+.h-lbl {
+  font-family:'Caprasimo',cursive;font-size:clamp(10px,2.4vw,13px);
+  letter-spacing:.28em;color:var(--navy-mid);margin-bottom:8px;
+  text-align:center;
+}
+.h-t1 {
+  font-family:'Caprasimo',cursive;font-size:clamp(42px,12vw,96px);
+  line-height:1.1;color:var(--navy);
+  margin-bottom:20px;
+  -webkit-text-stroke:9px #fff;
+  paint-order:stroke fill;
+  text-shadow:0 4px 0 rgba(26,35,126,0.2), 0 6px 12px rgba(26,35,126,0.1);
+}
+/* 斜めバッジ */
+.slant-badge {
+  background:var(--orange);color:#fff;
+  font-size:clamp(12px,3vw,15px);font-weight:900;letter-spacing:.08em;
+  padding:8px 20px;
+  border-radius:4px;
+  transform:rotate(-3deg);
+  box-shadow:0 2px 8px rgba(255,109,0,0.3);
+  white-space:nowrap;
+  margin-bottom:16px;
+  display:inline-block;
+}
+.h-t1 .ac {
+  color:var(--orange);position:relative;display:inline-block;
+}
+.h-t1 .ac::after {
+  content:'';position:absolute;left:0;right:0;bottom:2px;
+  height:5px;background:var(--orange);border-radius:3px;opacity:.4;
+}
+.h-t2 {
+  font-family:'Caprasimo',cursive;font-size:clamp(16px,4vw,28px);
+  color:var(--navy);margin-bottom:24px;
+  line-height:1.2;
+}
+.h-catches {
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  margin-bottom:36px;
+  }
+.cb1 {
+  font-weight:900;font-size:clamp(24px,6vw,38px);color:var(--navy);line-height:1.3;
+  -webkit-text-stroke:6px #fff;
+  paint-order:stroke fill;
+  text-shadow:0 3px 0 rgba(26,35,126,0.15);
+}
+.cb1 .num {
+  font-family:'Caprasimo',cursive;font-size:2.2em;color:#E65100;display:inline-block;
+  -webkit-text-stroke:6px #fff;
+  paint-order:stroke fill;
+  text-shadow:
+    0 3px 0 rgba(180,40,0,0.35),
+    0 6px 10px rgba(180,40,0,0.2);
+}
+.cs  { font-size:clamp(13px,3.2vw,15px);color:var(--ink-lt);line-height:1.75; }
+.cs strong { color:var(--navy);font-weight:700; }
+
+.btn-h {
+  font-family:'Zen Maru Gothic',sans-serif;font-weight:900;
+  font-size:clamp(17px,4.5vw,22px);color:white;
+  background:var(--orange);
+  padding:clamp(16px,4vw,20px) clamp(40px,10vw,64px);
+  border:none;border-radius:60px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(255,109,0,.25);
+  letter-spacing:.06em;transition:transform .18s,box-shadow .18s;
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+}
+.btn-h:hover { background:var(--orange-dk);box-shadow:0 6px 20px rgba(255,109,0,.3); }
+.btn-h .ico { display:inline-block; }
+
+.h-exp { margin-top:14px;font-size:clamp(12px,2.8vw,13px);color:var(--ink-lt);letter-spacing:.05em; }
+.h-exp span { color:var(--navy-mid);font-weight:700; }
+
+.shint { position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.35;margin-top:24px; }
+.shint span { font-size:10px;letter-spacing:.2em;color:var(--navy); }
+.drow { display:flex;gap:5px; }
+.sd { width:6px;height:6px;border-radius:50%;background:var(--navy-mid); }
+
+/* ══ TICKER ══ */
+.tkr { background:var(--navy);padding:13px 0;overflow:hidden; }
+.tki-w { display:inline-flex;white-space:nowrap;animation:tk 20s linear infinite; }
+@keyframes tk { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.tki { font-weight:900;font-size:clamp(13px,3.5vw,17px);color:white;padding:0 28px;letter-spacing:.1em;display:inline-flex;align-items:center;gap:14px; }
+.tki::after { content:'／';font-size:.8em;opacity:.4; }
+@keyframes tk { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ══ SHARED SEC ══ */
+.sec { padding:clamp(60px,11vw,96px) clamp(24px,6vw,48px);max-width:860px;margin:0 auto; }
+.sl { font-family:'Caprasimo',cursive;font-size:clamp(11px,2.6vw,13px);letter-spacing:.3em;color:var(--navy);text-align:center;margin-bottom:10px; }
+.st { font-family:'Caprasimo',cursive;font-size:clamp(26px,7vw,46px);text-align:center;line-height:1.2;color:var(--ink);margin-bottom:clamp(32px,7vw,52px); }
+.st em { font-style:normal;color:var(--orange);position:relative; }
+.st em::after { content:'';position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--orange);border-radius:3px;opacity:.55; }
+
+/* ══ PRIZES ══ */
+#prizes { background:var(--bg); }
+.pg { display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,3vw,20px); }
+@media(max-width:480px){.pg{grid-template-columns:1fr;}}
+.pc {
+  background:white;border-radius:12px;
+  padding:clamp(22px,5.5vw,32px) clamp(18px,4.5vw,26px);
+  position:relative;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.pd { display:none; }
+.pr { font-family:'Caprasimo',cursive;font-size:clamp(11px,2.8vw,14px);letter-spacing:.22em;margin-bottom:8px;color:var(--navy); }
+.p1 .pr{color:var(--orange);}
+.pa { font-family:'Caprasimo',cursive;font-size:clamp(30px,8vw,50px);line-height:1;margin-bottom:10px;display:flex;align-items:baseline;gap:3px;color:var(--navy); }
+.p1 .pa{color:var(--orange);}
+.py{font-size:.44em;margin-bottom:2px;}
+.po{font-size:.3em;font-family:'Zen Maru Gothic',sans-serif;font-weight:900;letter-spacing:.04em;align-self:center;margin-left:2px;}
+.pp { display:inline-block;font-size:clamp(12px,2.8vw,13px);font-weight:700;padding:4px 14px;border-radius:6px;letter-spacing:.04em;background:#f0f0f0;color:var(--ink-lt); }
+.p1 .pp{background:var(--orange-lt);color:var(--orange);}
+.pnote { margin-top:24px;padding:18px 22px;background:var(--orange-lt);border-radius:10px;font-size:clamp(13px,3.2vw,15px);color:var(--ink-mid);line-height:1.75;text-align:center; }
+.pnote strong{color:var(--orange);}
+
+/* ══ STAT ══ */
+#stat {
+  background:var(--navy);
+  position:relative;overflow:hidden;
+}
+.stati { max-width:860px;margin:0 auto;padding:clamp(56px,11vw,88px) 24px;text-align:center;position:relative;z-index:1;display:flex;flex-direction:column;align-items:center; }
+.stleaf { font-size:clamp(28px,7vw,44px);margin-bottom:16px; }
+.stnum  { font-family:'Caprasimo',cursive;font-size:clamp(54px,15vw,106px);color:var(--orange);line-height:.95;margin-bottom:10px; }
+.stlbl  { font-weight:900;font-size:clamp(18px,5vw,28px);color:#fff;line-height:1.4;margin-bottom:8px; }
+.stsub  { font-size:clamp(11px,2.8vw,13px);color:rgba(255,255,255,.5);letter-spacing:.04em; }
+
+/* ══ HOW TO ══ */
+#howto { background:white; }
+.steps { display:flex;flex-direction:column;position:relative; }
+.steps::before {
+  content:'';position:absolute;left:clamp(26px,6.5vw,36px);top:68px;bottom:68px;
+  width:2px;background:var(--navy-lt);border-radius:2px;
+}
+@media(max-width:440px){.steps::before{left:23px;}}
+.step { display:flex;align-items:flex-start;gap:clamp(18px,4.5vw,32px);padding:22px 0; }
+.sn {
+  flex-shrink:0;width:clamp(52px,13vw,70px);height:clamp(52px,13vw,70px);border-radius:50%;
+  font-family:'Caprasimo',cursive;font-size:clamp(18px,4.5vw,25px);
+  display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
+}
+.step:nth-child(1) .sn{background:var(--navy);color:white;}
+.step:nth-child(2) .sn{background:var(--navy);color:white;}
+.step:nth-child(3) .sn{background:var(--navy);color:white;}
+.sb h3 { font-weight:900;font-size:clamp(16px,4.2vw,21px);color:var(--ink);margin-bottom:6px;line-height:1.3; }
+.sb p  { font-size:clamp(13px,3.2vw,15px);color:var(--ink-lt);line-height:1.85; }
+.sb strong { color:var(--orange-dk); }
+.tag2 { display:inline-block;background:var(--orange-lt);color:var(--orange);font-weight:700;font-size:.88em;padding:3px 12px;border-radius:6px;margin-top:7px; }
+
+/* slot illustration (static, decorative only) */
+.slot-illus {
+  margin-top:14px;display:inline-flex;align-items:center;
+  gap:clamp(6px,2vw,10px);
+  background:var(--navy-bg);border-radius:14px;
+  padding:clamp(12px,3vw,18px) clamp(14px,3.5vw,22px);
+}
+.sr {
+  width:clamp(44px,11vw,60px);height:clamp(50px,12vw,68px);
+  background:white;border:2px solid var(--navy-lt);border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(22px,5.5vw,32px);
+  box-shadow:0 2px 8px rgba(32,150,212,.1);
+  position:relative;overflow:hidden;
+}
+.sr::before,.sr::after{content:'';position:absolute;left:0;right:0;height:26%;z-index:2;pointer-events:none;}
+.sr::before{top:0;background:linear-gradient(to bottom,rgba(255,255,255,.9),transparent);}
+.sr::after {bottom:0;background:linear-gradient(to top,rgba(255,255,255,.9),transparent);}
+.ssep { font-family:'Caprasimo',cursive;font-size:clamp(16px,4vw,22px);color:var(--navy-lt); }
+.slbl { margin-left:4px;font-size:clamp(11px,2.8vw,13px);font-weight:700;color:var(--navy);line-height:1.6; }
+
+/* ══ PERIOD ══ */
+#period { background:var(--white); }
+.pgrid { display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,3vw,20px);margin-bottom:24px; }
+@media(max-width:480px){.pgrid{grid-template-columns:1fr;}}
+.pdc { background:white;border-radius:18px;padding:clamp(24px,6vw,36px) clamp(18px,4.5vw,28px);text-align:center;box-shadow:0 2px 16px rgba(32,150,212,.08); }
+.pdc .pdi  { font-size:clamp(28px,7vw,40px);margin-bottom:12px; }
+.pdc .pdl  { font-family:'Caprasimo',cursive;font-size:clamp(10px,2.5vw,12px);letter-spacing:.22em;color:var(--navy);display:block;margin-bottom:10px; }
+.pdc .pdd  { font-family:'Caprasimo',cursive;font-size:clamp(18px,5vw,30px);line-height:1.25;color:var(--ink);margin-bottom:6px; }
+.pdc .pdn  { font-size:clamp(11px,2.8vw,13px);color:var(--ink-lt);line-height:1.6; }
+.cond {
+  background:white;border:none;border-radius:10px;
+  padding:clamp(26px,6.5vw,40px) clamp(24px,6vw,36px);
+  text-align:center;box-shadow:0 4px 20px rgba(255,184,0,.12);
+}
+.cond .cl { font-family:'Caprasimo',cursive;font-size:clamp(10px,2.5vw,12px);letter-spacing:.28em;color:var(--orange);margin-bottom:10px;display:block; }
+.cond .ca { font-family:'Caprasimo',cursive;font-size:clamp(28px,7.5vw,48px);color:var(--orange);line-height:1;margin-bottom:8px; }
+.cond .cn { font-size:clamp(13px,3.2vw,15px);color:var(--ink-lt); }
+
+/* ══ FINAL CTA ══ */
+#fcta { background:linear-gradient(180deg, #E8EAF6 0%, #F5F5F5 100%);position:relative;overflow:hidden; }
+.petal { display:none; }
+@keyframes pf {
+  0%,100%{transform:translate(0,0) rotate(0)}
+  33%{transform:translate(var(--x1),var(--y1)) rotate(var(--r1))}
+  66%{transform:translate(var(--x2),var(--y2)) rotate(var(--r2))}
+}
+.fci { max-width:760px;margin:0 auto;padding:clamp(64px,12vw,100px) 24px clamp(80px,14vw,120px);position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center; }
+.fck { font-family:'Caprasimo',cursive;font-size:clamp(11px,2.8vw,14px);letter-spacing:.3em;color:var(--navy);margin-bottom:16px; }
+.fch { font-family:'Caprasimo',cursive;font-size:clamp(26px,7.5vw,52px);line-height:1.25;color:var(--ink);margin-bottom:18px; }
+.fch em { font-style:normal;color:var(--orange); }
+.fcp { font-size:clamp(14px,3.5vw,17px);color:var(--ink-mid);line-height:1.9;margin-bottom:36px;max-width:460px; }
+.fcp strong { color:var(--ink);font-weight:700; }
+
+/* ══ FOOTER ══ */
+footer { background:var(--navy);padding:36px 24px;text-align:center; }
+.flog { font-family:'Caprasimo',cursive;font-size:20px;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-bottom:16px; }
+footer p { font-size:11px;color:rgba(255,255,255,.28);line-height:2.1;letter-spacing:.04em; }
+
+/* ══ HEADER ══ */
+.site-header {
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+}
+.header-inner {
+  max-width:960px;margin:0 auto;padding:0 20px;
+  height:56px;display:flex;align-items:center;justify-content:space-between;
+}
+.header-logo img { width:180px;height:auto; }
+.header-nav {
+  display:flex;align-items:center;gap:20px;
+  font-size:12px;font-weight:700;color:#3a4a3a;
+}
+.header-nav a { text-decoration:none;color:inherit;transition:color .2s; }
+.header-nav a:hover { color:var(--orange); }
+.header-cta {
+  background:var(--orange) !important;color:#fff !important;
+  padding:8px 18px;border-radius:8px;font-size:12px;
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width:640px) {
+  /* ヘッダー */
+  .header-logo img { width:100px; }
+  .header-nav { gap:12px;font-size:10px; }
+  .header-nav a:not(.header-cta) { display:none; }
+  .header-cta { padding:6px 14px;font-size:11px; }
+
+  /* ヒーロー */
+  .h-tag { font-size:11px;padding:8px 16px; }
+  .h-lbl { font-size:10px;letter-spacing:.2em; }
+  .h-t1 { font-size:clamp(32px,10vw,48px); }
+  .h-t2 { font-size:clamp(16px,5vw,22px);margin-bottom:20px; }
+  .cb1 { font-size:clamp(17px,5vw,22px); }
+  .cs { font-size:12px; }
+  .btn-h { font-size:14px;padding:14px 28px; }
+
+  /* ティッカー */
+  .tki { font-size:12px;padding:0 16px; }
+
+  /* セクション */
+  .sec { padding:48px 20px; }
+  .sl { font-size:10px; }
+  .st { font-size:clamp(22px,6vw,32px);margin-bottom:28px; }
+
+  /* 賞品カード */
+  .pa { font-size:clamp(26px,7vw,36px); }
+  .pr { font-size:11px; }
+  .pp { font-size:11px; }
+
+  /* ステップ */
+  .step { gap:16px;padding:16px 0; }
+  .sn { width:44px;height:44px;font-size:16px; }
+  .sb h3 { font-size:15px; }
+  .sb p { font-size:13px; }
+  .slot-illus { padding:10px 14px; }
+  .sr { width:40px;height:46px;font-size:20px; }
+
+  /* 統計 */
+  .stati { padding:48px 20px; }
+  .stnum { font-size:clamp(40px,12vw,64px); }
+  .stlbl { font-size:clamp(16px,4.5vw,22px); }
+
+  /* 期間 */
+  .pdc { padding:20px 16px; }
+  .pdc .pdd { font-size:clamp(16px,4.5vw,24px); }
+  .cond .ca { font-size:clamp(22px,6vw,32px); }
+
+  /* CTA */
+  .fci { padding:48px 20px 64px; }
+  .fch { font-size:clamp(22px,6.5vw,36px); }
+  .fcp { font-size:14px; }
+
+  /* フッター */
+  footer p { font-size:10px; }
+}
+
+@media (max-width:380px) {
+  .header-nav a:not(.header-cta) { display:none; }
+  .h-t1 { font-size:36px; }
+  .cb1 .num { font-size:1.3em; }
+}
+
+/* ══ UTILS ══ */
+@keyframes rise { from{opacity:0;transform:translateY(18px) scale(.95)} to{opacity:1;transform:translateY(0) scale(1)} }
+@keyframes fi   { from{opacity:0} to{opacity:1} }
+.rv { opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease; }
+.rv.in { opacity:1;transform:translateY(0); }
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+</style>
+</head>
+<body>
+
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://www.aimegane.com/" target="_blank" rel="noopener" class="header-logo">
+      <img src="logo.gif" alt="アイメガネ">
+    </a>
+    <nav class="header-nav">
+      <a href="#prizes">クーポン内容</a>
+      <a href="#howto">参加方法</a>
+      <a href="#period">開催期間</a>
+      <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="header-cta">店舗を探す</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- キラキラ -->
+  <div class="sparkle" style="top:12%;left:8%">✦</div>
+  <div class="sparkle" style="top:20%;right:10%;opacity:0.35;font-size:16px">✦</div>
+  <div class="sparkle" style="top:45%;left:6%;opacity:0.3;font-size:12px">✦</div>
+  <div class="sparkle" style="top:55%;right:7%;opacity:0.4">✦</div>
+  <div class="sparkle" style="top:8%;left:35%;opacity:0.25;font-size:10px;color:var(--navy-lt)">✦</div>
+  <div class="sparkle" style="top:65%;left:20%;opacity:0.2;font-size:18px;color:var(--navy-lt)">✦</div>
+  <div class="sparkle" style="top:30%;right:20%;opacity:0.3;font-size:14px;color:var(--navy-lt)">★</div>
+  <!-- 紙吹雪 -->
+  <div class="confetti" style="top:10%;left:15%;background:var(--orange);width:8px;height:8px;transform:rotate(25deg)"></div>
+  <div class="confetti" style="top:18%;right:14%;background:var(--navy-lt);width:6px;height:10px;transform:rotate(-20deg)"></div>
+  <div class="confetti" style="top:35%;left:4%;background:var(--orange);width:6px;height:6px;transform:rotate(50deg);border-radius:50%"></div>
+  <div class="confetti" style="top:50%;right:5%;background:var(--navy);width:7px;height:7px;transform:rotate(35deg);opacity:0.25;border-radius:50%"></div>
+  <div class="confetti" style="top:7%;right:28%;background:var(--orange);width:5px;height:9px;transform:rotate(-40deg)"></div>
+  <div class="confetti" style="top:60%;left:12%;background:var(--navy-lt);width:8px;height:5px;transform:rotate(65deg)"></div>
+  <div class="confetti" style="top:25%;left:28%;background:var(--orange);width:5px;height:5px;transform:rotate(15deg);border-radius:50%;opacity:0.35"></div>
+  <div class="confetti" style="top:42%;right:22%;background:var(--navy-lt);width:7px;height:4px;transform:rotate(-55deg);opacity:0.3"></div>
+
+  <div class="hw">
+    <div class="slant-badge">期間限定！4/29〜5/6</div>
+    <h1 class="h-t1">GWスロット<br>クーポンフェア</h1>
+    <div class="h-catches">
+      <p class="cb1"><span style="color:var(--orange)">メガネ・サングラス</span>がその日に</p>
+      <p class="cb1">最大<span class="num">5,500円</span>OFF</p>
+      <p class="cs"><strong>ハズレなし</strong>・ご来店者<strong>全員</strong>にチャンス・4/29〜5/6</p>
+    </div>
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h" style="white-space:nowrap">
+      来店してスロットに挑戦！
+    </a>
+    <p class="h-exp">メガネ・サングラスが対象 ｜ クーポン有効期限：<span>6/7まで</span></p>
+  </div>
+</section>
+<!-- 価格バンド -->
+<div class="hero-deal-band">
+  <p class="deal-main">ハズレなし！最大<span>5,500円OFF</span>クーポンが当たる</p>
+  <p class="deal-sub">税込11,000円以上が対象 ／ 2人に1人は1,100円以上OFF</p>
+</div>
+
+<!-- TICKER -->
+<div class="tkr" aria-hidden="true"><div class="tki-w" id="tk"></div></div>
+
+<!-- PRIZES -->
+<section id="prizes">
+  <div class="sec">
+    <p class="sl rv">PRIZE LINEUP</p>
+    <h2 class="st rv">クーポン<em>券</em></h2>
+    <div class="pg">
+      <div class="pc p1 rv d1"><div class="pd">☀️</div><div class="pr">1 等</div><div class="pa"><span class="py">¥</span>5,500<span class="po">OFF</span></div><span class="pp">当選確率 10%</span></div>
+      <div class="pc p2 rv d2"><div class="pd">🌤</div><div class="pr">2 等</div><div class="pa"><span class="py">¥</span>3,300<span class="po">OFF</span></div><span class="pp">当選確率 39%</span></div>
+      <div class="pc p3 rv d3"><div class="pd">🌿</div><div class="pr">3 等</div><div class="pa"><span class="py">¥</span>1,100<span class="po">OFF</span></div><span class="pp">当選確率 50%</span></div>
+      <div class="pc p4 rv d4"><div class="pd">🌱</div><div class="pr">4 等</div><div class="pa"><span class="py">¥</span>550<span class="po">OFF</span></div><span class="pp">当選確率 1%</span></div>
+    </div>
+    <p class="pnote rv">🌸 <strong>全員かならず当選！</strong> ハズレなし。来店のたびにお得なクーポンをGETしよう</p>
+  </div>
+</section>
+
+<!-- STAT -->
+<section id="stat">
+  <div class="stati">
+    <div class="stleaf rv"></div>
+    <div class="stnum rv">2人に1人</div>
+    <p class="stlbl rv">1,100円以上の割引が当たる！</p>
+    <p class="stsub rv">※３等（50%）＋２等（39%）＋１等（10%）の合算</p>
+  </div>
+</section>
+
+<!-- HOW TO -->
+<section id="howto">
+  <div class="sec">
+    <p class="sl rv">HOW TO GET</p>
+    <h2 class="st rv">クーポンの<em>もらい方</em></h2>
+    <div class="steps">
+
+      <div class="step rv">
+        <div class="sn">01</div>
+        <div class="sb">
+          <h3>🚶 GW中にご来店</h3>
+          <p>4月29日（火）〜5月6日（火）の期間中、<strong>アイメガネ各店舗</strong>にお越しください。</p>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="sn">02</div>
+        <div class="sb">
+          <h3>🎰 店頭スロットに挑戦！</h3>
+          <p>ご来店後、スタッフへお声がけください。<br>店頭のスロット機でトライ！<strong>ハズレなし・全員当選</strong>なので安心してどうぞ。</p>
+          <div class="slot-illus">
+            <div class="sr">🌸</div>
+            <div class="ssep">×</div>
+            <div class="sr">🌿</div>
+            <div class="ssep">×</div>
+            <div class="sr">☀️</div>
+            <div class="slbl">店頭で<br>引けます！</div>
+          </div>
+          <span class="tag2">何が当たるかお楽しみ 🎁</span>
+        </div>
+      </div>
+
+      <div class="step rv">
+        <div class="sn">03</div>
+        <div class="sb">
+          <h3>🛍 会計時にクーポンを使う</h3>
+          <p><strong>11,000円（税込）以上</strong>のお買い上げでご利用OK。<br>利用期限は <strong>6月7日（日）</strong>まで。GW後もゆっくり使えます！</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PERIOD -->
+<section id="period">
+  <div class="sec">
+    <p class="sl rv">SCHEDULE</p>
+    <h2 class="st rv">開催<em>期間</em></h2>
+    <div class="pgrid">
+      <div class="pdc rv">
+        <div class="pdi">🎉</div><span class="pdl">フェア開催期間</span>
+        <div class="pdd">4/29（火）<br>〜 5/6（火）</div>
+        <p class="pdn">GW全日程スロット挑戦OK</p>
+      </div>
+      <div class="pdc rv d2">
+        <div class="pdi">🎟</div><span class="pdl">クーポン利用期限</span>
+        <div class="pdd">〜 6/7（日）</div>
+        <p class="pdn">GW後のお買い物にも使えます</p>
+      </div>
+    </div>
+    <div class="cond rv">
+      <span class="cl">CONDITION</span>
+      <div class="ca">¥11,000（税込）以上</div>
+      <p class="cn">のお買い上げでクーポンをご利用いただけます</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="fcta">
+  <div class="petal" style="top:10%;left:5%;--d:6s;--dl:0s;--x1:12px;--y1:-18px;--r1:20deg;--x2:-8px;--y2:14px;--r2:-15deg">🌸</div>
+  <div class="petal" style="top:25%;right:8%;--d:8s;--dl:1s;--x1:-14px;--y1:10px;--r1:-22deg;--x2:10px;--y2:-16px;--r2:18deg">🌼</div>
+  <div class="petal" style="top:55%;left:10%;--d:7s;--dl:2.5s;--x1:10px;--y1:14px;--r1:16deg;--x2:-12px;--y2:-8px;--r2:-20deg">🍃</div>
+  <div class="petal" style="top:45%;right:6%;--d:9s;--dl:.5s;--x1:-10px;--y1:-12px;--r1:-18deg;--x2:14px;--y2:10px;--r2:22deg">🌸</div>
+  <div class="fci">
+    <p class="fck rv">GW期間限定</p>
+    <h2 class="fch rv">ご来店者<em>全員</em>に<br>スロットのチャンス。</h2>
+    <p class="fcp rv"><strong>ハズレなし・全員参加OK。</strong><br>最大5,500円OFFのクーポンをGETして<br>爽やかな春の新しいメガネをもっとお得に。</p>
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h rv"><span class="ico">🏪</span>店舗を探す</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flog">👓 アイメガネ</div>
+  <p>
+    ※クーポンは1枚につき1回限り有効です。<br>
+    ※税込11,000円以上のお買い上げに限りご利用いただけます。<br>
+    ※他のクーポン・割引との併用はできません。<br>
+    ※クーポン利用期限：2026年6月7日（日）まで<br>
+    © 2026 アイメガネ All Rights Reserved.
+  </p>
+</footer>
+
+<script>
+// ticker
+const msgs = ['ご来店者全員にチャンス','ハズレなし','最大5,500円OFF','4月29日〜5月6日','クーポンは6月7日まで','店頭スロットに挑戦しよう'];
+const tk = document.getElementById('tk');
+const row = msgs.map(m => `<span class="tki">${m}</span>`).join('');
+tk.innerHTML = row + row;
+
+// scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }});
+}, { threshold:.1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
