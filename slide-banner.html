@@ -143,7 +143,7 @@ body { font-family:'Noto Sans JP',sans-serif; background:#ccc; display:flex;alig
 </div>
 <script>
 function checkPw(){var p=document.getElementById('pw-input').value;if(p==='GWaimegane'){sessionStorage.setItem('gw-auth','1');document.getElementById('pw-gate').style.display='none';}else{document.getElementById('pw-err').style.display='block';}}
-if(sessionStorage.getItem('gw-auth')==='1'){document.getElementById('pw-gate').style.display='none';}
+if(sessionStorage.getItem('gw-auth')==='1'||location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'){document.getElementById('pw-gate').style.display='none';}
 document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
 </script>
 <div class="canvas">

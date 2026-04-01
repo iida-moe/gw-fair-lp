@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GWスロットクーポンフェア 2026【パターンD】| アイメガネ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --red: #E63946;
+  --red-dk: #C1121F;
+  --yellow: #FFD600;
+  --yellow-lt: #FFF3B0;
+  --navy: #1D3557;
+  --navy-lt: #264773;
+  --white: #ffffff;
+  --bg: #FFFDF5;
+  --ink: #1a1a1a;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ══════════════════════════════
+   HEADER（白帯）
+   ══════════════════════════════ */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.header-inner {
+  max-width: 980px; margin: 0 auto; padding: 0 20px;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+/* ロゴ（メガネアイコン＋テキスト） */
+.header-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; color: var(--navy);
+}
+.header-logo svg { flex-shrink: 0; }
+.header-logo-text {
+  font-size: 15px; font-weight: 900; letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.header-logo-text small {
+  display: block; font-size: 10px; font-weight: 400;
+  color: #888; letter-spacing: 0.02em;
+}
+
+/* ナビ */
+.header-right {
+  display: flex; align-items: center; gap: 20px;
+}
+.header-nav {
+  display: flex; align-items: center; gap: 18px;
+  list-style: none;
+}
+.header-nav a {
+  text-decoration: none; color: var(--ink);
+  font-size: 13px; font-weight: 700;
+  position: relative; padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.header-nav a::after {
+  content: ''; position: absolute; left: 0; bottom: -2px;
+  width: 0; height: 2px; background: var(--red);
+  transition: width 0.25s;
+}
+.header-nav a:hover { color: var(--red); }
+.header-nav a:hover::after { width: 100%; }
+
+/* 予約ボタン（ヘッダー） */
+.header-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--yellow);
+  color: var(--ink) !important;
+  font-weight: 900; font-size: 14px;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 3px 0 #C9A600, 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.03em;
+}
+.header-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #C9A600, 0 6px 16px rgba(0,0,0,0.15);
+}
+.header-cta:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 #C9A600, 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ══════════════════════════════
+   HERO（FV メインエリア）
+   ══════════════════════════════ */
+#hero {
+  position: relative;
+  min-height: calc(100svh - 60px);
+  background: var(--navy);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px 60px;
+}
+
+/* 背景のドット＋斜線パターン */
+#hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle, rgba(255,214,0,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  z-index: 1;
+}
+#hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    170deg,
+    rgba(255,214,0,0.08) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(230,57,70,0.06) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 680px; width: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+
+/* 期間タグ */
+.hero-period {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 14px; font-weight: 900;
+  padding: 6px 20px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+  animation: fadeInDown 0.6s ease-out;
+}
+.hero-period::before {
+  content: '🎰'; font-size: 16px;
+}
+
+/* サブキャッチ */
+.hero-sub {
+  color: rgba(255,255,255,0.8);
+  font-size: clamp(14px, 2.5vw, 17px);
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.06em;
+  animation: fadeInDown 0.6s ease-out 0.1s both;
+}
+
+/* メインコピー */
+.hero-main {
+  color: var(--white);
+  font-size: clamp(28px, 7vw, 52px);
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 8px;
+  animation: fadeInDown 0.6s ease-out 0.2s both;
+}
+.hero-main .accent {
+  color: var(--yellow);
+  position: relative;
+  display: inline-block;
+}
+.hero-main .accent-big {
+  font-size: 1.35em;
+  color: var(--yellow);
+  line-height: 1;
+}
+.hero-main .red { color: var(--red); }
+
+/* 割引額の強調 */
+.hero-discount {
+  display: inline-flex; align-items: baseline; gap: 4px;
+  margin: 14px 0 6px;
+  animation: fadeInDown 0.6s ease-out 0.3s both;
+}
+.hero-discount .label {
+  color: var(--white);
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 900;
+}
+.hero-discount .amount {
+  font-size: clamp(48px, 12vw, 88px);
+  font-weight: 900;
+  color: var(--yellow);
+  line-height: 1;
+  text-shadow: 0 3px 20px rgba(255,214,0,0.3);
+  font-feature-settings: 'palt';
+}
+.hero-discount .yen {
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 900;
+  color: var(--yellow);
+}
+.hero-discount .off {
+  font-size: clamp(24px, 5vw, 38px);
+  font-weight: 900;
+  color: var(--white);
+  margin-left: 2px;
+}
+
+/* スロットで当たるライン */
+.hero-slot-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.7);
+  font-size: clamp(12px, 2vw, 15px);
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.04em;
+  animation: fadeInDown 0.6s ease-out 0.35s both;
+}
+.hero-slot-label span {
+  display: inline-block;
+  background: rgba(255,255,255,0.12);
+  padding: 3px 10px;
+  border-radius: 4px;
+  color: var(--yellow);
+  font-weight: 900;
+}
+
+/* スロットリール風の装飾 */
+.slot-reels {
+  display: flex; gap: 8px;
+  margin-bottom: 28px;
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+.slot-reel {
+  width: clamp(56px, 14vw, 80px);
+  height: clamp(64px, 16vw, 90px);
+  background: linear-gradient(180deg, #2a4a6f 0%, #1a3352 50%, #2a4a6f 100%);
+  border: 3px solid rgba(255,214,0,0.5);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: clamp(28px, 7vw, 44px);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 20px rgba(255,214,0,0.1);
+  position: relative;
+  overflow: hidden;
+}
+.slot-reel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+  border-radius: 8px 8px 0 0;
+}
+
+/* CTA（FV内ボタン） */
+.hero-cta-wrap {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: fadeInUp 0.6s ease-out 0.5s both;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: clamp(17px, 4vw, 22px);
+  font-weight: 900;
+  padding: 16px 40px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 0 #C9A600, 0 6px 24px rgba(255,214,0,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.04em;
+  position: relative;
+  overflow: hidden;
+}
+.hero-cta::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  animation: cta-shine 3s ease-in-out infinite;
+}
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #C9A600, 0 8px 28px rgba(255,214,0,0.4);
+}
+.hero-cta:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #C9A600, 0 2px 8px rgba(255,214,0,0.2);
+}
+.hero-cta-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 400;
+}
+
+/* キラキラ粒子 */
+.sparkle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: var(--yellow);
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+  animation: sparkle 2.5s ease-in-out infinite;
+}
+.sparkle:nth-child(1) { top: 12%; left: 8%; animation-delay: 0s; }
+.sparkle:nth-child(2) { top: 25%; right: 12%; animation-delay: 0.8s; }
+.sparkle:nth-child(3) { bottom: 30%; left: 15%; animation-delay: 1.4s; }
+.sparkle:nth-child(4) { top: 18%; right: 25%; animation-delay: 0.4s; }
+.sparkle:nth-child(5) { bottom: 20%; right: 8%; animation-delay: 2s; }
+.sparkle:nth-child(6) { top: 40%; left: 5%; animation-delay: 1.8s; }
+
+/* ── animations ── */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cta-shine {
+  0%, 70%, 100% { left: -60%; }
+  85% { left: 120%; }
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 0.8; transform: scale(1); }
+}
+
+/* ══════════════════════════════
+   SP対応
+   ══════════════════════════════ */
+@media (max-width: 640px) {
+  .header-inner { height: 52px; padding: 0 12px; }
+  .header-nav { display: none; }
+  .header-logo-text { font-size: 13px; }
+  .header-logo-text small { font-size: 9px; }
+  .header-cta { font-size: 12px; padding: 8px 16px; }
+
+  #hero { padding: 32px 16px 48px; min-height: calc(100svh - 52px); }
+  .hero-period { font-size: 12px; padding: 5px 14px; }
+  .slot-reels { gap: 6px; }
+  .hero-cta { padding: 14px 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="header-logo">
+      <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+        <ellipse cx="11" cy="12" rx="9.5" ry="10" stroke="#1D3557" stroke-width="2.2" fill="none"/>
+        <ellipse cx="29" cy="12" rx="9.5" ry="10" stroke="#1D3557" stroke-width="2.2" fill="none"/>
+        <path d="M20.5 10c-1.5-2-4-2-4-2" stroke="#1D3557" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <path d="M19.5 10c1.5-2 4-2 4-2" stroke="#1D3557" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="header-logo-text">
+        アイメガネ
+        <small>GW限定フェア</small>
+      </div>
+    </a>
+    <div class="header-right">
+      <ul class="header-nav">
+        <li><a href="#info">お得情報</a></li>
+        <li><a href="#coupon">クーポン内容</a></li>
+        <li><a href="#howto">参加方法</a></li>
+      </ul>
+      <a href="#reserve" class="header-cta">🎫 来店予約する</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+  <div class="sparkle"></div>
+
+  <div class="hero-content">
+    <div class="hero-period">4/26(土) 〜 5/6(火) 限定</div>
+
+    <p class="hero-sub">来店するだけで スロットに挑戦できる！</p>
+
+    <h1 class="hero-main">
+      GWは<span class="accent">メガネ</span>が<br>
+      <span class="accent">お得</span>になるチャンス
+    </h1>
+
+    <div class="hero-discount">
+      <span class="label">最大</span>
+      <span class="amount">5,500</span>
+      <span class="yen">円</span>
+      <span class="off">OFF</span>
+    </div>
+
+    <p class="hero-slot-label">
+      来店 → <span>スロット回す</span> → クーポンGET！
+    </p>
+
+    <div class="slot-reels">
+      <div class="slot-reel">🎰</div>
+      <div class="slot-reel">🎰</div>
+      <div class="slot-reel">🎰</div>
+    </div>
+
+    <div class="hero-cta-wrap">
+      <a href="#reserve" class="hero-cta">📅 いますぐ来店予約</a>
+      <span class="hero-cta-sub">※ 予約なしでもご参加いただけます</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
