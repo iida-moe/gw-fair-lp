@@ -45,31 +45,70 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 .header-nav a { text-decoration:none;color:inherit;transition:color .2s; }
 .header-nav a:hover { color:var(--green); }
 .header-cta {
-  background:var(--green-dk);color:#fff !important;font-weight:700;
+  background:#fff;color:#C0272D !important;font-weight:700;
   padding:14px 32px;border-radius:8px;font-size:16px;
-  transition:background .2s;
+  border:2px solid #C0272D;
+  transition:all .2s;
 }
-.header-cta:hover { background:var(--green); }
+.header-cta:hover { background:#C0272D;color:#fff !important; }
 
 /* ══ HERO ══ */
 #hero {
   min-height:100svh;
-  background:#f5f3ef;
+  background:var(--bg);
   position:relative; overflow:hidden;
   display:flex;align-items:center;
   padding:0;
 }
-/* 写真 — 右側全面 */
-#hero::before {
-  content:'';position:absolute;top:0;right:0;bottom:0;width:50%;
-  background:url('megane.gif') 35% center / cover no-repeat;
+/* 写真 — 右側4分割グリッド */
+#hero::before { display:none; }
+.hero-photos {
+  position:absolute;top:0;right:0;bottom:0;width:60%;
+  display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;
+  gap:3px;background:rgba(255,255,255,0.4);
+  z-index:0;
+}
+.hero-photos .hp {
+  overflow:hidden;position:relative;
+  background:#e8e6e2;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-photos .hp img {
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+  position:absolute;inset:0;
+}
+.hero-photos .hp img[src=""] {
+  display:none;
+}
+.hero-photos .hp:nth-child(3) img {
+  object-position:25% center;
+}
+.hero-photos .hp:first-child img {
+  object-position:center left;
+  transform:scale(1.3);
+  transform-origin:center left;
+}
+.hero-photos .hp-megane img {
+  object-position:70% center;
+  transform:scale(1.15);
+  transform-origin:70% center;
+}
+.hero-photos .hp-label {
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent, rgba(0,0,0,0.45));
+  color:#fff;font-size:13px;font-weight:700;
+  padding:24px 12px 10px;letter-spacing:.06em;
+  text-align:center;
+  z-index:1;
 }
 /* くの字カバー — 写真の上に緑を被せて斜めに区切る */
 #hero::after {
   content:'';position:absolute;inset:0;
   background:linear-gradient(150deg, #2C6E44 0%, #3A8A58 30%, #4A9E6C 60%, #58AC78 100%);
-  clip-path:polygon(0 0, 68% 0, 54% 50%, 68% 100%, 0 100%);
+  clip-path:polygon(0 0, 67% 0, 55% 50%, 67% 100%, 0 100%);
   pointer-events:none;
+  z-index:1;
 }
 /* 装飾サークル — 削除済み */
 .hero-deco { display:none; }
@@ -78,15 +117,33 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
   position:relative;z-index:2;
   width:100%;max-width:960px;margin:0;
   padding:0 24px clamp(28px,4vw,40px) clamp(48px,8vw,96px);
-  display:flex;flex-direction:column;align-items:flex-start;
-  text-align:left;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  transform:translateX(-10vw);
 }
 
-/* 期間限定＋日付 — 横並びのタグ */
-.h-top {
-  align-self:flex-start;position:relative;
+/* GWフェア — 2番目に大きい */
+.h-gw-main {
+  font-size:clamp(44px,12vw,84px);
+  font-weight:900;
+  color:#fff;
+  letter-spacing:.1em;
+  margin:0 0 clamp(2px,0.5vw,6px);
+  text-shadow:0 2px 12px rgba(0,0,0,0.2);
+  line-height:1.1;
+}
+/* クーポンキャンペーン — 控えめサブ */
+.h-campaign-sub {
+  font-size:clamp(14px,3.5vw,20px);
+  font-weight:700;
+  color:rgba(255,255,255,0.7);
+  letter-spacing:.14em;
+  margin-bottom:clamp(4px,1vw,10px);
+}
+
+/* 期間限定＋日付 — CTA下の横並びタグ */
+.h-period-tag {
   display:flex;align-items:stretch;gap:0;
-  margin-bottom:clamp(8px,2vw,16px);
   border-radius:6px;
   overflow:hidden;
   box-shadow:0 2px 8px rgba(0,0,0,0.15);
@@ -96,7 +153,7 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
   color:#fff;
   letter-spacing:.14em;
   background:var(--gold);
-  padding:8px 18px;
+  padding:6px 16px;
   white-space:nowrap;
   display:flex;align-items:center;
 }
@@ -104,51 +161,9 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
   font-weight:700;font-size:clamp(11px,2.6vw,13px);
   color:var(--ink);letter-spacing:.06em;
   background:#fff;
-  padding:8px 18px;
+  padding:6px 16px;
   white-space:nowrap;
   display:flex;align-items:center;
-}
-
-.h-title-wrap {
-  position:relative;
-  margin-bottom:clamp(4px,1vw,8px);
-  padding-left:clamp(50px,10vw,80px);
-}
-.h-gw-label {
-  font-size:clamp(13px,3.2vw,18px);
-  font-weight:700;
-  color:var(--gold);
-  letter-spacing:.08em;
-  position:absolute;
-  left:0;top:-4px;
-  transform:rotate(-8deg);
-}
-.h-t1 {
-  font-size:0;
-  position:relative;
-  display:block;
-}
-.h-t1-sub {
-  font-size:clamp(22px,5.5vw,36px);
-  font-weight:900;
-  letter-spacing:.12em;
-  color:#fff;
-  font-style:normal;
-  white-space:nowrap;
-  position:relative;z-index:3;
-  text-shadow:0 2px 12px rgba(0,0,0,0.2);
-}
-
-/* ダブルチャンス訴求 */
-.h-double {
-  text-align:center;
-}
-.h-double-text {
-  font-size:clamp(13px,3.2vw,16px);
-  font-weight:700;
-  color:var(--gold);
-  letter-spacing:.04em;
-  text-shadow:0 1px 6px rgba(0,0,0,0.3);
 }
 
 /* 金額 */
@@ -158,16 +173,19 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
   display:flex;flex-direction:column;align-items:center;
 }
 .h-offer-line {
-  display:flex;align-items:baseline;justify-content:flex-start;
+  display:flex;align-items:center;justify-content:flex-start;
   white-space:nowrap;
 }
 .h-offer-label {
-  font-family:'Montserrat',sans-serif;
-  font-size:clamp(28px,7vw,48px);font-weight:800;
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:clamp(18px,4.5vw,28px);font-weight:900;
   color:#DCAE18;
-  margin-right:10px;
-  letter-spacing:.08em;
-  -webkit-text-stroke:2px #fff;
+  margin-right:6px;
+  letter-spacing:.1em;
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+  line-height:1;
+  -webkit-text-stroke:1.5px #fff;
   paint-order:stroke fill;
   text-shadow:0 2px 8px rgba(0,0,0,0.2);
 }
@@ -224,8 +242,6 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 .h-cta-row {
   display:flex;flex-direction:column;align-items:center;gap:8px;
   margin-top:clamp(12px,2.5vw,20px);
-  align-self:stretch;
-  max-width:55%;
 }
 .h-cta-lead {
   font-weight:700;font-size:clamp(13px,3.2vw,16px);
@@ -235,17 +251,17 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 .btn-h {
   font-weight:900;
   font-size:clamp(18px,4.5vw,24px);
-  color:#1A3D28;
-  background:linear-gradient(135deg, #F0CC3A 0%, #DCAE18 100%);
+  color:#fff;
+  background:#C0272D;
   padding:clamp(16px,3.5vw,22px) clamp(48px,10vw,80px);
   border:none;border-radius:10px;cursor:pointer;
-  box-shadow:0 4px 16px rgba(220,174,24,0.35), 0 8px 32px rgba(0,0,0,0.1);
+  box-shadow:0 4px 16px rgba(192,39,45,0.35), 0 8px 32px rgba(0,0,0,0.1);
   letter-spacing:.06em;transition:all .25s;
   text-decoration:none;
   display:inline-block;
   position:relative;
 }
-.btn-h:hover { background:linear-gradient(135deg, #DCAE18 0%, #C89C18 100%);transform:translateY(-3px);box-shadow:0 6px 20px rgba(220,174,24,0.45), 0 12px 40px rgba(0,0,0,0.12); }
+.btn-h:hover { background:#A01E24;transform:translateY(-3px);box-shadow:0 6px 20px rgba(192,39,45,0.45), 0 12px 40px rgba(0,0,0,0.12); }
 .btn-h-sub { display:none; }
 .h-cta-side { display:none; }
 
@@ -391,13 +407,13 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 .dc-band-text strong { color:#fff;font-weight:900; }
 .dc-band-btn {
   display:inline-block;
-  background:var(--gold);color:var(--green-dk);
+  background:#C0272D;color:#fff;
   font-weight:900;font-size:clamp(14px,3.5vw,17px);
   padding:14px 44px;border-radius:6px;
   text-decoration:none;letter-spacing:.04em;
   transition:background .2s;
 }
-.dc-band-btn:hover { background:#c89c18; }
+.dc-band-btn:hover { background:#A01E24; }
 
 /* ══ フローティングCTA ══ */
 .float-cta {
@@ -418,13 +434,13 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 }
 .float-cta-btn {
   flex-shrink:0;
-  background:var(--gold);color:var(--green-dk);
+  background:#C0272D;color:#fff;
   font-weight:900;font-size:15px;
   padding:12px 32px;border-radius:6px;
   text-decoration:none;letter-spacing:.04em;
   transition:background .2s;
 }
-.float-cta-btn:hover { background:#c89c18; }
+.float-cta-btn:hover { background:#A01E24; }
 .float-cta-label {
   font-size:12px;color:rgba(255,255,255,0.6);font-weight:500;
 }
@@ -484,12 +500,12 @@ footer {
   .header-cta { padding:6px 14px;font-size:11px; }
 
   #hero { min-height:auto;flex-direction:column;background:var(--green-dk); }
-  #hero::before {
-    position:relative;width:100%;height:220px;
-    background:url('megane.gif') center 20% / cover no-repeat;
+  .hero-photos {
+    position:relative;width:100%;height:200px;
   }
+  .hero-photos .hp-label { font-size:10px;padding:14px 6px 4px; }
   #hero::after {
-    position:absolute;top:0;left:0;right:0;height:220px;width:100%;
+    position:absolute;top:0;left:0;right:0;height:200px;width:100%;
     clip-path:none;
     background:linear-gradient(180deg, transparent 50%, var(--green-dk) 100%);
   }
@@ -498,15 +514,11 @@ footer {
     padding:24px 20px 32px;
     background:var(--green-dk);
   }
-  .h-top { align-self:center; gap:8px; }
+  .h-gw-main { font-size:clamp(28px,8vw,40px);text-align:center; }
+  .h-campaign-sub { font-size:clamp(12px,3vw,16px);text-align:center; }
+  .h-period-tag { align-self:center; }
   .h-tag { font-size:11px;padding:3px 10px; }
   .h-date { font-size:12px; }
-  .h-title-wrap { text-align:center; }
-  .h-gw-label { font-size:clamp(12px,3vw,16px);display:block;margin-bottom:4px;margin-right:0; }
-  .h-t1 { font-size:0;display:block; }
-  .h-t1-sub { font-size:clamp(16px,4.5vw,20px);text-align:center;letter-spacing:.1em; }
-  .h-double { flex-direction:column;gap:4px;align-items:center; }
-  .h-double-text { font-size:clamp(12px,3vw,14px);text-align:center; }
   .h-offer { align-items:center; }
   .h-offer-line { justify-content:center; }
   .h-offer-num { font-size:clamp(56px,18vw,80px); }
@@ -839,6 +851,112 @@ footer {
   padding:clamp(56px,10vw,88px) clamp(24px,4vw,40px);
   text-align:center;
 }
+/* ══ 横長1枚カード ══ */
+.pex-one {
+  display:flex;align-items:stretch;
+  background:white;border:2px solid var(--border);border-radius:10px;
+  overflow:hidden;
+  margin-top:clamp(24px,5vw,40px);
+  max-width:1000px;margin-left:auto;margin-right:auto;
+  min-height:200px;
+}
+.pex-one-photo {
+  width:260px;min-width:260px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-size:14px;font-weight:700;color:var(--ink-lt);
+  position:relative;
+  overflow:hidden;
+}
+.pex-one-photo img { width:100%;height:100%;object-fit:cover;position:absolute;inset:0; }
+.pex-one-photo img[src=""] { display:none; }
+.pex-one-normal, .pex-one-now {
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(16px,3vw,28px) clamp(14px,2.5vw,24px);
+}
+.pex-one-normal { background:var(--bg);text-align:right;align-items:flex-end; }
+.pex-one-now { background:white; }
+.pex-one-label {
+  font-size:clamp(12px,2.5vw,15px);font-weight:700;
+  color:#aaa;margin-bottom:4px;
+}
+.pex-one-label-now { color:var(--green);font-size:clamp(20px,4vw,28px); }
+.pex-one-desc {
+  font-size:11px;color:var(--ink-lt);margin-bottom:2px;
+}
+.pex-one-price {
+  display:flex;align-items:baseline;gap:2px;
+}
+.pex-one-num {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(24px,5vw,36px);font-weight:700;
+  color:#bbb;line-height:1;
+}
+.pex-one-num-now {
+  font-size:clamp(44px,10vw,72px);
+  color:var(--green-dk);
+}
+.pex-one-unit {
+  font-size:clamp(13px,2.5vw,16px);font-weight:700;color:var(--ink);
+}
+.pex-one-num-strike {
+  text-decoration:line-through;
+  text-decoration-color:#C0272D;
+  text-decoration-thickness:3px;
+}
+.pex-one-save {
+  display:inline-block;
+  margin-top:8px;
+  background:#C0272D;color:#fff;
+  font-weight:900;font-size:clamp(12px,2.5vw,15px);
+  padding:5px 16px;border-radius:40px;
+  letter-spacing:.04em;
+}
+.pex-one-arrow {
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(18px,3vw,28px);color:var(--ink-lt);
+  padding:0 clamp(8px,1.5vw,16px);
+  background:var(--bg);
+}
+.pex-enkin {
+  margin-top:clamp(20px,4vw,32px);
+  border:2px solid var(--ink);border-radius:10px;
+  padding:clamp(20px,4vw,32px) clamp(16px,3vw,28px);
+  max-width:900px;margin-left:auto;margin-right:auto;
+  background:white;
+}
+.pex-enkin-main {
+  font-size:clamp(20px,5vw,32px);font-weight:900;
+  color:var(--ink);line-height:1.4;
+}
+.pex-enkin-main strong {
+  color:var(--green);
+}
+.pex-enkin-zero {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(48px,12vw,80px);font-weight:800;
+  color:var(--green);line-height:1;
+  display:inline-block;
+  margin:0 2px;
+}
+.pex-enkin-note {
+  margin-top:6px;
+  font-size:clamp(10px,2vw,12px);color:var(--ink-lt);
+}
+.pex-target {
+  margin-top:16px;
+  font-size:12px;color:var(--ink-lt);
+  border:1px dashed var(--border);
+  display:inline-block;padding:8px 20px;border-radius:4px;
+  letter-spacing:.04em;
+}
+@media(max-width:640px){
+  .pex-one { flex-direction:column; }
+  .pex-one-photo { width:100%;min-width:auto;height:120px; }
+  .pex-one-arrow { transform:rotate(90deg);padding:8px 0; }
+  .pex-one-normal, .pex-one-now { align-items:center;text-align:center; }
+}
+
 .pex-cards {
   display:grid;grid-template-columns:1fr 1fr;
   gap:clamp(14px,3vw,24px);
@@ -979,7 +1097,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <header class="site-header">
   <div class="header-inner">
     <a href="https://www.aimegane.com/" target="_blank" rel="noopener" class="header-logo">
-      <img src="logo2.gif" alt="アイメガネ">
+      <img src="images/logo2.gif" alt="アイメガネ">
     </a>
     <nav class="header-nav">
       <a href="#price-example">お得情報</a>
@@ -992,34 +1110,37 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
 <!-- HERO -->
 <section id="hero">
+  <!-- 右側4分割写真 -->
+  <div class="hero-photos">
+    <div class="hp"><img src="images/hotyouki.png" alt="補聴器"></div>
+    <div class="hp hp-megane"><img src="images/Gemini_Generated_Image_a4j30a4j30a4j30a.png" alt="メガネ"></div>
+    <div class="hp"><img src="images/CL.jpg" alt="コンタクトレンズ"></div>
+    <div class="hp"><img src="SG.jpg" alt="サングラス"></div>
+  </div>
   <div class="hw">
     <!-- ① 期間限定 -->
-    <div class="h-top">
-      <span class="h-tag">期間限定</span>
+    <div class="h-period-tag">
+      <span class="h-tag">対象期間</span>
       <span class="h-date">4/29（火）〜5/6（火）</span>
     </div>
 
-    <!-- ② スロットクーポンキャンペーン + GWフェア -->
-    <div class="h-title-wrap">
-      <span class="h-gw-label">GWフェア</span>
-      <h1 class="h-t1"><span class="h-t1-sub">クーポンキャンペーン</span></h1>
-    </div>
+    <!-- ② GWフェア -->
+    <h1 class="h-gw-main">GWフェア</h1>
 
-    <!-- ③ MAX 5,500円OFF + 注釈 -->
+    <!-- ③ スロットクーポンチャンス -->
+    <p class="h-campaign-sub">スロットクーポンチャンス！</p>
+
+    <!-- ④ MAX 5,500円OFF -->
     <div class="h-offer">
-      <span class="h-offer-line"><span class="h-offer-label">MAX</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
-      <span class="h-offer-note">※税込11,000円以上お買い上げで使用可能・対象商品はメガネ・サングラス・コンタクト・補聴器・アクセサリー</span>
+      <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
     </div>
 
-    <!-- ④ ダブルチャンス + CTA -->
+    <!-- ⑤ CTA + 注釈 -->
     <div class="h-cta-row">
-      <div class="h-double">
-        <span class="h-double-text">事前予約でクーポンが2枚もらえる　ダブルチャンス！</span>
-      </div>
       <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h">
         来店予約する
       </a>
-      <p class="h-note">クーポン有効期限 6/7まで ／ 他のクーポン・割引との併用不可</p>
+      <p class="h-note">※税込11,000円以上お買い上げで使用可能・対象商品はメガネ・サングラス・コンタクト・補聴器・アクセサリー<br>クーポン有効期限 6/7まで ／ 他のクーポン・割引との併用不可</p>
     </div>
   </div>
 </section>
@@ -1027,34 +1148,36 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <!-- ① お得情報 -->
 <section id="price-example">
   <div class="pex-inner">
-    <p class="sl rv">Price Example</p>
-    <h2 class="pex-headline rv">クーポンを使うと<em>こんなにお得</em></h2>
+    <p class="sl rv">Price Info</p>
+    <h2 class="st rv">お得情報</h2>
     <p class="pex-sub-text rv">1等5,500円を使用した場合</p>
-    <div class="pex-compare rv">
-      <!-- 通常 -->
-      <div class="pex-box pex-box-normal">
-        <div class="pex-box-img"><img src="" alt="メガネ写真"></div>
-        <div class="pex-box-right">
-          <div class="pex-box-body">
-            <div class="pex-box-top"><span class="pex-box-tag">通常</span><span class="pex-box-desc">標準レンズ込みセット価格</span></div>
-            <div class="pex-box-price"><span class="pex-box-num">13,200</span><span class="pex-box-unit">円セット</span></div>
-          </div>
-        </div>
+
+    <!-- 横長1枚カード -->
+    <div class="pex-one rv">
+      <div class="pex-one-photo"><img src="Google Gemini_files/unnamed(17).jpg" alt="メガネ写真"></div>
+      <div class="pex-one-normal">
+        <span class="pex-one-label">通常</span>
+        <span class="pex-one-desc">標準レンズ込みセット価格</span>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-strike">13,200</span><span class="pex-one-unit">円セット</span></div>
       </div>
-      <!-- 矢印 -->
-      <div class="pex-arrow">▶</div>
-      <!-- クーポン使用後 -->
-      <div class="pex-box pex-box-now">
-        <div class="pex-box-img"><img src="" alt="メガネ写真"></div>
-        <div class="pex-box-right">
-          <div class="pex-box-body">
-            <div class="pex-box-top"><span class="pex-box-tag pex-box-tag-now">クーポンを使うと</span><span class="pex-box-desc">標準レンズ込みセット価格</span></div>
-            <div class="pex-box-price"><span class="pex-box-num">7,700</span><span class="pex-box-unit">円セット</span></div>
-          </div>
-        </div>
+      <div class="pex-one-arrow">▶</div>
+      <div class="pex-one-now">
+        <span class="pex-one-label pex-one-label-now">今だけ</span>
+        <span class="pex-one-desc">標準レンズ込みセット価格</span>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">7,700</span><span class="pex-one-unit">円に！</span></div>
+        <span class="pex-one-save">5,500円もお得！</span>
       </div>
     </div>
     <p class="pex-img-note rv">写真はイメージです</p>
+
+    <!-- 遠近両用レンズ訴求 -->
+    <div class="pex-enkin rv">
+      <p class="pex-enkin-main">遠近両用レンズが<strong><span class="pex-enkin-zero">0</span>円</strong>で作れる</p>
+      <p class="pex-enkin-note">※遠近両用標準レンズ使用時</p>
+    </div>
+
+    <!-- 対象商品 -->
+    <p class="pex-target rv">対象商品：メガネ・サングラス・コンタクト・補聴器・アクセサリー</p>
   </div>
 </section>
 
@@ -1100,7 +1223,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <p class="howto-desc"><span class="howto-hl">GWフェア期間中</span>に<br>アイメガネ各店舗へ<span class="howto-hl">ご来店。</span></p>
           <p class="howto-note">※4/29（火）〜 5/6（火）</p>
         </div>
-        <div class="howto-card-icon"><img src="ショップアイコン5.png" alt=""></div>
+        <div class="howto-card-icon"><img src="images/ショップアイコン5.png" alt=""></div>
       </div>
 
       <div class="howto-card rv">
@@ -1109,7 +1232,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <p class="howto-desc">スタッフにお声がけで<br><span class="howto-hl">クーポンをプレゼント。</span></p>
           <p class="howto-note">※ご来店者全員が対象です</p>
         </div>
-        <div class="howto-card-icon"><img src="チケットのアイコン8.png" alt=""></div>
+        <div class="howto-card-icon"><img src="images/チケットのアイコン8.png" alt=""></div>
       </div>
 
       <div class="howto-card rv">
@@ -1118,7 +1241,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <p class="howto-desc"><span class="howto-hl">お会計時にクーポン</span>を提示して<br>お得にお買い物！</p>
           <p class="howto-note">※11,000円（税込）以上のお買い上げで利用OK<br>※クーポン有効期限：6/7（日）まで</p>
         </div>
-        <div class="howto-card-icon"><img src="丸メガネアイコン3.png" alt=""></div>
+        <div class="howto-card-icon"><img src="images/丸メガネアイコン3.png" alt=""></div>
       </div>
 
     </div>
@@ -1197,7 +1320,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <footer>
   <div class="footer-inner">
     <div class="footer-col footer-brand">
-      <img src="logo.gif" alt="アイメガネ" class="footer-logo">
+      <img src="images/logo.gif" alt="アイメガネ" class="footer-logo">
       <p class="footer-company">アイジャパン株式会社</p>
       <p class="footer-address">〒330-0846 埼玉県さいたま市大宮区大門町2-12</p>
     </div>
