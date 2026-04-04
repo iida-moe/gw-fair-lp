@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ストーリー 1080x1920</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans JP',sans-serif; background:#ccc; display:flex;align-items:center;justify-content:center;min-height:100vh; }
+
+.canvas {
+  width:1080px;height:1920px;
+  background:linear-gradient(180deg, #1A3D28 0%, #2E5A3A 60%, #3A7A4F 100%);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+
+/* 装飾 */
+.deco-circle {
+  position:absolute;border-radius:50%;
+  border:1.5px solid rgba(212,168,32,0.12);
+  pointer-events:none;
+}
+.dc1 { width:500px;height:500px;top:-120px;right:-160px; }
+.dc2 { width:300px;height:300px;bottom:200px;left:-80px; }
+.dc3 { width:200px;height:200px;top:900px;right:40px;background:rgba(212,168,32,0.03); }
+/* アクセントライン */
+.deco-line {
+  position:absolute;left:64px;top:560px;
+  width:80px;height:2px;
+  background:linear-gradient(90deg, #D4A820, transparent);
+  opacity:.4;
+}
+
+/* 写真エリア（上部） */
+.photo {
+  position:relative;width:100%;height:540px;flex-shrink:0;
+  background:url('megane.gif') 20% center / cover no-repeat;
+}
+.photo::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(26,61,40,0.2) 0%, transparent 30%, transparent 50%, #2E5A3A 100%);
+}
+
+/* ロゴ（写真上に重ねる） */
+.logo-wrap {
+  position:absolute;top:40px;left:56px;z-index:3;
+}
+.logo { width:200px;opacity:.95; }
+
+/* コンテンツ */
+.content {
+  position:relative;z-index:2;
+  padding:32px 64px 100px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;flex:1;
+}
+
+/* 期間タグ */
+.top-row {
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:24px;
+}
+.tag {
+  font-weight:700;font-size:16px;color:#fff;
+  letter-spacing:.14em;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  padding:10px 24px;border-radius:40px;
+  border:1px solid rgba(255,255,255,0.12);
+}
+.date {
+  font-weight:700;font-size:22px;
+  color:#D4A820;letter-spacing:.04em;
+}
+
+/* GWフェア */
+.title {
+  font-size:160px;font-weight:900;
+  line-height:.85;color:#D4A820;
+  font-style:italic;
+  text-shadow:0 4px 30px rgba(0,0,0,0.15);
+  margin-bottom:8px;
+}
+.subtitle {
+  font-size:24px;font-weight:500;
+  letter-spacing:.32em;
+  color:rgba(255,255,255,0.55);
+  margin-bottom:56px;
+}
+
+/* 金額 */
+.offer-block { margin-bottom:12px; }
+.offer-row {
+  display:flex;align-items:baseline;justify-content:center;gap:6px;
+}
+.offer-label {
+  font-size:32px;font-weight:700;
+  color:rgba(255,255,255,0.5);
+}
+.offer-num {
+  font-size:170px;font-weight:900;
+  color:#fff;line-height:.8;
+  letter-spacing:-.04em;
+}
+.offer-unit {
+  font-size:52px;font-weight:900;
+  color:#D4A820;margin-left:6px;
+}
+
+/* ハズレなし — ピル */
+.badge-row {
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  margin-bottom:8px;
+}
+.badge-pill {
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.15);
+  color:#fff;font-weight:900;font-size:20px;
+  padding:10px 28px;border-radius:40px;
+  letter-spacing:.08em;
+}
+.offer-note {
+  font-size:14px;color:rgba(255,255,255,0.4);
+  margin-bottom:48px;
+}
+
+/* CTA — グラスカード */
+.cta-area {
+  margin-top:auto;width:100%;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:20px;
+  padding:36px 40px;
+  display:flex;flex-direction:column;align-items:center;
+}
+.cta-lead {
+  font-weight:900;font-size:26px;
+  color:#D4A820;letter-spacing:.04em;
+  margin-bottom:16px;
+}
+.cta-btn {
+  display:inline-block;
+  background:linear-gradient(135deg, #E8C030 0%, #D4A820 100%);
+  color:#1A3D28;font-weight:900;font-size:30px;
+  padding:24px 72px;border-radius:14px;
+  letter-spacing:.06em;
+  box-shadow:0 4px 24px rgba(212,168,32,0.3);
+}
+.cta-note {
+  margin-top:14px;
+  font-size:13px;color:rgba(255,255,255,0.3);
+}
+</style>
+</head>
+<body>
+<div id="pw-gate" style="position:fixed;inset:0;z-index:9999;background:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:'Noto Sans JP',sans-serif;">
+  <p style="font-size:14px;color:#555;margin-bottom:16px;">パスワードを入力してください</p>
+  <input id="pw-input" type="password" placeholder="パスワード" style="font-size:16px;padding:12px 20px;border:2px solid #ddd;border-radius:8px;width:280px;text-align:center;">
+  <button onclick="checkPw()" style="margin-top:12px;padding:10px 32px;background:#2E5A3A;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;">確認</button>
+  <p id="pw-err" style="color:#c00;font-size:12px;margin-top:8px;display:none;">パスワードが違います</p>
+</div>
+<script>
+function checkPw(){var p=document.getElementById('pw-input').value;if(p==='GWaimegane'){sessionStorage.setItem('gw-auth','1');document.getElementById('pw-gate').style.display='none';}else{document.getElementById('pw-err').style.display='block';}}
+if(sessionStorage.getItem('gw-auth')==='1'||location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'){document.getElementById('pw-gate').style.display='none';}
+document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
+</script>
+<div class="canvas">
+  <div class="deco-circle dc1"></div>
+  <div class="deco-circle dc2"></div>
+  <div class="deco-circle dc3"></div>
+  <div class="deco-line"></div>
+
+  <div class="photo">
+    <div class="logo-wrap"><img src="logo2.gif" alt="アイメガネ" class="logo"></div>
+  </div>
+
+  <div class="content">
+    <div class="top-row">
+      <span class="tag">期間限定</span>
+      <span class="date">4/29（火）〜5/6（火）</span>
+    </div>
+
+    <div class="title">GWフェア</div>
+    <div class="subtitle">スロットクーポンキャンペーン</div>
+
+    <div class="offer-block">
+      <div class="offer-row">
+        <span class="offer-label">最大</span>
+        <span class="offer-num">5,500</span>
+        <span class="offer-unit">円OFF</span>
+      </div>
+    </div>
+
+    <div class="badge-row">
+      <span class="badge-pill">ハズレなし</span>
+      <span class="badge-pill">全員もらえる</span>
+    </div>
+    <div class="offer-note">※税込11,000円以上のメガネ・サングラスに使用可能</div>
+
+    <div class="cta-area">
+      <div class="cta-lead">予約でスロット2回引ける！</div>
+      <div class="cta-btn">予約して店頭でクーポンGET</div>
+      <div class="cta-note">クーポン有効期限 6/7まで ／ 他のクーポン・割引との併用不可</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
