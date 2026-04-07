@@ -3,7 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pattern C：左右分割 | GWフェア</title>
+<meta name="description" content="GWフェア限定。スロットクーポンで最大5,500円OFF。メガネ・サングラス・コンタクト・補聴器など対象。事前予約でスロット2回のダブルチャンス。アイメガネ各店で開催。">
+<meta name="theme-color" content="#2E5A3A">
+<meta property="og:title" content="GWフェア | スロットクーポン最大5,500円OFF">
+<meta property="og:description" content="ご来店者全員にクーポンプレゼント。事前予約でスロット2回のダブルチャンス。">
+<meta property="og:type" content="website">
+<title>GWフェア | スロットクーポン最大5,500円OFF | アイメガネ</title>
+<link rel="icon" href="images/logo.gif" type="image/gif">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -24,14 +30,35 @@
   --border:   #e0e0e0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
 body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* キーボード操作時の視認性 */
+a:focus-visible,
+button:focus-visible,
+.btn-h:focus-visible,
+.header-cta:focus-visible,
+.shop-search-btn:focus-visible,
+.shop-btn-web:focus-visible,
+.shop-btn-tel:focus-visible,
+.dc-band-btn:focus-visible,
+.float-cta-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+a:focus:not(:focus-visible) { outline: none; }
 
 /* ══ HEADER ══ */
 .site-header {
   position:sticky;top:0;z-index:50;
-  background:rgba(255,255,255,0.97);
-  box-shadow:0 1px 3px rgba(0,0,0,0.05);
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:saturate(180%) blur(10px);
+  -webkit-backdrop-filter:saturate(180%) blur(10px);
+  box-shadow:0 1px 0 rgba(0,0,0,0.06), 0 8px 24px rgba(46,90,58,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.04);
 }
 .header-inner {
   max-width:100%;margin:0;padding:0 clamp(24px,3vw,48px);
@@ -374,8 +401,12 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 
 /* ══ SHARED SEC ══ */
 .sec { padding:clamp(64px,12vw,100px) clamp(24px,6vw,48px);max-width:820px;margin:0 auto; }
-.sl { font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--green);text-align:center;margin-bottom:10px;text-transform:uppercase; }
-.st { font-size:clamp(24px,6.5vw,40px);font-weight:900;text-align:center;line-height:1.25;color:var(--ink);margin-bottom:clamp(36px,8vw,56px); }
+.sl { font-size:12px;font-weight:700;letter-spacing:.28em;color:var(--green);text-align:center;margin-bottom:12px;text-transform:uppercase;opacity:.9; }
+.st {
+  font-size:clamp(24px,6.5vw,40px);font-weight:900;text-align:center;line-height:1.28;color:var(--ink);
+  margin-bottom:clamp(36px,8vw,56px);
+  letter-spacing:.02em;
+}
 .st em { font-style:normal;color:var(--green);position:relative; }
 .st em::after { content:'';position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--green);border-radius:2px;opacity:.4; }
 
@@ -384,11 +415,17 @@ body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--
 .pg { display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,3vw,20px); }
 @media(max-width:480px){.pg{grid-template-columns:1fr 1fr;}}
 .pc {
-  background:white;border-radius:8px;
+  background:white;border-radius:12px;
   padding:clamp(24px,6vw,32px) clamp(20px,5vw,28px);
   position:relative;
-  box-shadow:0 1px 3px rgba(0,0,0,0.05);
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.04);
   text-align:center;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.pc:hover {
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(46,90,58,0.12);
 }
 .pd { display:none; }
 .pr { font-size:clamp(18px,4vw,24px);font-weight:900;letter-spacing:.15em;margin-bottom:10px;color:var(--green);text-align:left; }
@@ -794,6 +831,7 @@ footer {
 }
 
 @media (max-width:640px) {
+  html { scroll-padding-top: 60px; }
   /* ── ヘッダー ── */
   .header-inner { height:56px;padding:0 16px; }
   .header-logo img { width:120px; }
@@ -1108,6 +1146,13 @@ footer {
   background:var(--bg);border-radius:12px;
   padding:clamp(28px,6vw,36px) clamp(20px,4vw,28px);
   position:relative;
+  border:1px solid transparent;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.sol-card:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.07);
+  border-color:rgba(58,122,79,0.2);
 }
 .sol-num {
   font-size:32px;font-weight:900;color:var(--green);
@@ -1147,9 +1192,16 @@ footer {
 .howto-card {
   background:#fff;
   border-radius:12px;
+  border:1px solid rgba(0,0,0,0.06);
   padding:clamp(24px,5vw,36px) clamp(24px,5vw,36px);
   display:flex;align-items:center;justify-content:space-between;
   gap:20px;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.howto-card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(0,0,0,0.08);
+  border-color:rgba(58,122,79,0.25);
 }
 .howto-card-text { flex:1; }
 .howto-step-num {
@@ -1241,8 +1293,14 @@ footer {
   gap:16px;text-align:left;margin-bottom:8px;
 }
 .shop-card {
-  border:1px solid var(--border);border-radius:10px;
+  border:1px solid var(--border);border-radius:12px;
   padding:20px 24px;
+  background:#fff;
+  transition:box-shadow .2s ease, border-color .2s ease;
+}
+.shop-card:hover {
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  border-color:rgba(58,122,79,0.35);
 }
 .shop-card-name {
   font-size:17px;font-weight:900;color:var(--ink);
@@ -1626,6 +1684,32 @@ footer {
 .rv { opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease; }
 .rv.in { opacity:1;transform:translateY(0); }
 .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+
+/* 店舗検索ブロック（インライン撤去） */
+#shop-search .sec.shop-sec { text-align:center; }
+.shop-intro {
+  font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:24px;
+  max-width:520px;margin-left:auto;margin-right:auto;
+}
+.shop-fallback-btn { margin-top:24px; }
+.shop-empty {
+  grid-column:1/-1;text-align:center;color:var(--ink-lt);
+  padding:24px 16px;font-size:15px;line-height:1.7;
+}
+
+/* 本文へスキップ（キーボード） */
+.skip-link {
+  position:absolute;left:-9999px;top:0;z-index:10001;
+  padding:12px 20px;background:var(--green-dk);color:#fff;
+  font-weight:700;font-size:14px;text-decoration:none;border-radius:0 0 8px 0;
+}
+.skip-link:focus { left:0;outline:2px solid var(--gold);outline-offset:2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pc, .sol-card, .howto-card, .shop-card { transition: none; }
+  .pc:hover, .sol-card:hover, .howto-card:hover { transform: none; }
+}
 </style>
 </head>
 <body>
@@ -1640,7 +1724,29 @@ function checkPw(){var p=document.getElementById('pw-input').value;if(p==='GWaim
 if(sessionStorage.getItem('gw-auth')==='1'||location.protocol==='file:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'){document.getElementById('pw-gate').style.display='none';}
 document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "GWフェア スロットクーポンキャンペーン",
+  "description": "スロットクーポンで最大5,500円OFF。アイメガネ各店で開催。",
+  "startDate": "2026-04-29",
+  "endDate": "2026-05-06",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "アイメガネ 各店舗",
+    "address": { "@type": "PostalAddress", "addressCountry": "JP" }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "アイジャパン株式会社",
+    "url": "https://www.aimegane.com/"
+  }
+}
+</script>
 
+<a href="#main-content" class="skip-link">本文へスキップ</a>
 <!-- ===== ヘッダー ===== -->
 <header class="site-header">
   <div class="header-inner">
@@ -1657,6 +1763,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   </div>
 </header>
 
+<main id="main-content">
 <!-- HERO -->
 <section id="hero">
   <!-- クラシックスロットリール（画像） -->
@@ -1865,30 +1972,30 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
 <!-- ⑤ 店舗検索 -->
 <section id="shop-search">
-  <div class="sec" style="text-align:center;">
+  <div class="sec shop-sec">
     <p class="sl rv">Shop</p>
     <h2 class="st rv">お近くの<em>店舗を探す</em></h2>
-    <p class="rv" style="font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:24px;">郵便番号を入力すると、お近くの店舗が表示されます。</p>
+    <p class="rv shop-intro">郵便番号の<strong>上3桁</strong>でエリアを絞り込めます。未入力のまま検索すると掲載店舗を一覧表示します。</p>
 
     <!-- 郵便番号検索 -->
     <div class="shop-search-form rv">
       <span class="shop-zip-label">〒</span>
-      <input type="text" id="zip1" maxlength="3" placeholder="330" class="shop-zip-input">
+      <input type="text" id="zip1" maxlength="3" placeholder="330" class="shop-zip-input" inputmode="numeric" autocomplete="off" aria-label="郵便番号の前3桁">
       <span class="shop-zip-sep">-</span>
-      <input type="text" id="zip2" maxlength="4" placeholder="0846" class="shop-zip-input shop-zip-input-lg">
-      <button class="shop-search-btn" onclick="searchShop()">検索</button>
+      <input type="text" id="zip2" maxlength="4" placeholder="0846" class="shop-zip-input shop-zip-input-lg" inputmode="numeric" autocomplete="off" aria-label="郵便番号の後4桁（任意）">
+      <button type="button" class="shop-search-btn" onclick="searchShop()">検索</button>
     </div>
 
     <!-- 検索結果 -->
-    <p id="shop-count" class="shop-count" style="display:none;"></p>
+    <p id="shop-count" class="shop-count" style="display:none;" role="status" aria-live="polite"></p>
     <div id="shop-results" class="shop-results"></div>
 
     <!-- フォールバック -->
-    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h rv" style="margin-top:24px;">店舗一覧を見る</a>
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h rv shop-fallback-btn">店舗一覧を見る</a>
   </div>
 </section>
 
-<!-- ⑤ CTA -->
+<!-- ⑥ 最終CTA -->
 <section id="fcta">
   <div class="fci">
     <p class="fck rv">GW期間限定</p>
@@ -1920,6 +2027,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     ※クーポン利用期限：2026年6月7日（日）まで
   </p>
 </div>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1995,23 +2103,37 @@ function searchShop(){
   const countEl=document.getElementById('shop-count');
   const resEl=document.getElementById('shop-results');
   countEl.style.display='block';
-  countEl.textContent='対象 全'+results.length+'店舗';
+  if(results.length===0){
+    countEl.textContent='この郵便番号（上3桁）に一致する店舗はありません。';
+    resEl.innerHTML='<p class="shop-empty">別の番号を試すか、下の「店舗一覧を見る」からお近くの店舗をお探しください。</p>';
+    return;
+  }
+  if(zip.length<3){
+    countEl.textContent='掲載 '+results.length+' 店舗を表示しています（上3桁を入れて絞り込み）。';
+  } else {
+    countEl.textContent='該当 '+results.length+' 店舗';
+  }
   resEl.innerHTML=results.map(s=>`
     <div class="shop-card">
       <p class="shop-card-name">${s.name}</p>
       <p class="shop-card-addr">${s.addr}</p>
       <div class="shop-card-btns">
         <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">WEB予約</a>
-        <a href="tel:${s.tel}" class="shop-btn-tel">電話予約</a>
+        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel">電話予約</a>
       </div>
     </div>
   `).join('');
-  if(results.length===0){
-    resEl.innerHTML='<p style="grid-column:1/-1;text-align:center;color:var(--ink-lt);padding:24px;">該当する店舗が見つかりませんでした。</p>';
-  }
 }
 document.getElementById('zip1').addEventListener('input',function(){if(this.value.length>=3)document.getElementById('zip2').focus();});
-document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key==='Enter')searchShop();});
+document.getElementById('zip1').addEventListener('keydown',function(e){
+  if(e.key!=='Enter')return;
+  e.preventDefault();
+  if(this.value.trim().length>=3)searchShop();
+  else document.getElementById('zip2').focus();
+});
+document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();searchShop();}});
+
+document.addEventListener('DOMContentLoaded',function(){ searchShop(); });
 
 // フローティングCTA: ヒーロー通過後に表示
 const fc = document.getElementById('floatCta');
