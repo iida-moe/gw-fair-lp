@@ -87,102 +87,138 @@ a:focus:not(:focus-visible) { outline: none; }
   display:flex;align-items:center;
   padding:0;
 }
-/* 写真 — 右側4分割グリッド */
+/* 写真 — 右側1枚（3:4） */
 #hero::before { display:none; }
-/* PC: 上下2つのphotoコンテナをまとめて右側に配置 */
-.hero-photos {
-  position:absolute;right:0;width:42%;
-  display:grid;grid-template-columns:1.2fr 1fr;grid-template-rows:1fr;
-  gap:2px;
+.hero-grid { display:none; }
+.hero-photo-single {
+  position:absolute;right:0;top:0;bottom:0;width:42%;
   z-index:0;
+  overflow:hidden;
 }
-.hero-photos-top { top:0;height:50%; }
-.hero-photos-bottom { bottom:0;height:50%; }
-/* 下2枚の写真位置調整（元のnth-child(3),(4)相当） */
-/* 下段左: コンタクト */
-.hero-photos-bottom .hp:first-child img {
-  object-position:80% 50%;
-  transform:none !important;
-}
-/* 下段右: サングラス */
-.hero-photos-bottom .hp:nth-child(2) img {
-  object-position:center 38%;
-  transform:none !important;
-}
-.hero-photos .hp {
-  overflow:hidden;position:relative;
-  background:#e8e6e2;
-  display:flex;align-items:center;justify-content:center;
-}
-.hero-photos .hp img {
-  width:100%;height:100%;object-fit:cover;
+.hero-photo-single img {
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center center;
   display:block;
-  position:absolute;inset:0;
-}
-.hero-photos .hp img[src=""] {
-  display:none;
-}
-/* nth-child(3),(4) → hero-photos-bottom に移動済み */
-/* 上段左: 補聴器（右寄せで商材を見せる） */
-.hero-photos .hp:first-child img {
-  object-position:95% 60%;
-  transform:none;
-}
-/* 上段右: メガネ */
-.hero-photos .hp-megane img {
-  object-position:center 60%;
-  transform:none;
-}
-.hero-photos .hp-label {
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(transparent, rgba(0,0,0,0.45));
-  color:#fff;font-size:13px;font-weight:700;
-  padding:24px 12px 10px;letter-spacing:.06em;
-  text-align:center;
-  z-index:1;
 }
 /* くの字カバー — 写真の上に緑を被せて斜めに区切る */
 #hero::after {
   content:'';position:absolute;inset:0;
   background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 70%, #4A9E6C 100%);
-  clip-path:polygon(0 0, 73% 0, 57% 50%, 69% 100%, 0 100%);
+  clip-path:polygon(0 0, 74% 0, 58% 50%, 70% 100%, 0 100%);
   pointer-events:none;
   z-index:1;
 }
 /* スロットイラスト（静的img — 非表示） */
 .hero-slot-img { display:none; }
 
-/* ══ スロットリール（斜め静止3レーン） ══ */
+/* ══ スロットマシン（フレーム付き3リール） ══ */
 .slot-reel-wrap {
-  position:absolute;
+  position:relative;
   z-index:2;
   pointer-events:none;
-  top:-30%;left:-12%;
-  width:55%;height:160%;
-  overflow:hidden;
-  transform:rotate(18deg);
-  transform-origin:center center;
-  display:flex;
-  justify-content:center;
-  gap:clamp(16px,2vw,28px);
+  width:auto;height:auto;
+  overflow:visible;
+  display:inline-block;
+  margin-top:8px;
 }
-.slot-reel-strip { display:contents; }
-.slot-reel-col {
-  flex:0 0 clamp(56px,7vw,90px);
+.slot-machine {
+  background:linear-gradient(145deg, #2a5e3a 0%, #1e4a2e 100%);
+  border:2px solid rgba(212,168,32,0.6);
+  border-radius:8px;
+  padding:6px 8px 8px;
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.1);
+  position:relative;
+}
+.slot-machine-label {
+  text-align:center;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:4px;
+  text-transform:uppercase;
+}
+.slot-machine-reels {
   display:flex;
-  flex-direction:column;
+  gap:3px;
+  background:rgba(0,0,0,0.3);
+  border-radius:5px;
+  padding:4px;
+  position:relative;
+}
+/* ペイライン */
+.slot-machine-reels::after {
+  content:'';
+  position:absolute;
+  left:0;right:0;
+  top:50%;transform:translateY(-50%);
+  height:2px;
+  background:linear-gradient(90deg, transparent, rgba(212,168,32,0.8), transparent);
+  z-index:3;
+  pointer-events:none;
+}
+.slot-reel-col {
+  flex:0 0 clamp(20px,2.2vw,28px);
+  height:clamp(46px,5.5vw,64px);
+  overflow:hidden;
+  background:#fff;
+  border-radius:5px;
+  position:relative;
+}
+/* リール上下のグラデーション（窓っぽく） */
+.slot-reel-col::before,
+.slot-reel-col::after {
+  content:'';
+  position:absolute;left:0;right:0;
+  height:30%;z-index:2;
+  pointer-events:none;
+}
+.slot-reel-col::before {
+  top:0;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, transparent 100%);
+}
+.slot-reel-col::after {
+  bottom:0;
+  background:linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%);
 }
 .slot-reel-col img {
   width:100%;height:auto;
   display:block;
-  mix-blend-mode:multiply;
-  opacity:0.35;
+  opacity:1;
 }
-.slot-reel-col img:nth-child(2) { margin-top:-1px; }
-/* 各レーンの縦位置をずらす */
-.slot-reel-col:nth-child(1) { margin-top:-5%; }
-.slot-reel-col:nth-child(2) { margin-top:10%; }
-.slot-reel-col:nth-child(3) { margin-top:-15%; }
+/* リールアニメーション */
+.slot-reel-strip {
+  display:flex;
+  gap:6px;
+}
+.slot-reel-col .slot-reel-inner {
+  animation:none;
+}
+@keyframes slot-scroll {
+  0%   { transform:translateY(0); }
+  100% { transform:translateY(-50%); }
+}
+/* レバー */
+.slot-lever {
+  position:absolute;
+  right:-12px;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;
+}
+.slot-lever-stick {
+  width:4px;height:22px;
+  background:linear-gradient(90deg, #bbb, #ddd, #bbb);
+  border-radius:2px;
+}
+.slot-lever-ball {
+  width:10px;height:10px;
+  background:radial-gradient(circle at 40% 35%, #e85050, #c0272d);
+  border-radius:50%;
+  box-shadow:0 1px 4px rgba(0,0,0,0.3);
+  margin-top:-1px;
+}
 
 /* 装飾サークル — 削除済み */
 .hero-deco { display:none; }
@@ -205,7 +241,8 @@ a:focus:not(:focus-visible) { outline: none; }
   align-self:flex-start;
   display:flex;flex-direction:column;
   align-items:flex-start;
-  margin-bottom:16px;
+  margin-bottom:0;
+  position:relative;
 }
 .h-gw-main {
   font-size:clamp(48px,5.5vw,80px);
@@ -276,7 +313,7 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* 金額 */
 .h-offer {
-  margin:12px 0;
+  margin:4px 0;
   position:relative;
   display:flex;flex-direction:column;align-items:center;
 }
@@ -333,7 +370,22 @@ a:focus:not(:focus-visible) { outline: none; }
   border-radius:4px;
 }
 
-/* スロットクーポンチャンス — 左寄せ */
+/* スロットクーポンチャンス — 横並び */
+.h-offer-top-row {
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,2vw,24px);
+}
+.h-slot-illus {
+  position:absolute;
+  right:clamp(-60px,-4vw,-20px);
+  top:50%;
+  transform:translateY(-50%);
+  width:clamp(100px,10vw,160px);
+  height:auto;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  pointer-events:none;
+}
 .h-offer-top-label {
   align-self:flex-start;
   font-size:clamp(16px,1.8vw,24px);
@@ -800,13 +852,15 @@ footer {
   .header-logo img { width:130px; }
   .header-nav { gap:16px;font-size:12px; }
   .h-badge-float { width:85px;height:85px;font-size:13px;right:-42px; }
-  /* Hero tablet — サンドイッチ */
+  /* スロットマシン — タブレット */
+  .slot-reel-wrap { bottom:16px;left:16px; }
+  .slot-machine { padding:8px 10px 12px; }
+  .slot-reel-col { flex:0 0 44px;height:110px; }
+  /* Hero tablet */
   #hero { flex-direction:column;min-height:auto; }
-  .hero-photos {
-    position:relative !important;width:100% !important;height:auto !important;
-    top:auto !important;bottom:auto !important;right:auto !important;
-    grid-template-columns:1fr 1fr !important;grid-template-rows:25vw !important;
-    gap:0 !important;background:none !important;
+  .hero-photo-single {
+    position:relative;width:100%;height:50vw;
+    order:1;
   }
   #hero::after { display:none; }
   .hw {
@@ -817,8 +871,6 @@ footer {
     transform:none;order:2;
     overflow:visible;
   }
-  .hero-photos-top { order:1; }
-  .hero-photos-bottom { order:3; }
   .h-offer-top-label { margin-left:0; }
   .h-offer-bottom-label { margin-right:0; }
   .h-gw-main { font-size:clamp(36px,6vw,52px); }
@@ -847,23 +899,13 @@ footer {
     padding:0;
     background:var(--bg);
   }
-  /* 写真ストリップ共通 — 横並び2枚 */
-  .hero-photos {
-    position:relative !important;
-    width:100% !important;height:auto !important;
-    top:auto !important;bottom:auto !important;right:auto !important;
-    display:grid !important;
-    grid-template-columns:1fr 1fr !important;
-    grid-template-rows:32vw !important;
-    gap:0 !important;
-    background:none !important;
-  }
-  .hero-photos .hp-label { display:none; }
-  .hero-photos-top .hp:first-child img {
-    transform:scale(1.1) !important;transform-origin:center !important;
+  /* 写真 — スマホ */
+  .hero-photo-single {
+    position:relative;width:100%;height:60vw;
+    order:1;
   }
   #hero::after { display:none; }
-  /* 緑カード — 上下写真の間 */
+  /* 緑カード */
   .hw {
     position:relative;
     z-index:3;
@@ -874,14 +916,14 @@ footer {
     transform:none;
     order:2;
   }
-  .hero-photos-top { order:1; }
-  .hero-photos-bottom { order:3; }
   .h-gw-main { font-size:clamp(36px,10vw,52px);text-align:center;margin-bottom:2px; }
   .h-campaign-sub { display:none; }
   .hero-slot-img { display:none; }
   .hero-slot-reel { display:none; }
   .slot-reel-wrap { display:none; }
+  .h-offer-top-row { justify-content:center; }
   .h-offer-top-label { align-self:center;margin-left:0;font-size:clamp(15px,4vw,20px); }
+  .h-slot-illus { width:clamp(56px,14vw,80px); }
   .h-offer-bottom-label { align-self:center;margin-right:0;font-size:clamp(14px,3.8vw,18px); }
   .h-campaign-catch { font-size:clamp(14px,3.5vw,18px); }
   .h-catch-amount { font-size:clamp(20px,5.5vw,28px); }
@@ -1709,6 +1751,7 @@ footer {
   html { scroll-behavior: auto; }
   .pc, .sol-card, .howto-card, .shop-card { transition: none; }
   .pc:hover, .sol-card:hover, .howto-card:hover { transform: none; }
+  .slot-reel-col .slot-reel-inner { animation: none; }
 }
 </style>
 </head>
@@ -1766,23 +1809,9 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <main id="main-content">
 <!-- HERO -->
 <section id="hero">
-  <!-- クラシックスロットリール（画像） -->
-  <div class="slot-reel-wrap">
-    <div class="slot-reel-strip">
-      <div class="slot-reel-col"><img src="images/slot-symbols.jpg" alt=""><img src="images/slot-symbols.jpg" alt=""></div>
-      <div class="slot-reel-col"><img src="images/slot-symbols.jpg" alt=""><img src="images/slot-symbols.jpg" alt=""></div>
-      <div class="slot-reel-col"><img src="images/slot-symbols.jpg" alt=""><img src="images/slot-symbols.jpg" alt=""></div>
-    </div>
-  </div>
-  <!-- 上2枚写真 -->
-  <div class="hero-photos hero-photos-top">
-    <div class="hp"><img src="images/hotyouki.png" alt="補聴器"></div>
-    <div class="hp hp-megane"><img src="images/megane-hand.png" alt="メガネ"></div>
-  </div>
-  <!-- 下2枚写真（スマホではhwの下に表示） -->
-  <div class="hero-photos hero-photos-bottom">
-    <div class="hp"><img src="images/CL.jpg" alt="コンタクトレンズ"></div>
-    <div class="hp"><img src="images/SG.jpg" alt="サングラス"></div>
+  <!-- 右側写真（1枚） -->
+  <div class="hero-photo-single">
+    <img src="images/all.png" alt="メガネ・補聴器・コンタクト・サングラス">
   </div>
   <div class="hw">
     <!-- ① 期間限定（左寄せ） -->
