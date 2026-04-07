@@ -81,7 +81,7 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* ══ HERO ══ */
 #hero {
-  min-height:100svh;
+  min-height:calc(100svh - 72px);
   background:var(--bg);
   position:relative; overflow:hidden;
   display:flex;align-items:center;
@@ -98,127 +98,83 @@ a:focus:not(:focus-visible) { outline: none; }
 .hero-photo-single img {
   width:100%;height:100%;
   object-fit:cover;
-  object-position:center center;
+  object-position:center 30%;
   display:block;
 }
-/* くの字カバー — 写真の上に緑を被せて斜めに区切る */
+/* 緑カバー */
 #hero::after {
   content:'';position:absolute;inset:0;
   background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 70%, #4A9E6C 100%);
-  clip-path:polygon(0 0, 74% 0, 58% 50%, 70% 100%, 0 100%);
+  clip-path:polygon(0 0, 58% 0, 58% 100%, 0 100%);
   pointer-events:none;
   z-index:1;
 }
+/* ゴールド紙吹雪 */
+.hero-confetti {
+  display:none;
+}
+.hero-confetti span {
+  position:absolute;
+  background:linear-gradient(135deg, #F5D84A 0%, #D4A820 40%, #B8901A 100%);
+  opacity:0.85;
+  box-shadow:0 0 6px rgba(212,168,32,0.5);
+}
+/* 各紙吹雪の位置・サイズ・回転 */
+/* 大きめ */
+.hc1  { width:16px;height:22px;top:4%;left:8%;transform:rotate(25deg); }
+.hc2  { width:14px;height:18px;top:2%;left:38%;transform:rotate(-15deg); }
+.hc3  { width:18px;height:12px;top:14%;left:50%;transform:rotate(45deg); }
+.hc4  { width:15px;height:20px;top:32%;left:4%;transform:rotate(-30deg); }
+.hc5  { width:20px;height:14px;top:48%;left:44%;transform:rotate(60deg); }
+.hc6  { width:16px;height:18px;top:68%;left:10%;transform:rotate(10deg); }
+.hc7  { width:18px;height:14px;top:85%;left:40%;transform:rotate(-50deg); }
+/* 中くらい */
+.hc8  { width:10px;height:14px;top:7%;left:22%;transform:rotate(35deg); }
+.hc9  { width:12px;height:8px;top:10%;left:52%;transform:rotate(-20deg); }
+.hc10 { width:8px;height:12px;top:18%;left:15%;transform:rotate(70deg); }
+.hc11 { width:11px;height:8px;top:24%;left:42%;transform:rotate(-40deg); }
+.hc12 { width:9px;height:13px;top:22%;left:55%;transform:rotate(15deg); }
+.hc13 { width:12px;height:9px;top:38%;left:28%;transform:rotate(-65deg); }
+.hc14 { width:10px;height:8px;top:42%;left:12%;transform:rotate(50deg); }
+.hc15 { width:8px;height:12px;top:52%;left:35%;transform:rotate(-10deg); }
+.hc16 { width:11px;height:7px;top:58%;left:50%;transform:rotate(40deg); }
+.hc17 { width:9px;height:11px;top:62%;left:22%;transform:rotate(-55deg); }
+.hc18 { width:12px;height:8px;top:72%;left:48%;transform:rotate(20deg); }
+.hc19 { width:10px;height:14px;top:78%;left:30%;transform:rotate(-35deg); }
+.hc20 { width:8px;height:10px;top:90%;left:18%;transform:rotate(75deg); }
+/* 小さめ */
+.hc21 { width:5px;height:8px;top:1%;left:46%;transform:rotate(-25deg);opacity:0.7; }
+.hc22 { width:4px;height:7px;top:6%;left:30%;transform:rotate(55deg);opacity:0.65; }
+.hc23 { width:6px;height:4px;top:16%;left:40%;transform:rotate(-45deg);opacity:0.6; }
+.hc24 { width:4px;height:6px;top:26%;left:18%;transform:rotate(30deg);opacity:0.7; }
+.hc25 { width:5px;height:4px;top:36%;left:52%;transform:rotate(-60deg);opacity:0.65; }
+.hc26 { width:4px;height:7px;top:44%;left:8%;transform:rotate(15deg);opacity:0.6; }
+.hc27 { width:6px;height:5px;top:56%;left:46%;transform:rotate(-20deg);opacity:0.7; }
+.hc28 { width:4px;height:6px;top:64%;left:5%;transform:rotate(45deg);opacity:0.65; }
+.hc29 { width:5px;height:4px;top:76%;left:54%;transform:rotate(-70deg);opacity:0.6; }
+.hc30 { width:4px;height:7px;top:82%;left:25%;transform:rotate(35deg);opacity:0.7; }
 /* スロットイラスト（静的img — 非表示） */
 .hero-slot-img { display:none; }
 
-/* ══ スロットマシン（フレーム付き3リール） ══ */
+/* ══ スロットリール（斜め静止3レーン） ══ */
+/* スロットリール装飾 */
 .slot-reel-wrap {
-  position:relative;
+  display:none;
+}
+.hero-reel-deco {
+  position:absolute;
   z-index:2;
   pointer-events:none;
-  width:auto;height:auto;
-  overflow:visible;
-  display:inline-block;
-  margin-top:8px;
+  top:0;bottom:0;left:0;
+  width:58%;
+  background:url('images/slot-pattern.png') 25% center/cover no-repeat;
+  opacity:0.75;
+  mix-blend-mode:multiply;
 }
-.slot-machine {
-  background:linear-gradient(145deg, #2a5e3a 0%, #1e4a2e 100%);
-  border:2px solid rgba(212,168,32,0.6);
-  border-radius:8px;
-  padding:6px 8px 8px;
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.1);
-  position:relative;
-}
-.slot-machine-label {
-  text-align:center;
-  font-size:8px;
-  font-weight:900;
-  letter-spacing:.2em;
-  color:var(--gold);
-  margin-bottom:4px;
-  text-transform:uppercase;
-}
-.slot-machine-reels {
-  display:flex;
-  gap:3px;
-  background:rgba(0,0,0,0.3);
-  border-radius:5px;
-  padding:4px;
-  position:relative;
-}
-/* ペイライン */
-.slot-machine-reels::after {
-  content:'';
-  position:absolute;
-  left:0;right:0;
-  top:50%;transform:translateY(-50%);
-  height:2px;
-  background:linear-gradient(90deg, transparent, rgba(212,168,32,0.8), transparent);
-  z-index:3;
-  pointer-events:none;
-}
-.slot-reel-col {
-  flex:0 0 clamp(20px,2.2vw,28px);
-  height:clamp(46px,5.5vw,64px);
-  overflow:hidden;
-  background:#fff;
-  border-radius:5px;
-  position:relative;
-}
-/* リール上下のグラデーション（窓っぽく） */
-.slot-reel-col::before,
-.slot-reel-col::after {
-  content:'';
-  position:absolute;left:0;right:0;
-  height:30%;z-index:2;
-  pointer-events:none;
-}
-.slot-reel-col::before {
-  top:0;
-  background:linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, transparent 100%);
-}
-.slot-reel-col::after {
-  bottom:0;
-  background:linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%);
-}
-.slot-reel-col img {
-  width:100%;height:auto;
-  display:block;
-  opacity:1;
-}
-/* リールアニメーション */
-.slot-reel-strip {
-  display:flex;
-  gap:6px;
-}
-.slot-reel-col .slot-reel-inner {
-  animation:none;
-}
-@keyframes slot-scroll {
-  0%   { transform:translateY(0); }
-  100% { transform:translateY(-50%); }
-}
-/* レバー */
-.slot-lever {
-  position:absolute;
-  right:-12px;top:50%;transform:translateY(-50%);
-  display:flex;flex-direction:column;align-items:center;
-}
-.slot-lever-stick {
-  width:4px;height:22px;
-  background:linear-gradient(90deg, #bbb, #ddd, #bbb);
-  border-radius:2px;
-}
-.slot-lever-ball {
-  width:10px;height:10px;
-  background:radial-gradient(circle at 40% 35%, #e85050, #c0272d);
-  border-radius:50%;
-  box-shadow:0 1px 4px rgba(0,0,0,0.3);
-  margin-top:-1px;
-}
+.hero-reel-deco img { display:none; }
+.slot-reel-strip { display:contents; }
+.slot-reel-col { display:flex;flex-direction:column; }
+.slot-reel-col img { width:100%;height:auto;display:block;opacity:0.45; }
 
 /* 装飾サークル — 削除済み */
 .hero-deco { display:none; }
@@ -228,7 +184,7 @@ a:focus:not(:focus-visible) { outline: none; }
   left:0;top:50%;
   transform:translateY(-50%);
   width:58%;
-  padding:0 4% 32px 5%;
+  padding:24px 4% 16px 5%;
   display:flex;flex-direction:column;align-items:center;
   text-align:center;
 }
@@ -241,11 +197,11 @@ a:focus:not(:focus-visible) { outline: none; }
   align-self:flex-start;
   display:flex;flex-direction:column;
   align-items:flex-start;
-  margin-bottom:0;
+  margin-bottom:clamp(16px,2vw,28px);
   position:relative;
 }
 .h-gw-main {
-  font-size:clamp(48px,5.5vw,80px);
+  font-size:clamp(52px,6vw,88px);
   font-weight:900;
   color:#fff;
   letter-spacing:.1em;
@@ -294,7 +250,7 @@ a:focus:not(:focus-visible) { outline: none; }
   box-shadow:0 2px 8px rgba(0,0,0,0.15);
 }
 .h-tag {
-  font-weight:700;font-size:clamp(12px,1.2vw,15px);
+  font-weight:700;font-size:clamp(13px,1.3vw,17px);
   color:#fff;
   letter-spacing:.14em;
   background:var(--gold);
@@ -303,7 +259,7 @@ a:focus:not(:focus-visible) { outline: none; }
   display:flex;align-items:center;
 }
 .h-date {
-  font-weight:700;font-size:clamp(12px,1.2vw,15px);
+  font-weight:700;font-size:clamp(13px,1.3vw,17px);
   color:var(--ink);letter-spacing:.06em;
   background:#fff;
   padding:8px 18px;
@@ -313,7 +269,7 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* 金額 */
 .h-offer {
-  margin:4px 0;
+  margin:4px 0 20px;
   position:relative;
   display:flex;flex-direction:column;align-items:center;
 }
@@ -323,7 +279,7 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .h-offer-label {
   font-family:'Noto Sans JP',sans-serif;
-  font-size:clamp(20px,2.2vw,32px);font-weight:900;
+  font-size:clamp(22px,2.4vw,36px);font-weight:900;
   color:#DCAE18;
   margin-right:8px;
   letter-spacing:.1em;
@@ -336,7 +292,7 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .h-offer-num {
   font-family:'Montserrat',sans-serif;
-  font-size:clamp(80px,9vw,140px);font-weight:800;
+  font-size:clamp(88px,10vw,154px);font-weight:800;
   color:#DCAE18;line-height:.85;
   letter-spacing:-.03em;
   -webkit-text-stroke:5px #fff;
@@ -348,7 +304,7 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .h-offer-unit {
   font-family:'Montserrat','Noto Sans JP',sans-serif;
-  font-size:clamp(28px,3.2vw,48px);font-weight:800;
+  font-size:clamp(31px,3.5vw,52px);font-weight:800;
   color:#DCAE18;
   margin-left:8px;
   -webkit-text-stroke:3px #fff;
@@ -378,17 +334,17 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .h-slot-illus {
   position:absolute;
-  right:clamp(-60px,-4vw,-20px);
-  top:50%;
-  transform:translateY(-50%);
-  width:clamp(100px,10vw,160px);
+  left:clamp(340px,28vw,480px);
+  bottom:-10px;
+  width:clamp(120px,12vw,180px);
   height:auto;
-  filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  filter:drop-shadow(0 6px 20px rgba(0,0,0,0.4));
   pointer-events:none;
+  z-index:3;
 }
 .h-offer-top-label {
   align-self:flex-start;
-  font-size:clamp(16px,1.8vw,24px);
+  font-size:clamp(18px,2vw,27px);
   font-weight:900;
   color:#fff;
   letter-spacing:.08em;
@@ -397,12 +353,25 @@ a:focus:not(:focus-visible) { outline: none; }
 /* 右下ラベル — サブ扱い */
 .h-offer-bottom-label {
   align-self:center;
-  font-size:clamp(12px,1.3vw,16px);
-  font-weight:700;
-  color:rgba(255,255,255,0.65);
+  margin-top:14px;
+  font-size:clamp(13px,1.5vw,18px);
+  font-weight:900;
+  color:#fff;
+  background:rgba(255,255,255,0.15);
+  padding:8px 24px;
+  border-radius:40px;
+  position:relative;
   letter-spacing:.06em;
   text-shadow:0 1px 4px rgba(0,0,0,0.2);
-  margin-top:2px;
+  margin-top:14px;
+}
+.h-offer-bottom-label::before {
+  content:'';
+  position:absolute;
+  top:-10px;left:20%;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  border-bottom:10px solid rgba(255,255,255,0.15);
 }
 
 /* バッジ — 非表示 */
@@ -421,7 +390,7 @@ a:focus:not(:focus-visible) { outline: none; }
 /* CTA */
 .h-cta-row {
   display:flex;flex-direction:column;align-items:center;gap:8px;
-  margin-top:20px;
+  margin-top:clamp(20px,2.5vw,36px);
 }
 .h-cta-lead {
   font-weight:700;font-size:16px;
@@ -430,10 +399,10 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .btn-h {
   font-weight:900;
-  font-size:clamp(16px,1.6vw,22px);
+  font-size:clamp(17px,1.7vw,24px);
   color:#fff;
   background:#C0272D;
-  padding:18px 56px;
+  padding:20px 60px;
   border:none;border-radius:10px;cursor:pointer;
   box-shadow:0 4px 16px rgba(192,39,45,0.35), 0 8px 32px rgba(0,0,0,0.1);
   letter-spacing:.06em;transition:all .25s;
@@ -446,9 +415,11 @@ a:focus:not(:focus-visible) { outline: none; }
 .h-cta-side { display:none; }
 
 .h-note {
-  margin-top:20px;
-  font-size:clamp(10px,1vw,13px);color:rgba(255,255,255,0.4);letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);
-  max-width:480px;line-height:1.8;
+  margin-top:12px;
+  font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.85);letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);
+  max-width:520px;line-height:1.7;
+  text-align:left;
+  align-self:flex-start;
 }
 
 /* ══ SHARED SEC ══ */
@@ -810,6 +781,24 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:14px;font-weight:900;color:var(--gold);letter-spacing:.02em;
 }
 .float-cta-right strong { color:#fff; }
+.float-w-chance {
+  position:relative;
+  top:-14px;
+  margin-left:10px;
+  font-size:16px;font-weight:900;
+  color:var(--gold);letter-spacing:.04em;
+  -webkit-text-stroke:1px rgba(255,255,255,0.8);
+  paint-order:stroke fill;
+  text-shadow:0 2px 6px rgba(0,0,0,0.5);
+}
+.float-w {
+  font-family:'Montserrat',sans-serif;
+  font-size:26px;font-weight:800;
+  color:#fff;
+  -webkit-text-stroke:2px var(--gold);
+  paint-order:stroke fill;
+  text-shadow:0 2px 8px rgba(212,168,32,0.6);
+}
 
 /* ══ 注意事項 ══ */
 .notes-band {
@@ -911,7 +900,7 @@ footer {
     z-index:3;
     width:100%;max-width:100%;
     background:linear-gradient(150deg, #2C6E44 0%, #3A8A58 40%, #2E5A3A 100%);
-    padding:28px 24px 28px;
+    padding:44px 24px 28px;
     align-items:center;text-align:center;
     transform:none;
     order:2;
@@ -921,6 +910,19 @@ footer {
   .hero-slot-img { display:none; }
   .hero-slot-reel { display:none; }
   .slot-reel-wrap { display:none; }
+  /* スロットパターン — スマホ：元のdecoは非表示、hwの疑似要素で表示 */
+  .hero-reel-deco { display:none; }
+  .hw::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:url('images/slot-pattern.png') 30% center/cover no-repeat;
+    opacity:0.4;
+    mix-blend-mode:multiply;
+    pointer-events:none;
+    z-index:0;
+  }
+  .hw { position:relative;overflow:hidden; }
   .h-offer-top-row { justify-content:center; }
   .h-offer-top-label { align-self:center;margin-left:0;font-size:clamp(15px,4vw,20px); }
   .h-slot-illus { width:clamp(56px,14vw,80px); }
@@ -1809,9 +1811,32 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <main id="main-content">
 <!-- HERO -->
 <section id="hero">
+  <!-- スロットリール装飾 -->
+  <div class="hero-reel-deco">
+    <img src="images/A.png" alt="">
+    <img src="images/A.png" alt="">
+    <img src="images/A.png" alt="">
+  </div>
+  <!-- ゴールド紙吹雪 -->
+  <div class="hero-confetti">
+    <span class="hc1"></span><span class="hc2"></span><span class="hc3"></span><span class="hc4"></span><span class="hc5"></span>
+    <span class="hc6"></span><span class="hc7"></span><span class="hc8"></span><span class="hc9"></span><span class="hc10"></span>
+    <span class="hc11"></span><span class="hc12"></span><span class="hc13"></span><span class="hc14"></span><span class="hc15"></span>
+    <span class="hc16"></span><span class="hc17"></span><span class="hc18"></span><span class="hc19"></span><span class="hc20"></span>
+    <span class="hc21"></span><span class="hc22"></span><span class="hc23"></span><span class="hc24"></span><span class="hc25"></span>
+    <span class="hc26"></span><span class="hc27"></span><span class="hc28"></span><span class="hc29"></span><span class="hc30"></span>
+  </div>
+  <!-- スロットリール（斜め装飾） -->
+  <div class="slot-reel-wrap">
+    <div class="slot-reel-strip">
+      <div class="slot-reel-col"><img src="images/A.png" alt=""><img src="images/A.png" alt=""></div>
+      <div class="slot-reel-col"><img src="images/A.png" alt=""><img src="images/A.png" alt=""></div>
+      <div class="slot-reel-col"><img src="images/A.png" alt=""><img src="images/A.png" alt=""></div>
+    </div>
+  </div>
   <!-- 右側写真（1枚） -->
   <div class="hero-photo-single">
-    <img src="images/all.png" alt="メガネ・補聴器・コンタクト・サングラス">
+    <img src="images/all2.png" alt="メガネ・補聴器・コンタクト・サングラス">
   </div>
   <div class="hw">
     <!-- ① 期間限定（左寄せ） -->
@@ -1837,7 +1862,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <a href="#shop-search" class="btn-h">
         来店予約する
       </a>
-      <p class="h-note">※税込11,000円以上お買い上げで使用可能・対象商品はメガネ・サングラス・コンタクト・補聴器・アクセサリー<br>クーポン有効期限 6/7まで ／ 他のクーポン・割引との併用不可</p>
+      <p class="h-note">◇税込11,000円以上のお買い上げでお一人様につき1枚使用可<br>◇対象：メガネ・サングラス・コンタクト・補聴器・アクセサリー<br>◇クーポン有効期限 6/7まで<br>◇他のクーポン・割引との併用不可</p>
     </div>
   </div>
 </section>
@@ -2042,7 +2067,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <span class="float-cta-label">GWフェア 4/29〜5/6</span>
     </div>
     <div class="float-cta-right">
-      予約で<strong>クーポン2枚</strong>もらえる！
+      予約で<strong>スロット2回</strong>まわせる！<span class="float-w-chance"><span class="float-w">W</span>チャンス！</span>
     </div>
   </div>
 </div>
