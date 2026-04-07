@@ -167,9 +167,17 @@ a:focus:not(:focus-visible) { outline: none; }
   pointer-events:none;
   top:0;bottom:0;left:0;
   width:58%;
-  background:url('images/slot-pattern.png') 25% center/cover no-repeat;
-  opacity:0.75;
+  background:url('images/slot-pattern.png') -2% 85%/140% auto no-repeat;
+  opacity:0.55;
   mix-blend-mode:multiply;
+}
+/* 金色レイヤー */
+.hero-reel-deco::after {
+  content:'';
+  position:absolute;inset:0;
+  background:url('images/slot-pattern.png') -2% 85%/140% auto no-repeat;
+  mix-blend-mode:overlay;
+  opacity:0.4;
 }
 .hero-reel-deco img { display:none; }
 .slot-reel-strip { display:contents; }
@@ -353,25 +361,25 @@ a:focus:not(:focus-visible) { outline: none; }
 /* 右下ラベル — サブ扱い */
 .h-offer-bottom-label {
   align-self:center;
-  margin-top:14px;
+  margin-top:20px;
   font-size:clamp(13px,1.5vw,18px);
   font-weight:900;
   color:#fff;
-  background:rgba(255,255,255,0.15);
-  padding:8px 24px;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.6);
+  padding:10px 28px;
   border-radius:40px;
   position:relative;
   letter-spacing:.06em;
   text-shadow:0 1px 4px rgba(0,0,0,0.2);
-  margin-top:14px;
 }
 .h-offer-bottom-label::before {
   content:'';
   position:absolute;
-  top:-10px;left:20%;
-  border-left:10px solid transparent;
-  border-right:10px solid transparent;
-  border-bottom:10px solid rgba(255,255,255,0.15);
+  top:-9px;left:20%;
+  width:18px;height:10px;
+  clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
+  background:rgba(255,255,255,0.6);
 }
 
 /* バッジ — 非表示 */
@@ -390,7 +398,7 @@ a:focus:not(:focus-visible) { outline: none; }
 /* CTA */
 .h-cta-row {
   display:flex;flex-direction:column;align-items:center;gap:8px;
-  margin-top:clamp(20px,2.5vw,36px);
+  margin-top:clamp(12px,1.5vw,20px);
 }
 .h-cta-lead {
   font-weight:700;font-size:16px;
@@ -606,6 +614,21 @@ a:focus:not(:focus-visible) { outline: none; }
   line-height:1.9;margin-top:16px;margin-bottom:0;
 }
 .dc-band-text strong { color:var(--ink);font-weight:900; }
+.dc-w-wrap {
+  display:inline-flex;flex-direction:column;align-items:center;
+  vertical-align:baseline;line-height:1;
+}
+.dc-w {
+  font-family:'Montserrat',sans-serif;
+  font-size:1.3em;font-weight:800;
+  -webkit-text-stroke:3px #fff;
+  paint-order:stroke fill;
+}
+.dc-w-ruby {
+  font-size:0.3em;font-weight:700;
+  letter-spacing:.1em;
+  margin-top:-2px;
+}
 /* 比較レイアウト */
 .dc-compare {
   display:flex;align-items:center;justify-content:center;
@@ -782,22 +805,19 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .float-cta-right strong { color:#fff; }
 .float-w-chance {
-  position:relative;
-  top:-14px;
   margin-left:10px;
-  font-size:16px;font-weight:900;
-  color:var(--gold);letter-spacing:.04em;
-  -webkit-text-stroke:1px rgba(255,255,255,0.8);
+  font-size:15px;font-weight:900;
+  color:var(--gold);letter-spacing:.06em;
+  -webkit-text-stroke:2px #fff;
   paint-order:stroke fill;
-  text-shadow:0 2px 6px rgba(0,0,0,0.5);
+  text-shadow:0 2px 6px rgba(0,0,0,0.3);
+  font-style:italic;
 }
 .float-w {
   font-family:'Montserrat',sans-serif;
-  font-size:26px;font-weight:800;
-  color:#fff;
-  -webkit-text-stroke:2px var(--gold);
+  font-size:24px;font-weight:800;
+  -webkit-text-stroke:3px #fff;
   paint-order:stroke fill;
-  text-shadow:0 2px 8px rgba(212,168,32,0.6);
 }
 
 /* ══ 注意事項 ══ */
@@ -1277,7 +1297,7 @@ footer {
 }
 /* 写真枠付きカード */
 .howto-card-photo {
-  flex:0 0 clamp(120px,14vw,180px);
+  flex:0 0 clamp(200px,28vw,340px);
   border-radius:10px;
   overflow:hidden;
   background:var(--bg);
@@ -1854,7 +1874,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <!-- ③ 最大 5,500円OFF + サブ（中央寄せセット） -->
     <div class="h-offer">
       <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
-      <span class="h-offer-bottom-label">その日に使えるクーポンが当たる！</span>
+      <span class="h-offer-bottom-label"><strong style="font-size:1.2em;letter-spacing:.12em;color:#DCAE18">その日に使える</strong>クーポンが当たる！</span>
     </div>
 
     <!-- ⑤ CTA + 注釈 -->
@@ -1936,7 +1956,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
     <!-- ダブルチャンス帯 -->
     <div class="dc-band rv">
-      <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main">ダブルチャンス！</span></p>
+      <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
       <div class="dc-compare">
         <!-- 予約なし -->
         <div class="dc-col dc-col-normal">
@@ -1969,7 +1989,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <div class="howto-cards">
 
       <div class="howto-card rv">
-        <div class="howto-card-photo"><span class="howto-photo-placeholder">店舗外観の写真</span></div>
+        <div class="howto-card-photo"><img src="images/STEP1.png" alt="店舗に来店する女性"></div>
         <div class="howto-card-text">
           <div class="howto-step-num">STEP 1</div>
           <p class="howto-desc"><span class="howto-hl">GWフェア期間中</span>に<br>アイメガネ各店舗へ<span class="howto-hl">ご来店。</span></p>
@@ -1978,7 +1998,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       </div>
 
       <div class="howto-card rv">
-        <div class="howto-card-photo"><span class="howto-photo-placeholder">スタッフ接客の写真</span></div>
+        <div class="howto-card-photo"><img src="images/STEP2.png" alt="スタッフがスロットを案内"></div>
         <div class="howto-card-text">
           <div class="howto-step-num">STEP 2</div>
           <p class="howto-desc">スタッフにお声がけで<br><span class="howto-hl">クーポンをプレゼント。</span></p>
@@ -2067,7 +2087,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <span class="float-cta-label">GWフェア 4/29〜5/6</span>
     </div>
     <div class="float-cta-right">
-      予約で<strong>スロット2回</strong>まわせる！<span class="float-w-chance"><span class="float-w">W</span>チャンス！</span>
+      予約で<strong>スロット2回</strong>まわせる<span class="float-w-chance"><span class="float-w">W</span>チャンス！</span>
     </div>
   </div>
 </div>
