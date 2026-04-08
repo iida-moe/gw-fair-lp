@@ -167,17 +167,17 @@ a:focus:not(:focus-visible) { outline: none; }
   pointer-events:none;
   top:0;bottom:0;left:0;
   width:58%;
-  background:url('images/slot-pattern.png') -2% 85%/140% auto no-repeat;
-  opacity:0.55;
+  background:url('images/slot-pattern.png') 5% 82%/180% auto no-repeat;
+  opacity:0.65;
   mix-blend-mode:multiply;
 }
 /* 金色レイヤー */
 .hero-reel-deco::after {
   content:'';
   position:absolute;inset:0;
-  background:url('images/slot-pattern.png') -2% 85%/140% auto no-repeat;
+  background:url('images/slot-pattern.png') 5% 82%/180% auto no-repeat;
   mix-blend-mode:overlay;
-  opacity:0.4;
+  opacity:0.5;
 }
 .hero-reel-deco img { display:none; }
 .slot-reel-strip { display:contents; }
@@ -189,7 +189,7 @@ a:focus:not(:focus-visible) { outline: none; }
 
 .hw {
   position:absolute;z-index:2;
-  left:0;top:50%;
+  left:0;top:46%;
   transform:translateY(-50%);
   width:58%;
   padding:24px 4% 16px 5%;
@@ -198,7 +198,7 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 
 /* 期間タグ — 左寄せ */
-.h-period-tag { align-self:flex-start; }
+.h-period-tag { align-self:flex-start;margin-left:-20px; }
 
 /* GWフェア + スロットクーポンチャンス — 左寄せセット */
 .h-title-group {
@@ -277,7 +277,7 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* 金額 */
 .h-offer {
-  margin:4px 0 20px;
+  margin:-8px 0 4px;
   position:relative;
   display:flex;flex-direction:column;align-items:center;
 }
@@ -358,28 +358,39 @@ a:focus:not(:focus-visible) { outline: none; }
   letter-spacing:.08em;
   text-shadow:0 2px 8px rgba(0,0,0,0.3);
 }
-/* 右下ラベル — サブ扱い */
+/* 右下ラベル — 吹き出し */
 .h-offer-bottom-label {
   align-self:center;
-  margin-top:20px;
-  font-size:clamp(13px,1.5vw,18px);
+  margin-top:8px;
+  margin-bottom:6px;
+  font-size:clamp(9px,1.1vw,13px);
   font-weight:900;
-  color:#fff;
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(255,255,255,0.6);
-  padding:10px 28px;
+  color:var(--green-dk);
+  background:rgba(255,255,255,0.92);
+  border:1.5px solid rgba(255,255,255,0.95);
+  padding:4px 14px;
   border-radius:40px;
   position:relative;
-  letter-spacing:.06em;
-  text-shadow:0 1px 4px rgba(0,0,0,0.2);
+  letter-spacing:.04em;
+  text-shadow:none;
+  box-shadow:0 1px 8px rgba(0,0,0,0.08);
 }
 .h-offer-bottom-label::before {
   content:'';
   position:absolute;
-  top:-9px;left:20%;
-  width:18px;height:10px;
-  clip-path:polygon(50% 0%, 0% 100%, 100% 100%);
-  background:rgba(255,255,255,0.6);
+  bottom:-5px;left:50%;transform:translateX(-50%);
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid rgba(255,255,255,0.92);
+}
+.h-offer-bottom-label::after {
+  content:'';
+  position:absolute;
+  bottom:-7px;left:50%;transform:translateX(-50%);
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-top:7px solid rgba(255,255,255,0.95);
+  z-index:-1;
 }
 
 /* バッジ — 非表示 */
@@ -397,8 +408,8 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* CTA */
 .h-cta-row {
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  margin-top:clamp(12px,1.5vw,20px);
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  margin-top:clamp(10px,1.5vw,16px);
 }
 .h-cta-lead {
   font-weight:700;font-size:16px;
@@ -410,7 +421,7 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:clamp(17px,1.7vw,24px);
   color:#fff;
   background:#C0272D;
-  padding:20px 60px;
+  padding:10px 36px;
   border:none;border-radius:10px;cursor:pointer;
   box-shadow:0 4px 16px rgba(192,39,45,0.35), 0 8px 32px rgba(0,0,0,0.1);
   letter-spacing:.06em;transition:all .25s;
@@ -427,7 +438,7 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.85);letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);
   max-width:520px;line-height:1.7;
   text-align:left;
-  align-self:flex-start;
+  padding-left:138px;
 }
 
 /* ══ SHARED SEC ══ */
@@ -881,13 +892,15 @@ footer {
     overflow:visible;
   }
   .h-offer-top-label { margin-left:0; }
-  .h-offer-bottom-label { margin-right:0; }
+  .h-offer-bottom-label { margin-right:0;font-size:clamp(9px,1.8vw,11px);padding:3px 10px;margin-bottom:10px; }
   .h-gw-main { font-size:clamp(36px,6vw,52px); }
   .h-offer-num { font-size:clamp(72px,12vw,100px); }
   .h-offer-unit { font-size:clamp(28px,4.5vw,40px); }
   .h-offer-label { font-size:clamp(20px,3vw,28px); }
   .h-offer-top-label { font-size:clamp(16px,2.5vw,22px); }
-  .h-offer-bottom-label { font-size:clamp(14px,2.2vw,20px); }
+  .h-period-tag { margin-left:0; }
+  .h-note { padding-left:0; }
+  .h-cta-row { align-items:center; }
   .btn-h { font-size:18px;padding:18px 56px; }
 }
 
@@ -920,7 +933,7 @@ footer {
     z-index:3;
     width:100%;max-width:100%;
     background:linear-gradient(150deg, #2C6E44 0%, #3A8A58 40%, #2E5A3A 100%);
-    padding:44px 24px 28px;
+    padding:56px 24px 28px;
     align-items:center;text-align:center;
     transform:none;
     order:2;
@@ -936,21 +949,32 @@ footer {
     content:'';
     position:absolute;
     inset:0;
-    background:url('images/slot-pattern.png') 30% center/cover no-repeat;
-    opacity:0.4;
+    background:url('images/slot-pattern.png') 38% 58%/140% auto no-repeat;
+    opacity:0.65;
     mix-blend-mode:multiply;
     pointer-events:none;
     z-index:0;
   }
+  .hw::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:url('images/slot-pattern.png') 38% 58%/140% auto no-repeat;
+    mix-blend-mode:overlay;
+    opacity:0.5;
+    pointer-events:none;
+    z-index:0;
+  }
   .hw { position:relative;overflow:hidden; }
+  .hw > * { position:relative;z-index:1; }
   .h-offer-top-row { justify-content:center; }
   .h-offer-top-label { align-self:center;margin-left:0;font-size:clamp(15px,4vw,20px); }
   .h-slot-illus { width:clamp(56px,14vw,80px); }
-  .h-offer-bottom-label { align-self:center;margin-right:0;font-size:clamp(14px,3.8vw,18px); }
+  .h-offer-bottom-label { align-self:center;margin-right:0;font-size:clamp(9px,2.5vw,11px);padding:3px 10px;margin-bottom:10px; }
   .h-campaign-catch { font-size:clamp(14px,3.5vw,18px); }
   .h-catch-amount { font-size:clamp(20px,5.5vw,28px); }
   .h-catch-off { font-size:clamp(14px,3.5vw,20px); }
-  .h-period-tag { align-self:center;margin-bottom:6px; }
+  .h-period-tag { align-self:center;margin-bottom:6px;margin-left:0; }
   .h-tag { font-size:11px;padding:4px 12px; }
   .h-date { font-size:12px;padding:4px 12px; }
   .h-offer { align-items:center;margin:4px 0; }
@@ -962,9 +986,10 @@ footer {
   .h-badge-float { display:none; }
   .h-offer-badges-sp { display:none; }
   .h-cta-row { align-items:center;align-self:stretch;margin-top:10px; }
+  .h-cta-wrap { width:fit-content;margin:0 auto; }
   .h-cta-lead { display:none; }
-  .btn-h { font-size:18px;padding:16px 0;border-radius:10px;width:100%;max-width:320px;text-align:center; }
-  .h-note { font-size:9px;text-align:center;align-self:stretch;margin-top:12px;line-height:1.7;color:rgba(255,255,255,0.45); }
+  .btn-h { font-size:18px;padding:11px 48px;border-radius:10px;text-align:center;display:block; }
+  .h-note { font-size:9px;text-align:left;margin-top:12px;line-height:1.7;color:rgba(255,255,255,0.45);padding-left:0; }
   .step-icon { width:36px;height:36px; }
 
   /* ── 共通セクション ── */
@@ -1873,16 +1898,18 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
     <!-- ③ 最大 5,500円OFF + サブ（中央寄せセット） -->
     <div class="h-offer">
+      <span class="h-offer-bottom-label"><strong style="letter-spacing:.12em;font-size:1.15em;color:#C0272D">その日に使える</strong>クーポンが当たる！</span>
       <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
-      <span class="h-offer-bottom-label"><strong style="font-size:1.2em;letter-spacing:.12em;color:#DCAE18">その日に使える</strong>クーポンが当たる！</span>
     </div>
 
     <!-- ⑤ CTA + 注釈 -->
     <div class="h-cta-row">
-      <a href="#shop-search" class="btn-h">
-        来店予約する
-      </a>
-      <p class="h-note">◇税込11,000円以上のお買い上げでお一人様につき1枚使用可<br>◇対象：メガネ・サングラス・コンタクト・補聴器・アクセサリー<br>◇クーポン有効期限 6/7まで<br>◇他のクーポン・割引との併用不可</p>
+      <div class="h-cta-wrap">
+        <a href="#shop-search" class="btn-h">
+          来店予約する
+        </a>
+        <p class="h-note">◇税込11,000円以上のお買い上げでお一人様につき1枚使用可<br>◇対象：メガネ・サングラス・コンタクト・補聴器・アクセサリー<br>◇クーポン有効期限 6/7まで<br>◇他のクーポン・割引との併用不可</p>
+      </div>
     </div>
   </div>
 </section>
