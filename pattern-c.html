@@ -449,8 +449,8 @@ a:focus:not(:focus-visible) { outline: none; }
   margin-bottom:clamp(36px,8vw,56px);
   letter-spacing:.02em;
 }
-.st em { font-style:normal;color:var(--green);position:relative; }
-.st em::after { content:'';position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--green);border-radius:2px;opacity:.4; }
+.st em { font-style:normal;color:var(--ink);position:relative; }
+.st em::after { display:none; }
 
 /* ══ PRIZES ══ */
 #prizes { background:var(--bg); }
@@ -543,30 +543,84 @@ a:focus:not(:focus-visible) { outline: none; }
 .slbl { margin-left:6px;font-size:12px;font-weight:700;color:var(--ink-mid);line-height:1.6; }
 
 /* ══ PERIOD ══ */
-#period { background:var(--bg); }
-.pgrid { display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,3vw,20px);margin-bottom:24px; }
-@media(max-width:480px){.pgrid{grid-template-columns:1fr;}}
-.pdc { background:white;border-radius:8px;padding:clamp(28px,6vw,40px) clamp(20px,5vw,28px);text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.05); }
-.pdc .pdi  { display:none; }
-.pdc .pdl  { font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--green);display:block;margin-bottom:12px;text-transform:uppercase; }
-.pdc .pdd  { font-size:clamp(20px,5.5vw,32px);font-weight:900;line-height:1.25;color:var(--ink);margin-bottom:6px;white-space:nowrap; }
-.pdc .pdn  { font-size:13px;color:var(--ink-lt);line-height:1.6; }
-.cond {
-  background:white;border-radius:8px;
-  padding:clamp(28px,7vw,44px) clamp(24px,6vw,36px);
-  text-align:center;box-shadow:0 1px 3px rgba(0,0,0,0.05);
+#period {
+  background:#F9F6F1;
 }
-.cond .cl { font-size:11px;font-weight:700;letter-spacing:.25em;color:var(--gold);margin-bottom:12px;display:block;text-transform:uppercase; }
-.cond .ca { font-size:clamp(26px,7vw,44px);font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px; }
-.cond .cn { font-size:14px;color:var(--ink-lt); }
+.period-card {
+  max-width:700px;margin:0 auto;
+  background:white;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:12px;
+  padding:clamp(36px,7vw,56px) clamp(28px,6vw,48px);
+  position:relative;z-index:1;
+}
+/* 日付2カラム */
+.period-dates {
+  display:flex;align-items:flex-start;
+  margin-bottom:clamp(28px,5vw,40px);
+}
+.period-date-col {
+  flex:1;text-align:center;
+  padding:0 clamp(12px,2vw,24px);
+}
+.period-date-col + .period-date-col {
+  border-left:2px solid var(--green);
+}
+.period-date-label {
+  font-size:14px;font-weight:700;
+  color:var(--ink-lt);letter-spacing:.12em;
+  margin-bottom:12px;
+}
+.period-date-value {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(28px,7vw,40px);font-weight:800;
+  color:var(--ink);line-height:1.2;
+}
+.period-date-value span {
+  font-size:0.4em;font-weight:700;color:var(--ink-mid);
+  vertical-align:0.15em;margin:0 1px;
+}
+.period-date-sub {
+  font-size:11px;color:var(--ink-lt);margin-top:8px;
+}
+/* 対象商品テキスト */
+.period-target-line {
+  text-align:center;
+  font-size:clamp(13px,3.2vw,15px);font-weight:700;
+  color:var(--ink-mid);
+  margin-bottom:clamp(20px,4vw,28px);
+  letter-spacing:.02em;
+}
+/* 条件ボックス */
+.period-cond-box {
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:clamp(20px,4vw,28px) clamp(20px,4vw,28px);
+}
+.period-cond-list {
+  list-style:none;padding:0;margin:0;
+}
+.period-cond-list li {
+  padding:7px 0;
+  font-size:clamp(13px,3.2vw,15px);
+  color:var(--ink);line-height:1.7;
+  display:flex;align-items:baseline;gap:8px;
+}
+.period-cond-list li::before {
+  content:'◆';color:var(--ink-lt);font-size:9px;flex-shrink:0;
+}
+.period-cond-list li:first-child {
+  font-weight:900;
+  font-size:clamp(14px,3.5vw,17px);
+}
 
 /* ══ FINAL CTA ══ */
-#fcta { background:var(--white); }
+#fcta { background:var(--bg); }
 .petal { display:none; }
 .fci { max-width:640px;margin:0 auto;padding:clamp(72px,14vw,112px) 24px;text-align:center;display:flex;flex-direction:column;align-items:center; }
 .fck { font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--green);margin-bottom:16px;text-transform:uppercase; }
 .fch { font-size:clamp(24px,7vw,44px);font-weight:900;line-height:1.3;color:var(--ink);margin-bottom:20px; }
-.fch em { font-style:normal;color:var(--green); }
+.fch em { font-style:normal;color:var(--ink); }
 .fcp { font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:40px;max-width:440px; }
 .fcp strong { color:var(--ink);font-weight:700; }
 
@@ -574,19 +628,25 @@ a:focus:not(:focus-visible) { outline: none; }
 .sarani {
   display:block;
   margin:36px auto 0;
-  font-size:clamp(32px,8vw,52px);
+  font-size:clamp(22px,5.5vw,34px);
   font-weight:900;
   font-style:italic;
-  color:var(--green-dk);
   letter-spacing:.2em;
   text-align:center;
-  -webkit-text-stroke:4px #fff;
+  transform:rotate(-2deg);
+  position:relative;
+}
+.sarani-back {
+  color:var(--green-dk);
+  -webkit-text-stroke:10px var(--green-dk);
   paint-order:stroke fill;
-  text-shadow:
-    0 0 12px rgba(255,255,255,1),
-    0 0 24px rgba(255,255,255,0.6),
-    0 3px 8px rgba(0,0,0,0.12);
-  transform:rotate(-3deg);
+}
+.sarani-front {
+  position:absolute;
+  inset:0;
+  color:var(--green-dk);
+  -webkit-text-stroke:6px #fff;
+  paint-order:stroke fill;
 }
 
 /* ══ ダブルチャンス帯 ══ */
@@ -625,15 +685,49 @@ a:focus:not(:focus-visible) { outline: none; }
   line-height:1.9;margin-top:16px;margin-bottom:0;
 }
 .dc-band-text strong { color:var(--ink);font-weight:900; }
+.dc-gift-row {
+  display:flex;align-items:center;
+  gap:clamp(16px,3vw,24px);
+  margin-top:24px;
+  text-align:left;
+}
+.dc-gift-photo {
+  flex:0 0 clamp(140px,24vw,200px);
+  border-radius:10px;
+  overflow:hidden;
+}
+.dc-gift-photo img {
+  width:100%;height:auto;display:block;
+}
+.dc-gift-text {
+  flex:1;
+  font-size:clamp(13px,3.2vw,15px);
+  color:var(--ink-mid);
+  line-height:1.8;
+}
+.dc-gift-text strong { color:var(--ink);font-weight:900; }
 .dc-w-wrap {
   display:inline-flex;flex-direction:column;align-items:center;
   vertical-align:baseline;line-height:1;
+  position:relative;
 }
 .dc-w {
   font-family:'Montserrat',sans-serif;
   font-size:1.3em;font-weight:800;
-  -webkit-text-stroke:3px #fff;
+  color:var(--green-dk);
+  -webkit-text-stroke:6px #fff;
   paint-order:stroke fill;
+  position:relative;z-index:1;
+}
+.dc-w-outline {
+  position:absolute;
+  top:0;left:0;
+  font-family:'Montserrat',sans-serif;
+  font-size:1.3em;font-weight:800;
+  color:var(--green-dk);
+  -webkit-text-stroke:10px var(--green-dk);
+  paint-order:stroke fill;
+  z-index:0;
 }
 .dc-w-ruby {
   font-size:0.3em;font-weight:700;
@@ -651,7 +745,7 @@ a:focus:not(:focus-visible) { outline: none; }
   background:var(--bg);
   border:1px solid var(--border);
   border-radius:14px;
-  padding:clamp(20px,4vw,28px) clamp(16px,3vw,24px);
+  padding:clamp(16px,3vw,20px) clamp(16px,3vw,24px);
   text-align:center;
   opacity:0.75;
 }
@@ -662,9 +756,10 @@ a:focus:not(:focus-visible) { outline: none; }
   opacity:1;
 }
 .dc-col-label {
-  display:inline-block;
+  display:block;
   font-size:13px;font-weight:700;letter-spacing:.12em;
   color:var(--ink-lt);
+  text-align:left;
   margin-bottom:14px;
 }
 .dc-col-label-sp {
@@ -740,15 +835,59 @@ a:focus:not(:focus-visible) { outline: none; }
   padding:14px 44px;border-radius:6px;
   text-decoration:none;letter-spacing:.04em;
   transition:background .2s;
-  margin-top:24px;
+  margin-top:32px;
 }
 .dc-band-btn:hover { background:#A01E24; }
 /* アイコン＋スロット回数 */
 .dc-icon {
-  width:48px;height:auto;
-  margin:16px auto 12px;
+  width:40px;height:auto;
+  margin:10px auto 8px;
   display:block;
   opacity:.3;
+}
+.dc-col-desc {
+  font-size:13px;color:var(--ink-lt);
+  margin-top:10px;line-height:1.5;
+}
+.dc-col-desc-sp {
+  color:var(--green-dk);font-size:15px;
+}
+.dc-col-sub {
+  font-size:11px;color:var(--ink-lt);
+  margin-top:8px;line-height:1.5;
+  padding-top:8px;
+  border-top:1px dashed var(--border);
+}
+.dc-col-photo {
+  margin-top:12px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.dc-col-photo img {
+  width:100%;height:auto;display:block;
+}
+.dc-col-gift {
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px dashed var(--border);
+  display:flex;align-items:center;gap:12px;
+  text-align:left;
+}
+.dc-col-gift img {
+  width:90px;height:auto;border-radius:8px;flex-shrink:0;
+}
+.dc-col-gift p {
+  font-size:11px;color:var(--ink-mid);line-height:1.6;
+}
+.dc-col-gift strong { color:var(--ink);font-weight:900; }
+.dc-col-valid {
+  margin-top:10px;
+  font-size:10px;font-weight:700;
+  color:var(--green-dk);
+  background:rgba(58,122,79,0.08);
+  padding:4px 12px;
+  border-radius:4px;
+  display:inline-block;
 }
 .dc-icon-green {
   opacity:.7;
@@ -793,7 +932,7 @@ a:focus:not(:focus-visible) { outline: none; }
 .float-cta.visible { transform:translateY(0); }
 .float-cta-inner {
   max-width:860px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,32px);
 }
 .float-cta-left {
   display:flex;align-items:center;gap:14px;
@@ -807,28 +946,22 @@ a:focus:not(:focus-visible) { outline: none; }
   transition:background .2s;
 }
 .float-cta-btn:hover { background:#A01E24; }
-.float-cta-label {
-  font-size:12px;color:rgba(255,255,255,0.6);font-weight:500;
-}
+.float-cta-label { display:none; }
 .float-cta-right {
-  display:flex;align-items:center;gap:8px;
-  font-size:14px;font-weight:900;color:var(--gold);letter-spacing:.02em;
+  display:flex;align-items:center;gap:4px;
+  font-size:14px;font-weight:900;color:rgba(255,255,255,0.9);letter-spacing:.02em;
 }
 .float-cta-right strong { color:#fff; }
 .float-w-chance {
-  margin-left:10px;
-  font-size:15px;font-weight:900;
-  color:var(--gold);letter-spacing:.06em;
-  -webkit-text-stroke:2px #fff;
-  paint-order:stroke fill;
-  text-shadow:0 2px 6px rgba(0,0,0,0.3);
+  margin-left:6px;
+  font-size:16px;font-weight:900;
+  color:var(--gold);letter-spacing:.04em;
   font-style:italic;
 }
 .float-w {
   font-family:'Montserrat',sans-serif;
-  font-size:24px;font-weight:800;
-  -webkit-text-stroke:3px #fff;
-  paint-order:stroke fill;
+  font-size:22px;font-weight:800;
+  color:var(--gold);
 }
 
 /* ══ 注意事項 ══ */
@@ -858,6 +991,10 @@ footer {
   transition:color .2s;
 }
 .footer-links a:hover { color:#fff; }
+.footer-cta-link {
+  color:var(--gold) !important;font-weight:900 !important;
+  font-size:16px !important;
+}
 .footer-copy {
   text-align:center;font-size:12px;color:rgba(255,255,255,0.25);
   padding-bottom:60px;
@@ -887,7 +1024,7 @@ footer {
     position:relative;
     width:100%;max-width:100%;
     padding:32px 40px 36px;
-    background:linear-gradient(150deg, #2C6E44 0%, #3A8A58 40%, #2E5A3A 100%);
+    background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 70%, #4A9E6C 100%);
     transform:none;order:2;
     overflow:visible;
   }
@@ -923,8 +1060,15 @@ footer {
   }
   /* 写真 — スマホ */
   .hero-photo-single {
-    position:relative;width:100%;height:60vw;
+    position:relative;width:100%;
     order:1;
+    background:var(--bg);
+  }
+  .hero-photo-single img {
+    content:url('images/aii3.png');
+    width:100%;height:auto;
+    object-fit:cover;
+    object-position:center center;
   }
   #hero::after { display:none; }
   /* 緑カード */
@@ -932,13 +1076,15 @@ footer {
     position:relative;
     z-index:3;
     width:100%;max-width:100%;
-    background:linear-gradient(150deg, #2C6E44 0%, #3A8A58 40%, #2E5A3A 100%);
+    background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 50%, #2E5A3A 100%);
     padding:56px 24px 28px;
     align-items:center;text-align:center;
     transform:none;
     order:2;
   }
   .h-gw-main { font-size:clamp(36px,10vw,52px);text-align:center;margin-bottom:2px; }
+  .h-title-group { align-self:center;align-items:center; }
+  .h-offer-top-label { text-align:center; }
   .h-campaign-sub { display:none; }
   .hero-slot-img { display:none; }
   .hero-slot-reel { display:none; }
@@ -950,10 +1096,12 @@ footer {
     position:absolute;
     inset:0;
     background:url('images/slot-pattern.png') 38% 58%/140% auto no-repeat;
-    opacity:0.65;
+    opacity:0.55;
     mix-blend-mode:multiply;
     pointer-events:none;
     z-index:0;
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
+    mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
   }
   .hw::after {
     content:'';
@@ -961,7 +1109,9 @@ footer {
     inset:0;
     background:url('images/slot-pattern.png') 38% 58%/140% auto no-repeat;
     mix-blend-mode:overlay;
-    opacity:0.5;
+    opacity:0.4;
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
+    mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
     pointer-events:none;
     z-index:0;
   }
@@ -988,8 +1138,8 @@ footer {
   .h-cta-row { align-items:center;align-self:stretch;margin-top:10px; }
   .h-cta-wrap { width:fit-content;margin:0 auto; }
   .h-cta-lead { display:none; }
-  .btn-h { font-size:18px;padding:11px 48px;border-radius:10px;text-align:center;display:block; }
-  .h-note { font-size:9px;text-align:left;margin-top:12px;line-height:1.7;color:rgba(255,255,255,0.45);padding-left:0; }
+  .btn-h { font-size:15px;padding:10px 36px;border-radius:8px;text-align:center;display:inline-block;background:#C0272D;color:#fff; }
+  .h-note { font-size:9px;text-align:left;margin-top:12px;line-height:1.7;color:rgba(255,255,255,0.85);padding-left:0; }
   .step-icon { width:36px;height:36px; }
 
   /* ── 共通セクション ── */
@@ -1054,7 +1204,7 @@ footer {
   .pnote { font-size:clamp(12px,3.2vw,15px);padding:14px 12px 24px;margin-top:20px; }
 
   /* ── さらに＋ダブルチャンス ── */
-  .sarani { font-size:clamp(26px,7vw,38px);margin:24px auto 0; }
+  .sarani { font-size:clamp(18px,5vw,26px);margin:24px auto 0; }
   .dc-band { margin-top:28px;padding:24px 16px;border-width:2px; }
   .dc-title-sub { font-size:clamp(13px,3.2vw,16px); }
   .dc-title-main { font-size:clamp(24px,7vw,40px); }
@@ -1073,6 +1223,8 @@ footer {
   .dc-arrow { font-size:18px; }
   .dc-band-text { font-size:13px;margin-top:16px; }
   .dc-band-btn { font-size:14px;padding:12px 32px;width:100%;display:block;text-align:center; }
+  .dc-col-gift img { width:48px; }
+  .dc-col-gift p { font-size:10px; }
 
   /* ── 譲渡バナー ── */
   .gift-band { padding:20px 16px;margin-top:24px; }
@@ -1102,20 +1254,15 @@ footer {
   .stlbl { font-size:clamp(15px,4vw,20px); }
 
   /* ── 開催概要 ── */
-  #period .sec { max-width:400px;margin:0 auto;padding:48px 16px; }
-  .pgrid { gap:10px; }
-  .pdc { padding:20px 16px; }
-  .pdc .pdl { font-size:10px;letter-spacing:.16em; }
-  .pdc .pdd { font-size:clamp(18px,5vw,26px); }
-  .pdc .pdn { font-size:12px; }
-  .cond { padding:24px 16px; }
-  .cond .cl { font-size:10px; }
-  .cond .ca { font-size:clamp(22px,6vw,32px); }
-  .cond .cn { font-size:12px;line-height:1.8; }
+  #period .sec { padding:48px 16px; }
+  .period-card { padding:28px 20px; }
+  .period-date-value { font-size:clamp(22px,6vw,30px); }
+  .period-cond-list li { font-size:12px; }
+  .period-cond-list li:first-child { font-size:13px; }
 
   /* ── 店舗検索 ── */
   #shop-search .sec { padding:40px 16px; }
-  #shop-search .btn-h { font-size:16px;padding:16px 0;width:100%;max-width:320px;display:block;text-align:center; }
+  #shop-search .btn-h { font-size:16px;padding:16px 0;width:100%;max-width:320px;display:block;text-align:center;margin:0 auto; }
   .shop-search-form { flex-wrap:wrap;gap:6px; }
   .shop-zip-input { width:70px;padding:10px 12px;font-size:16px; }
   .shop-zip-input-lg { width:90px; }
@@ -1256,7 +1403,7 @@ footer {
 }
 
 /* ══ Deals (お得強化) ══ */
-#deals { background:var(--bg); }
+#deals { background:white; }
 #deals .gift-band {
   margin-top:20px;
   background:white;border:1px solid var(--border);
@@ -1268,8 +1415,8 @@ footer {
 /* ══ HOW TO カード ══ */
 #howto .sl { color:rgba(255,255,255,0.6); }
 #howto .st { color:#fff; }
-#howto .st em { color:var(--gold); }
-#howto .st em::after { background:var(--gold); }
+#howto .st em { color:#fff; }
+#howto .st em::after { display:none; }
 .howto-inner {
   max-width:820px;margin:0 auto;
   padding:clamp(64px,12vw,100px) clamp(24px,6vw,48px);
@@ -1281,23 +1428,32 @@ footer {
 .howto-card {
   background:#fff;
   border-radius:12px;
-  border:1px solid rgba(0,0,0,0.06);
-  padding:clamp(24px,5vw,36px) clamp(24px,5vw,36px);
-  display:flex;align-items:center;justify-content:space-between;
-  gap:20px;
-  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+  border:1px solid rgba(0,0,0,0.04);
+  padding:0;
+  display:flex;align-items:stretch;
+  gap:0;
+  overflow:hidden;
+  transition:transform .22s ease, box-shadow .22s ease;
 }
 .howto-card:hover {
   transform:translateY(-2px);
   box-shadow:0 12px 32px rgba(0,0,0,0.08);
-  border-color:rgba(58,122,79,0.25);
 }
-.howto-card-text { flex:1; }
+.howto-card-text {
+  flex:1;
+  padding:clamp(24px,5vw,36px) clamp(24px,5vw,36px);
+  display:flex;flex-direction:column;justify-content:center;
+}
 .howto-step-num {
   font-family:'Montserrat','Noto Sans JP',sans-serif;
-  font-size:clamp(20px,5vw,28px);font-weight:800;
-  color:var(--green-dk);
-  margin-bottom:8px;
+  font-size:clamp(16px,4vw,20px);font-weight:800;
+  color:#fff;
+  background:var(--green-dk);
+  display:inline-block;
+  padding:6px 20px;
+  border-radius:4px;
+  margin-bottom:12px;
+  width:fit-content;
 }
 .howto-desc {
   font-size:clamp(16px,4vw,20px);font-weight:700;
@@ -1322,12 +1478,11 @@ footer {
 }
 /* 写真枠付きカード */
 .howto-card-photo {
-  flex:0 0 clamp(200px,28vw,340px);
-  border-radius:10px;
+  flex:1;
   overflow:hidden;
   background:var(--bg);
   display:flex;align-items:center;justify-content:center;
-  min-height:clamp(90px,10vw,140px);
+  min-height:clamp(160px,18vw,240px);
 }
 .howto-card-photo img {
   width:100%;height:100%;object-fit:cover;display:block;
@@ -1341,8 +1496,9 @@ footer {
   display:flex;align-items:center;justify-content:center;
 }
 @media(max-width:640px){
-  .howto-card-photo { flex:none;width:100%;min-height:140px; }
+  .howto-card-photo { flex:none;width:100%;height:56vw;min-height:0; }
   .howto-card { flex-direction:column; }
+  .howto-card-text { padding:20px 20px 24px; }
 }
 /* howto mobile → メイン640px MQに統合済み */
 
@@ -1424,7 +1580,7 @@ footer {
 /* ══ 価格例セクション ══ */
 #price-example { background:var(--bg); }
 .pex-headline { color:var(--ink) !important; }
-.pex-headline em { color:var(--gold) !important;font-style:normal; }
+.pex-headline em { color:var(--ink) !important;font-style:normal; }
 .pex-headline em::after { display:none; }
 .pex-sub-text { color:#999;font-size:13px; }
 .pex-compare {
@@ -1551,7 +1707,7 @@ footer {
   padding:clamp(12px,2vw,20px) clamp(10px,2vw,18px);
 }
 .pex-one-normal { background:var(--bg);text-align:right;align-items:flex-end;flex:0.8; }
-.pex-one-now { background:white;text-align:center;align-items:center; }
+.pex-one-now { background:linear-gradient(135deg, #fff 0%, #FFF5F5 100%);text-align:center;align-items:center; }
 .pex-one-label {
   font-size:clamp(12px,2.5vw,15px);font-weight:700;
   color:#aaa;margin-bottom:4px;
@@ -1581,7 +1737,8 @@ footer {
 .pex-one-num-strike {
   text-decoration:line-through;
   text-decoration-color:#C0272D;
-  text-decoration-thickness:3px;
+  text-decoration-thickness:4px;
+  opacity:0.6;
 }
 .pex-one-save {
   display:inline-block;
@@ -1593,15 +1750,16 @@ footer {
 }
 .pex-one-arrow {
   flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:clamp(18px,3vw,28px);color:var(--ink-lt);
+  font-size:clamp(24px,4vw,36px);color:var(--green);font-weight:900;
   padding:0 clamp(8px,1.5vw,16px);
 }
 .pex-enkin {
   margin-top:clamp(20px,4vw,32px);
-  border:2px solid var(--ink);border-radius:10px;
-  padding:clamp(20px,4vw,32px) clamp(16px,3vw,28px);
+  border:3px solid var(--green);border-radius:10px;
+  padding:clamp(28px,5vw,44px) clamp(20px,4vw,36px);
   max-width:900px;margin-left:auto;margin-right:auto;
-  background:white;
+  background:linear-gradient(135deg, #fff 0%, #F0F8F2 100%);
+  box-shadow:0 4px 20px rgba(58,122,79,0.1);
 }
 .pex-enkin-main {
   font-size:clamp(20px,5vw,32px);font-weight:900;
@@ -1669,7 +1827,7 @@ footer {
   font-size:clamp(20px,5.5vw,32px);font-weight:900;
   color:#fff;line-height:1.4;
 }
-.pex-headline em { font-style:normal;color:var(--gold); }
+.pex-headline em { font-style:normal;color:var(--ink); }
 .pex-sub-text {
   font-size:13px;color:#999;margin-top:12px;line-height:1.8;
 }
@@ -1908,7 +2066,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
         <a href="#shop-search" class="btn-h">
           来店予約する
         </a>
-        <p class="h-note">◇税込11,000円以上のお買い上げでお一人様につき1枚使用可<br>◇対象：メガネ・サングラス・コンタクト・補聴器・アクセサリー<br>◇クーポン有効期限 6/7まで<br>◇他のクーポン・割引との併用不可</p>
+        <p class="h-note">◇税込11,000円以上で利用可 ◇クーポン有効期限 6/7まで ◇他割引との併用不可</p>
       </div>
     </div>
   </div>
@@ -1919,7 +2077,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="pex-inner">
     <p class="sl rv">Price Info</p>
     <h2 class="st rv">お得情報</h2>
-    <p class="pex-sub-text rv">※1等5,500円を使用した場合</p>
+    <p class="pex-sub-text rv">◇1等5,500円を使用した場合</p>
 
     <!-- 横長1枚カード -->
     <div class="pex-one rv">
@@ -1953,12 +2111,11 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
         <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">7,700</span><span class="pex-one-unit pex-one-unit-red">円に！</span></div>
       </div>
     </div>
-    <p class="pex-img-note rv">写真はイメージです</p>
 
     <!-- 遠近両用レンズ訴求 -->
     <div class="pex-enkin rv">
-      <p class="pex-enkin-main">遠近両用レンズが<strong><span style="font-size:0.5em;vertical-align:top;line-height:1;">"</span><span class="pex-enkin-zero">0</span><span style="font-size:0.5em;vertical-align:top;line-height:1;">"</span>円</strong>で作れる</p>
-      <p class="pex-enkin-note">※遠近両用標準レンズ使用時</p>
+      <p class="pex-enkin-main">遠近両用レンズが<strong><span style="font-size:0.5em;vertical-align:top;line-height:1;">&ldquo;</span><span class="pex-enkin-zero">0</span><span style="font-size:0.5em;vertical-align:top;line-height:1;">&rdquo;</span>円</strong>で作れる</p>
+      <p class="pex-enkin-note">◇遠近両用標準レンズ使用時</p>
     </div>
 
     <!-- 対象商品 -->
@@ -1979,31 +2136,30 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     </div>
     <p class="pnote rv"><strong>ご来店者全員にクーポンプレゼント</strong></p>
 
-    <p class="sarani rv">さ・ら・に！</p>
+    <p class="sarani rv" aria-label="さらに"><span class="sarani-back">さ・ら・に！</span><span class="sarani-front" aria-hidden="true">さ・ら・に！</span></p>
 
     <!-- ダブルチャンス帯 -->
     <div class="dc-band rv">
-      <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
+      <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w-outline" aria-hidden="true">W</span><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
       <div class="dc-compare">
         <!-- 予約なし -->
         <div class="dc-col dc-col-normal">
           <span class="dc-col-label">予約なし</span>
-          <img src="images/icon-ticket-single.png" alt="" class="dc-icon">
-          <p class="dc-col-slot">スロット <strong>1</strong>回</p>
-          <p class="dc-col-num"><span class="dc-num">1</span>枚</p>
+          <p class="dc-col-slot">スロット <strong>1</strong>回挑戦できる！</p>
+          <p class="dc-col-desc">出た結果をそのまま使用</p>
         </div>
         <!-- 矢印 -->
         <div class="dc-arrow">▶</div>
         <!-- 予約あり -->
         <div class="dc-col dc-col-special">
           <span class="dc-col-label dc-col-label-sp">予約あり</span>
-          <img src="images/icon-ticket-double.png" alt="" class="dc-icon dc-icon-green">
-          <p class="dc-col-slot dc-col-slot-sp">スロット <strong>2</strong>回</p>
-          <p class="dc-col-num"><span class="dc-num dc-num-big">2</span>枚もらえる！</p>
+          <p class="dc-col-slot dc-col-slot-sp">スロット <strong style="font-size:1.4em;">2</strong>回挑戦できる！</p>
+          <p class="dc-col-desc dc-col-desc-sp"><strong>大きい割引を選べる！</strong></p>
+          <p class="dc-col-sub">余りは家族やお友達に譲れます</p>
+          <div class="dc-col-photo"><img src="images/watasu.png" alt="クーポンを渡す"></div>
         </div>
       </div>
       <a href="#shop-search" class="dc-band-btn">来店予約する</a>
-      <p class="dc-band-text">大きい方をご自身用に、もう1枚は<strong>大切な人にプレゼント</strong>できます。</p>
     </div>
   </div>
 </section>
@@ -2019,8 +2175,8 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
         <div class="howto-card-photo"><img src="images/STEP1.png" alt="店舗に来店する女性"></div>
         <div class="howto-card-text">
           <div class="howto-step-num">STEP 1</div>
-          <p class="howto-desc"><span class="howto-hl">GWフェア期間中</span>に<br>アイメガネ各店舗へ<span class="howto-hl">ご来店。</span></p>
-          <p class="howto-note">※4/29（火）〜 5/6（火）</p>
+          <p class="howto-desc"><span class="howto-hl">GWフェア期間中</span>に<br>アイメガネ各店舗へ<span class="howto-hl">ご来店</span></p>
+          <p class="howto-note">◇4/29（火）〜 5/6（火）</p>
         </div>
       </div>
 
@@ -2028,17 +2184,18 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
         <div class="howto-card-photo"><img src="images/STEP2.png" alt="スタッフがスロットを案内"></div>
         <div class="howto-card-text">
           <div class="howto-step-num">STEP 2</div>
-          <p class="howto-desc">スタッフにお声がけで<br><span class="howto-hl">クーポンをプレゼント。</span></p>
-          <p class="howto-note">※ご来店者全員が対象です</p>
+          <p class="howto-desc">店頭で<span class="howto-hl">スロットに挑戦</span></p>
+          <p class="howto-desc" style="margin-top:4px;"><span class="howto-hl">当たったクーポンをその場で<span style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--green-dk);-webkit-text-stroke:1.5px #fff;paint-order:stroke fill;font-size:1.2em;letter-spacing:.06em;">GET</span></span></p>
+          <p class="howto-note">◇ご来店者全員が対象です</p>
         </div>
       </div>
 
       <div class="howto-card rv">
-        <div class="howto-card-photo"><span class="howto-photo-placeholder">お会計の写真</span></div>
+        <div class="howto-card-photo"><img src="images/STEP3.png" alt="お会計時にクーポンを提示"></div>
         <div class="howto-card-text">
           <div class="howto-step-num">STEP 3</div>
-          <p class="howto-desc"><span class="howto-hl">お会計時にクーポン</span>を提示して<br>お得にお買い物！</p>
-          <p class="howto-note">※11,000円（税込）以上のお買い上げで利用OK<br>※クーポン有効期限：6/7（日）まで</p>
+          <p class="howto-desc"><span class="howto-hl">お会計時にクーポン</span>を提示して<br>お得にお買い物</p>
+          <p class="howto-note">◇11,000円（税込）以上のお買い上げでお一人様につき1枚利用OK<br>◇クーポン有効期限：6/7（日）まで</p>
         </div>
       </div>
 
@@ -2051,22 +2208,29 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="sec">
     <p class="sl rv">Campaign Info</p>
     <h2 class="st rv">開催概要</h2>
-    <div class="pgrid">
-      <div class="pdc rv d1">
-        <span class="pdl">開催期間</span>
-        <p class="pdd">4/29（火）〜 5/6（火）</p>
-        <p class="pdn">GW期間中、全店舗にて開催</p>
+    <div class="period-card rv">
+      <div class="period-dates">
+        <div class="period-date-col">
+          <p class="period-date-label">開催期間</p>
+          <p class="period-date-value" style="white-space:nowrap;">4/29<span>火</span> − 5/6<span>火</span></p>
+          <p class="period-date-sub">全店舗で開催</p>
+        </div>
+        <div class="period-date-col">
+          <p class="period-date-label">クーポン有効期限</p>
+          <p class="period-date-value">− 6/7 <span>日</span></p>
+          <p class="period-date-sub">フェア後もご利用OK</p>
+        </div>
       </div>
-      <div class="pdc rv d2">
-        <span class="pdl">クーポン有効期限</span>
-        <p class="pdd">〜 6/7（土）まで</p>
-        <p class="pdn">期間中いつでもご利用いただけます</p>
+      <p class="period-target-line">対象商品：メガネ、サングラス、コンタクト、補聴器、アクセサリー</p>
+
+      <div class="period-cond-box">
+        <ul class="period-cond-list">
+          <li>税込 11,000円以上のお買い上げでご利用いただけます</li>
+          <li>おひとりにつきクーポン1枚使用可能</li>
+          <li>予約特典2枚の方はどちらか1枚をご使用</li>
+          <li>他割引との併用不可</li>
+        </ul>
       </div>
-    </div>
-    <div class="cond rv">
-      <span class="cl">ご利用条件</span>
-      <p class="ca">税込 11,000円以上</p>
-      <p class="cn">メガネ・サングラス・コンタクト・補聴器・アクセサリーのお買い上げが対象です<br>おひとりにつきクーポン1枚のみ使用可能（予約特典で2枚お持ちの方はどちらか1枚をご使用ください）<br>他クーポン・割引との併用不可</p>
     </div>
   </div>
 </section>
@@ -2099,9 +2263,9 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <!-- ⑥ 最終CTA -->
 <section id="fcta">
   <div class="fci">
-    <p class="fck rv">GW期間限定</p>
-    <h2 class="fch rv">ご来店者<em>全員</em>に<br>クーポンプレゼント。</h2>
-    <p class="fcp rv">最大5,500円OFFのクーポンで<br>新しいメガネをもっとお得に。</p>
+    <p class="fck rv">4/29〜5/6 GW期間限定</p>
+    <h2 class="fch rv">ご来店者全員に<br>最大<strong style="color:var(--green-dk);">5,500</strong>円OFFクーポン</h2>
+    <p class="fcp rv">予約でスロット2回挑戦できる<br>大きい割引を選んでお得にお買い物</p>
     <a href="#shop-search" class="btn-h rv">来店予約する</a>
   </div>
 </section>
@@ -2109,12 +2273,12 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <!-- フローティングCTA -->
 <div class="float-cta" id="floatCta">
   <div class="float-cta-inner">
-    <div class="float-cta-left">
-      <a href="#shop-search" class="float-cta-btn">来店予約する</a>
-      <span class="float-cta-label">GWフェア 4/29〜5/6</span>
-    </div>
     <div class="float-cta-right">
       予約で<strong>スロット2回</strong>まわせる<span class="float-w-chance"><span class="float-w">W</span>チャンス！</span>
+    </div>
+    <div class="float-cta-left">
+      <span class="float-cta-label">GWフェア 4/29〜5/6</span>
+      <a href="#shop-search" class="float-cta-btn">来店予約する</a>
     </div>
   </div>
 </div>
@@ -2122,10 +2286,10 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <!-- 注意事項 -->
 <div class="notes-band">
   <p>
-    ※クーポンは1枚につき1回限り有効です。／
-    ※税込11,000円以上のお買い上げに限りご利用いただけます。／
-    ※他のクーポン・割引との併用はできません。／
-    ※クーポン利用期限：2026年6月7日（日）まで
+    ◇クーポンは1枚につき1回限り有効です。／
+    ◇税込11,000円以上のお買い上げに限りご利用いただけます。／
+    ◇他のクーポン・割引との併用はできません。／
+    ◇クーポン利用期限：2026年6月7日（日）まで
   </p>
 </div>
 </main>
@@ -2139,8 +2303,8 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <p class="footer-address">〒330-0846 埼玉県さいたま市大宮区大門町2-12</p>
     </div>
     <div class="footer-col footer-links">
+      <a href="#shop-search" class="footer-cta-link">来店予約する ↗</a>
       <a href="https://www.aimegane.com/" target="_blank" rel="noopener">アイメガネ公式サイト ↗</a>
-      <a href="https://www.aimegane.com/megane/frame/" target="_blank" rel="noopener">アイメガネ メガネフレーム ↗</a>
       <a href="https://www.aimegane.com/contact/" target="_blank" rel="noopener">お問い合わせ ↗</a>
       <a href="https://www.aimegane.com/privacy/" target="_blank" rel="noopener">プライバシーポリシー ↗</a>
     </div>
