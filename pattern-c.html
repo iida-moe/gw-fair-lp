@@ -1722,7 +1722,7 @@ footer {
   position:relative;
   overflow:hidden;
 }
-.pex-one-photo img { width:100%;height:100%;object-fit:cover;position:absolute;inset:0; }
+.pex-one-photo img { width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0; }
 .pex-one-photo img[src=""] { display:none; }
 .pex-one-normal, .pex-one-now {
   flex:1;display:flex;flex-direction:column;justify-content:center;
@@ -1737,11 +1737,10 @@ footer {
 .pex-one-label-now {
   font-size:0;color:transparent;
   display:block;
-  width:280px;height:160px;
-  background:url('images/ima.png') left bottom/contain no-repeat;
-  align-self:flex-start;
-  margin:0 0 -60px 0;
-  position:relative;z-index:2;
+  width:140px;height:0;
+  padding-top:78px;
+  background:url('images/ima.png') left top/contain no-repeat;
+  margin:0 auto 4px;
 }
 .pex-one-desc {
   font-size:11px;color:var(--ink-lt);margin-bottom:2px;
