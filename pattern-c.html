@@ -101,6 +101,10 @@ a:focus:not(:focus-visible) { outline: none; }
   object-position:center 30%;
   display:block;
 }
+/* スマホ用 — PC非表示 */
+.hero-photo-sp-bottom { display:none; }
+.hero-sp-cta { display:none; }
+
 /* 緑カバー */
 #hero::after {
   content:'';position:absolute;inset:0;
@@ -1058,30 +1062,48 @@ footer {
     padding:0;
     background:var(--bg);
   }
-  /* 写真 — スマホ */
+  /* 写真① — スマホ上側 */
   .hero-photo-single {
     position:relative;width:100%;
     order:1;
     background:var(--bg);
+    overflow:hidden;
   }
   .hero-photo-single img {
-    content:url('images/aii3.png');
+    content:url('images/UP.png');
     width:100%;height:auto;
     object-fit:cover;
     object-position:center center;
+    transform:scale(1.15);
   }
   #hero::after { display:none; }
-  /* 緑カード */
+  /* 緑カード① — GWフェア + スロットクーポンチャンス */
   .hw {
     position:relative;
     z-index:3;
     width:100%;max-width:100%;
     background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 50%, #2E5A3A 100%);
-    padding:56px 24px 28px;
+    padding:24px 24px 20px;
     align-items:center;text-align:center;
     transform:none;
     order:2;
   }
+  .hw::before, .hw::after { display:none !important; }
+  /* 写真② — スマホ：緑の後ろ */
+  .hero-photo-sp-bottom {
+    display:block;
+    width:100%;
+    order:3;
+    background:var(--bg);
+  }
+  .hero-photo-sp-bottom img {
+    width:100%;height:auto;display:block;
+  }
+  /* スマホ用CTA — 非表示（hw内に統合） */
+  .hero-sp-cta { display:none !important; }
+  .hero-sp-cta .h-offer-unit { font-size:clamp(20px,5.5vw,28px);-webkit-text-stroke:2px #fff; }
+  .hero-sp-cta .btn-h { margin-top:12px; }
+  .hero-sp-cta .h-note { margin-top:10px;font-size:9px;color:rgba(255,255,255,0.85);line-height:1.7; }
   .h-gw-main { font-size:clamp(36px,10vw,52px);text-align:center;margin-bottom:2px; }
   .h-title-group { align-self:center;align-items:center; }
   .h-offer-top-label { text-align:center; }
@@ -1181,7 +1203,17 @@ footer {
   .pex-one-normal .pex-one-unit { font-size:13px; }
   .pex-one-now { padding:16px 16px 20px;align-items:center;text-align:center; }
   .pex-one-label { font-size:13px; }
-  .pex-one-label-now { font-size:clamp(20px,5.5vw,28px); }
+  .pex-one-label-now {
+    font-size:clamp(32px,9vw,42px);
+    font-style:italic;
+    transform:rotate(-8deg);
+    align-self:flex-start;
+    margin-left:8px;
+    margin-bottom:-14px;
+    text-shadow:0 2px 8px rgba(0,0,0,0.1);
+    z-index:1;
+    position:relative;
+  }
   .pex-one-num { font-size:clamp(24px,6vw,32px); }
   .pex-one-num-now { font-size:clamp(48px,14vw,64px); }
   .pex-one-unit { font-size:14px; }
@@ -2040,6 +2072,17 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <!-- 右側写真（1枚） -->
   <div class="hero-photo-single">
     <img src="images/all2.png" alt="メガネ・補聴器・コンタクト・サングラス">
+  </div>
+  <!-- スマホ用：下側写真 -->
+  <div class="hero-photo-sp-bottom">
+    <img src="images/DOWN.png" alt="コンタクト・サングラス">
+  </div>
+  <!-- スマホ用：5,500円OFF + CTA（写真②の下） -->
+  <div class="hero-sp-cta">
+    <span class="h-offer-bottom-label"><strong style="letter-spacing:.12em;font-size:1.15em;color:#C0272D">その日に使える</strong>クーポンが当たる！</span>
+    <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
+    <a href="#shop-search" class="btn-h">来店予約する</a>
+    <p class="h-note" style="padding-left:0;text-align:center;">◇税込11,000円以上で利用可 ◇クーポン有効期限 6/7まで ◇他割引との併用不可</p>
   </div>
   <div class="hw">
     <!-- ① 期間限定（左寄せ） -->
