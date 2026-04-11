@@ -1,0 +1,2431 @@
+<?php
+/* ============================================
+   【LP】GWフェア スロットクーポンキャンペーン
+   URL: /lp-gw-fair/
+   ============================================ */
+$lp_assets = get_stylesheet_directory_uri() . '/lp/assets/gw-fair/img';
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GWフェア限定。スロットクーポンで最大5,500円OFF。メガネ・サングラス・コンタクト・補聴器など対象。事前予約でスロット2回のダブルチャンス。アイメガネ各店で開催。">
+<meta name="theme-color" content="#2E5A3A">
+<meta property="og:title" content="GWフェア | スロットクーポン最大5,500円OFF">
+<meta property="og:description" content="ご来店者全員にクーポンプレゼント。事前予約でスロット2回のダブルチャンス。">
+<meta property="og:type" content="website">
+<title>GWフェア | スロットクーポン最大5,500円OFF | アイメガネ</title>
+<link rel="icon" href="<?php echo $lp_assets; ?>/logo/logo-aimegane.gif" type="image/gif">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --green:    #3A7A4F;
+  --green-dk: #2E5A3A;
+  --green-lt: #5E9E72;
+  --gold:     #D4A820;
+  --gold-bg:  #FFF8E1;
+  --white:    #ffffff;
+  --bg:       #F7F7F5;
+  --ink:      #1a1a2e;
+  --ink-mid:  #555;
+  --ink-lt:   #888;
+  --border:   #e0e0e0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+/* キーボード操作時の視認性 */
+a:focus-visible,
+button:focus-visible,
+.btn-h:focus-visible,
+.header-cta:focus-visible,
+.shop-search-btn:focus-visible,
+.shop-btn-web:focus-visible,
+.shop-btn-tel:focus-visible,
+.dc-band-btn:focus-visible,
+.float-cta-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+a:focus:not(:focus-visible) { outline: none; }
+
+/* ══ HEADER ══ */
+.site-header {
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:saturate(180%) blur(10px);
+  -webkit-backdrop-filter:saturate(180%) blur(10px);
+  box-shadow:0 1px 0 rgba(0,0,0,0.06), 0 8px 24px rgba(46,90,58,0.06);
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+.header-inner {
+  max-width:100%;margin:0;padding:0 clamp(24px,3vw,48px);
+  height:72px;display:flex;align-items:center;justify-content:space-between;
+}
+.header-logo img { width:260px;height:auto;border:none;outline:none; }
+.header-nav {
+  display:flex;align-items:center;gap:36px;
+  font-size:16px;font-weight:600;color:var(--ink);
+}
+.header-nav a { text-decoration:none;color:inherit;transition:color .2s; }
+.header-nav a:hover { color:var(--green); }
+.header-cta {
+  background:#fff;color:#C0272D !important;font-weight:700;
+  padding:14px 32px;border-radius:8px;font-size:16px;
+  border:2px solid #C0272D;
+  transition:all .2s;
+}
+.header-cta:hover { background:#C0272D;color:#fff !important; }
+
+/* ══ HERO ══ */
+#hero {
+  min-height:calc(100svh - 72px);
+  background:var(--bg);
+  position:relative; overflow:hidden;
+  display:flex;align-items:center;
+  padding:0;
+}
+/* 写真 — 右側1枚（3:4） */
+#hero::before { display:none; }
+.hero-grid { display:none; }
+.hero-photo-single {
+  position:absolute;right:0;top:0;bottom:0;width:42%;
+  z-index:0;
+  overflow:hidden;
+}
+.hero-photo-single img {
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center 30%;
+  display:block;
+}
+/* スマホ用 — PC非表示 */
+.hero-photo-sp-bottom { display:none; }
+.hero-sp-cta { display:none; }
+.pex-sp-img { display:none; }
+
+/* 緑カバー */
+#hero::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 70%, #4A9E6C 100%);
+  clip-path:polygon(0 0, 58% 0, 58% 100%, 0 100%);
+  pointer-events:none;
+  z-index:1;
+}
+/* ゴールド紙吹雪 */
+.hero-confetti {
+  display:none;
+}
+.hero-confetti span {
+  position:absolute;
+  background:linear-gradient(135deg, #F5D84A 0%, #D4A820 40%, #B8901A 100%);
+  opacity:0.85;
+  box-shadow:0 0 6px rgba(212,168,32,0.5);
+}
+/* 各紙吹雪の位置・サイズ・回転 */
+/* 大きめ */
+.hc1  { width:16px;height:22px;top:4%;left:8%;transform:rotate(25deg); }
+.hc2  { width:14px;height:18px;top:2%;left:38%;transform:rotate(-15deg); }
+.hc3  { width:18px;height:12px;top:14%;left:50%;transform:rotate(45deg); }
+.hc4  { width:15px;height:20px;top:32%;left:4%;transform:rotate(-30deg); }
+.hc5  { width:20px;height:14px;top:48%;left:44%;transform:rotate(60deg); }
+.hc6  { width:16px;height:18px;top:68%;left:10%;transform:rotate(10deg); }
+.hc7  { width:18px;height:14px;top:85%;left:40%;transform:rotate(-50deg); }
+/* 中くらい */
+.hc8  { width:10px;height:14px;top:7%;left:22%;transform:rotate(35deg); }
+.hc9  { width:12px;height:8px;top:10%;left:52%;transform:rotate(-20deg); }
+.hc10 { width:8px;height:12px;top:18%;left:15%;transform:rotate(70deg); }
+.hc11 { width:11px;height:8px;top:24%;left:42%;transform:rotate(-40deg); }
+.hc12 { width:9px;height:13px;top:22%;left:55%;transform:rotate(15deg); }
+.hc13 { width:12px;height:9px;top:38%;left:28%;transform:rotate(-65deg); }
+.hc14 { width:10px;height:8px;top:42%;left:12%;transform:rotate(50deg); }
+.hc15 { width:8px;height:12px;top:52%;left:35%;transform:rotate(-10deg); }
+.hc16 { width:11px;height:7px;top:58%;left:50%;transform:rotate(40deg); }
+.hc17 { width:9px;height:11px;top:62%;left:22%;transform:rotate(-55deg); }
+.hc18 { width:12px;height:8px;top:72%;left:48%;transform:rotate(20deg); }
+.hc19 { width:10px;height:14px;top:78%;left:30%;transform:rotate(-35deg); }
+.hc20 { width:8px;height:10px;top:90%;left:18%;transform:rotate(75deg); }
+/* 小さめ */
+.hc21 { width:5px;height:8px;top:1%;left:46%;transform:rotate(-25deg);opacity:0.7; }
+.hc22 { width:4px;height:7px;top:6%;left:30%;transform:rotate(55deg);opacity:0.65; }
+.hc23 { width:6px;height:4px;top:16%;left:40%;transform:rotate(-45deg);opacity:0.6; }
+.hc24 { width:4px;height:6px;top:26%;left:18%;transform:rotate(30deg);opacity:0.7; }
+.hc25 { width:5px;height:4px;top:36%;left:52%;transform:rotate(-60deg);opacity:0.65; }
+.hc26 { width:4px;height:7px;top:44%;left:8%;transform:rotate(15deg);opacity:0.6; }
+.hc27 { width:6px;height:5px;top:56%;left:46%;transform:rotate(-20deg);opacity:0.7; }
+.hc28 { width:4px;height:6px;top:64%;left:5%;transform:rotate(45deg);opacity:0.65; }
+.hc29 { width:5px;height:4px;top:76%;left:54%;transform:rotate(-70deg);opacity:0.6; }
+.hc30 { width:4px;height:7px;top:82%;left:25%;transform:rotate(35deg);opacity:0.7; }
+/* スロットイラスト（静的img — 非表示） */
+.hero-slot-img { display:none; }
+
+/* ══ スロットリール（斜め静止3レーン） ══ */
+/* スロットリール装飾 */
+.slot-reel-wrap {
+  display:none;
+}
+.hero-reel-deco {
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  top:0;bottom:0;left:0;
+  width:58%;
+  background:url('<?php echo $lp_assets; ?>/hero/slot-pattern.png') 95% 100%/180% auto no-repeat;
+  opacity:0.7;
+  mix-blend-mode:multiply;
+}
+/* 金色レイヤー */
+.hero-reel-deco::after {
+  content:'';
+  position:absolute;inset:0;
+  background:url('<?php echo $lp_assets; ?>/hero/slot-pattern.png') 95% 100%/180% auto no-repeat;
+  mix-blend-mode:overlay;
+  opacity:0.7;
+}
+.hero-reel-deco img { display:none; }
+.slot-reel-strip { display:contents; }
+.slot-reel-col { display:flex;flex-direction:column; }
+.slot-reel-col img { width:100%;height:auto;display:block;opacity:0.45; }
+
+/* 装飾サークル — 削除済み */
+.hero-deco { display:none; }
+
+.hw {
+  position:absolute;z-index:2;
+  left:0;top:44%;
+  transform:translateY(-50%);
+  width:58%;
+  padding:24px 4% 16px 5%;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+
+/* 期間タグ — 左寄せ */
+.h-period-tag { align-self:flex-start;margin-left:-20px; }
+
+/* GWフェア + スロットクーポンチャンス — 左寄せセット */
+.h-title-group {
+  align-self:flex-start;
+  display:flex;flex-direction:column;
+  align-items:flex-start;
+  margin-bottom:clamp(16px,2vw,28px);
+  position:relative;
+}
+.h-gw-main {
+  font-size:clamp(52px,6vw,88px);
+  font-weight:900;
+  color:#fff;
+  letter-spacing:.1em;
+  margin:0 0 2px;
+  text-shadow:0 2px 12px rgba(0,0,0,0.2);
+  line-height:1.1;
+}
+/* クーポンキャンペーン — 控えめサブ */
+.h-campaign-sub {
+  font-size:20px;
+  font-weight:700;
+  color:rgba(255,255,255,0.7);
+  letter-spacing:.14em;
+  margin-bottom:10px;
+}
+/* キャッチコピー — ポップ */
+.h-campaign-catch {
+  font-size:clamp(18px,4.5vw,28px);
+  font-weight:900;
+  color:#fff;
+  line-height:1.5;
+  letter-spacing:.06em;
+  margin-bottom:clamp(4px,1vw,10px);
+  text-shadow:0 2px 8px rgba(0,0,0,0.25);
+}
+.h-catch-amount {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(28px,7vw,44px);
+  font-weight:800;
+  color:#DCAE18;
+  -webkit-text-stroke:1.5px #fff;
+  paint-order:stroke fill;
+  margin:0 4px;
+}
+.h-catch-off {
+  font-size:clamp(20px,5vw,30px);
+  font-weight:900;
+  color:#DCAE18;
+}
+
+/* 期間限定＋日付 — CTA下の横並びタグ */
+.h-period-tag {
+  display:flex;align-items:stretch;gap:0;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.h-tag {
+  font-weight:700;font-size:clamp(13px,1.3vw,17px);
+  color:#fff;
+  letter-spacing:.14em;
+  background:var(--gold);
+  padding:8px 18px;
+  white-space:nowrap;
+  display:flex;align-items:center;
+}
+.h-date {
+  font-weight:700;font-size:clamp(13px,1.3vw,17px);
+  color:var(--ink);letter-spacing:.06em;
+  background:#fff;
+  padding:8px 18px;
+  white-space:nowrap;
+  display:flex;align-items:center;
+}
+
+/* 金額 */
+.h-offer {
+  margin:-8px 0 4px;
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;
+}
+.h-offer-line {
+  display:flex;align-items:center;justify-content:flex-start;
+  white-space:nowrap;
+}
+.h-offer-label {
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:clamp(22px,2.4vw,36px);font-weight:900;
+  color:#DCAE18;
+  margin-right:8px;
+  letter-spacing:.1em;
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+  line-height:1;
+  -webkit-text-stroke:1.5px #fff;
+  paint-order:stroke fill;
+  text-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.h-offer-num {
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(88px,10vw,154px);font-weight:800;
+  color:#DCAE18;line-height:.85;
+  letter-spacing:-.03em;
+  -webkit-text-stroke:5px #fff;
+  paint-order:stroke fill;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.8),
+    0 3px 8px rgba(0,0,0,0.2),
+    0 8px 28px rgba(0,0,0,0.12);
+}
+.h-offer-unit {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(31px,3.5vw,52px);font-weight:800;
+  color:#DCAE18;
+  margin-left:8px;
+  -webkit-text-stroke:3px #fff;
+  paint-order:stroke fill;
+  text-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+/* スマホ用バッジテキスト — 非表示 */
+.h-offer-badges-sp { display:none; }
+
+.h-offer-note {
+  display:block;margin-top:6px;
+  font-size:clamp(10px,1.2vw,14px);
+  color:rgba(255,255,255,0.5);font-weight:500;
+  text-shadow:0 1px 4px rgba(0,0,0,0.4);
+  text-align:center;
+  position:relative;z-index:3;
+  background:rgba(46,90,58,0.7);
+  padding:4px 12px;
+  border-radius:4px;
+}
+
+/* スロットクーポンチャンス — 横並び */
+.h-offer-top-row {
+  display:flex;
+  align-items:center;
+  gap:clamp(12px,2vw,24px);
+}
+.h-slot-illus {
+  position:absolute;
+  left:clamp(340px,28vw,480px);
+  bottom:-10px;
+  width:clamp(120px,12vw,180px);
+  height:auto;
+  filter:drop-shadow(0 6px 20px rgba(0,0,0,0.4));
+  pointer-events:none;
+  z-index:3;
+}
+.h-offer-top-label {
+  align-self:flex-start;
+  font-size:clamp(18px,2vw,27px);
+  font-weight:900;
+  color:#fff;
+  letter-spacing:.08em;
+  text-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+/* 右下ラベル — 吹き出し */
+.h-offer-bottom-label {
+  align-self:center;
+  margin-top:8px;
+  margin-bottom:6px;
+  font-size:clamp(9px,1.1vw,13px);
+  font-weight:900;
+  color:var(--green-dk);
+  background:rgba(255,255,255,0.92);
+  border:1.5px solid rgba(255,255,255,0.95);
+  padding:4px 14px;
+  border-radius:40px;
+  position:relative;
+  letter-spacing:.04em;
+  text-shadow:none;
+  box-shadow:0 1px 8px rgba(0,0,0,0.08);
+}
+.h-offer-bottom-label::before {
+  content:'';
+  position:absolute;
+  bottom:-5px;left:50%;transform:translateX(-50%);
+  border-left:5px solid transparent;
+  border-right:5px solid transparent;
+  border-top:5px solid rgba(255,255,255,0.92);
+}
+.h-offer-bottom-label::after {
+  content:'';
+  position:absolute;
+  bottom:-7px;left:50%;transform:translateX(-50%);
+  border-left:6px solid transparent;
+  border-right:6px solid transparent;
+  border-top:7px solid rgba(255,255,255,0.95);
+  z-index:-1;
+}
+
+/* バッジ — 非表示 */
+.h-badge-float {
+  display:none;
+  z-index:3;
+}
+
+/* 訴求 - 非表示にしない、シンプルに */
+.h-selling { display:none; }
+
+.h-dc-text {
+  display:none;
+}
+
+/* CTA */
+.h-cta-row {
+  display:flex;flex-direction:column;align-items:flex-start;gap:8px;
+  margin-top:clamp(10px,1.5vw,16px);
+}
+.h-cta-lead {
+  font-weight:700;font-size:16px;
+  color:var(--gold);letter-spacing:.06em;
+  text-shadow:0 1px 6px rgba(0,0,0,0.3);
+}
+.btn-h {
+  font-weight:900;
+  font-size:clamp(17px,1.7vw,24px);
+  color:#fff;
+  background:#C0272D;
+  padding:10px 36px;
+  border:none;border-radius:10px;cursor:pointer;
+  box-shadow:0 4px 16px rgba(192,39,45,0.35), 0 8px 32px rgba(0,0,0,0.1);
+  letter-spacing:.06em;transition:all .25s;
+  text-decoration:none;
+  display:inline-block;
+  position:relative;
+}
+.btn-h:hover { background:#A01E24;transform:translateY(-3px);box-shadow:0 6px 20px rgba(192,39,45,0.45), 0 12px 40px rgba(0,0,0,0.12); }
+.btn-h-sub { display:none; }
+.h-cta-side { display:none; }
+
+.h-note {
+  margin-top:12px;
+  font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.85);letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);
+  max-width:520px;line-height:1.7;
+  text-align:left;
+  padding-left:38px;
+}
+
+/* ══ SHARED SEC ══ */
+.sec { padding:clamp(64px,12vw,100px) clamp(24px,6vw,48px);max-width:820px;margin:0 auto; }
+.sl { font-size:12px;font-weight:700;letter-spacing:.28em;color:var(--green);text-align:center;margin-bottom:12px;text-transform:uppercase;opacity:.9; }
+.st {
+  font-size:clamp(24px,6.5vw,40px);font-weight:900;text-align:center;line-height:1.28;color:var(--ink);
+  margin-bottom:clamp(36px,8vw,56px);
+  letter-spacing:.02em;
+}
+.st em { font-style:normal;color:var(--ink);position:relative; }
+.st em::after { display:none; }
+
+/* ══ PRIZES ══ */
+#prizes { background:var(--bg); }
+.pg { display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,3vw,20px); }
+@media(max-width:480px){.pg{grid-template-columns:1fr 1fr;}}
+.pc {
+  background:white;border-radius:12px;
+  padding:clamp(24px,6vw,32px) clamp(20px,5vw,28px);
+  position:relative;
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+  border:1px solid var(--border);
+  text-align:center;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.pc:hover {
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(46,90,58,0.12);
+}
+.pd { display:none; }
+.pr { font-size:clamp(18px,4vw,24px);font-weight:900;letter-spacing:.15em;margin-bottom:10px;color:var(--green);text-align:left; }
+.p1 .pr { color:var(--gold); }
+.pa { font-family:'Montserrat','Noto Sans JP',sans-serif;font-size:clamp(36px,10vw,64px);font-weight:800;line-height:1;margin-bottom:10px;display:flex;align-items:baseline;justify-content:center;gap:2px;color:var(--green-dk); }
+.p1 .pa { color:var(--gold); }
+.py { font-size:.4em;margin-bottom:2px; }
+.po { font-size:.4em;font-weight:900;letter-spacing:.04em;align-self:center;margin-left:4px; }
+.pp { display:inline-block;font-size:12px;font-weight:700;padding:4px 14px;border-radius:4px;letter-spacing:.02em;background:var(--bg);color:var(--ink-lt); }
+.p1 .pp { background:var(--gold-bg);color:var(--gold); }
+.p3 .pa { color:#4A9EB5; }
+.p3 .pr { color:#4A9EB5; }
+.p4 .pa { color:var(--ink-lt); }
+.p4 .pr { color:var(--ink-lt); }
+.pnote {
+  margin-top:36px;position:relative;
+  padding:20px 24px;
+  background:linear-gradient(135deg, var(--green) 0%, var(--green-dk) 100%);
+  color:#fff;font-size:clamp(14px,3.5vw,18px);font-weight:900;
+  text-align:center;line-height:1.6;letter-spacing:.04em;
+  clip-path:polygon(0 0, 100% 0, 100% calc(100% - 16px), 50% 100%, 0 calc(100% - 16px));
+  padding-bottom:36px;
+}
+.pnote strong { color:var(--gold); }
+
+/* ══ STAT ══ */
+#stat {
+  background:var(--green-dk);
+}
+.stati { max-width:820px;margin:0 auto;padding:clamp(60px,12vw,96px) 24px;text-align:center;display:flex;flex-direction:column;align-items:center; }
+.stnum  { font-size:clamp(48px,14vw,96px);font-weight:900;color:var(--gold);line-height:.95;margin-bottom:12px; }
+.stlbl  { font-weight:900;font-size:clamp(18px,5vw,26px);color:#fff;line-height:1.4;margin-bottom:8px; }
+.stsub  { font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.02em; }
+
+/* ══ HOW TO ══ */
+#howto { background:var(--bg); }
+.steps { display:flex;flex-direction:column;position:relative; }
+.steps::before {
+  content:'';position:absolute;left:clamp(24px,6vw,32px);top:68px;bottom:68px;
+  width:1px;background:var(--border);
+}
+@media(max-width:440px){.steps::before{left:20px;}}
+.step { display:flex;align-items:flex-start;gap:clamp(16px,4vw,28px);padding:24px 0; }
+.sn {
+  flex-shrink:0;width:clamp(44px,11vw,56px);height:clamp(44px,11vw,56px);border-radius:50%;
+  font-size:clamp(16px,4vw,20px);font-weight:900;
+  display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+  box-shadow:0 1px 3px rgba(0,0,0,0.08);
+  background:var(--green-dk);color:white;
+  margin-top:2px;
+}
+.sb h3 { font-weight:900;font-size:clamp(16px,4.2vw,20px);color:var(--ink);margin-bottom:6px;line-height:1.3; }
+.step-icon { width:48px;height:48px;vertical-align:middle;margin-left:8px;opacity:.7; }
+.sb p  { font-size:14px;color:var(--ink-lt);line-height:1.9; }
+.sb strong { color:var(--green-dk); }
+.tag2 { display:inline-block;background:var(--gold-bg);color:var(--gold);font-weight:700;font-size:13px;padding:4px 14px;border-radius:4px;margin-top:10px; }
+
+/* slot illustration */
+.slot-illus {
+  margin-top:16px;display:inline-flex;align-items:center;
+  gap:clamp(8px,2vw,12px);
+  background:var(--bg);border-radius:8px;
+  padding:14px 20px;
+}
+.sr {
+  width:clamp(44px,11vw,56px);height:clamp(50px,12vw,64px);
+  background:white;border:1px solid var(--border);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(14px,3.5vw,18px);font-weight:900;color:var(--green-dk);
+  position:relative;overflow:hidden;
+}
+.ssep { font-size:clamp(14px,3.5vw,18px);font-weight:700;color:var(--ink-lt); }
+.slbl { margin-left:6px;font-size:12px;font-weight:700;color:var(--ink-mid);line-height:1.6; }
+
+/* ══ PERIOD ══ */
+#period {
+  background:#F9F6F1;
+}
+.period-card {
+  max-width:700px;margin:0 auto;
+  background:white;
+  border:1px solid rgba(0,0,0,0.06);
+  border-radius:12px;
+  padding:clamp(36px,7vw,56px) clamp(28px,6vw,48px);
+  position:relative;z-index:1;
+}
+/* 日付2カラム */
+.period-dates {
+  display:flex;align-items:flex-start;
+  margin-bottom:clamp(28px,5vw,40px);
+}
+.period-date-col {
+  flex:1;text-align:center;
+  padding:0 clamp(12px,2vw,24px);
+}
+.period-date-col + .period-date-col {
+  border-left:2px solid var(--green);
+}
+.period-date-label {
+  font-size:14px;font-weight:700;
+  color:var(--ink-lt);letter-spacing:.12em;
+  margin-bottom:12px;
+}
+.period-date-value {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(28px,7vw,40px);font-weight:800;
+  color:var(--ink);line-height:1.2;
+}
+.period-date-value span {
+  font-size:0.4em;font-weight:700;color:var(--ink-mid);
+  vertical-align:0.15em;margin:0 1px;
+}
+.period-date-sub {
+  font-size:11px;color:var(--ink-lt);margin-top:8px;
+}
+/* 対象商品テキスト */
+.period-target-line {
+  text-align:center;
+  font-size:clamp(13px,3.2vw,15px);font-weight:700;
+  color:var(--ink-mid);
+  margin-bottom:clamp(20px,4vw,28px);
+  letter-spacing:.02em;
+}
+/* 条件ボックス */
+.period-cond-box {
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:clamp(20px,4vw,28px) clamp(20px,4vw,28px);
+}
+.period-cond-list {
+  list-style:none;padding:0;margin:0;
+}
+.period-cond-list li {
+  padding:7px 0;
+  font-size:clamp(13px,3.2vw,15px);
+  color:var(--ink);line-height:1.7;
+  display:flex;align-items:baseline;gap:8px;
+}
+.period-cond-list li::before {
+  content:'◆';color:var(--ink-lt);font-size:9px;flex-shrink:0;
+}
+.period-cond-list li:first-child {
+  font-weight:900;
+  font-size:clamp(14px,3.5vw,17px);
+}
+
+/* ══ FINAL CTA ══ */
+#fcta { background:var(--bg); }
+.petal { display:none; }
+.fci { max-width:640px;margin:0 auto;padding:clamp(72px,14vw,112px) 24px;text-align:center;display:flex;flex-direction:column;align-items:center; }
+.fck { font-size:12px;font-weight:700;letter-spacing:.25em;color:var(--green);margin-bottom:16px;text-transform:uppercase; }
+.fch { font-size:clamp(24px,7vw,44px);font-weight:900;line-height:1.3;color:var(--ink);margin-bottom:20px; }
+.fch em { font-style:normal;color:var(--ink); }
+.fcp { font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:40px;max-width:440px; }
+.fcp strong { color:var(--ink);font-weight:700; }
+
+/* ══ さらに ══ */
+.sarani {
+  display:block;
+  margin:36px auto 0;
+  font-size:clamp(22px,5.5vw,34px);
+  font-weight:900;
+  font-style:italic;
+  letter-spacing:.2em;
+  text-align:center;
+  transform:rotate(-2deg);
+  position:relative;
+}
+.sarani-back {
+  color:var(--green-dk);
+  -webkit-text-stroke:10px var(--green-dk);
+  paint-order:stroke fill;
+}
+.sarani-front {
+  position:absolute;
+  inset:0;
+  color:var(--green-dk);
+  -webkit-text-stroke:6px #fff;
+  paint-order:stroke fill;
+}
+
+/* ══ ダブルチャンス帯 ══ */
+.dc-band {
+  margin-top:48px;
+  background:#fff;
+  border:3px solid var(--green-dk);
+  border-radius:10px;
+  padding:clamp(28px,6vw,40px) clamp(24px,5vw,36px);
+  text-align:center;
+}
+.dc-band-title {
+  margin-bottom:16px;line-height:1.3;
+}
+.dc-title-sub {
+  font-size:clamp(14px,3.5vw,18px);
+  font-weight:700;
+  color:var(--ink-mid);
+  letter-spacing:.1em;
+}
+.dc-title-main {
+  display:inline-block;
+  font-size:clamp(32px,8vw,52px);
+  font-weight:900;
+  color:var(--green-dk);
+  letter-spacing:.06em;
+  -webkit-text-stroke:2px #fff;
+  paint-order:stroke fill;
+  text-shadow:0 2px 8px rgba(46,90,58,0.15);
+  background:linear-gradient(transparent 55%, rgba(212,168,32,0.3) 55%);
+  transform:rotate(-2deg);
+  display:inline-block;
+}
+.dc-band-text {
+  font-size:clamp(13px,3.2vw,15px);color:var(--ink-mid);
+  line-height:1.9;margin-top:16px;margin-bottom:0;
+}
+.dc-band-text strong { color:var(--ink);font-weight:900; }
+.dc-gift-row {
+  display:flex;align-items:center;
+  gap:clamp(16px,3vw,24px);
+  margin-top:24px;
+  text-align:left;
+}
+.dc-gift-photo {
+  flex:0 0 clamp(140px,24vw,200px);
+  border-radius:10px;
+  overflow:hidden;
+}
+.dc-gift-photo img {
+  width:100%;height:auto;display:block;
+}
+.dc-gift-text {
+  flex:1;
+  font-size:clamp(13px,3.2vw,15px);
+  color:var(--ink-mid);
+  line-height:1.8;
+}
+.dc-gift-text strong { color:var(--ink);font-weight:900; }
+.dc-w-wrap {
+  display:inline-flex;flex-direction:column;align-items:center;
+  vertical-align:baseline;line-height:1;
+  position:relative;
+}
+.dc-w {
+  font-family:'Montserrat',sans-serif;
+  font-size:1.3em;font-weight:800;
+  color:var(--green-dk);
+  -webkit-text-stroke:6px #fff;
+  paint-order:stroke fill;
+  position:relative;z-index:1;
+}
+.dc-w-outline {
+  position:absolute;
+  top:0;left:0;
+  font-family:'Montserrat',sans-serif;
+  font-size:1.3em;font-weight:800;
+  color:var(--green-dk);
+  -webkit-text-stroke:10px var(--green-dk);
+  paint-order:stroke fill;
+  z-index:0;
+}
+.dc-w-ruby {
+  font-size:0.3em;font-weight:700;
+  letter-spacing:.1em;
+  margin-top:-2px;
+}
+/* 比較レイアウト */
+.dc-compare {
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(16px,3vw,32px);
+  margin:24px 0;
+}
+.dc-col {
+  flex:1;max-width:280px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:clamp(16px,3vw,20px) clamp(16px,3vw,24px);
+  text-align:center;
+  opacity:0.75;
+}
+.dc-col-special {
+  background:#fff;
+  border:3px solid var(--green);
+  box-shadow:0 4px 24px rgba(58,122,79,0.15);
+  opacity:1;
+}
+.dc-col-label {
+  display:block;
+  font-size:13px;font-weight:700;letter-spacing:.12em;
+  color:var(--ink-lt);
+  text-align:left;
+  margin-bottom:14px;
+}
+.dc-col-label-sp {
+  color:var(--green-dk);font-size:15px;
+}
+/* クーポン券風 */
+.dc-ticket-wrap {
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:16px;
+}
+.dc-ticket {
+  position:relative;
+  padding:14px 18px;
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.dc-ticket-cut {
+  position:absolute;right:28%;top:-6px;bottom:-6px;
+  width:0;
+  border-right:2px dashed rgba(0,0,0,0.12);
+}
+.dc-ticket-gray {
+  background:var(--bg);
+  border:1px solid var(--border);
+}
+.dc-ticket-gold {
+  background:linear-gradient(135deg, #D4A820 0%, #E8C84A 100%);
+  box-shadow:0 2px 8px rgba(212,168,32,0.3);
+}
+.dc-ticket-red {
+  background:linear-gradient(135deg, #C0272D 0%, #E04848 100%);
+  box-shadow:0 2px 8px rgba(192,39,45,0.3);
+}
+.dc-ticket-text {
+  font-size:13px;font-weight:900;letter-spacing:.15em;
+  color:var(--ink-lt);
+}
+.dc-ticket-gold .dc-ticket-text,
+.dc-ticket-red .dc-ticket-text {
+  color:#fff;
+}
+.dc-ticket-tag {
+  position:absolute;left:8px;top:4px;
+  font-size:9px;font-weight:700;letter-spacing:.06em;
+  color:rgba(255,255,255,0.8);
+  background:rgba(0,0,0,0.15);
+  padding:2px 8px;border-radius:3px;
+}
+.dc-col-num {
+  font-size:15px;font-weight:700;color:var(--ink-lt);
+}
+.dc-num {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(32px,7vw,44px);font-weight:800;
+  color:var(--border);
+  margin-right:2px;
+}
+.dc-num-big {
+  font-size:clamp(64px,16vw,100px);
+  color:var(--green-dk);
+  text-shadow:0 3px 12px rgba(58,122,79,0.2);
+}
+.dc-arrow {
+  font-size:clamp(24px,5vw,36px);
+  color:var(--green);
+  flex-shrink:0;
+}
+.dc-band-btn {
+  display:inline-block;
+  background:#C0272D;color:#fff;
+  font-weight:900;font-size:clamp(14px,3.5vw,17px);
+  padding:14px 44px;border-radius:6px;
+  text-decoration:none;letter-spacing:.04em;
+  transition:background .2s;
+  margin-top:32px;
+}
+.dc-band-btn:hover { background:#A01E24; }
+/* アイコン＋スロット回数 */
+.dc-icon {
+  width:40px;height:auto;
+  margin:10px auto 8px;
+  display:block;
+  opacity:.3;
+}
+.dc-col-desc {
+  font-size:13px;color:var(--ink-lt);
+  margin-top:10px;line-height:1.5;
+}
+.dc-col-desc-sp {
+  color:var(--green-dk);font-size:15px;
+}
+.dc-col-sub {
+  font-size:11px;color:var(--ink-lt);
+  margin-top:8px;line-height:1.5;
+  padding-top:8px;
+  border-top:1px dashed var(--border);
+}
+.dc-col-photo {
+  margin-top:12px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.dc-col-photo img {
+  width:100%;height:auto;display:block;
+}
+.dc-col-gift {
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px dashed var(--border);
+  display:flex;align-items:center;gap:12px;
+  text-align:left;
+}
+.dc-col-gift img {
+  width:90px;height:auto;border-radius:8px;flex-shrink:0;
+}
+.dc-col-gift p {
+  font-size:11px;color:var(--ink-mid);line-height:1.6;
+}
+.dc-col-gift strong { color:var(--ink);font-weight:900; }
+.dc-col-valid {
+  margin-top:10px;
+  font-size:10px;font-weight:700;
+  color:var(--green-dk);
+  background:rgba(58,122,79,0.08);
+  padding:4px 12px;
+  border-radius:4px;
+  display:inline-block;
+}
+.dc-icon-green {
+  opacity:.7;
+  filter:invert(30%) sepia(60%) saturate(500%) hue-rotate(100deg) brightness(0.85);
+}
+.dc-col-slot {
+  font-size:14px;font-weight:700;
+  color:var(--ink-lt);
+  margin-bottom:12px;
+}
+.dc-col-slot strong {
+  font-size:20px;font-weight:900;
+  color:var(--ink-lt);
+}
+.dc-col-slot-sp {
+  color:var(--green-dk);
+}
+.dc-col-slot-sp strong {
+  font-size:24px;
+  color:var(--green-dk);
+}
+
+.dc-ticket-photo {
+  margin:16px auto 12px;
+  max-width:160px;
+}
+.dc-ticket-photo img {
+  width:100%;height:auto;display:block;
+}
+
+/* dc-compare mobile → メイン640px MQに統合済み */
+
+/* ══ フローティングCTA ══ */
+.float-cta {
+  position:fixed;bottom:0;left:0;right:0;z-index:40;
+  background:rgba(46,90,58,0.97);
+  box-shadow:0 -2px 12px rgba(0,0,0,0.15);
+  transform:translateY(100%);
+  transition:transform .3s ease;
+  padding:12px 20px;
+}
+.float-cta.visible { transform:translateY(0); }
+.float-cta-inner {
+  max-width:860px;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,32px);
+}
+.float-cta-left {
+  display:flex;align-items:center;gap:14px;
+}
+.float-cta-btn {
+  flex-shrink:0;
+  background:#C0272D;color:#fff;
+  font-weight:900;font-size:15px;
+  padding:12px 32px;border-radius:6px;
+  text-decoration:none;letter-spacing:.04em;
+  transition:background .2s;
+}
+.float-cta-btn:hover { background:#A01E24; }
+.float-cta-label { display:none; }
+.float-cta-right {
+  display:flex;align-items:center;gap:4px;
+  font-size:14px;font-weight:900;color:rgba(255,255,255,0.9);letter-spacing:.02em;
+}
+.float-cta-right strong { color:#fff; }
+.float-w-chance {
+  margin-left:6px;
+  font-size:16px;font-weight:900;
+  color:var(--gold);letter-spacing:.04em;
+  font-style:italic;
+}
+.float-w {
+  font-family:'Montserrat',sans-serif;
+  font-size:22px;font-weight:800;
+  color:var(--gold);
+}
+
+/* ══ 注意事項 ══ */
+.notes-band {
+  background:var(--bg);padding:24px;text-align:center;
+}
+.notes-band p {
+  font-size:11px;color:var(--ink-lt);line-height:2;max-width:700px;margin:0 auto;
+}
+
+/* ══ FOOTER ══ */
+footer {
+  background:var(--green-dk);padding:48px 24px 24px;color:rgba(255,255,255,0.6);
+}
+.footer-inner {
+  max-width:720px;margin:0 auto;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:40px;
+  padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.08);
+  margin-bottom:20px;
+}
+.footer-logo { width:160px;margin-bottom:12px; }
+.footer-company { font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:4px; }
+.footer-address { font-size:11px;color:rgba(255,255,255,0.35);line-height:1.7; }
+.footer-links { display:flex;flex-direction:column;gap:12px;padding-top:4px; }
+.footer-links a {
+  font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;
+  transition:color .2s;
+}
+.footer-links a:hover { color:#fff; }
+.footer-cta-link {
+  color:var(--gold) !important;font-weight:900 !important;
+  font-size:15px !important;
+}
+.footer-copy {
+  text-align:center;font-size:11px;color:rgba(255,255,255,0.2);
+  padding-bottom:60px;
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width:1024px) {
+  .sec { padding:clamp(52px,9vw,84px) clamp(20px,4vw,40px); }
+}
+
+@media (max-width:768px) {
+  .header-logo img { width:130px; }
+  .header-nav { gap:16px;font-size:12px; }
+  .h-badge-float { width:85px;height:85px;font-size:13px;right:-42px; }
+  /* スロットマシン — タブレット */
+  .slot-reel-wrap { bottom:16px;left:16px; }
+  .slot-machine { padding:8px 10px 12px; }
+  .slot-reel-col { flex:0 0 44px;height:110px; }
+  /* Hero tablet */
+  #hero { flex-direction:column;min-height:auto; }
+  .hero-photo-single {
+    position:relative;width:100%;height:50vw;
+    order:1;
+  }
+  #hero::after { display:none; }
+  .hw {
+    position:relative;
+    width:100%;max-width:100%;
+    padding:32px 40px 36px;
+    background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 70%, #4A9E6C 100%);
+    transform:none;order:2;
+    overflow:visible;
+  }
+  .h-offer-top-label { margin-left:0; }
+  .h-offer-bottom-label { margin-right:0;font-size:clamp(9px,1.8vw,11px);padding:3px 10px;margin-bottom:10px; }
+  .h-gw-main { font-size:clamp(36px,6vw,52px); }
+  .h-offer-num { font-size:clamp(72px,12vw,100px); }
+  .h-offer-unit { font-size:clamp(28px,4.5vw,40px); }
+  .h-offer-label { font-size:clamp(20px,3vw,28px); }
+  .h-offer-top-label { font-size:clamp(16px,2.5vw,22px); }
+  .h-period-tag { margin-left:0; }
+  .h-note { padding-left:0; }
+  .h-cta-row { align-items:center; }
+  .btn-h { font-size:18px;padding:18px 56px; }
+}
+
+@media (max-width:640px) {
+  html { scroll-padding-top: 60px; }
+  /* ── ヘッダー ── */
+  .header-inner { height:56px;padding:0 16px; }
+  .header-logo img { width:120px; }
+  .header-nav { gap:12px;font-size:10px; }
+  .header-nav a:not(.header-cta) { display:none; }
+  .header-cta { padding:8px 16px;font-size:12px;border-width:1.5px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height:auto;
+    position:relative;
+    display:flex;flex-direction:column;
+    padding:0;
+    background:var(--bg);
+  }
+  /* 写真① — スマホ上側 */
+  .hero-photo-single {
+    position:relative;width:100%;
+    order:1;
+    overflow:hidden;
+    height:40vw;
+  }
+  .hero-photo-single img {
+    content:url('<?php echo $lp_assets; ?>/hero/hero-products-sp-top.png');
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center center;
+    display:block;
+  }
+  #hero::after { display:none; }
+  /* 緑カード① — GWフェア + スロットクーポンチャンス */
+  .hw {
+    position:relative;
+    z-index:3;
+    width:100%;max-width:100%;
+    background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 50%, #2E5A3A 100%);
+    padding:10px 24px 12px;
+    align-items:center;text-align:center;
+    transform:none;
+    order:2;
+    margin-top:-2px;
+  }
+  .hw::before {
+    content:'';position:absolute;inset:0;
+    background:url('<?php echo $lp_assets; ?>/hero/slot-pattern.png') 80% 85%/130% auto no-repeat;
+    opacity:0.8;mix-blend-mode:multiply;pointer-events:none;z-index:0;
+  }
+  .hw::after { display:none !important; }
+  /* 写真② — スマホ：緑の後ろ */
+  .hero-photo-sp-bottom {
+    display:block;
+    width:100%;
+    order:3;
+    overflow:hidden;
+    height:40vw;
+    margin-top:-2px;
+  }
+  .hero-photo-sp-bottom img {
+    width:100%;height:100%;object-fit:cover;display:block;
+  }
+  /* スマホ用CTA — 非表示（hw内に統合） */
+  .hero-sp-cta { display:none !important; }
+  .hero-sp-cta .h-offer-unit { font-size:clamp(20px,5.5vw,28px);-webkit-text-stroke:2px #fff; }
+  .hero-sp-cta .btn-h { margin-top:12px; }
+  .hero-sp-cta-wrap { display:flex;flex-direction:column;align-items:flex-start;width:fit-content;margin:12px auto 0; }
+  .hero-sp-cta-wrap .btn-h { width:auto;display:inline-block; }
+  .hero-sp-cta .h-note { margin-top:10px;margin-left:-76px;font-size:9px;color:rgba(255,255,255,0.85);line-height:1.7;text-align:left; }
+  .h-gw-main { font-size:clamp(32px,9vw,44px);text-align:left;margin-bottom:0; }
+  .h-title-group { align-self:flex-start;align-items:flex-start;margin-left:24px; }
+  .h-offer-top-label { text-align:left; }
+  .h-campaign-sub { display:none; }
+  .hero-slot-img { display:none; }
+  .hero-slot-reel { display:none; }
+  .slot-reel-wrap { display:none; }
+  /* スロットパターン — スマホ：元のdecoは非表示、hwの疑似要素で表示 */
+  .hero-reel-deco { display:none; }
+  .hw::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:url('<?php echo $lp_assets; ?>/hero/slot-pattern.png') 38% 58%/140% auto no-repeat;
+    opacity:0.55;
+    mix-blend-mode:multiply;
+    pointer-events:none;
+    z-index:0;
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
+    mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
+  }
+  .hw::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:url('<?php echo $lp_assets; ?>/hero/slot-pattern.png') 38% 58%/140% auto no-repeat;
+    mix-blend-mode:overlay;
+    opacity:0.4;
+    -webkit-mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
+    mask-image:radial-gradient(ellipse 80% 70% at center, rgba(0,0,0,0.9) 20%, transparent 90%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .hw { position:relative;overflow:hidden; }
+  .hw > * { position:relative;z-index:1; }
+  .h-offer-top-row { justify-content:center; }
+  .h-offer-top-label { align-self:center;margin-left:0;font-size:clamp(15px,4vw,20px); }
+  .h-slot-illus { width:clamp(56px,14vw,80px); }
+  .h-offer-bottom-label { align-self:flex-start;margin-left:24px;margin-right:0;font-size:clamp(9px,2.5vw,11px);padding:3px 10px;margin-bottom:4px; }
+  .h-campaign-catch { font-size:clamp(14px,3.5vw,18px); }
+  .h-catch-amount { font-size:clamp(20px,5.5vw,28px); }
+  .h-catch-off { font-size:clamp(14px,3.5vw,20px); }
+  .h-period-tag { align-self:flex-start;margin-bottom:4px;margin-left:8px; }
+  .h-tag { font-size:11px;padding:4px 12px; }
+  .h-date { font-size:12px;padding:4px 12px; }
+  .h-offer { align-items:center;margin:4px 0; }
+  .h-offer-line { justify-content:center;width:100%; }
+  .h-offer-num { font-size:clamp(48px,14vw,64px);-webkit-text-stroke:3px #fff; }
+  .h-offer-label { font-size:clamp(18px,5vw,24px); }
+  .h-offer-unit { font-size:clamp(20px,5.5vw,28px);-webkit-text-stroke:2px #fff; }
+  .h-offer-note { display:none; }
+  .h-badge-float { display:none; }
+  .h-offer-badges-sp { display:none; }
+  .h-cta-row { align-items:center;align-self:stretch;margin-top:10px; }
+  .h-cta-wrap { width:fit-content;margin:0 auto; }
+  .h-note { text-align:left;margin-left:24px; }
+  .h-cta-lead { display:none; }
+  .btn-h { font-size:15px;padding:10px 36px;border-radius:8px;text-align:center;display:inline-block;background:#C0272D;color:#fff; }
+  .h-note { font-size:9px;text-align:left;margin-top:12px;line-height:1.7;color:rgba(255,255,255,0.85);padding-left:0; }
+  .step-icon { width:36px;height:36px; }
+
+  /* ── 共通セクション ── */
+  .sec { padding:48px 16px; }
+  .sl { font-size:10px; }
+  .st { font-size:clamp(22px,6vw,30px);margin-bottom:28px; }
+
+  /* ── 共感セクション ── */
+  #empathy { grid-template-columns:1fr;max-width:100%;border-radius:0; }
+  .emp-content { padding:36px 20px 28px; }
+  .emp-heading { font-size:clamp(22px,6vw,32px);text-align:center;margin-bottom:20px;white-space:normal; }
+  .emp-box { gap:12px; }
+  .emp-item { padding:16px 18px;gap:14px; }
+  .emp-check { width:36px;height:36px;font-size:16px; }
+  .emp-item p { font-size:clamp(14px,3.8vw,18px); }
+  .emp-photo-side { height:240px; }
+  .emp-photo-lg { object-position:center 20%; }
+
+  /* ── ソリューション ── */
+  .sol-cards { grid-template-columns:1fr;gap:12px; }
+  .sol-card { padding:24px 20px; }
+  .sol-num { font-size:28px;margin-bottom:8px; }
+  .sol-card h3 { font-size:16px; }
+  .sol-card p { font-size:13px; }
+
+  /* ── お得情報 ── */
+  .pex-inner { padding:48px 16px; }
+  /* ── お得カード（スマホ：Canva画像で表示） ── */
+  .pex-one { position:relative;border:none;box-shadow:none;background:none;min-height:0; }
+  .pex-one > * { display:none !important; }
+  .pex-one .pex-sp-img { display:block !important;width:100%; }
+  .pex-one .pex-sp-img img { width:100%;height:auto;display:block;border-radius:8px; }
+  .pex-enkin { padding:20px 16px;margin-top:20px; }
+  .pex-enkin-main { font-size:clamp(18px,5vw,28px); }
+  .pex-enkin-zero { font-size:clamp(40px,10vw,64px); }
+  .pex-target { font-size:11px;padding:6px 14px;margin-top:12px; }
+  .pex-img-note { font-size:10px; }
+
+  /* ── クーポン内容 ── */
+  .pg { gap:8px;grid-template-columns:1fr 1fr !important; }
+  .pc { padding:14px 10px; }
+  .pr { font-size:clamp(12px,3vw,16px); }
+  .pa { font-size:clamp(22px,6vw,30px); }
+  .py { font-size:.35em; }
+  .po { font-size:.35em; }
+  .pp { font-size:9px;padding:2px 8px; }
+  .pnote { font-size:clamp(12px,3.2vw,15px);padding:14px 12px 24px;margin-top:20px; }
+
+  /* ── さらに＋ダブルチャンス ── */
+  .sarani { font-size:clamp(18px,5vw,26px);margin:24px auto 0; }
+  .dc-band { margin-top:28px;padding:24px 16px;border-width:2px; }
+  .dc-title-sub { font-size:clamp(13px,3.2vw,16px); }
+  .dc-title-main { font-size:clamp(24px,7vw,40px); }
+  .dc-band { padding:20px 16px;border-width:2px; }
+  .dc-title-sub { font-size:clamp(13px,3.2vw,16px); }
+  .dc-title-main { font-size:clamp(24px,7vw,40px); }
+  .dc-compare { flex-direction:column;gap:10px; }
+  .dc-arrow { transform:rotate(90deg);font-size:20px; }
+  .dc-col { padding:16px 20px;border-radius:10px;max-width:100%;text-align:left; }
+  .dc-col-special { border-width:2px; }
+  .dc-col-label { font-size:12px;letter-spacing:.08em; }
+  .dc-col-label-sp { font-size:14px; }
+  .dc-col-slot { font-size:14px;margin-bottom:4px; }
+  .dc-col-slot strong { font-size:18px; }
+  .dc-col-slot-sp strong { font-size:22px; }
+  .dc-col-desc { font-size:14px; }
+  .dc-col-desc-sp { font-size:15px; }
+  .dc-col-sub { font-size:12px; }
+  .dc-band-btn { font-size:15px;padding:14px 32px;width:100%;display:block;text-align:center;margin-top:20px; }
+  .dc-band-text { font-size:13px;margin-top:16px; }
+
+  /* ── 譲渡バナー ── */
+  .gift-band { padding:20px 16px;margin-top:24px; }
+  .gift-title { font-size:clamp(16px,4.2vw,22px); }
+  .gift-text { font-size:13px; }
+  .gift-emoji { font-size:24px; }
+
+  /* ── 参加方法 ── */
+  .howto-inner { padding:48px 16px;max-width:400px;margin:0 auto; }
+  .howto-cards { gap:12px;align-items:center; }
+  .howto-card { padding:20px 16px;gap:14px;width:100%; }
+  .howto-step-num { font-size:clamp(18px,4.5vw,24px); }
+  .howto-desc { font-size:clamp(14px,3.8vw,18px); }
+  .howto-note { font-size:11px; }
+  .howto-card-icon { width:48px;height:48px; }
+
+  .step { gap:16px;padding:16px 0; }
+  .sn { width:40px;height:40px;font-size:14px; }
+  .sb h3 { font-size:15px; }
+  .sb p { font-size:13px; }
+  .slot-illus { padding:10px 14px; }
+  .sr { width:40px;height:46px;font-size:14px; }
+
+  /* ── 統計 ── */
+  .stati { padding:48px 16px; }
+  .stnum { font-size:clamp(36px,11vw,52px); }
+  .stlbl { font-size:clamp(15px,4vw,20px); }
+
+  /* ── 開催概要 ── */
+  #period .sec { padding:48px 16px; }
+  .period-card { padding:28px 20px; }
+  .period-date-value { font-size:clamp(22px,6vw,30px); }
+  .period-cond-list li { font-size:12px; }
+  .period-cond-list li:first-child { font-size:13px; }
+
+  /* ── 店舗検索 ── */
+  #shop-search .sec { padding:40px 16px; }
+  #shop-search .btn-h { font-size:16px;padding:16px 0;width:100%;max-width:320px;display:block;text-align:center;margin:0 auto; }
+  .shop-search-form { flex-wrap:wrap;gap:6px; }
+  .shop-zip-input { width:70px;padding:10px 12px;font-size:16px; }
+  .shop-zip-input-lg { width:90px; }
+  .shop-search-btn { padding:10px 20px;font-size:14px; }
+  .shop-results { grid-template-columns:1fr;gap:12px; }
+
+  /* ── 最終CTA ── */
+  .fci { padding:48px 16px 80px; }
+  .fck { font-size:11px;letter-spacing:.2em; }
+  .fch { font-size:clamp(22px,6.5vw,34px); }
+  .fch em::after { height:2px; }
+  .fcp { font-size:14px;line-height:1.9;margin-bottom:28px; }
+  #fcta .btn-h { font-size:17px;padding:18px 0;width:100%;max-width:320px;display:block;text-align:center; }
+
+  /* ── フローティングCTA ── */
+  .float-cta { padding:10px 16px; }
+  .float-cta-inner { justify-content:center;gap:0; }
+  .float-cta-left { flex-direction:row;gap:0;flex:none; }
+  .float-cta-btn {
+    font-size:15px;padding:12px 40px;
+    white-space:nowrap;
+    text-align:center;
+  }
+  .float-cta-right { display:none; }
+
+  /* ── フッター ── */
+  footer { padding:32px 16px 16px; }
+  .footer-inner { flex-direction:column;align-items:center;gap:20px;text-align:center; }
+  .footer-logo { width:120px;margin:0 auto 8px; }
+  .footer-company { font-size:12px; }
+  .footer-address { font-size:10px; }
+  .footer-links { align-items:center;gap:10px; }
+  .footer-links a { font-size:12px; }
+  .footer-cta-link { font-size:14px !important; }
+  .footer-copy { padding-bottom:72px;font-size:10px; }
+
+  /* ── 注意事項 ── */
+  .notes-band { padding:20px 16px; }
+  .notes-band p { font-size:10px;line-height:1.9;text-align:left; }
+}
+
+@media (max-width:380px) {
+  .h-gw-main { font-size:26px; }
+  .h-offer-num { font-size:48px; }
+  .h-offer-label { font-size:16px; }
+  .h-offer-unit { font-size:18px; }
+  .btn-h { padding:14px 16px;font-size:15px; }
+  .dc-compare { flex-direction:column;gap:12px; }
+  .dc-arrow { transform:rotate(90deg);font-size:20px; }
+  .pex-one-num-now { font-size:36px; }
+}
+
+/* ══ 共感セクション ══ */
+#empathy {
+  background:white;
+  display:grid;grid-template-columns:3fr 2fr;
+  max-width:1200px;margin:0 auto;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.06);
+}
+.emp-section-wrap {
+  background:var(--bg);
+  padding:clamp(64px,10vw,100px) 24px;
+}
+.emp-content {
+  padding:clamp(48px,8vw,80px) clamp(32px,6vw,56px);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.emp-heading {
+  font-size:clamp(26px,6vw,40px);font-weight:900;
+  color:var(--ink);line-height:1.3;
+  margin-bottom:clamp(24px,5vw,40px);
+  white-space:nowrap;
+}
+.emp-heading em {
+  font-style:normal;color:var(--green);position:relative;
+}
+.emp-heading em::after {
+  content:'';position:absolute;left:0;right:0;bottom:-2px;
+  height:3px;background:var(--green);border-radius:2px;opacity:.4;
+}
+.emp-box {
+  display:flex;flex-direction:column;
+  gap:clamp(16px,3.5vw,28px);
+}
+.emp-item {
+  display:flex;align-items:center;gap:18px;
+  background:var(--bg);border-radius:12px;
+  padding:clamp(18px,4vw,24px) clamp(20px,4vw,28px);
+}
+.emp-check {
+  flex-shrink:0;
+  width:40px;height:40px;border-radius:50%;
+  background:var(--green-dk);color:#fff;
+  font-weight:900;font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+}
+.emp-item p {
+  font-size:clamp(16px,4vw,20px);font-weight:700;
+  color:var(--ink);line-height:1.5;
+}
+.emp-photo-side {
+  display:flex;align-items:stretch;
+}
+.emp-photo-lg {
+  width:100%;height:100%;
+  object-fit:cover;object-position:60% 15%;
+}
+/* empathy mobile → メイン640px MQに統合済み */
+
+/* ══ 解決セクション ══ */
+#solution { background:white; }
+.sol-cards {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(14px,3vw,24px);
+}
+@media(max-width:640px){ .sol-cards { grid-template-columns:1fr; } }
+.sol-card {
+  background:var(--bg);border-radius:12px;
+  padding:clamp(28px,6vw,36px) clamp(20px,4vw,28px);
+  position:relative;
+  border:1px solid transparent;
+  transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.sol-card:hover {
+  transform:translateY(-3px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.07);
+  border-color:rgba(58,122,79,0.2);
+}
+.sol-num {
+  font-size:32px;font-weight:900;color:var(--green);
+  opacity:.25;line-height:1;margin-bottom:12px;
+}
+.sol-card h3 {
+  font-size:clamp(16px,4vw,18px);font-weight:900;
+  color:var(--ink);margin-bottom:8px;line-height:1.4;
+}
+.sol-card p {
+  font-size:14px;color:var(--ink-mid);line-height:1.9;
+}
+
+/* ══ Deals (お得強化) ══ */
+#deals { background:white; }
+#deals .gift-band {
+  margin-top:20px;
+  background:white;border:1px solid var(--border);
+}
+#deals .gift-title { color:var(--green-dk); }
+#deals .gift-text { color:var(--ink-mid); }
+#deals .gift-text strong { color:var(--ink); }
+
+/* ══ HOW TO カード ══ */
+#howto .sl { color:var(--green); }
+#howto .st { color:var(--ink); }
+#howto .st em { color:var(--ink); }
+#howto .st em::after { display:none; }
+.howto-inner {
+  max-width:820px;margin:0 auto;
+  padding:clamp(64px,12vw,100px) clamp(24px,6vw,48px);
+}
+.howto-cards {
+  display:flex;flex-direction:column;
+  gap:clamp(16px,3vw,24px);
+}
+.howto-card {
+  background:#fff;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.04);
+  padding:0;
+  display:flex;align-items:stretch;
+  gap:0;
+  overflow:hidden;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.howto-card:hover {
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(0,0,0,0.08);
+}
+.howto-card-text {
+  flex:1;
+  padding:clamp(24px,5vw,36px) clamp(24px,5vw,36px);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.howto-step-num {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(16px,4vw,20px);font-weight:800;
+  color:#fff;
+  background:var(--green-dk);
+  display:inline-block;
+  padding:6px 20px;
+  border-radius:4px;
+  margin-bottom:12px;
+  width:fit-content;
+}
+.howto-desc {
+  font-size:clamp(16px,4vw,20px);font-weight:700;
+  color:var(--ink);line-height:1.7;
+}
+.howto-hl {
+  background:linear-gradient(transparent 60%, rgba(212,168,32,0.25) 60%);
+  font-weight:900;
+}
+.howto-note {
+  margin-top:10px;
+  font-size:clamp(11px,2.5vw,13px);
+  color:var(--ink-lt);line-height:1.7;
+}
+.howto-card-icon {
+  flex-shrink:0;
+  width:clamp(56px,14vw,80px);height:clamp(56px,14vw,80px);
+  display:flex;align-items:center;justify-content:center;
+}
+.howto-card-icon img {
+  width:100%;height:100%;object-fit:contain;
+}
+/* 写真枠付きカード */
+.howto-card-photo {
+  flex:1;
+  overflow:hidden;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  min-height:clamp(160px,18vw,240px);
+}
+.howto-card-photo img {
+  width:100%;height:100%;object-fit:cover;display:block;
+}
+.howto-photo-placeholder {
+  font-size:12px;color:var(--ink-lt);
+  text-align:center;padding:12px;
+  border:2px dashed var(--border);
+  border-radius:8px;
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+}
+@media(max-width:640px){
+  .howto-card-photo { flex:none;width:100%;height:56vw;min-height:0; }
+  .howto-card { flex-direction:column; }
+  .howto-card-text { padding:20px 20px 24px; }
+}
+/* howto mobile → メイン640px MQに統合済み */
+
+/* ══ 店舗検索 ══ */
+#shop-search { background:white; }
+.shop-search-form {
+  display:flex;align-items:center;justify-content:center;
+  gap:8px;margin-bottom:20px;
+}
+.shop-zip-label {
+  font-size:18px;font-weight:700;color:var(--ink);
+}
+.shop-zip-input {
+  width:80px;padding:12px 16px;
+  font-size:18px;font-weight:700;text-align:center;
+  border:2px solid var(--border);border-radius:8px;
+  font-family:inherit;color:var(--ink);
+  transition:border-color .2s;
+}
+.shop-zip-input-lg { width:100px; }
+.shop-zip-input:focus { outline:none;border-color:var(--green); }
+.shop-zip-sep { font-size:18px;font-weight:700;color:var(--ink-lt); }
+.shop-search-btn {
+  padding:12px 28px;
+  background:var(--green-dk);color:#fff;
+  font-size:16px;font-weight:900;
+  border:none;border-radius:8px;cursor:pointer;
+  transition:background .2s;
+}
+.shop-search-btn:hover { background:var(--green); }
+.shop-count {
+  font-size:15px;font-weight:700;color:var(--ink-mid);
+  margin-bottom:16px;
+}
+.shop-results {
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:16px;text-align:left;margin-bottom:8px;
+}
+.shop-card {
+  border:1px solid var(--border);border-radius:12px;
+  padding:20px 24px;
+  background:#fff;
+  transition:box-shadow .2s ease, border-color .2s ease;
+}
+.shop-card:hover {
+  box-shadow:0 8px 24px rgba(0,0,0,0.08);
+  border-color:rgba(58,122,79,0.35);
+}
+.shop-card-name {
+  font-size:17px;font-weight:900;color:var(--ink);
+  margin-bottom:6px;
+}
+.shop-card-addr {
+  font-size:13px;color:var(--ink-lt);
+  margin-bottom:14px;
+}
+.shop-card-btns {
+  display:flex;gap:8px;
+}
+.shop-btn-web {
+  flex:1;padding:10px 0;text-align:center;
+  background:#C0272D;color:#fff;
+  font-size:14px;font-weight:900;
+  border:none;border-radius:6px;cursor:pointer;
+  text-decoration:none;display:block;
+  transition:background .2s;
+}
+.shop-btn-web:hover { background:#A01E24; }
+.shop-btn-tel {
+  flex:1;padding:10px 0;text-align:center;
+  background:#fff;color:#C0272D;
+  font-size:14px;font-weight:900;
+  border:2px solid #C0272D;border-radius:6px;
+  text-decoration:none;display:block;
+  transition:all .2s;
+}
+.shop-btn-tel:hover { background:#C0272D;color:#fff; }
+
+/* ══ 価格例セクション ══ */
+#price-example { background:var(--bg); }
+.pex-headline { color:var(--ink) !important; }
+.pex-headline em { color:var(--ink) !important;font-style:normal; }
+.pex-headline em::after { display:none; }
+.pex-sub-text { color:#999;font-size:13px; }
+.pex-compare {
+  display:flex;align-items:stretch;justify-content:center;
+  gap:clamp(12px,2vw,24px);
+  margin-top:clamp(28px,6vw,48px);
+  max-width:100%;margin-left:auto;margin-right:auto;
+}
+.pex-box {
+  background:white;
+  border:2px solid var(--border);
+  border-radius:10px;
+  flex:1;
+  display:flex;flex-direction:row;
+  overflow:hidden;
+  min-height:140px;
+}
+.pex-box-normal {
+  opacity:0.75;
+  transform:scale(0.95);
+}
+.pex-box-now {
+  border-color:var(--green);
+  border-width:3px;
+  box-shadow:0 4px 20px rgba(58,122,79,0.15);
+  transform:scale(1.02);
+}
+.pex-box-img {
+  width:160px;min-width:160px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.pex-box-img img {
+  width:100%;height:100%;object-fit:cover;
+}
+.pex-box-right {
+  flex:1;display:flex;flex-direction:column;min-width:0;
+}
+.pex-box-body {
+  padding:clamp(14px,3vw,24px) clamp(16px,3vw,28px);flex:1;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.pex-box-top {
+  display:flex;align-items:baseline;gap:8px;
+  margin-bottom:4px;flex-wrap:wrap;
+}
+.pex-box-tag {
+  font-weight:900;font-size:clamp(14px,3vw,18px);
+  color:var(--ink);white-space:nowrap;
+}
+.pex-box-tag-now {
+  color:var(--green);
+}
+.pex-box-desc {
+  font-size:clamp(10px,2vw,12px);color:var(--ink-lt);
+  white-space:nowrap;
+}
+.pex-box-price {
+  display:flex;align-items:baseline;gap:4px;
+}
+.pex-box-num {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(32px,6vw,52px);font-weight:800;
+  color:var(--ink-lt);line-height:1;
+}
+.pex-box-now .pex-box-num {
+  font-size:clamp(40px,8vw,64px);
+  color:var(--green-dk);
+}
+.pex-box-unit {
+  font-size:clamp(13px,2.5vw,16px);font-weight:700;
+  color:var(--ink);white-space:nowrap;
+}
+.pex-box-footer {
+  padding:8px 16px;
+  border-top:1px solid var(--border);
+  font-size:12px;font-weight:700;
+  color:var(--ink-mid);
+  text-align:center;
+}
+.pex-arrow {
+  font-size:clamp(24px,4vw,36px);
+  color:var(--ink-lt);
+  flex-shrink:0;
+  display:flex;align-items:center;
+}
+.pex-img-note {
+  margin-top:16px;
+  font-size:11px;color:var(--ink-lt);
+  text-align:left;
+}
+@media(max-width:640px){
+  .pex-compare { flex-direction:column;gap:16px; }
+  .pex-box { flex-direction:row;min-height:120px; }
+  .pex-arrow { transform:rotate(90deg);justify-content:center; }
+  .pex-box-img { width:90px;min-width:90px; }
+}
+.pex-inner {
+  max-width:1100px;margin:0 auto;
+  padding:clamp(56px,10vw,88px) clamp(24px,4vw,40px);
+  text-align:center;
+}
+/* ══ 横長1枚カード ══ */
+.pex-one {
+  display:flex;align-items:stretch;
+  background:white;border:2px solid var(--border);border-radius:10px;
+  overflow:hidden;
+  margin-top:clamp(24px,5vw,40px);
+  max-width:1000px;margin-left:auto;margin-right:auto;
+  min-height:200px;
+}
+.pex-one-photo {
+  width:320px;min-width:320px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  font-size:14px;font-weight:700;color:var(--ink-lt);
+  position:relative;
+  overflow:hidden;
+}
+.pex-one-photo img { width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0; }
+.pex-one-photo img[src=""] { display:none; }
+.pex-one-normal, .pex-one-now {
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(12px,2vw,20px) clamp(10px,2vw,18px);
+}
+.pex-one-normal { background:var(--bg);text-align:right;align-items:flex-end;flex:0.8;opacity:0.6; }
+.pex-one-now { background:linear-gradient(135deg, #fff 0%, #FFF5F5 100%);text-align:center;align-items:center; }
+.pex-one-label {
+  font-size:clamp(12px,2.5vw,15px);font-weight:700;
+  color:#aaa;margin-bottom:4px;
+}
+.pex-one-label-now {
+  font-size:0;color:transparent;
+  display:block;
+  width:220px;height:0;
+  padding-top:124px;
+  background:url('<?php echo $lp_assets; ?>/price/label-ima.png') center/contain no-repeat;
+  margin:0 auto 4px;
+}
+.pex-one-desc {
+  font-size:11px;color:var(--ink-lt);margin-bottom:2px;
+}
+.pex-one-price {
+  display:flex;align-items:baseline;gap:2px;
+}
+.pex-one-num {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(24px,5vw,36px);font-weight:700;
+  color:#bbb;line-height:1;
+}
+.pex-one-num-now {
+  font-size:clamp(44px,10vw,72px);
+  color:#C0272D;
+}
+.pex-one-unit-red {
+  color:var(--ink) !important;font-weight:900;
+}
+.pex-one-unit {
+  font-size:clamp(13px,2.5vw,16px);font-weight:700;color:#bbb;
+}
+.pex-one-num-strike {
+  text-decoration:line-through;
+  text-decoration-color:#C0272D;
+  text-decoration-thickness:4px;
+  opacity:0.6;
+}
+.pex-one-save {
+  display:inline-block;
+  margin-top:8px;
+  background:#C0272D;color:#fff;
+  font-weight:900;font-size:clamp(12px,2.5vw,15px);
+  padding:5px 16px;border-radius:40px;
+  letter-spacing:.04em;
+}
+.pex-one-arrow {
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(24px,4vw,36px);color:var(--green);font-weight:900;
+  padding:0 clamp(8px,1.5vw,16px);
+}
+.pex-enkin {
+  margin-top:clamp(20px,4vw,32px);
+  border:3px solid var(--green);border-radius:10px;
+  padding:clamp(28px,5vw,44px) clamp(20px,4vw,36px);
+  max-width:900px;margin-left:auto;margin-right:auto;
+  background:linear-gradient(135deg, #fff 0%, #F0F8F2 100%);
+  box-shadow:0 4px 20px rgba(58,122,79,0.1);
+}
+.pex-enkin-main {
+  font-size:clamp(20px,5vw,32px);font-weight:900;
+  color:var(--ink);line-height:1.4;
+}
+.pex-enkin-main strong {
+  color:var(--green);
+}
+.pex-enkin-zero {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(48px,12vw,80px);font-weight:800;
+  color:var(--green);line-height:1;
+  display:inline-block;
+  margin:0 2px;
+}
+.pex-enkin-note {
+  margin-top:6px;
+  font-size:clamp(10px,2vw,12px);color:var(--ink-lt);
+}
+.pex-target {
+  margin-top:16px;
+  font-size:12px;color:var(--ink-lt);
+  border:1px dashed var(--border);
+  display:inline-block;padding:8px 20px;border-radius:4px;
+  letter-spacing:.04em;
+}
+/* pex-one mobile → メイン640px MQに統合済み */
+
+.pex-cards {
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(14px,3vw,24px);
+  margin-top:clamp(28px,6vw,48px);
+}
+@media(max-width:640px){ .pex-cards { grid-template-columns:1fr; } }
+.pex-card {
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:clamp(28px,6vw,36px) clamp(20px,4vw,28px);
+  text-align:center;
+}
+.pex-label {
+  font-size:12px;font-weight:700;letter-spacing:.2em;
+  color:var(--gold);margin-bottom:8px;text-transform:uppercase;
+}
+.pex-before {
+  font-size:clamp(14px,3.5vw,16px);color:rgba(255,255,255,0.5);
+  text-decoration:line-through;margin-bottom:4px;
+}
+.pex-after {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(32px,8vw,48px);font-weight:800;color:#fff;
+  line-height:1;margin-bottom:4px;
+}
+.pex-after small { font-size:.4em;font-weight:700; }
+.pex-note { font-size:12px;color:rgba(255,255,255,0.4); }
+.pex-badge {
+  display:inline-block;margin-top:10px;
+  background:var(--gold);color:var(--green-dk);
+  font-weight:900;font-size:12px;
+  padding:4px 14px;border-radius:40px;letter-spacing:.04em;
+}
+.pex-headline {
+  font-size:clamp(20px,5.5vw,32px);font-weight:900;
+  color:#fff;line-height:1.4;
+}
+.pex-headline em { font-style:normal;color:var(--ink); }
+.pex-sub-text {
+  font-size:13px;color:#999;margin-top:12px;line-height:1.8;
+}
+
+/* ══ 譲渡バナー ══ */
+.gift-band {
+  margin-top:32px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:clamp(24px,5vw,36px) clamp(20px,4vw,32px);
+  text-align:center;
+}
+.gift-title {
+  font-weight:900;font-size:clamp(18px,4.5vw,24px);
+  color:var(--gold);margin-bottom:10px;letter-spacing:.04em;
+  white-space:nowrap;
+}
+.gift-text {
+  font-size:clamp(13px,3.2vw,15px);color:rgba(255,255,255,0.75);
+  line-height:1.9;
+}
+.gift-text strong { color:#fff;font-weight:900; }
+.gift-emoji { font-size:28px;margin-bottom:8px; }
+.gift-band-row {
+  display:flex;align-items:center;
+  text-align:left;gap:clamp(20px,3vw,36px);
+  padding:0 !important;overflow:hidden;
+}
+.gift-band-row .gift-photo {
+  flex:0 0 40%;max-width:280px;
+}
+.gift-band-row .gift-photo img {
+  width:100%;height:100%;object-fit:cover;display:block;
+  min-height:200px;
+}
+.gift-band-row .gift-body {
+  flex:1;padding:clamp(20px,3vw,36px) clamp(20px,3vw,36px) clamp(20px,3vw,36px) 0;
+}
+@media(max-width:640px){
+  .gift-band-row { flex-direction:column;text-align:center; }
+  .gift-band-row .gift-photo { flex:none;width:100%;max-width:100%; }
+  .gift-band-row .gift-photo img { min-height:160px; }
+  .gift-band-row .gift-body { padding:20px 20px 24px; }
+}
+
+/* ══ CONFETTI — 削除済み ══ */
+.confetti-wrap { display:none; }
+.confetti {
+  position:absolute;top:-20px;
+  width:10px;height:10px;
+  opacity:.35;
+  animation:confetti-fall linear infinite;
+}
+@keyframes confetti-fall {
+  0% { transform:translateY(-20px) rotate(0deg); opacity:.4; }
+  100% { transform:translateY(110vh) rotate(720deg); opacity:0; }
+}
+.confetti:nth-child(1)  { left:5%;  width:20px;height:20px; background:#D4A820;animation-duration:4.2s;animation-delay:0s; }
+.confetti:nth-child(2)  { left:12%; width:15px;height:28px; background:#fff;   animation-duration:5.0s;animation-delay:.3s;border-radius:2px; }
+.confetti:nth-child(3)  { left:20%; width:24px;height:14px; background:#E8C030;animation-duration:4.5s;animation-delay:.8s; }
+.confetti:nth-child(4)  { left:28%; width:16px;height:16px; background:#fff;   animation-duration:5.5s;animation-delay:.2s;border-radius:50%; }
+.confetti:nth-child(5)  { left:35%; width:22px;height:12px; background:#D4A820;animation-duration:4.8s;animation-delay:1.2s; }
+.confetti:nth-child(6)  { left:42%; width:14px;height:24px; background:#C8A018;animation-duration:5.2s;animation-delay:.5s; }
+.confetti:nth-child(7)  { left:50%; width:18px;height:18px; background:#fff;   animation-duration:4.0s;animation-delay:1.0s;border-radius:50%; }
+.confetti:nth-child(8)  { left:58%; width:26px;height:14px; background:#E8C030;animation-duration:5.8s;animation-delay:.1s; }
+.confetti:nth-child(9)  { left:65%; width:16px;height:22px; background:#D4A820;animation-duration:4.3s;animation-delay:1.5s; }
+.confetti:nth-child(10) { left:72%; width:12px;height:26px; background:#fff;   animation-duration:5.1s;animation-delay:.7s;border-radius:2px; }
+.confetti:nth-child(11) { left:78%; width:22px;height:16px; background:#C8A018;animation-duration:4.6s;animation-delay:.4s; }
+.confetti:nth-child(12) { left:85%; width:20px;height:12px; background:#E8C030;animation-duration:5.4s;animation-delay:1.3s; }
+.confetti:nth-child(13) { left:92%; width:14px;height:22px; background:#D4A820;animation-duration:4.9s;animation-delay:.6s; }
+.confetti:nth-child(14) { left:8%;  width:24px;height:10px; background:#fff;   animation-duration:5.6s;animation-delay:1.8s; }
+.confetti:nth-child(15) { left:45%; width:12px;height:24px; background:#C8A018;animation-duration:4.4s;animation-delay:2.0s; }
+.confetti:nth-child(16) { left:55%; width:18px;height:14px; background:#fff;   animation-duration:5.3s;animation-delay:.9s;border-radius:50%; }
+.confetti:nth-child(17) { left:30%; width:16px;height:20px; background:#E8C030;animation-duration:4.7s;animation-delay:1.6s; }
+.confetti:nth-child(18) { left:68%; width:22px;height:12px; background:#D4A820;animation-duration:5.0s;animation-delay:2.2s; }
+.confetti:nth-child(19) { left:15%; width:14px;height:14px; background:#C8A018;animation-duration:4.1s;animation-delay:1.1s;border-radius:50%; }
+.confetti:nth-child(20) { left:82%; width:24px;height:16px; background:#fff;   animation-duration:5.7s;animation-delay:.2s; }
+
+/* メガネ紙吹雪 — SVGインライン */
+.confetti-megane {
+  position:absolute;top:-40px;
+  opacity:.2;
+  animation:confetti-fall linear infinite;
+  background:none;
+  line-height:1;
+}
+.confetti-megane svg {
+  width:100%;height:100%;
+  fill:none;stroke:rgba(255,255,255,0.8);stroke-width:1.5;stroke-linecap:round;
+}
+.confetti-megane:nth-child(21) { left:10%;width:30px;height:14px;animation-duration:5.5s;animation-delay:.4s; }
+.confetti-megane:nth-child(22) { left:38%;width:40px;height:18px;animation-duration:6.2s;animation-delay:1.2s; }
+.confetti-megane:nth-child(23) { left:62%;width:26px;height:12px;animation-duration:4.8s;animation-delay:2.0s; }
+.confetti-megane:nth-child(24) { left:88%;width:34px;height:16px;animation-duration:5.3s;animation-delay:.8s; }
+.confetti-megane:nth-child(25) { left:25%;width:28px;height:13px;animation-duration:6.0s;animation-delay:1.6s; }
+.confetti-megane:nth-child(26) { left:75%;width:36px;height:16px;animation-duration:5.0s;animation-delay:2.4s; }
+
+/* ══ UTILS ══ */
+.rv { opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease; }
+.rv.in { opacity:1;transform:translateY(0); }
+.d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}.d4{transition-delay:.24s}
+
+/* 店舗検索ブロック（インライン撤去） */
+#shop-search .sec.shop-sec { text-align:center; }
+.shop-intro {
+  font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:24px;
+  max-width:520px;margin-left:auto;margin-right:auto;
+}
+.shop-fallback-btn { margin-top:24px; }
+.shop-empty {
+  grid-column:1/-1;text-align:center;color:var(--ink-lt);
+  padding:24px 16px;font-size:15px;line-height:1.7;
+}
+
+/* 本文へスキップ（キーボード） */
+.skip-link {
+  position:absolute;left:-9999px;top:0;z-index:10001;
+  padding:12px 20px;background:var(--green-dk);color:#fff;
+  font-weight:700;font-size:14px;text-decoration:none;border-radius:0 0 8px 0;
+}
+.skip-link:focus { left:0;outline:2px solid var(--gold);outline-offset:2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pc, .sol-card, .howto-card, .shop-card { transition: none; }
+  .pc:hover, .sol-card:hover, .howto-card:hover { transform: none; }
+  .slot-reel-col .slot-reel-inner { animation: none; }
+}
+</style>
+</head>
+<body>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "GWフェア スロットクーポンキャンペーン",
+  "description": "スロットクーポンで最大5,500円OFF。アイメガネ各店で開催。",
+  "startDate": "2026-04-29",
+  "endDate": "2026-05-06",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "アイメガネ 各店舗",
+    "address": { "@type": "PostalAddress", "addressCountry": "JP" }
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "アイジャパン株式会社",
+    "url": "https://www.aimegane.com/"
+  }
+}
+</script>
+
+<a href="#main-content" class="skip-link">本文へスキップ</a>
+<!-- ===== ヘッダー ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="https://www.aimegane.com/" target="_blank" rel="noopener" class="header-logo">
+      <img src="<?php echo $lp_assets; ?>/logo/logo-aimegane-header.gif" alt="アイメガネ">
+    </a>
+    <nav class="header-nav">
+      <a href="#price-example">お得情報</a>
+      <a href="#deals">クーポン内容</a>
+      <a href="#howto">参加方法</a>
+      <a href="#period">開催概要</a>
+      <a href="#shop-search" class="header-cta">来店予約する</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+<!-- HERO -->
+<section id="hero">
+  <!-- スロットパターン背景（CSS背景画像用の空div） -->
+  <div class="hero-reel-deco"></div>
+  <!-- 右側写真（1枚） -->
+  <div class="hero-photo-single">
+    <img src="<?php echo $lp_assets; ?>/hero/hero-products-pc.png" alt="メガネ・補聴器・コンタクト・サングラス">
+  </div>
+  <!-- スマホ用：下側写真 -->
+  <div class="hero-photo-sp-bottom">
+    <img src="<?php echo $lp_assets; ?>/hero/hero-products-sp-bottom.png" alt="コンタクト・サングラス">
+  </div>
+  <!-- スマホ用：5,500円OFF + CTA（写真②の下） -->
+  <div class="hero-sp-cta">
+    <span class="h-offer-bottom-label"><strong style="letter-spacing:.12em;font-size:1.15em;color:#C0272D">その日に使える</strong>クーポンが当たる！</span>
+    <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
+    <div class="hero-sp-cta-wrap">
+      <a href="#shop-search" class="btn-h">来店予約する</a>
+      <p class="h-note" style="padding-left:0;">◇税込11,000円以上でお一人様につき1枚利用可<br>◇クーポン有効期限 6/7まで<br>◇他割引との併用不可</p>
+    </div>
+  </div>
+  <div class="hw">
+    <!-- ① 期間限定（左寄せ） -->
+    <div class="h-period-tag">
+      <span class="h-tag">対象期間</span>
+      <span class="h-date">4/29（火）〜5/6（火）</span>
+    </div>
+
+    <!-- ② GWフェア + スロットクーポンチャンス（左寄せセット） -->
+    <div class="h-title-group">
+      <h1 class="h-gw-main">GWフェア</h1>
+      <span class="h-offer-top-label">スロットクーポンチャンス！</span>
+    </div>
+
+    <!-- ③ 最大 5,500円OFF + サブ（中央寄せセット） -->
+    <div class="h-offer">
+      <span class="h-offer-bottom-label"><strong style="letter-spacing:.12em;font-size:1.15em;color:#C0272D">その日に使える</strong>クーポンが当たる！</span>
+      <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
+    </div>
+
+    <!-- ⑤ CTA + 注釈 -->
+    <div class="h-cta-row">
+      <div class="h-cta-wrap">
+        <a href="#shop-search" class="btn-h">
+          来店予約する
+        </a>
+        <p class="h-note">◇税込11,000円以上でお一人様につき1枚利用可<br>◇クーポン有効期限 6/7まで<br>◇他割引との併用不可</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ① お得情報 -->
+<section id="price-example">
+  <div class="pex-inner">
+    <p class="sl rv">Price Info</p>
+    <h2 class="st rv">お得情報</h2>
+    <p class="pex-sub-text rv">◇1等 5,500円OFFクーポンを使用した場合</p>
+
+    <!-- 横長1枚カード -->
+    <div class="pex-one rv">
+      <div class="pex-sp-img"><img src="<?php echo $lp_assets; ?>/price/price-card-megane.png" alt="メガネセット 通常13,200円が今だけ7,700円"></div>
+      <div class="pex-one-photo"><img src="<?php echo $lp_assets; ?>/price/price-megane.png" alt="メガネ写真" style="object-position:center center;"></div>
+      <div class="pex-one-normal">
+        <span class="pex-one-label">通常</span>
+        <span class="pex-one-desc">標準レンズ付きセット価格</span>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-strike">13,200</span><span class="pex-one-unit">円</span></div>
+      </div>
+      <div class="pex-one-arrow">▶</div>
+      <div class="pex-one-now">
+        <span class="pex-one-label pex-one-label-now">今だけ</span>
+        <span class="pex-one-desc">標準レンズ付きセット価格</span>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">7,700</span><span class="pex-one-unit pex-one-unit-red">円に！</span></div>
+        <span class="pex-one-save">5,500円OFF</span>
+      </div>
+    </div>
+
+    <!-- サングラス用カード -->
+    <div class="pex-one rv" style="margin-top:clamp(16px,3vw,24px);">
+      <div class="pex-sp-img"><img src="<?php echo $lp_assets; ?>/price/price-card-sunglasses.png" alt="サングラス 通常13,200円が今だけ9,900円"></div>
+      <div class="pex-one-photo"><img src="<?php echo $lp_assets; ?>/price/price-sunglasses.jpg" alt="サングラス写真" style="transform:scale(1.3);"></div>
+      <div class="pex-one-normal">
+        <span class="pex-one-label">通常</span>
+        <span class="pex-one-desc">サングラス価格</span>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-strike">13,200</span><span class="pex-one-unit">円</span></div>
+      </div>
+      <div class="pex-one-arrow">▶</div>
+      <div class="pex-one-now">
+        <span class="pex-one-label pex-one-label-now">今だけ</span>
+        <span class="pex-one-desc">サングラス価格</span>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">9,900</span><span class="pex-one-unit pex-one-unit-red">円に！</span></div>
+        <span class="pex-one-save">3,300円OFF</span>
+      </div>
+    </div>
+    <p class="pex-img-note rv">◇写真はイメージです<br>◇1枚目：1等5,500円OFF使用時<br>◇2枚目：2等3,300円OFF使用時</p>
+
+    <!-- 遠近両用レンズ訴求 -->
+    <div class="pex-enkin rv">
+      <p class="pex-enkin-main">遠近両用レンズが<strong><span style="font-size:0.5em;vertical-align:top;line-height:1;">&ldquo;</span><span class="pex-enkin-zero">0</span><span style="font-size:0.5em;vertical-align:top;line-height:1;">&rdquo;</span>円</strong>で作れる</p>
+      <p class="pex-enkin-note">◇遠近両用標準レンズ使用時</p>
+    </div>
+
+    <!-- 対象商品 -->
+    <p class="pex-target rv">対象商品：メガネ・サングラス<br>コンタクト・補聴器・アクセサリー</p>
+  </div>
+</section>
+
+<!-- ② クーポン内容 -->
+<section id="deals">
+  <div class="sec">
+    <p class="sl rv">Prize Lineup</p>
+    <h2 class="st rv">クーポン<em>内容</em></h2>
+    <div class="pg">
+      <div class="pc p1 rv d1"><div class="pr">1等</div><div class="pa"><span class="py">¥</span>5,500<span class="po">OFF</span></div><span class="pp">当選確率 10%</span></div>
+      <div class="pc rv d2"><div class="pr">2等</div><div class="pa"><span class="py">¥</span>3,300<span class="po">OFF</span></div><span class="pp">当選確率 39%</span></div>
+      <div class="pc p3 rv d3"><div class="pr">3等</div><div class="pa"><span class="py">¥</span>1,100<span class="po">OFF</span></div><span class="pp">当選確率 50%</span></div>
+      <div class="pc p4 rv d4"><div class="pr">4等</div><div class="pa"><span class="py">¥</span>550<span class="po">OFF</span></div><span class="pp">当選確率 1%</span></div>
+    </div>
+    <p class="pnote rv"><strong>ご来店者全員にクーポンプレゼント</strong></p>
+
+    <p class="sarani rv" aria-label="さらに"><span class="sarani-back">さ・ら・に！</span><span class="sarani-front" aria-hidden="true">さ・ら・に！</span></p>
+
+    <!-- ダブルチャンス帯 -->
+    <div class="dc-band rv">
+      <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w-outline" aria-hidden="true">W</span><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
+      <div class="dc-compare">
+        <!-- 予約なし -->
+        <div class="dc-col dc-col-normal">
+          <span class="dc-col-label">予約なし</span>
+          <p class="dc-col-slot">スロット <strong>1</strong>回挑戦できる！</p>
+          <p class="dc-col-desc">出た結果をそのまま使用</p>
+        </div>
+        <!-- 矢印 -->
+        <div class="dc-arrow">▶</div>
+        <!-- 予約あり -->
+        <div class="dc-col dc-col-special">
+          <span class="dc-col-label dc-col-label-sp">予約あり</span>
+          <p class="dc-col-slot dc-col-slot-sp">スロット <strong style="font-size:1.4em;">2</strong>回挑戦できる！</p>
+          <p class="dc-col-desc dc-col-desc-sp"><strong>大きい割引を選べる！</strong></p>
+          <p class="dc-col-sub">余りは家族やお友達に譲れます</p>
+        </div>
+      </div>
+      <a href="#shop-search" class="dc-band-btn">来店予約する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ③ 参加方法 -->
+<section id="howto">
+  <div class="howto-inner">
+    <p class="sl rv">How to</p>
+    <h2 class="st rv">参加<em>方法</em></h2>
+    <div class="howto-cards">
+
+      <div class="howto-card rv">
+        <div class="howto-card-photo"><img src="<?php echo $lp_assets; ?>/step/step1-visit.png" alt="店舗に来店する女性"></div>
+        <div class="howto-card-text">
+          <div class="howto-step-num">STEP 1</div>
+          <p class="howto-desc"><span class="howto-hl">GWフェア期間中</span>に<br>アイメガネ各店舗へ<span class="howto-hl">ご来店</span></p>
+          <p class="howto-note">◇4/29（火）〜 5/6（火）</p>
+        </div>
+      </div>
+
+      <div class="howto-card rv">
+        <div class="howto-card-photo"><img src="<?php echo $lp_assets; ?>/step/step2-slot.png" alt="スタッフがスロットを案内"></div>
+        <div class="howto-card-text">
+          <div class="howto-step-num">STEP 2</div>
+          <p class="howto-desc">店頭で<span class="howto-hl">スロットに挑戦</span></p>
+          <p class="howto-desc" style="margin-top:4px;"><span class="howto-hl">当たったクーポンをその場で<span style="font-family:'Montserrat',sans-serif;font-weight:800;color:var(--green-dk);-webkit-text-stroke:1.5px #fff;paint-order:stroke fill;font-size:1.2em;letter-spacing:.06em;">GET</span></span></p>
+          <p class="howto-note">◇ご来店者全員が対象です</p>
+        </div>
+      </div>
+
+      <div class="howto-card rv">
+        <div class="howto-card-photo"><img src="<?php echo $lp_assets; ?>/step/step3-checkout.png" alt="お会計時にクーポンを提示"></div>
+        <div class="howto-card-text">
+          <div class="howto-step-num">STEP 3</div>
+          <p class="howto-desc"><span class="howto-hl">お会計時にクーポン</span>を提示して<br>お得にお買い物</p>
+          <p class="howto-note">◇11,000円（税込）以上のお買い上げでお一人様につき1枚利用OK<br>◇クーポン有効期限：6/7（日）まで</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ④ 開催概要 -->
+<section id="period">
+  <div class="sec">
+    <p class="sl rv">Campaign Info</p>
+    <h2 class="st rv">開催概要</h2>
+    <div class="period-card rv">
+      <div class="period-dates">
+        <div class="period-date-col">
+          <p class="period-date-label">開催期間</p>
+          <p class="period-date-value" style="white-space:nowrap;">4/29<span>火</span> − 5/6<span>火</span></p>
+          <p class="period-date-sub">全店舗で開催</p>
+        </div>
+        <div class="period-date-col">
+          <p class="period-date-label">クーポン有効期限</p>
+          <p class="period-date-value">− 6/7 <span>日</span></p>
+          <p class="period-date-sub">フェア後もご利用OK</p>
+        </div>
+      </div>
+      <p class="period-target-line">対象商品：メガネ、サングラス、コンタクト、補聴器、アクセサリー</p>
+
+      <div class="period-cond-box">
+        <ul class="period-cond-list">
+          <li>税込 11,000円以上のお買い上げでご利用いただけます</li>
+          <li>おひとりにつきクーポン1枚使用可能</li>
+          <li>予約特典2枚の方はどちらか1枚をご使用</li>
+          <li>他割引との併用不可</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ⑤ 店舗検索 -->
+<section id="shop-search">
+  <div class="sec shop-sec">
+    <p class="sl rv">Shop</p>
+    <h2 class="st rv">お近くの<em>店舗を探す</em></h2>
+    <p class="rv shop-intro">郵便番号の<strong>上3桁</strong>でエリアを絞り込めます。未入力のまま検索すると掲載店舗を一覧表示します。</p>
+
+    <!-- 郵便番号検索 -->
+    <div class="shop-search-form rv">
+      <span class="shop-zip-label">〒</span>
+      <input type="text" id="zip1" maxlength="3" placeholder="330" class="shop-zip-input" inputmode="numeric" autocomplete="off" aria-label="郵便番号の前3桁">
+      <span class="shop-zip-sep">-</span>
+      <input type="text" id="zip2" maxlength="4" placeholder="0846" class="shop-zip-input shop-zip-input-lg" inputmode="numeric" autocomplete="off" aria-label="郵便番号の後4桁（任意）">
+      <button type="button" class="shop-search-btn" onclick="searchShop()">検索</button>
+    </div>
+
+    <!-- 検索結果 -->
+    <p id="shop-count" class="shop-count" style="display:none;" role="status" aria-live="polite"></p>
+    <div id="shop-results" class="shop-results"></div>
+
+    <!-- フォールバック -->
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h rv shop-fallback-btn">店舗一覧を見る</a>
+  </div>
+</section>
+
+<!-- ⑥ 最終CTA -->
+<section id="fcta">
+  <div class="fci">
+    <p class="fck rv">4/29〜5/6 GW期間限定</p>
+    <h2 class="fch rv">ご来店者全員に<br>最大<strong style="color:var(--green-dk);">5,500</strong>円OFFクーポン</h2>
+    <p class="fcp rv">予約でスロット2回挑戦できる<br>大きい割引を選んでお得にお買い物</p>
+    <a href="#shop-search" class="btn-h rv">来店予約する</a>
+  </div>
+</section>
+
+<!-- フローティングCTA -->
+<div class="float-cta" id="floatCta">
+  <div class="float-cta-inner">
+    <div class="float-cta-right">
+      予約で<strong>スロット2回</strong>まわせる<span class="float-w-chance"><span class="float-w">W</span>チャンス！</span>
+    </div>
+    <div class="float-cta-left">
+      <span class="float-cta-label">GWフェア 4/29〜5/6</span>
+      <a href="#shop-search" class="float-cta-btn">来店予約する</a>
+    </div>
+  </div>
+</div>
+
+<!-- 注意事項 -->
+<div class="notes-band">
+  <p>
+    ◇クーポンは1枚につき1回限り有効です。／
+    ◇税込11,000円以上のお買い上げに限りご利用いただけます。／
+    ◇他のクーポン・割引との併用はできません。／
+    ◇クーポン利用期限：2026年6月7日（日）まで
+  </p>
+</div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col footer-brand">
+      <img src="<?php echo $lp_assets; ?>/logo/logo-aimegane.gif" alt="アイメガネ" class="footer-logo">
+      <p class="footer-company">アイジャパン株式会社</p>
+      <p class="footer-address">〒330-0846 埼玉県さいたま市大宮区大門町2-12</p>
+    </div>
+    <div class="footer-col footer-links">
+      <a href="#shop-search" class="footer-cta-link">来店予約する ↗</a>
+      <a href="https://www.aimegane.com/" target="_blank" rel="noopener">アイメガネ公式サイト ↗</a>
+      <a href="https://www.aimegane.com/contact/" target="_blank" rel="noopener">お問い合わせ ↗</a>
+      <a href="https://www.aimegane.com/privacy/" target="_blank" rel="noopener">プライバシーポリシー ↗</a>
+    </div>
+  </div>
+  <p class="footer-copy">&copy; 2026 Ai JAPAN Co., Ltd. All rights reserved.</p>
+</footer>
+
+<script>
+// scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); }});
+}, { threshold:.1 });
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+// 店舗検索
+const SHOPS = [
+  { name:'アイメガネ本店', zip:'331', addr:'〒331-8760 埼玉県さいたま市北区宮原町1-505-1', web:'https://www.aimegane.com/qualification/6395/', tel:'048-668-0001' },
+  { name:'アイメガネ与野イオン店', zip:'338', addr:'〒338-0004 埼玉県さいたま市中央区本町西5-2-9', web:'https://www.aimegane.com/qualification/6938/', tel:'048-851-0001' },
+  { name:'アイメガネ与野本町店', zip:'338', addr:'〒338-0003 さいたま市中央区本町東1-6-3', web:'https://www.aimegane.com/qualification/7355/', tel:'048-852-0001' },
+  { name:'アイメガネ南浦和店', zip:'336', addr:'〒336-0017 埼玉県さいたま市南区南浦和3-2-5', web:'https://www.aimegane.com/qualification/6340/', tel:'048-885-0001' },
+  { name:'アイメガネ岩槻駅前通り店', zip:'339', addr:'〒339-0055 埼玉県さいたま市岩槻区東町1-12', web:'https://www.aimegane.com/qualification/7356/', tel:'048-757-0001' },
+  { name:'アイメガネ上尾東口駅前店', zip:'362', addr:'〒362-0036 埼玉県上尾市宮本町4-18', web:'https://www.aimegane.com/qualification/7153/', tel:'048-773-0001' },
+  { name:'アイメガネ鴻巣東駅通り店', zip:'365', addr:'〒365-0039 埼玉県鴻巣市東2-6-2', web:'https://www.aimegane.com/qualification/6939/', tel:'048-542-0001' },
+  { name:'アイメガネ鴻巣ウニクス店', zip:'369', addr:'〒369-0116 埼玉県鴻巣市北新宿225-1', web:'https://www.aimegane.com/qualification/7358/', tel:'048-547-0001' },
+  { name:'アイメガネ熊谷ティアラ店', zip:'360', addr:'〒360-0037 埼玉県熊谷市筑波3-202', web:'https://www.aimegane.com/qualification/7359/', tel:'048-525-0001' },
+  { name:'アイメガネ深谷上柴西店', zip:'366', addr:'〒366-0052 埼玉県深谷市上柴町西3-7-9', web:'https://www.aimegane.com/qualification/6681/', tel:'048-572-0001' },
+  { name:'アイメガネ本庄南大通り店', zip:'367', addr:'〒367-0044 埼玉県本庄市見福3-13-12', web:'https://www.aimegane.com/shop/', tel:'0495-21-0001' },
+  { name:'アイメガネ富士見鶴馬店', zip:'354', addr:'〒354-0021 埼玉県富士見市鶴馬1-25-1', web:'https://www.aimegane.com/qualification/7158/', tel:'049-251-0001' },
+  { name:'アイメガネ川越的場店', zip:'350', addr:'〒350-1101 埼玉県川越市的場823-1', web:'https://www.aimegane.com/qualification/7159/', tel:'049-233-0001' },
+  { name:'アイメガネ坂戸にっさい店', zip:'350', addr:'〒350-0269 埼玉県坂戸市にっさい花みず木3-11-2', web:'https://www.aimegane.com/qualification/6940/', tel:'049-280-0001' },
+  { name:'アイメガネ東松山松本町店', zip:'355', addr:'〒355-0014 埼玉県東松山市松本町2-7-1', web:'https://www.aimegane.com/qualification/7361/', tel:'0493-27-0001' },
+  { name:'アイメガネ嵐山バイパス店', zip:'355', addr:'〒355-0215 埼玉県比企郡嵐山町平澤2610', web:'https://www.aimegane.com/qualification/7362/', tel:'0493-61-0001' },
+  { name:'アイメガネ小川大塚店', zip:'355', addr:'〒355-0328 埼玉県比企郡小川町大塚541-1', web:'https://www.aimegane.com/qualification/7363/', tel:'0493-73-0001' },
+  { name:'アイメガネ寄居店', zip:'369', addr:'〒369-1203 埼玉県大里郡寄居町寄居1615-1', web:'https://www.aimegane.com/qualification/7364/', tel:'048-580-0001' },
+  { name:'アイメガネ日高店', zip:'350', addr:'〒350-1231 埼玉県日高市鹿山301-6', web:'https://www.aimegane.com/qualification/5078/', tel:'042-986-0001' },
+  { name:'アイメガネイオンタウン毛呂山店', zip:'350', addr:'〒350-0436 埼玉県入間郡毛呂山町川角58-3', web:'https://www.aimegane.com/qualification/6941/', tel:'049-293-0001' },
+  { name:'アイメガネ秩父中宮地店', zip:'368', addr:'〒368-0022 埼玉県秩父市中宮地町5-7', web:'https://www.aimegane.com/qualification/6682/', tel:'0494-21-0001' },
+  { name:'アイメガネ川口赤井店', zip:'334', addr:'〒334-0073 埼玉県川口市赤井4-16-19', web:'https://www.aimegane.com/qualification/7154/', tel:'048-280-0001' },
+  { name:'アイメガネエキア谷塚店', zip:'340', addr:'〒340-0028 埼玉県草加市谷塚1-1-23', web:'https://www.aimegane.com/qualification/7156/', tel:'048-924-0001' },
+  { name:'アイメガネ三郷南口駅前通り店', zip:'341', addr:'〒341-0024 埼玉県三郷市三郷1-27-7', web:'https://www.aimegane.com/qualification/7360/', tel:'048-949-0002' },
+  { name:'アイメガネ新越谷店', zip:'343', addr:'〒343-0857 埼玉県越谷市新越谷1-70-1', web:'https://www.aimegane.com/qualification/6133/', tel:'048-990-0001' },
+  { name:'アイメガネ蓮田関山店', zip:'349', addr:'〒349-0121 埼玉県蓮田市関山2-6-13', web:'https://www.aimegane.com/qualification/7152/', tel:'048-764-0001' },
+  { name:'アイメガネ幸手エムズタウン店', zip:'340', addr:'〒340-0155 埼玉県幸手市上高野824', web:'https://www.aimegane.com/qualification/7157/', tel:'0480-44-0001' },
+  { name:'アイメガネ羽生店', zip:'348', addr:'〒348-0053 埼玉県羽生市南7-1-1', web:'https://www.aimegane.com/qualification/6937/', tel:'048-563-0001' },
+  { name:'アイメガネ小平小川町店', zip:'187', addr:'〒187-0032 東京都小平市小川町2-1328', web:'https://www.aimegane.com/qualification/6683/', tel:'042-347-6877' },
+  { name:'アイメガネザ・マーケットプレイス東大和店', zip:'207', addr:'〒207-0021 東京都東大和市立野3-1344-1', web:'https://www.aimegane.com/qualification/6684/', tel:'042-843-7011' },
+  { name:'アイメガネ町田木曽店', zip:'194', addr:'〒194-0036 東京都町田市木曽東3-8-1', web:'https://www.aimegane.com/qualification/7679/', tel:'042-724-0201' },
+  { name:'アイメガネおもちゃのまち西口店', zip:'321', addr:'〒321-0206 栃木県下都賀郡壬生町あけぼの町5-5', web:'https://www.aimegane.com/qualification/7678/', tel:'0282-85-0001' },
+  { name:'アイメガネ宇都宮錦店', zip:'321', addr:'〒321-0967 栃木県宇都宮市錦3-9-11', web:'https://www.aimegane.com/qualification/7433/', tel:'028-627-0001' },
+  { name:'アイメガネ今市センショープラザ店', zip:'321', addr:'〒321-2405 栃木県日光市芹沼1448-1', web:'https://www.aimegane.com/qualification/6680/', tel:'0288-23-0001' },
+  { name:'アイメガネ八千代台ユアエルム店', zip:'276', addr:'〒276-0032 千葉県八千代市八千代台東1-1-10', web:'https://www.aimegane.com/qualification/7365/', tel:'047-485-0001' },
+  { name:'アイメガネ古河イオン店', zip:'306', addr:'〒306-0012 茨城県古河市旭町1-2-17', web:'https://www.aimegane.com/qualification/7366/', tel:'0280-33-0001' },
+  { name:'アイメガネ藤岡店', zip:'375', addr:'〒375-0024 群馬県藤岡市藤岡937-1', web:'https://www.aimegane.com/qualification/7367/', tel:'0274-22-0001' },
+  { name:'アイメガネ焼津石津店', zip:'425', addr:'〒425-0041 静岡県焼津市石津3-19-16', web:'https://www.aimegane.com/qualification/7369/', tel:'054-656-0001' },
+];
+function searchShop(){
+  const z1=document.getElementById('zip1').value.trim();
+  const z2=document.getElementById('zip2').value.trim();
+  const zip=z1+z2;
+  const results=zip.length>=3?SHOPS.filter(s=>s.zip===z1):SHOPS;
+  const countEl=document.getElementById('shop-count');
+  const resEl=document.getElementById('shop-results');
+  countEl.style.display='block';
+  if(results.length===0){
+    countEl.textContent='この郵便番号（上3桁）に一致する店舗はありません。';
+    resEl.innerHTML='<p class="shop-empty">別の番号を試すか、下の「店舗一覧を見る」からお近くの店舗をお探しください。</p>';
+    return;
+  }
+  if(zip.length<3){
+    countEl.textContent='掲載 '+results.length+' 店舗を表示しています（上3桁を入れて絞り込み）。';
+  } else {
+    countEl.textContent='該当 '+results.length+' 店舗';
+  }
+  resEl.innerHTML=results.map(s=>`
+    <div class="shop-card">
+      <p class="shop-card-name">${s.name}</p>
+      <p class="shop-card-addr">${s.addr}</p>
+      <div class="shop-card-btns">
+        <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">WEB予約</a>
+        <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel">電話予約</a>
+      </div>
+    </div>
+  `).join('');
+}
+document.getElementById('zip1').addEventListener('input',function(){if(this.value.length>=3)document.getElementById('zip2').focus();});
+document.getElementById('zip1').addEventListener('keydown',function(e){
+  if(e.key!=='Enter')return;
+  e.preventDefault();
+  if(this.value.trim().length>=3)searchShop();
+  else document.getElementById('zip2').focus();
+});
+document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();searchShop();}});
+
+// デフォルトでは店舗を表示しない（検索時のみ表示）
+
+// フローティングCTA: ヒーロー通過後に表示
+const fc = document.getElementById('floatCta');
+const hero = document.getElementById('hero');
+window.addEventListener('scroll', () => {
+  fc.classList.toggle('visible', window.scrollY > hero.offsetHeight - 100);
+}, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(git push:*)",
+      "Bash(gh api:*)",
+      "Bash(grep -iE \"zoff|jins|眼鏡市場|メガネスーパー|パリミキ|999\\\\.\" /c/Users/m-iida/Desktop/gw-fair-lp/_old/*.html)",
+      "Read(//c/Users/m-iida/Desktop/**)"
+    ]
+  }
+}
