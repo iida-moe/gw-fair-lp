@@ -91,7 +91,7 @@ a:focus:not(:focus-visible) { outline: none; }
 #hero::before { display:none; }
 .hero-grid { display:none; }
 .hero-photo-single {
-  position:absolute;right:0;top:0;bottom:0;width:42%;
+  position:absolute;right:0;top:0;bottom:0;width:48%;
   z-index:0;
   overflow:hidden;
 }
@@ -100,6 +100,7 @@ a:focus:not(:focus-visible) { outline: none; }
   object-fit:cover;
   object-position:center 30%;
   display:block;
+  transform:scale(1.05);
 }
 /* スマホ用 — PC非表示 */
 .hero-photo-sp-bottom { display:none; }
@@ -110,7 +111,7 @@ a:focus:not(:focus-visible) { outline: none; }
 #hero::after {
   content:'';position:absolute;inset:0;
   background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 70%, #4A9E6C 100%);
-  clip-path:polygon(0 0, 58% 0, 58% 100%, 0 100%);
+  clip-path:polygon(0 0, 52% 0, 52% 100%, 0 100%);
   pointer-events:none;
   z-index:1;
 }
@@ -171,18 +172,11 @@ a:focus:not(:focus-visible) { outline: none; }
   z-index:2;
   pointer-events:none;
   top:0;bottom:0;left:0;
-  width:58%;
-  background:url('images/hero/slot-pattern.png') 95% 100%/180% auto no-repeat;
+  width:50%;
+  background:url('images/hero/slot-pattern.png') calc(50% + 150px) 25%/170% auto no-repeat;
   opacity:0.7;
   mix-blend-mode:multiply;
-}
-/* 金色レイヤー */
-.hero-reel-deco::after {
-  content:'';
-  position:absolute;inset:0;
-  background:url('images/hero/slot-pattern.png') 95% 100%/180% auto no-repeat;
-  mix-blend-mode:overlay;
-  opacity:0.7;
+  overflow:hidden;
 }
 .hero-reel-deco img { display:none; }
 .slot-reel-strip { display:contents; }
@@ -1203,6 +1197,7 @@ footer {
   .pex-inner { padding:48px 16px; }
   /* ── お得カード（スマホ：Canva画像で表示） ── */
   .pex-one { position:relative;border:none;box-shadow:none;background:none;min-height:0; }
+  .pex-one::before { display:none !important; }
   .pex-one > * { display:none !important; }
   .pex-one .pex-sp-img { display:block !important;width:100%; }
   .pex-one .pex-sp-img img { width:100%;height:auto;display:block;border-radius:8px; }
@@ -1707,80 +1702,118 @@ footer {
 }
 /* ══ 横長1枚カード ══ */
 .pex-one {
+  position:relative;
   display:flex;align-items:stretch;
-  background:white;border:2px solid var(--border);border-radius:10px;
-  overflow:hidden;
-  margin-top:clamp(24px,5vw,40px);
+  background:#fff;border:none;border-radius:12px;
+  overflow:visible;
+  margin-top:clamp(44px,6vw,60px);
   max-width:1000px;margin-left:auto;margin-right:auto;
-  min-height:200px;
+  min-height:240px;
+  box-shadow:0 8px 28px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
+  transition:transform .3s ease,box-shadow .3s ease;
 }
+.pex-one:hover {
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,0.12),0 4px 10px rgba(0,0,0,0.06);
+}
+/* 「今だけ」タグ（緑枠のみ） */
+.pex-one::before {
+  content:"今だけ";
+  position:absolute;
+  top:-14px;right:14%;
+  background:#fff;
+  color:#2E5A3A;
+  font-size:13px;font-weight:800;
+  padding:5px 18px 6px;
+  border:1.5px solid #2E5A3A;
+  letter-spacing:.14em;
+  z-index:1;
+}
+/* カード内部の角丸 */
+.pex-one .pex-one-photo { border-radius:12px 0 0 12px; }
+.pex-one .pex-one-now { border-radius:0 12px 12px 0; }
 .pex-one-photo {
-  width:320px;min-width:320px;background:var(--bg);
-  display:flex;align-items:center;justify-content:center;
+  width:300px;min-width:300px;background:#fff;
   flex-shrink:0;
-  font-size:14px;font-weight:700;color:var(--ink-lt);
   position:relative;
   overflow:hidden;
 }
 .pex-one-photo img { width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0; }
 .pex-one-photo img[src=""] { display:none; }
 .pex-one-normal, .pex-one-now {
-  flex:1;display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(12px,2vw,20px) clamp(10px,2vw,18px);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(20px,3vw,32px) clamp(16px,2.5vw,28px);
 }
-.pex-one-normal { background:var(--bg);text-align:right;align-items:flex-end;flex:0.8;opacity:0.6; }
-.pex-one-now { background:linear-gradient(135deg, #fff 0%, #FFF5F5 100%);text-align:center;align-items:center; }
+.pex-one-normal {
+  background:#FAFAFA;
+  text-align:right;align-items:flex-end;
+  flex:0.75;
+}
+.pex-one-now {
+  background:#fff;
+  text-align:center;align-items:center;
+  flex:1.25;
+  position:relative;
+}
 .pex-one-label {
-  font-size:clamp(12px,2.5vw,15px);font-weight:700;
-  color:#aaa;margin-bottom:4px;
+  font-size:clamp(13px,2.2vw,15px);font-weight:700;
+  color:#999;margin-bottom:8px;letter-spacing:.12em;
 }
-.pex-one-label-now {
-  font-size:0;color:transparent;
-  display:block;
-  width:220px;height:0;
-  padding-top:124px;
-  background:url('images/price/label-ima.png') center/contain no-repeat;
-  margin:0 auto 4px;
-}
+.pex-one-label-now { display:none; }
 .pex-one-desc {
-  font-size:11px;color:var(--ink-lt);margin-bottom:2px;
+  font-size:clamp(11px,1.8vw,13px);
+  color:#999;margin-bottom:6px;
+  letter-spacing:.02em;
 }
 .pex-one-price {
   display:flex;align-items:baseline;gap:2px;
+  white-space:nowrap;
 }
 .pex-one-num {
   font-family:'Montserrat','Noto Sans JP',sans-serif;
-  font-size:clamp(24px,5vw,36px);font-weight:700;
-  color:#bbb;line-height:1;
+  font-size:clamp(28px,4.5vw,38px);font-weight:700;
+  color:#888;line-height:1;
 }
 .pex-one-num-now {
-  font-size:clamp(44px,10vw,72px);
+  font-size:clamp(56px,8.5vw,80px);
+  font-weight:900;
   color:#C0272D;
+  letter-spacing:-.01em;
 }
 .pex-one-unit-red {
-  color:var(--ink) !important;font-weight:900;
+  color:var(--ink) !important;
+  font-weight:900;
+  font-size:.32em;
+  margin-left:2px;
 }
 .pex-one-unit {
-  font-size:clamp(13px,2.5vw,16px);font-weight:700;color:#bbb;
+  font-size:clamp(14px,2vw,17px);font-weight:700;color:#888;
+  margin-left:2px;
 }
 .pex-one-num-strike {
   text-decoration:line-through;
   text-decoration-color:#C0272D;
-  text-decoration-thickness:4px;
-  opacity:0.6;
+  text-decoration-thickness:3px;
+  color:#888;
 }
 .pex-one-save {
   display:inline-block;
-  margin-top:8px;
-  background:#C0272D;color:#fff;
-  font-weight:900;font-size:clamp(12px,2.5vw,15px);
-  padding:5px 16px;border-radius:40px;
-  letter-spacing:.04em;
+  margin-top:12px;
+  color:#C0272D;
+  font-weight:900;font-size:clamp(15px,2.6vw,19px);
+  letter-spacing:.06em;
+  border-bottom:2px solid #C0272D;
+  padding:2px 4px 4px;
 }
 .pex-one-arrow {
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:clamp(24px,4vw,36px);color:var(--green);font-weight:900;
-  padding:0 clamp(8px,1.5vw,16px);
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(36px,5vw,52px);
+  color:#C0272D;
+  font-weight:300;
+  padding:0 clamp(10px,1.5vw,18px);
+  line-height:1;
+  background:#FAFAFA;
 }
 .pex-enkin {
   margin-top:clamp(20px,4vw,32px);
@@ -1804,8 +1837,13 @@ footer {
   display:inline-block;
   margin:0 2px;
 }
+.pex-enkin-sub {
+  margin-top:10px;
+  font-size:clamp(13px,2.5vw,16px);font-weight:600;
+  color:var(--ink);letter-spacing:.04em;
+}
 .pex-enkin-note {
-  margin-top:6px;
+  margin-top:8px;
   font-size:clamp(10px,2vw,12px);color:var(--ink-lt);
 }
 .pex-target {
@@ -2109,29 +2147,25 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
         <span class="pex-one-desc">標準レンズ付きセット価格</span>
         <div class="pex-one-price"><span class="pex-one-num pex-one-num-strike">13,200</span><span class="pex-one-unit">円</span></div>
       </div>
-      <div class="pex-one-arrow">▶</div>
+      <div class="pex-one-arrow">→</div>
       <div class="pex-one-now">
-        <span class="pex-one-label pex-one-label-now">今だけ</span>
-        <span class="pex-one-desc">標準レンズ付きセット価格</span>
-        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">7,700</span><span class="pex-one-unit pex-one-unit-red">円に！</span></div>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">7,700</span><span class="pex-one-unit-red">円に！</span></div>
         <span class="pex-one-save">5,500円OFF</span>
       </div>
     </div>
 
     <!-- サングラス用カード -->
     <div class="pex-one rv" style="margin-top:clamp(16px,3vw,24px);">
-      <div class="pex-sp-img"><img src="images/price/price-card-sunglasses.png" alt="サングラス 通常13,200円が今だけ9,900円"></div>
-      <div class="pex-one-photo"><img src="images/price/price-sunglasses.jpg" alt="サングラス写真" style="transform:scale(1.3);"></div>
+      <div class="pex-sp-img"><img src="images/price/price-card-SG.png" alt="サングラス 通常11,000円が今だけ7,700円"></div>
+      <div class="pex-one-photo"><img src="images/price/price-SG.png" alt="サングラス写真"></div>
       <div class="pex-one-normal">
         <span class="pex-one-label">通常</span>
         <span class="pex-one-desc">サングラス価格</span>
-        <div class="pex-one-price"><span class="pex-one-num pex-one-num-strike">13,200</span><span class="pex-one-unit">円</span></div>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-strike">11,000</span><span class="pex-one-unit">円</span></div>
       </div>
-      <div class="pex-one-arrow">▶</div>
+      <div class="pex-one-arrow">→</div>
       <div class="pex-one-now">
-        <span class="pex-one-label pex-one-label-now">今だけ</span>
-        <span class="pex-one-desc">サングラス価格</span>
-        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">9,900</span><span class="pex-one-unit pex-one-unit-red">円に！</span></div>
+        <div class="pex-one-price"><span class="pex-one-num pex-one-num-now">7,700</span><span class="pex-one-unit-red">円に！</span></div>
         <span class="pex-one-save">3,300円OFF</span>
       </div>
     </div>
@@ -2139,12 +2173,11 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
     <!-- 遠近両用レンズ訴求 -->
     <div class="pex-enkin rv">
-      <p class="pex-enkin-main">遠近両用レンズが<strong><span style="font-size:0.5em;vertical-align:top;line-height:1;">&ldquo;</span><span class="pex-enkin-zero">0</span><span style="font-size:0.5em;vertical-align:top;line-height:1;">&rdquo;</span>円</strong>で作れる</p>
-      <p class="pex-enkin-note">◇遠近両用標準レンズ使用時</p>
+      <p class="pex-enkin-main">遠近両用も<strong>&ldquo;追加料金<span class="pex-enkin-zero">0</span>&rdquo;</strong></p>
+      <p class="pex-enkin-sub">フレーム＋標準レンズのセット価格そのまま</p>
+      <p class="pex-enkin-note">◇標準遠近両用レンズ使用時　◇薄型・コーティング等のオプションレンズは別途料金</p>
     </div>
 
-    <!-- 対象商品 -->
-    <p class="pex-target rv">対象商品：メガネ・サングラス<br>コンタクト・補聴器・アクセサリー</p>
   </div>
 </section>
 
