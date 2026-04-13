@@ -453,8 +453,74 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* ══ PRIZES ══ */
 #prizes { background:var(--bg); }
+/* 1等 特大カード */
+.pc-hero {
+  max-width:500px;
+  margin:0 auto clamp(10px,2vw,16px);
+  text-align:center;
+  border:2px solid var(--gold);
+  background:linear-gradient(135deg,#FFFDF5 0%,#FFF8E1 100%);
+  padding:clamp(14px,3vw,24px) clamp(16px,3vw,28px);
+}
+.pc-hero .pr { text-align:center;font-size:clamp(20px,4vw,28px);margin-bottom:4px; }
+.pc-hero .pa { font-size:clamp(44px,12vw,72px);justify-content:center;margin-bottom:6px; }
+.pc-hero .pp { font-size:clamp(12px,2.2vw,14px);padding:4px 16px; }
+/* 全等 行リスト */
+.prize-list {
+  max-width:480px;
+  margin:clamp(16px,3vw,24px) auto 0;
+}
+.prize-row {
+  display:flex;align-items:center;
+  padding:clamp(12px,2.5vw,16px) 0;
+  border-bottom:1px solid var(--border);
+  gap:clamp(10px,2.5vw,16px);
+}
+.prize-row-last { border-bottom:none; }
+.prize-list { margin-bottom:clamp(32px,6vw,56px); }
+/* 1等 */
+.prize-row-1st {
+  padding:clamp(16px,3vw,24px) 0;
+  border-bottom:2px solid var(--gold);
+  margin-bottom:4px;
+}
+.prize-row-1st .prize-rank {
+  font-size:clamp(18px,4.5vw,24px);
+  color:var(--gold);
+}
+.prize-row-1st .prize-amount {
+  font-size:clamp(36px,9vw,52px);
+  color:var(--gold);
+}
+.prize-row-1st .prize-odds {
+  color:var(--gold);font-weight:700;
+  font-size:clamp(11px,2.2vw,13px);
+}
+.prize-rank {
+  font-size:clamp(13px,2.8vw,16px);font-weight:900;
+  color:var(--green);
+  min-width:40px;
+  text-align:center;
+  letter-spacing:.1em;
+}
+.prize-amount {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:clamp(22px,5.5vw,30px);font-weight:800;
+  color:var(--green-dk);
+  flex:1;
+}
+.prize-amount small { font-size:.45em;font-weight:700;margin-left:2px; }
+.prize-odds {
+  font-size:clamp(10px,2vw,12px);font-weight:600;
+  color:var(--ink-lt);
+  white-space:nowrap;
+  min-width:70px;
+  text-align:right;
+}
+.p3-color { color:#4A9EB5 !important; }
+.p4-color { color:var(--ink-lt) !important; }
 .pg { display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,3vw,20px); }
-@media(max-width:480px){.pg{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.pg-sub{grid-template-columns:1fr 1fr 1fr;}}
 .pc {
   background:white;border-radius:12px;
   padding:clamp(24px,6vw,32px) clamp(20px,5vw,28px);
@@ -482,15 +548,20 @@ a:focus:not(:focus-visible) { outline: none; }
 .p4 .pa { color:var(--ink-lt); }
 .p4 .pr { color:var(--ink-lt); }
 .pnote {
-  margin-top:36px;position:relative;
-  padding:20px 24px;
-  background:linear-gradient(135deg, var(--green) 0%, var(--green-dk) 100%);
-  color:#fff;font-size:clamp(14px,3.5vw,18px);font-weight:900;
+  margin-top:24px;position:relative;
+  padding:16px 24px 14px;
+  background:#fff;
+  border:2px solid #C0272D;
+  border-radius:8px;
   text-align:center;line-height:1.6;letter-spacing:.04em;
-  clip-path:polygon(0 0, 100% 0, 100% calc(100% - 16px), 50% 100%, 0 calc(100% - 16px));
-  padding-bottom:36px;
+  max-width:480px;
+  margin-left:auto;margin-right:auto;
 }
-.pnote strong { color:var(--gold); }
+.pnote strong {
+  color:#C0272D;
+  font-size:clamp(18px,4.5vw,24px);
+  font-weight:900;
+}
 
 /* ══ STAT ══ */
 #stat {
@@ -585,32 +656,17 @@ a:focus:not(:focus-visible) { outline: none; }
 /* 対象商品テキスト */
 .period-target-line {
   text-align:center;
-  font-size:clamp(13px,3.2vw,15px);font-weight:700;
+  font-size:clamp(11px,2.5vw,14px);font-weight:600;
   color:var(--ink-mid);
-  margin-bottom:clamp(20px,4vw,28px);
+  margin-bottom:8px;
   letter-spacing:.02em;
+  white-space:nowrap;
 }
-/* 条件ボックス */
-.period-cond-box {
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:clamp(20px,4vw,28px) clamp(20px,4vw,28px);
-}
-.period-cond-list {
-  list-style:none;padding:0;margin:0;
-}
-.period-cond-list li {
-  padding:7px 0;
-  font-size:clamp(13px,3.2vw,15px);
-  color:var(--ink);line-height:1.7;
-  display:flex;align-items:baseline;gap:8px;
-}
-.period-cond-list li::before {
-  content:'◆';color:var(--ink-lt);font-size:9px;flex-shrink:0;
-}
-.period-cond-list li:first-child {
-  font-weight:900;
-  font-size:clamp(14px,3.5vw,17px);
+.period-notes {
+  text-align:center;
+  font-size:clamp(10px,2.2vw,12px);
+  color:var(--ink-lt);
+  line-height:1.8;
 }
 
 /* ══ FINAL CTA ══ */
@@ -650,7 +706,7 @@ a:focus:not(:focus-visible) { outline: none; }
 
 /* ══ ダブルチャンス帯 ══ */
 .dc-band {
-  margin-top:48px;
+  margin-top:clamp(48px,8vw,72px);
   background:#fff;
   border:3px solid var(--green-dk);
   border-radius:10px;
@@ -678,6 +734,41 @@ a:focus:not(:focus-visible) { outline: none; }
   background:linear-gradient(transparent 55%, rgba(212,168,32,0.3) 55%);
   transform:rotate(-2deg);
   display:inline-block;
+}
+.dc-photo {
+  margin:clamp(12px,3vw,20px) auto;
+  max-width:320px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.dc-photo img {
+  width:100%;height:auto;display:block;
+}
+.dc-merit-group {
+  text-align:left;
+  margin:clamp(8px,2vw,12px) 0;
+}
+.dc-simple-slot {
+  font-size:clamp(18px,4.5vw,24px);color:var(--ink);
+  font-weight:900;
+  margin-bottom:12px;
+}
+.dc-simple-slot strong {
+  color:var(--green-dk);font-size:1.1em;
+}
+.dc-simple-merit {
+  font-size:clamp(12px,2.8vw,14px);color:var(--ink-lt);
+  font-weight:600;
+  margin-bottom:12px;
+}
+.dc-simple-bonus {
+  font-size:clamp(15px,3.5vw,19px);font-weight:900;
+  color:#C0272D;
+  margin-bottom:4px;
+}
+.dc-simple-note {
+  font-size:clamp(10px,2.2vw,12px);color:var(--ink-lt);
+  margin-bottom:16px;
 }
 .dc-band-text {
   font-size:clamp(13px,3.2vw,15px);color:var(--ink-mid);
@@ -729,9 +820,13 @@ a:focus:not(:focus-visible) { outline: none; }
   z-index:0;
 }
 .dc-w-ruby {
+  position:absolute;
+  top:-1.2em;
+  left:50%;
+  transform:translateX(-50%);
   font-size:0.3em;font-weight:700;
   letter-spacing:.1em;
-  margin-top:-2px;
+  white-space:nowrap;
 }
 /* 比較レイアウト */
 .dc-compare {
@@ -977,11 +1072,12 @@ footer {
 }
 .footer-inner {
   max-width:720px;margin:0 auto;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:40px;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
   padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.08);
   margin-bottom:20px;
+  text-align:center;
 }
-.footer-logo { width:160px;margin-bottom:12px; }
+.footer-logo { width:160px;margin:0 auto 12px; }
 .footer-company { font-size:13px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:4px; }
 .footer-address { font-size:11px;color:rgba(255,255,255,0.35);line-height:1.7; }
 .footer-links { display:flex;flex-direction:column;gap:12px;padding-top:4px; }
@@ -1201,9 +1297,14 @@ footer {
 
   /* ── クーポン内容 ── */
   .pg { gap:8px;grid-template-columns:1fr 1fr !important; }
-  .pc { padding:14px 10px; }
+  .pc { padding:12px 8px; }
+  .pc-hero { padding:12px;margin-bottom:8px; }
+  .pc-hero .pr { font-size:clamp(16px,4.5vw,22px);margin-bottom:2px; }
+  .pc-hero .pa { font-size:clamp(36px,10vw,48px);margin-bottom:4px; }
+  .pc-hero .pp { font-size:10px;padding:3px 12px; }
+  .pg-4th .pc { max-width:50%;padding:8px 12px; }
   .pr { font-size:clamp(12px,3vw,16px); }
-  .pa { font-size:clamp(22px,6vw,30px); }
+  .pa { font-size:clamp(20px,5.5vw,28px); }
   .py { font-size:.35em; }
   .po { font-size:.35em; }
   .pp { font-size:9px;padding:2px 8px; }
@@ -1809,41 +1910,36 @@ footer {
 }
 .pex-enkin {
   margin-top:clamp(20px,4vw,32px);
-  border:3px solid var(--green);border-radius:10px;
-  padding:clamp(28px,5vw,44px) clamp(20px,4vw,36px);
-  max-width:900px;margin-left:auto;margin-right:auto;
+  border:2px solid var(--green);border-radius:10px;
+  padding:clamp(20px,4vw,32px) clamp(16px,3vw,28px);
+  max-width:800px;margin-left:auto;margin-right:auto;
   background:linear-gradient(135deg, #fff 0%, #F0F8F2 100%);
   box-shadow:0 4px 20px rgba(58,122,79,0.1);
 }
 /* メイン文言 */
-.enkin-lead {
-  font-size:clamp(13px,2.5vw,16px);font-weight:700;
-  color:var(--ink-lt);letter-spacing:.06em;
-  margin-bottom:4px;
-}
 .enkin-headline {
-  font-size:clamp(18px,4vw,26px);font-weight:900;
+  font-size:clamp(16px,3.5vw,22px);font-weight:700;
   color:var(--ink);line-height:1.4;
-  margin-bottom:8px;
+  margin-bottom:0;
 }
 /* 追加料金 0 円（主役） */
 .enkin-zero-row {
   display:flex;align-items:baseline;justify-content:center;gap:4px;
-  margin-bottom:clamp(16px,3vw,24px);
+  margin-bottom:clamp(10px,2vw,16px);
 }
 .enkin-zero-label {
-  font-size:clamp(18px,3.5vw,24px);font-weight:900;
+  font-size:clamp(20px,4vw,28px);font-weight:900;
   color:var(--green);
 }
 .pex-enkin-zero {
   font-family:'Montserrat','Noto Sans JP',sans-serif;
-  font-size:clamp(72px,18vw,120px);font-weight:900;
+  font-size:clamp(80px,18vw,120px);font-weight:900;
   color:var(--green);line-height:.85;
   display:inline-block;
-  margin:0 4px;
+  margin:0 2px;
 }
 .enkin-zero-yen {
-  font-size:clamp(22px,4.5vw,32px);font-weight:900;
+  font-size:clamp(24px,5vw,36px);font-weight:900;
   color:var(--green);
 }
 /* ビジュアル式（小さめ補足） */
@@ -1894,13 +1990,10 @@ footer {
   line-height:1.8;
 }
 .enkin-link {
-  display:inline-block;
-  margin-top:8px;
-  font-size:clamp(11px,2.2vw,13px);
   font-weight:700;
   color:var(--green);
   text-decoration:none;
-  letter-spacing:.04em;
+  white-space:nowrap;
 }
 .enkin-link:hover {
   text-decoration:underline;
@@ -2064,7 +2157,15 @@ footer {
   font-size:15px;color:var(--ink-mid);line-height:2;margin-bottom:24px;
   max-width:520px;margin-left:auto;margin-right:auto;
 }
-.shop-fallback-btn { margin-top:24px; }
+.shop-fallback-link {
+  display:inline-block;
+  margin-top:16px;
+  font-size:clamp(12px,2.5vw,14px);
+  font-weight:700;
+  color:var(--green);
+  text-decoration:none;
+}
+.shop-fallback-link:hover { text-decoration:underline; }
 .shop-empty {
   grid-column:1/-1;text-align:center;color:var(--ink-lt);
   padding:24px 16px;font-size:15px;line-height:1.7;
@@ -2232,42 +2333,26 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
     <!-- 遠近両用レンズ訴求 -->
     <div class="pex-enkin rv">
-      <!-- メインメッセージ -->
-      <p class="enkin-lead">選んだセット価格のまま</p>
-      <p class="enkin-headline">遠近両用レンズに変更しても</p>
+      <p class="enkin-headline">遠近両用レンズにしても</p>
       <div class="enkin-zero-row">
         <span class="enkin-zero-label">追加料金</span>
         <span class="pex-enkin-zero">0</span>
         <span class="enkin-zero-yen">円</span>
       </div>
-
-      <!-- ビジュアル式 -->
       <div class="enkin-visual">
         <div class="enkin-item">
-          <img src="images/logo/megane1.svg" alt="メガネ" class="enkin-icon">
+          <img src="images/logo/megane.png" alt="メガネ" class="enkin-icon">
           <span class="enkin-item-label">フレーム</span>
         </div>
         <span class="enkin-op">+</span>
         <div class="enkin-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="64" height="38">
-            <circle cx="30" cy="30" r="22" fill="none" stroke="#2E5A3A" stroke-width="2.5"/>
-            <circle cx="70" cy="30" r="22" fill="none" stroke="#2E5A3A" stroke-width="2.5"/>
-          </svg>
+          <img src="images/logo/rennzu.png" alt="レンズ" class="enkin-icon">
           <span class="enkin-item-label">標準レンズ</span>
         </div>
         <span class="enkin-op">=</span>
         <span class="enkin-eq-text">セット価格のまま</span>
       </div>
-
-      <!-- 対象レンズ -->
-      <div class="enkin-checks">
-        <span class="enkin-check"><span class="enkin-check-icon">✓</span>遠近両用</span>
-        <span class="enkin-check"><span class="enkin-check-icon">✓</span>中近両用</span>
-        <span class="enkin-check"><span class="enkin-check-icon">✓</span>近々両用</span>
-      </div>
-
-      <p class="pex-enkin-note">◇標準レンズの場合<br>◇薄型・コーティング・レンズのグレード変更等は別途料金</p>
-      <a href="https://www.aimegane.com/lens/" class="enkin-link" target="_blank" rel="noopener">レンズのグレードについて ▶</a>
+      <p class="pex-enkin-note">◇標準レンズの場合（遠近・中近・近々いずれも対象）<br>◇薄型・コーティング・レンズのグレード変更等は別途料金　<a href="https://www.aimegane.com/megane/lens/" class="enkin-link" target="_blank" rel="noopener">詳しく ▶</a></p>
     </div>
 
   </div>
@@ -2278,36 +2363,23 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="sec">
     <p class="sl rv">Prize Lineup</p>
     <h2 class="st rv">クーポン<em>内容</em></h2>
-    <div class="pg">
-      <div class="pc p1 rv d1"><div class="pr">1等</div><div class="pa"><span class="py">¥</span>5,500<span class="po">OFF</span></div><span class="pp">当選確率 10%</span></div>
-      <div class="pc rv d2"><div class="pr">2等</div><div class="pa"><span class="py">¥</span>3,300<span class="po">OFF</span></div><span class="pp">当選確率 39%</span></div>
-      <div class="pc p3 rv d3"><div class="pr">3等</div><div class="pa"><span class="py">¥</span>1,100<span class="po">OFF</span></div><span class="pp">当選確率 50%</span></div>
-      <div class="pc p4 rv d4"><div class="pr">4等</div><div class="pa"><span class="py">¥</span>550<span class="po">OFF</span></div><span class="pp">当選確率 1%</span></div>
+    <!-- pnote: 一旦非表示 -->
+    <!-- 全等（行リスト統一・1等だけ大きく） -->
+    <div class="prize-list rv">
+      <div class="prize-row prize-row-1st"><span class="prize-rank">1等</span><span class="prize-amount">¥5,500 <small>OFF</small></span><span class="prize-odds">当選確率 10%</span></div>
+      <div class="prize-row"><span class="prize-rank">2等</span><span class="prize-amount">¥3,300 <small>OFF</small></span><span class="prize-odds">当選確率 39%</span></div>
+      <div class="prize-row"><span class="prize-rank p3-color">3等</span><span class="prize-amount p3-color">¥1,100 <small>OFF</small></span><span class="prize-odds">当選確率 50%</span></div>
+      <div class="prize-row prize-row-last"><span class="prize-rank p4-color">4等</span><span class="prize-amount p4-color">¥550 <small>OFF</small></span><span class="prize-odds">当選確率 1%</span></div>
     </div>
-    <p class="pnote rv"><strong>ご来店者全員にクーポンプレゼント</strong></p>
-
-    <p class="sarani rv" aria-label="さらに"><span class="sarani-back">さ・ら・に！</span><span class="sarani-front" aria-hidden="true">さ・ら・に！</span></p>
 
     <!-- ダブルチャンス帯 -->
     <div class="dc-band rv">
       <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w-outline" aria-hidden="true">W</span><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
-      <div class="dc-compare">
-        <!-- 予約なし -->
-        <div class="dc-col dc-col-normal">
-          <span class="dc-col-label">予約なし</span>
-          <p class="dc-col-slot">スロット <strong>1</strong>回挑戦できる！</p>
-          <p class="dc-col-desc">出た結果をそのまま使用</p>
-        </div>
-        <!-- 矢印 -->
-        <div class="dc-arrow">▶</div>
-        <!-- 予約あり -->
-        <div class="dc-col dc-col-special">
-          <span class="dc-col-label dc-col-label-sp">予約あり</span>
-          <p class="dc-col-slot dc-col-slot-sp">スロット <strong style="font-size:1.4em;">2</strong>回挑戦できる！</p>
-          <p class="dc-col-desc dc-col-desc-sp"><strong>大きい割引を選べる！</strong></p>
-          <p class="dc-col-sub">余りは家族やお友達に譲れます</p>
-        </div>
-      </div>
+      <div class="dc-photo"><img src="images/watasu.png" alt="クーポンを渡す"></div>
+      <p class="dc-simple-slot">予約で<strong>スロット2回</strong>挑戦！</p>
+      <p class="dc-simple-merit">大きい割引を選べる / 二枚目は家族や友人に譲渡OK</p>
+      <p class="dc-simple-bonus">GWが過ぎても使える！</p>
+      <p class="dc-simple-note">◇クーポン有効期限：6/7（日）まで</p>
       <a href="#shop-search" class="dc-band-btn">来店予約する</a>
     </div>
   </div>
@@ -2370,16 +2442,8 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <p class="period-date-sub">フェア後もご利用OK</p>
         </div>
       </div>
-      <p class="period-target-line">対象商品：メガネ、サングラス、コンタクト、補聴器、アクセサリー</p>
-
-      <div class="period-cond-box">
-        <ul class="period-cond-list">
-          <li>税込 11,000円以上のお買い上げでご利用いただけます</li>
-          <li>おひとりにつきクーポン1枚使用可能</li>
-          <li>予約特典2枚の方はどちらか1枚をご使用</li>
-          <li>他割引との併用不可</li>
-        </ul>
-      </div>
+      <p class="period-target-line">対象：メガネ・サングラス・コンタクト・補聴器・アクセサリー</p>
+      <p class="period-notes">◇税込11,000円以上で利用可　◇おひとり1枚まで　◇他割引との併用不可</p>
     </div>
   </div>
 </section>
@@ -2389,7 +2453,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="sec shop-sec">
     <p class="sl rv">Shop</p>
     <h2 class="st rv">お近くの<em>店舗を探す</em></h2>
-    <p class="rv shop-intro">郵便番号の<strong>上3桁</strong>でエリアを絞り込めます。未入力のまま検索すると掲載店舗を一覧表示します。</p>
+    <p class="rv shop-intro">郵便番号（上3桁）で近くの店舗を探せます</p>
 
     <!-- 郵便番号検索 -->
     <div class="shop-search-form rv">
@@ -2405,7 +2469,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <div id="shop-results" class="shop-results"></div>
 
     <!-- フォールバック -->
-    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="btn-h rv shop-fallback-btn">店舗一覧を見る</a>
+    <a href="https://www.aimegane.com/shop/" target="_blank" rel="noopener" class="shop-fallback-link rv">店舗一覧を見る ▶</a>
   </div>
 </section>
 
@@ -2414,7 +2478,6 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="fci">
     <p class="fck rv">4/29〜5/6 GW期間限定</p>
     <h2 class="fch rv">ご来店者全員に<br>最大<strong style="color:var(--green-dk);">5,500</strong>円OFFクーポン</h2>
-    <p class="fcp rv">予約でスロット2回挑戦できる<br>大きい割引を選んでお得にお買い物</p>
     <a href="#shop-search" class="btn-h rv">来店予約する</a>
   </div>
 </section>
