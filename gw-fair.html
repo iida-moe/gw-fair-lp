@@ -1057,58 +1057,50 @@ footer {
     padding:0;
     background:var(--bg);
   }
-  /* 写真① — スマホ上側 */
+  /* ── スマホFV：1枚画像 + CTAボタン ── */
+  #hero {
+    min-height:auto;
+    flex-direction:column;
+    padding:0;
+  }
   .hero-photo-single {
     position:relative;width:100%;
     order:1;
-    overflow:hidden;
-    height:40vw;
+    overflow:visible;
+    top:auto;right:auto;bottom:auto;
+    height:auto;
   }
   .hero-photo-single img {
-    content:url('images/hero/hero-products-sp-top.png');
-    width:100%;height:100%;
-    object-fit:cover;
-    object-position:center center;
+    content:url('images/hero/FVSUMAHO.png');
+    width:100%;height:auto;
     display:block;
+    transform:none;
   }
   #hero::after { display:none; }
-  /* 緑カード① — GWフェア + スロットクーポンチャンス */
   .hw {
-    position:relative;
-    z-index:3;
-    width:100%;max-width:100%;
-    background:linear-gradient(90deg, #2E5A3A 0%, #3A7A4F 50%, #2E5A3A 100%);
-    padding:10px 24px 12px;
-    align-items:center;text-align:center;
-    transform:none;
+    display:none !important;
+  }
+  .hero-reel-deco { display:none !important; }
+  .hero-photo-sp-bottom { display:none !important; }
+  /* スマホ用CTA — 画像の上に重ねる（注釈と5500の間） */
+  .hero-sp-cta {
+    display:flex !important;
+    flex-direction:column;
+    align-items:center;
     order:2;
-    margin-top:-2px;
+    position:absolute;
+    bottom:33%;
+    left:0;right:0;
+    z-index:10;
+    background:none;
+    padding:0;
   }
-  .hw::before {
-    content:'';position:absolute;inset:0;
-    background:url('images/hero/slot-pattern.png') 80% 85%/130% auto no-repeat;
-    opacity:0.8;mix-blend-mode:multiply;pointer-events:none;z-index:0;
-  }
-  .hw::after { display:none !important; }
-  /* 写真② — スマホ：緑の後ろ */
-  .hero-photo-sp-bottom {
-    display:block;
-    width:100%;
-    order:3;
-    overflow:hidden;
-    height:40vw;
-    margin-top:-2px;
-  }
-  .hero-photo-sp-bottom img {
-    width:100%;height:100%;object-fit:cover;display:block;
-  }
-  /* スマホ用CTA — 非表示（hw内に統合） */
-  .hero-sp-cta { display:none !important; }
-  .hero-sp-cta .h-offer-unit { font-size:clamp(20px,5.5vw,28px);-webkit-text-stroke:2px #fff; }
-  .hero-sp-cta .btn-h { margin-top:12px; }
-  .hero-sp-cta-wrap { display:flex;flex-direction:column;align-items:flex-start;width:fit-content;margin:12px auto 0; }
+  .hero-sp-cta .h-offer-bottom-label { display:none; }
+  .hero-sp-cta .h-offer-line { display:none; }
+  .hero-sp-cta .btn-h { margin-top:0;font-size:15px;padding:10px 36px; }
+  .hero-sp-cta-wrap { display:flex;flex-direction:column;align-items:center;width:100%; }
   .hero-sp-cta-wrap .btn-h { width:auto;display:inline-block; }
-  .hero-sp-cta .h-note { margin-top:10px;margin-left:-76px;font-size:9px;color:rgba(255,255,255,0.85);line-height:1.7;text-align:left; }
+  .hero-sp-cta .h-note { display:none; }
   .h-gw-main { font-size:clamp(32px,9vw,44px);text-align:left;margin-bottom:0; }
   .h-title-group { align-self:flex-start;align-items:flex-start;margin-left:24px; }
   .h-offer-top-label { text-align:left; }
@@ -1823,28 +1815,95 @@ footer {
   background:linear-gradient(135deg, #fff 0%, #F0F8F2 100%);
   box-shadow:0 4px 20px rgba(58,122,79,0.1);
 }
-.pex-enkin-main {
-  font-size:clamp(20px,5vw,32px);font-weight:900;
-  color:var(--ink);line-height:1.4;
+/* メイン文言 */
+.enkin-lead {
+  font-size:clamp(13px,2.5vw,16px);font-weight:700;
+  color:var(--ink-lt);letter-spacing:.06em;
+  margin-bottom:4px;
 }
-.pex-enkin-main strong {
+.enkin-headline {
+  font-size:clamp(18px,4vw,26px);font-weight:900;
+  color:var(--ink);line-height:1.4;
+  margin-bottom:8px;
+}
+/* 追加料金 0 円（主役） */
+.enkin-zero-row {
+  display:flex;align-items:baseline;justify-content:center;gap:4px;
+  margin-bottom:clamp(16px,3vw,24px);
+}
+.enkin-zero-label {
+  font-size:clamp(18px,3.5vw,24px);font-weight:900;
   color:var(--green);
 }
 .pex-enkin-zero {
   font-family:'Montserrat','Noto Sans JP',sans-serif;
-  font-size:clamp(48px,12vw,80px);font-weight:800;
-  color:var(--green);line-height:1;
+  font-size:clamp(72px,18vw,120px);font-weight:900;
+  color:var(--green);line-height:.85;
   display:inline-block;
-  margin:0 2px;
+  margin:0 4px;
 }
-.pex-enkin-sub {
-  margin-top:10px;
-  font-size:clamp(13px,2.5vw,16px);font-weight:600;
-  color:var(--ink);letter-spacing:.04em;
+.enkin-zero-yen {
+  font-size:clamp(22px,4.5vw,32px);font-weight:900;
+  color:var(--green);
+}
+/* ビジュアル式（小さめ補足） */
+.enkin-visual {
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(10px,2vw,18px);
+  padding:clamp(12px,2vw,16px) 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  margin-bottom:clamp(12px,2.5vw,20px);
+}
+.enkin-item {
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.enkin-icon {
+  width:clamp(48px,8vw,64px);height:auto;
+  filter:invert(30%) sepia(15%) saturate(1200%) hue-rotate(100deg) brightness(0.6);
+}
+.enkin-item-label {
+  font-size:clamp(10px,1.8vw,13px);font-weight:600;color:var(--ink-lt);letter-spacing:.04em;
+}
+.enkin-op {
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(20px,3.5vw,28px);font-weight:300;
+  color:var(--green);line-height:1;
+}
+.enkin-eq-text {
+  font-size:clamp(13px,2.5vw,16px);font-weight:800;
+  color:var(--green);letter-spacing:.04em;
+}
+/* チェックリスト（1行） */
+.enkin-checks {
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(12px,3vw,24px);
+  margin-bottom:clamp(10px,2vw,16px);
+}
+.enkin-check {
+  font-size:clamp(13px,2.5vw,16px);font-weight:700;
+  color:var(--ink);
+  display:flex;align-items:center;gap:4px;
+}
+.enkin-check-icon {
+  color:var(--green);font-weight:900;font-size:1.2em;
 }
 .pex-enkin-note {
   margin-top:8px;
   font-size:clamp(10px,2vw,12px);color:var(--ink-lt);
+  line-height:1.8;
+}
+.enkin-link {
+  display:inline-block;
+  margin-top:8px;
+  font-size:clamp(11px,2.2vw,13px);
+  font-weight:700;
+  color:var(--green);
+  text-decoration:none;
+  letter-spacing:.04em;
+}
+.enkin-link:hover {
+  text-decoration:underline;
 }
 .pex-target {
   margin-top:16px;
@@ -2136,7 +2195,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="pex-inner">
     <p class="sl rv">Price Info</p>
     <h2 class="st rv">お得情報</h2>
-    <p class="pex-sub-text rv">◇1等 5,500円OFFクーポンを使用した場合</p>
+    <p class="pex-sub-text rv">GW期間中にお店でスロットにチャレンジ！<br>最大5,500円OFFクーポンをGETしよう</p>
 
     <!-- 横長1枚カード -->
     <div class="pex-one rv">
@@ -2173,9 +2232,42 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 
     <!-- 遠近両用レンズ訴求 -->
     <div class="pex-enkin rv">
-      <p class="pex-enkin-main">遠近両用も<strong>&ldquo;追加料金<span class="pex-enkin-zero">0</span>&rdquo;</strong></p>
-      <p class="pex-enkin-sub">フレーム＋標準レンズのセット価格そのまま</p>
-      <p class="pex-enkin-note">◇標準遠近両用レンズ使用時　◇薄型・コーティング等のオプションレンズは別途料金</p>
+      <!-- メインメッセージ -->
+      <p class="enkin-lead">選んだセット価格のまま</p>
+      <p class="enkin-headline">遠近両用レンズに変更しても</p>
+      <div class="enkin-zero-row">
+        <span class="enkin-zero-label">追加料金</span>
+        <span class="pex-enkin-zero">0</span>
+        <span class="enkin-zero-yen">円</span>
+      </div>
+
+      <!-- ビジュアル式 -->
+      <div class="enkin-visual">
+        <div class="enkin-item">
+          <img src="images/logo/megane1.svg" alt="メガネ" class="enkin-icon">
+          <span class="enkin-item-label">フレーム</span>
+        </div>
+        <span class="enkin-op">+</span>
+        <div class="enkin-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="64" height="38">
+            <circle cx="30" cy="30" r="22" fill="none" stroke="#2E5A3A" stroke-width="2.5"/>
+            <circle cx="70" cy="30" r="22" fill="none" stroke="#2E5A3A" stroke-width="2.5"/>
+          </svg>
+          <span class="enkin-item-label">標準レンズ</span>
+        </div>
+        <span class="enkin-op">=</span>
+        <span class="enkin-eq-text">セット価格のまま</span>
+      </div>
+
+      <!-- 対象レンズ -->
+      <div class="enkin-checks">
+        <span class="enkin-check"><span class="enkin-check-icon">✓</span>遠近両用</span>
+        <span class="enkin-check"><span class="enkin-check-icon">✓</span>中近両用</span>
+        <span class="enkin-check"><span class="enkin-check-icon">✓</span>近々両用</span>
+      </div>
+
+      <p class="pex-enkin-note">◇標準レンズの場合<br>◇薄型・コーティング・レンズのグレード変更等は別途料金</p>
+      <a href="https://www.aimegane.com/lens/" class="enkin-link" target="_blank" rel="noopener">レンズのグレードについて ▶</a>
     </div>
 
   </div>
