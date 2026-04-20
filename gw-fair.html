@@ -776,7 +776,8 @@ a:focus:not(:focus-visible) { outline: none; }
   margin-bottom:40px;
   text-transform:uppercase;
 }
-.fck::before {
+.fck::before,
+.fck::after {
   content:'';
   width:48px;
   height:1.5px;
@@ -785,11 +786,19 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .fch-lead {
   display:block;
-  font-size:clamp(16px,2.6vw,22px);
+  font-size:clamp(18px,3vw,26px);
   font-weight:700;
   color:var(--ink);
   margin-bottom:14px;
   letter-spacing:.04em;
+}
+.fch-lead-mark {
+  text-emphasis: filled dot;
+  -webkit-text-emphasis: filled dot;
+  text-emphasis-color: #C0272D;
+  -webkit-text-emphasis-color: #C0272D;
+  text-emphasis-position: over;
+  -webkit-text-emphasis-position: over;
 }
 .fch { font-size:clamp(30px,7vw,56px);font-weight:900;line-height:1.4;color:var(--ink);margin-bottom:32px;white-space:nowrap; }
 .fch em { font-style:normal;color:var(--ink); }
@@ -2008,8 +2017,9 @@ footer {
   /* ── 最終CTA ── */
   .fci { padding:48px 16px 80px; }
   .fck { font-size:11px;margin-bottom:24px;gap:10px; }
-  .fck::before { width:32px; }
-  .fch-lead { font-size:15px;margin-bottom:10px; }
+  .fck::before,
+  .fck::after { width:28px; }
+  .fch-lead { font-size:17px;margin-bottom:10px; }
   .fch { font-size:clamp(26px,7.5vw,38px);white-space:normal; }
   .fch em::after { height:2px; }
   .fch-num { font-size:1.6em; }
@@ -3348,7 +3358,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <section id="fcta">
   <div class="fci">
     <span class="fck rv">4/29〜5/6 GW期間限定</span>
-    <span class="fch-lead rv">ご来店者全員に</span>
+    <span class="fch-lead rv">ご来店者<span class="fch-lead-mark">全員</span>に</span>
     <h2 class="fch rv">最大<strong class="fch-num">5,500</strong><span class="fch-unit">円OFF</span><span class="fch-tail">クーポン</span></h2>
     <a href="#shop-search" class="btn-h fcta-btn rv">お近くの店舗を探す</a>
     <ul class="fcta-notes rv">
