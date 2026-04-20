@@ -3567,11 +3567,15 @@ document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key=
 // デフォルトで6店舗表示 + アコーディオン
 showInitialShops();
 
-// フローティングCTA: ヒーロー通過後に表示
+// フローティングCTA: ヒーロー通過後〜フッター到達前まで表示
 const fc = document.getElementById('floatCta');
 const hero = document.getElementById('hero');
+const footerEl = document.querySelector('footer');
 window.addEventListener('scroll', () => {
-  fc.classList.toggle('visible', window.scrollY > hero.offsetHeight - 100);
+  const passedHero = window.scrollY > hero.offsetHeight - 100;
+  const footerTop = footerEl ? footerEl.getBoundingClientRect().top : Infinity;
+  const beforeFooter = footerTop > window.innerHeight;
+  fc.classList.toggle('visible', passedHero && beforeFooter);
 }, { passive: true });
 </script>
 </body>
