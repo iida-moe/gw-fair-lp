@@ -81,12 +81,13 @@ a:focus:not(:focus-visible) { outline: none; }
 .header-nav a { text-decoration:none;color:inherit;transition:color .2s; }
 .header-nav a:hover { color:var(--green); }
 .header-cta {
-  background:#fff;color:#C0272D !important;font-weight:700;
+  background:#C0272D;color:#fff !important;font-weight:700;
   padding:14px 32px;border-radius:8px;font-size:16px;
   border:2px solid #C0272D;
   transition:all .2s;
+  box-shadow:0 4px 12px rgba(192,39,45,0.25);
 }
-.header-cta:hover { background:#C0272D;color:#fff !important; }
+.header-cta:hover { background:#A01E24;border-color:#A01E24;box-shadow:0 6px 16px rgba(192,39,45,0.35); }
 
 /* ══ HERO ══ */
 #hero {
@@ -447,12 +448,37 @@ a:focus:not(:focus-visible) { outline: none; }
 .h-cta-side { display:none; }
 
 .h-note {
-  margin-top:24px;
-  font-size:clamp(10px,1vw,12px);color:rgba(255,255,255,0.85);letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);
-  max-width:520px;line-height:1.7;
+  margin-top:18px;
+  font-size:clamp(9px,0.85vw,11px);color:rgba(255,255,255,0.75);letter-spacing:.02em;text-shadow:0 1px 4px rgba(0,0,0,0.3);
+  max-width:520px;line-height:1.5;
   text-align:left;
   padding-left:0;
   align-self:flex-start;
+}
+/* FV下部スクロール誘導 */
+.hero-scroll-guide {
+  position:absolute;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:6;
+  padding:6px;
+  cursor:pointer;
+  animation:heroScrollBob 2s ease-in-out infinite;
+}
+.hero-scroll-guide .hero-scroll-chevron {
+  display:block;
+  width:14px;height:14px;
+  border-right:2.5px solid rgba(255,255,255,0.85);
+  border-bottom:2.5px solid rgba(255,255,255,0.85);
+  transform:rotate(45deg);
+}
+@keyframes heroScrollBob {
+  0%,100% { transform:translate(-50%,0); opacity:.75; }
+  50%     { transform:translate(-50%,8px); opacity:1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-guide { animation:none; }
 }
 
 /* ══ SHARED SEC ══ */
@@ -1725,7 +1751,7 @@ footer {
   .h-note { text-align:left;margin-left:24px; }
   .h-cta-lead { display:none; }
   .btn-h { font-size:15px;padding:10px 36px;border-radius:8px;text-align:center;display:inline-block;background:#C0272D;color:#fff; }
-  .h-note { font-size:9px;text-align:left;margin-top:24px;line-height:1.7;color:rgba(255,255,255,0.85);padding-left:0; }
+  .h-note { font-size:9px;text-align:left;margin-top:20px;line-height:1.5;color:rgba(255,255,255,0.75);padding-left:0; }
   .step-icon { width:36px;height:36px; }
 
   /* ── 共通セクション ── */
@@ -3155,6 +3181,8 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       </div>
     </div>
   </div>
+  <!-- スクロール誘導 -->
+  <a href="#deals" class="hero-scroll-guide" aria-label="下にスクロール"><span class="hero-scroll-chevron"></span></a>
 </section>
 
 <!-- ① クーポン内容 -->
