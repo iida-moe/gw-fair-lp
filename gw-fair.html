@@ -34,6 +34,7 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 76px;
 }
+html { overflow-x:hidden; }
 body { font-family:'Noto Sans JP',sans-serif; background:var(--bg); color:var(--ink); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
 
 /* キーボード操作時の視認性 */
@@ -659,7 +660,7 @@ a:focus:not(:focus-visible) { outline: none; }
   background:white;
   border:1px solid rgba(0,0,0,0.06);
   border-radius:12px;
-  padding:clamp(28px,5vw,40px) clamp(24px,5vw,40px);
+  padding:clamp(28px,5vw,40px) clamp(24px,5vw,40px) clamp(20px,3vw,28px);
   position:relative;z-index:1;
 }
 /* 日付2カラム */
@@ -695,7 +696,7 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:.55em;
   font-weight:700;
   color:var(--ink-mid);
-  margin-left:6px;
+  margin-left:2px;
   letter-spacing:.04em;
 }
 .period-date-sub-highlight {
@@ -768,8 +769,8 @@ a:focus:not(:focus-visible) { outline: none; }
 .fch em { font-style:normal;color:var(--ink); }
 .fch-num {
   font-family:'Montserrat',sans-serif;
-  font-size:1.3em;
-  color:var(--green-dk);
+  font-size:1.4em;
+  color:#C0272D;
   font-weight:900;
   letter-spacing:-.02em;
   margin:0 2px;
@@ -882,9 +883,9 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .dc-gift {
   display:flex;align-items:center;justify-content:center;
-  gap:clamp(20px,3.5vw,36px);
+  gap:clamp(16px,3vw,32px);
   max-width:860px;
-  margin:clamp(32px,5vw,56px) auto clamp(16px,2.5vw,24px);
+  margin:clamp(12px,2vw,20px) auto clamp(8px,1.5vw,16px);
 }
 .dc-gift-text .dc-simple-merit {
   white-space:nowrap;
@@ -961,7 +962,12 @@ a:focus:not(:focus-visible) { outline: none; }
   line-height:1.7;
 }
 .dc-simple-slot strong {
-  color:#C0272D;font-weight:900;
+  color:#C0272D;
+  font-weight:inherit;
+  font-size:1.15em;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  text-decoration-thickness:2px;
 }
 /* リード文 */
 .dc-example-lead {
@@ -974,25 +980,49 @@ a:focus:not(:focus-visible) { outline: none; }
 .dc-example-lead strong {
   color:#C0272D;font-weight:900;
 }
-/* 例示エリア */
-.dc-example {
-  max-width:560px;
-  margin:0 auto 24px;
-  padding:0;
-  background:none;
-  border:none;
-  text-align:left;
+/* 例示テキスト */
+.dc-example-text {
+  max-width:700px;
+  margin:0 auto 8px;
+  text-align:center;
   position:relative;
+  padding:clamp(8px,1.5vw,12px) 0;
 }
-.dc-example-label {
+.dc-example-line {
+  font-size:clamp(15px,2.2vw,18px);
+  font-weight:600;
+  color:var(--ink);
+  line-height:2;
+  margin-bottom:8px;
+}
+.dc-example-line strong {
+  font-weight:800;
+}
+.dc-example-circle {
+  font-weight:900;
+  color:#C0272D;
+  position:relative;
+  display:inline-block;
+  padding:4px 12px;
+  margin-left:12px;
+}
+.dc-example-circle::after {
+  content:'';
   position:absolute;
-  left:-40px;top:0;
-  font-size:14px;font-weight:900;
-  color:var(--ink-mid);
-  padding:0;
-  margin:0;
-  letter-spacing:.1em;
-  line-height:1.4;
+  top:-6px;bottom:-6px;left:-8px;right:-8px;
+  border:2.5px solid #C0272D;
+  border-radius:50%;
+  transform:rotate(-3deg);
+  pointer-events:none;
+}
+.dc-example-use-text {
+  font-size:clamp(11px,1.4vw,13px);
+  font-weight:700;
+  color:#C0272D;
+  text-align:right;
+  max-width:520px;
+  margin:-2px auto 0;
+  padding-right:20px;
 }
 .dc-example-time-use {
   color:var(--ink-mid) !important;
@@ -1052,22 +1082,40 @@ a:focus:not(:focus-visible) { outline: none; }
   color:#C0272D;
 }
 .dc-simple-merit {
-  font-size:clamp(13px,3vw,16px);color:var(--ink);
-  font-weight:600;
-  margin-bottom:6px;
+  font-size:clamp(12px,2.5vw,14px);color:var(--ink);
+  font-weight:500;
+  margin-bottom:8px;
   text-align:center;
 }
 .dc-simple-merit strong {
   color:var(--green-dk);font-weight:900;
 }
 .dc-simple-bonus {
-  font-size:clamp(15px,3.5vw,19px);font-weight:900;
+  font-size:clamp(15px,3.5vw,19px);font-weight:700;
   color:var(--ink);
   margin-bottom:16px;
   text-align:center;
 }
 .dc-simple-bonus strong {
   color:#C0272D;
+}
+.dc-date-big {
+  font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:1.5em;
+  font-weight:900;
+  color:#C0272D;
+  letter-spacing:-.02em;
+  line-height:1;
+  display:inline-block;
+  vertical-align:baseline;
+  margin:0 6px 0 8px;
+}
+.dc-date-day {
+  font-size:.5em;
+  font-weight:700;
+  color:#C0272D;
+  margin-left:1px;
+  vertical-align:baseline;
 }
 .dc-band-text {
   font-size:clamp(13px,3.2vw,15px);color:var(--ink-mid);
@@ -1228,7 +1276,7 @@ a:focus:not(:focus-visible) { outline: none; }
   padding:14px 44px;border-radius:6px;
   text-decoration:none;letter-spacing:.04em;
   transition:background .2s;
-  margin-top:32px;
+  margin-top:16px;
 }
 .dc-band-btn:hover { background:#A01E24; }
 /* アイコン＋スロット回数 */
@@ -1481,6 +1529,22 @@ footer {
   .h-note { padding-left:0; }
   .h-cta-row { align-items:center; }
   .btn-h { font-size:18px;padding:18px 56px; }
+
+  /* Wチャンス — タブレット */
+  .dc-gift {
+    flex-direction:column !important;
+    gap:10px !important;
+    max-width:100% !important;
+  }
+  .dc-photo {
+    width:100% !important;
+    height:200px !important;
+  }
+  .dc-gift-text { text-align:center !important; }
+  .dc-gift-text .dc-simple-merit,
+  .dc-gift-text .dc-simple-bonus { text-align:center !important; }
+  .dc-band { margin-top:16px !important; }
+  .dc-band-btn { margin-bottom:48px !important; }
 }
 
 @media (max-width:640px) {
@@ -1597,12 +1661,12 @@ footer {
   .h-offer-note { display:none; }
   .h-badge-float { display:none; }
   .h-offer-badges-sp { display:none; }
-  .h-cta-row { align-items:center;align-self:stretch;margin-top:10px; }
+  .h-cta-row { align-items:center;align-self:stretch;margin-top:10px;width:auto !important;margin-left:0 !important; }
   .h-cta-wrap { width:fit-content;margin:0 auto; }
   .h-note { text-align:left;margin-left:24px; }
   .h-cta-lead { display:none; }
   .btn-h { font-size:15px;padding:10px 36px;border-radius:8px;text-align:center;display:inline-block;background:#C0272D;color:#fff; }
-  .h-note { font-size:9px;text-align:left;margin-top:12px;line-height:1.7;color:rgba(255,255,255,0.85);padding-left:0; }
+  .h-note { font-size:9px;text-align:left;margin-top:24px;line-height:1.7;color:rgba(255,255,255,0.85);padding-left:0; }
   .step-icon { width:36px;height:36px; }
 
   /* ── 共通セクション ── */
@@ -1636,103 +1700,195 @@ footer {
   .pex-one {
     flex-direction:column;
     min-height:0;
-  }
-  .pex-one-photo {
-    width:100%;min-width:0;
-    height:180px;
+    margin-top:20px !important;
   }
   .pex-one-category {
-    writing-mode:horizontal-tb;
-    padding:8px 12px;
-    font-size:14px;
-    border-radius:0;
+    writing-mode:horizontal-tb !important;
+    text-orientation:initial !important;
+    padding:6px 16px !important;
+    font-size:11px !important;
+    letter-spacing:.2em;
+    border-radius:0 !important;
+    order:1;
+    width:100%;
+    text-align:center;
+  }
+  .pex-one-photo {
+    width:100% !important;min-width:0 !important;
+    height:200px;
+    order:2;
+    position:relative;
+  }
+  .pex-one-photo img {
+    object-position:center center !important;
   }
   .pex-one-body {
-    padding:12px 8px 16px;
+    padding:16px 16px 20px;
+    order:3;
   }
   .pex-one-body-row {
-    gap:8px;
+    gap:4px;
     flex-direction:column;
+    align-items:center;
   }
-  .pex-one-top-label { font-size:14px; }
-  .pex-one-desc { font-size:13px; }
-  .pex-one-num { font-size:32px !important; }
-  .pex-one-num-now { font-size:40px !important; }
-  .pex-one-unit, .pex-one-unit-red { font-size:14px !important; }
+  .pex-one-top-label { font-size:14px;margin-bottom:8px; }
+  .pex-one-normal, .pex-one-now {
+    padding:10px 16px !important;
+    align-items:center !important;
+    text-align:center !important;
+    width:100%;
+  }
+  .pex-one-normal .pex-one-price,
+  .pex-one-now .pex-one-price {
+    justify-content:center !important;
+    position:relative;
+  }
+  .pex-one-normal .pex-one-unit,
+  .pex-one-normal .pex-one-tax,
+  .pex-one-now .pex-one-unit-red,
+  .pex-one-now .pex-one-tax {
+    font-size:12px !important;
+    color:var(--ink) !important;
+  }
+  .pex-one-desc { font-size:14px;transform:none !important; }
+  .pex-one-num { font-size:36px !important; }
+  .pex-one-num-now { font-size:44px !important; }
+  .pex-one-unit, .pex-one-unit-red { font-size:16px !important; }
   .pex-one-tax { font-size:11px !important; }
-  .pex-one-now-label { font-size:13px !important;transform:none !important; }
-  .pex-one-desc { transform:none !important; }
+  .pex-one-now-label { font-size:12px !important;transform:none !important; }
   .pex-one-arrow-col {
-    padding:8px 0;
+    padding:12px 0;
   }
   .pex-one-arrow {
-    width:40px !important;height:3px !important;
-    transform:rotate(90deg);
+    width:0 !important;height:0 !important;
+    background:none !important;
+    clip-path:none !important;
+    border-left:10px solid transparent !important;
+    border-right:10px solid transparent !important;
+    border-top:14px solid #C0272D !important;
   }
-  .pex-img-note { font-size:10px;margin-bottom:-32px; }
+  .pex-one-arrow::after { display:none !important; }
+  .pex-img-note { font-size:10px;margin:20px 0 2px !important;color:var(--ink) !important; }
 
   /* ── 遠近両用セクション ── */
   .pex-enkin {
-    margin-top:32px !important;
-    margin-bottom:24px !important;
-    padding:16px 0 !important;
+    margin-top:24px !important;
+    margin-bottom:16px !important;
+    padding:8px 0 !important;
   }
   .enkin-hero {
     flex-direction:column;
-    gap:20px !important;
-    padding:12px 0 !important;
-    margin-bottom:16px !important;
+    gap:12px !important;
+    padding:8px 0 !important;
+    margin-bottom:12px !important;
   }
   .enkin-main-block {
     align-items:center;
   }
-  .enkin-headline { font-size:16px;text-align:center; }
+  .enkin-headline { font-size:15px;text-align:center;margin-bottom:0 !important; }
   .enkin-headline-big { font-size:1.4em; }
   .enkin-zero-label,
-  .enkin-zero-yen { font-size:28px !important; }
-  .pex-enkin-zero { font-size:52px !important;margin:0 4px !important; }
+  .enkin-zero-yen { font-size:24px !important; }
+  .pex-enkin-zero { font-size:44px !important;margin:0 4px !important; }
   .enkin-visual {
     border-left:none !important;
     border-top:1px solid var(--border);
-    padding:20px 0 0 !important;
+    padding:12px 0 0 !important;
     min-height:0 !important;
     width:100%;
     justify-content:center;
+    flex-wrap:wrap;
+    gap:8px !important;
   }
-  .enkin-icon { width:56px !important; }
-  .enkin-item-label { font-size:12px !important; }
-  .enkin-op { font-size:24px !important; }
-  .enkin-eq-text { font-size:14px !important; }
-  .enkin-about-text { font-size:14px !important; }
-  .enkin-about-notes { font-size:12px !important; }
+  .enkin-icon { width:44px !important; }
+  .enkin-item-label { font-size:11px !important; }
+  .enkin-op { font-size:20px !important; }
+  .enkin-eq-text { font-size:13px !important; }
+  .enkin-about { margin-top:8px !important;padding-top:8px !important; }
+  .enkin-about-text { font-size:13px !important; }
+  .enkin-about-notes { font-size:11px !important; }
+
+  /* ── Wチャンス ── */
+  .dc-gift {
+    flex-direction:column !important;
+    gap:8px !important;
+    max-width:100% !important;
+    margin:16px auto !important;
+  }
+  .dc-photo {
+    width:100% !important;
+    height:180px !important;
+    border-radius:8px !important;
+  }
+  .dc-gift-text {
+    text-align:center !important;
+  }
+  .dc-gift-text .dc-simple-merit,
+  .dc-gift-text .dc-simple-bonus {
+    text-align:center !important;
+  }
+  .dc-simple-merit { font-size:14px !important; }
+  .dc-simple-bonus { font-size:16px !important; }
+  /* 例示カード */
+  .dc-example { max-width:100% !important;padding:0 !important; }
+  .dc-example-label {
+    font-size:12px !important;
+    margin-right:6px !important;
+  }
+  .dc-example-row {
+    flex-wrap:wrap !important;
+    gap:0 12px !important;
+  }
+  .dc-example-item {
+    flex:1 !important;
+    min-width:0;
+  }
+  .dc-example-col {
+    padding:16px 8px !important;
+  }
+  .dc-example-off {
+    font-size:22px !important;
+  }
+  .dc-example-off-unit {
+    font-size:.55em !important;
+  }
+  .dc-example-time {
+    font-size:13px !important;
+  }
+  .dc-example-use-note {
+    font-size:.65em !important;
+    margin-left:4px !important;
+  }
 
   /* ── スロットクーポン内容（等級リスト） ── */
   .prize-list { max-width:100%;padding:0 8px; }
   .prize-row {
-    flex-wrap:wrap;
-    padding:16px 0 !important;
-    gap:4px 12px !important;
+    flex-wrap:nowrap !important;
+    padding:14px 0 !important;
+    gap:8px !important;
+    align-items:center !important;
   }
   .prize-rank { width:auto !important;min-width:0;text-align:left !important; }
-  .prize-amount { flex:none !important; }
-  .prize-amount small { padding:0 4px !important; }
+  .prize-amount { flex:1 !important; }
+  .prize-amount small { padding:0 3px !important; }
   .prize-odds {
     position:static !important;
     transform:none !important;
-    width:100% !important;
+    width:auto !important;
     text-align:right !important;
-    font-size:12px !important;
-    margin-top:2px;
+    font-size:11px !important;
+    margin-left:auto;
+    flex-shrink:0;
   }
-  .prize-row-1st .prize-rank { font-size:20px !important; }
-  .prize-row-1st .prize-amount { font-size:36px !important; }
-  .prize-row-2nd .prize-rank { font-size:17px !important; }
-  .prize-row-2nd .prize-amount { font-size:26px !important; }
-  .prize-row-3rd .prize-rank { font-size:15px !important; }
-  .prize-row-3rd .prize-amount { font-size:22px !important; }
-  .prize-row-4th .prize-rank { font-size:14px !important; }
-  .prize-row-4th .prize-amount { font-size:20px !important; }
-  .prize-row-1st { padding:20px 0 !important; }
+  .prize-row-1st .prize-rank { font-size:18px !important; }
+  .prize-row-1st .prize-amount { font-size:28px !important; }
+  .prize-row-2nd .prize-rank { font-size:15px !important; }
+  .prize-row-2nd .prize-amount { font-size:22px !important; }
+  .prize-row-3rd .prize-rank { font-size:14px !important; }
+  .prize-row-3rd .prize-amount { font-size:20px !important; }
+  .prize-row-4th .prize-rank { font-size:13px !important; }
+  .prize-row-4th .prize-amount { font-size:18px !important; }
+  .prize-row-1st { padding:18px 0 !important; }
 
   /* ── クーポン内容 ── */
   .pg { gap:8px;grid-template-columns:1fr 1fr !important; }
@@ -1751,7 +1907,8 @@ footer {
 
   /* ── さらに＋ダブルチャンス ── */
   .sarani { font-size:clamp(18px,5vw,26px);margin:24px auto 0; }
-  .dc-band { margin-top:28px;padding:24px 16px;border-width:2px; }
+  .dc-band { margin-top:16px;padding:20px 16px;border-width:2px; }
+  .dc-band-btn { margin-bottom:48px !important; }
   .dc-title-sub { font-size:clamp(13px,3.2vw,16px); }
   .dc-title-main { font-size:clamp(24px,7vw,40px); }
   .dc-band { padding:20px 16px;border-width:2px; }
@@ -1799,7 +1956,7 @@ footer {
   .stnum { font-size:clamp(36px,11vw,52px); }
   .stlbl { font-size:clamp(15px,4vw,20px); }
 
-  /* ── 開催概要 ── */
+  /* ── キャンペーン概要 ── */
   #period .sec { padding:48px 16px; }
   .period-card { padding:28px 20px; }
   .period-date-value { font-size:clamp(22px,6vw,30px); }
@@ -1814,6 +1971,8 @@ footer {
   .shop-zip-input-lg { width:90px; }
   .shop-search-btn { padding:10px 20px;font-size:14px; }
   .shop-results { grid-template-columns:1fr;gap:12px; }
+  .shop-back-rail { display:none !important; }
+  .shop-more-list-outer .shop-more-list { grid-template-columns:1fr !important; }
 
   /* ── 最終CTA ── */
   .fci { padding:48px 16px 80px; }
@@ -2150,34 +2309,36 @@ footer {
   grid-template-columns:1fr 1fr;
   gap:16px;
 }
-.shop-back-rail {
-  position:absolute;
-  top:0;bottom:0;
-  right:-56px;
-  width:40px;
-}
-.shop-back-top {
-  position:sticky;
-  top:100px;
+.shop-back-rail { display:none; }
+.shop-back-top-fixed {
+  position:fixed;
+  top:50%;
+  transform:translateY(-50%) scale(0.8);
   writing-mode:vertical-rl;
   text-orientation:mixed;
   color:var(--green);
-  font-size:14px;
+  font-size:13px;
   font-weight:700;
   text-decoration:none;
   letter-spacing:.14em;
   cursor:pointer;
-  transition:opacity .2s;
-  z-index:10;
-  padding:8px 4px;
-  display:block;
+  z-index:35;
+  padding:10px 6px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .4s ease,transform .4s ease;
+}
+.shop-back-top-fixed.visible {
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(-50%) scale(1);
 }
 .shop-back-arrows {
   font-size:1.2em;
   margin-bottom:6px;
   display:inline-block;
 }
-.shop-back-top:hover {
+.shop-back-top-fixed:hover {
   opacity:.5;
   color:var(--green-dk);
 }
@@ -2689,7 +2850,7 @@ footer {
 }
 .pex-headline em { font-style:normal;color:var(--ink); }
 .pex-sub-text {
-  font-size:clamp(18px,4vw,22px);color:#333;margin-top:12px;line-height:1.8;
+  font-size:clamp(13px,2.5vw,16px);color:#333;margin-top:12px;line-height:1.8;
 }
 
 /* ══ 譲渡バナー ══ */
@@ -2873,7 +3034,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <a href="#deals">クーポン内容</a>
       <a href="#price-example">お得情報</a>
       <a href="#howto">参加方法</a>
-      <a href="#period">開催概要</a>
+      <a href="#period">キャンペーン概要</a>
       <a href="#shop-search" class="header-cta">来店予約する</a>
     </nav>
   </div>
@@ -3038,35 +3199,22 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <!-- ダブルチャンス帯 -->
     <div class="dc-band rv">
       <p class="dc-band-title"><span class="dc-title-sub">事前予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w-outline" aria-hidden="true">W</span><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
-      <p class="dc-simple-slot">予約でスロットを2回挑戦！<strong>大きい方のクーポン</strong>を選べます</p>
+      <p class="dc-simple-slot">予約でスロットを2回挑戦！<strong>好きな方</strong>を選んで使えます</p>
 
       <!-- 例示 -->
-      <div class="dc-example">
-        <div class="dc-example-row">
-          <p class="dc-example-label">例</p>
-          <div class="dc-example-item">
-            <p class="dc-example-time">1回目</p>
-            <div class="dc-example-col">
-              <p class="dc-example-off">1,100<span class="dc-example-off-unit">円OFF</span></p>
-            </div>
-          </div>
-          <div class="dc-example-item">
-            <p class="dc-example-time dc-example-time-use">2回目<span class="dc-example-use-note">こちらを使用</span></p>
-            <div class="dc-example-col dc-example-col-use">
-              <p class="dc-example-off">5,500<span class="dc-example-off-unit">円OFF</span></p>
-            </div>
-          </div>
-        </div>
+      <div class="dc-example-text">
+        <p class="dc-example-line">例）1回目 1,100円OFF ／ 2回目 <span class="dc-example-circle">5,500円OFF</span></p>
+        <p class="dc-example-use-text">こちらを使用！</p>
       </div>
 
       <div class="dc-gift">
         <div class="dc-photo"><img src="images/watasu.png" alt="クーポンを渡す"></div>
         <div class="dc-gift-text">
-          <p class="dc-simple-merit">使わなかった1枚は<strong>家族や友人にプレゼント</strong>できます</p>
-          <p class="dc-simple-bonus">使用期間は<strong>6/7（日）</strong>まで！</p>
+          <p class="dc-simple-merit">使わなかった1枚は家族や友人にプレゼントできます</p>
+          <p class="dc-simple-bonus">使用期間は<span class="dc-date-big">6/7<span class="dc-date-day">（日）</span></span>まで！</p>
         </div>
       </div>
-      <a href="#shop-search" class="dc-band-btn">予約してスロット2回挑戦</a>
+      <a href="#shop-search" class="dc-band-btn">お近くの店舗で予約</a>
     </div>
 
   </div>
@@ -3110,10 +3258,10 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   </div>
 </section>
 
-<!-- ④ 開催概要 -->
+<!-- ④ キャンペーン概要 -->
 <section id="period">
   <div class="sec">
-    <h2 class="st rv">開催概要</h2>
+    <h2 class="st rv">キャンペーン概要</h2>
     <div class="period-card rv">
       <div class="period-dates">
         <div class="period-date-col">
@@ -3174,6 +3322,9 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     </ul>
   </div>
 </section>
+
+<!-- 検索に戻る（固定） -->
+<a href="#shop-search" class="shop-back-top-fixed" id="shopBackFixed"><span class="shop-back-arrows">«</span>検索に戻る</a>
 
 <!-- フローティングCTA -->
 <div class="float-cta" id="floatCta">
@@ -3292,16 +3443,50 @@ function showInitialShops(){
     `:''}
   `;
 }
+let shopAccordionOpen=false;
+function updateBackBtnPos(){
+  const fb=document.getElementById('shopBackFixed');
+  if(!fb)return;
+  const results=document.getElementById('shop-results');
+  if(!results)return;
+  const rr=results.getBoundingClientRect();
+  fb.style.right=(window.innerWidth-rr.right-52)+'px';
+}
 function toggleMoreShops(){
   const list=document.getElementById('shopMoreList');
   const outer=list.closest('.shop-more-list-outer');
   const btn=document.getElementById('shopMoreBtn');
+  const fb=document.getElementById('shopBackFixed');
   const textEl=btn.querySelector('.shop-more-btn-text');
   const isOpen=outer.classList.toggle('open');
   list.classList.toggle('open',isOpen);
   textEl.textContent=isOpen?'閉じる':'もっと見る';
   btn.classList.toggle('open',isOpen);
+  shopAccordionOpen=isOpen;
+  if(fb){
+    if(isOpen){
+      updateBackBtnPos();
+      setTimeout(()=>fb.classList.add('visible'),100);
+    } else {
+      fb.classList.remove('visible');
+    }
+  }
 }
+window.addEventListener('scroll',function(){
+  const fb=document.getElementById('shopBackFixed');
+  if(!fb||!shopAccordionOpen)return;
+  const list=document.getElementById('shopMoreList');
+  if(!list)return;
+  const cards=list.querySelectorAll('.shop-card');
+  if(!cards.length)return;
+  const lastCard=cards[cards.length-1];
+  const lastRect=lastCard.getBoundingClientRect();
+  const listRect=list.getBoundingClientRect();
+  const show=listRect.top<400&&lastRect.top>400;
+  fb.classList.toggle('visible',show);
+  updateBackBtnPos();
+});
+window.addEventListener('resize',updateBackBtnPos);
 function searchShop(){
   const z1=document.getElementById('zip1').value.trim();
   const z2=document.getElementById('zip2').value.trim();

@@ -1742,11 +1742,13 @@ footer {
   color:#aaa;margin-bottom:4px;
 }
 .pex-one-label-now {
-  font-size:0;color:transparent;
-  display:block;
-  width:220px;height:0;
-  padding-top:124px;
-  background:url('<?php echo $lp_assets; ?>/price/label-ima.png') center/contain no-repeat;
+  display:inline-block;
+  font-size:13px;font-weight:900;
+  color:var(--green-dk);
+  border:2px solid var(--green-dk);
+  background:#fff;
+  padding:4px 12px;border-radius:4px;
+  letter-spacing:.08em;
   margin:0 auto 4px;
 }
 .pex-one-desc {
