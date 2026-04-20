@@ -1434,11 +1434,20 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .float-cta-btn {
   flex-shrink:0;
+  display:inline-flex;align-items:center;gap:10px;
   background:#C0272D;color:#fff;
   font-weight:900;font-size:15px;
   padding:12px 32px;border-radius:6px;
   text-decoration:none;letter-spacing:.04em;
   transition:background .2s;
+}
+.float-cta-btn::after {
+  content:'';
+  display:inline-block;
+  width:7px;height:7px;
+  border-right:2.5px solid currentColor;
+  border-top:2.5px solid currentColor;
+  transform:rotate(45deg) translateX(-1px);
 }
 .float-cta-btn:hover { background:#A01E24; }
 .float-cta-label { display:none; }
@@ -3390,7 +3399,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     </div>
     <div class="float-cta-left">
       <span class="float-cta-label">GWフェア 4/29〜5/6</span>
-      <a href="#shop-search" class="float-cta-btn">今すぐ予約 →</a>
+      <a href="#shop-search" class="float-cta-btn">今すぐ予約</a>
     </div>
   </div>
 </div>
