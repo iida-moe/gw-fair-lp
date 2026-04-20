@@ -765,11 +765,20 @@ a:focus:not(:focus-visible) { outline: none; }
 .petal { display:none; }
 .fci { max-width:860px;margin:0 auto;padding:clamp(72px,14vw,112px) 24px;text-align:center;display:flex;flex-direction:column;align-items:center; }
 .fck { font-size:clamp(16px,2.6vw,22px);font-weight:700;letter-spacing:.12em;color:var(--ink-mid);margin-bottom:20px;text-transform:uppercase; }
-.fch { font-size:clamp(26px,6vw,48px);font-weight:900;line-height:1.4;color:var(--ink);margin-bottom:32px;white-space:nowrap; }
+.fch { font-size:clamp(30px,7vw,56px);font-weight:900;line-height:1.4;color:var(--ink);margin-bottom:32px;white-space:nowrap; }
 .fch em { font-style:normal;color:var(--ink); }
+.fch-pre {
+  display:block;
+  font-size:.45em;
+  font-weight:700;
+  color:var(--ink-mid);
+  letter-spacing:.06em;
+  margin-bottom:10px;
+  line-height:1.2;
+}
 .fch-num {
   font-family:'Montserrat',sans-serif;
-  font-size:1.4em;
+  font-size:1.7em;
   color:#C0272D;
   font-weight:900;
   letter-spacing:-.02em;
@@ -777,9 +786,14 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .fch-unit {
   font-family:'Montserrat','Noto Sans JP',sans-serif;
+  font-size:1.05em;
   color:var(--ink);
   font-weight:900;
   margin-left:2px;
+}
+.fch-tail {
+  font-size:.85em;
+  margin-left:4px;
 }
 .fc-pre {
   display:inline-block;
@@ -1977,8 +1991,11 @@ footer {
   /* ── 最終CTA ── */
   .fci { padding:48px 16px 80px; }
   .fck { font-size:13px;letter-spacing:.15em; }
-  .fch { font-size:clamp(22px,6.5vw,34px);white-space:normal; }
+  .fch { font-size:clamp(26px,7.5vw,38px);white-space:normal; }
   .fch em::after { height:2px; }
+  .fch-pre { font-size:14px;margin-bottom:8px; }
+  .fch-num { font-size:1.6em; }
+  .fch-tail { font-size:.9em; }
   .fcp { font-size:14px;line-height:1.9;margin-bottom:28px; }
   #fcta .btn-h { font-size:17px;padding:18px 0;width:100%;max-width:320px;display:block;text-align:center; }
 
@@ -3313,7 +3330,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <section id="fcta">
   <div class="fci">
     <p class="fck rv">4/29〜5/6 GW期間限定</p>
-    <h2 class="fch rv">ご来店者全員に<br>最大<strong class="fch-num">5,500</strong><span class="fch-unit">円OFF</span>クーポン</h2>
+    <h2 class="fch rv"><span class="fch-pre">ご来店者全員に</span>最大<strong class="fch-num">5,500</strong><span class="fch-unit">円OFF</span><span class="fch-tail">クーポン</span></h2>
     <a href="#shop-search" class="btn-h fcta-btn rv">お近くの店舗を探す</a>
     <ul class="fcta-notes rv">
       <li>税込11,000円以上でお一人様につき1枚利用可</li>
