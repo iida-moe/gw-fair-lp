@@ -1061,7 +1061,65 @@ a:focus:not(:focus-visible) { outline: none; }
 .dc-example-lead strong {
   color:#C0272D;font-weight:900;
 }
-/* 例示テキスト */
+/* 例示（縦積み版） */
+.dc-example-new {
+  max-width:560px;
+  margin:0 auto;
+  padding:clamp(8px,1.5vw,14px) 0 0;
+  position:relative;
+}
+.dc-example-row {
+  display:flex;
+  align-items:center;
+  gap:clamp(10px,1.5vw,16px);
+  font-size:clamp(15px,2vw,18px);
+  font-weight:600;
+  color:var(--ink);
+  line-height:1.7;
+  margin-bottom:6px;
+  flex-wrap:wrap;
+}
+.dc-example-prefix {
+  font-weight:700;
+  color:var(--ink-mid);
+  letter-spacing:.04em;
+  min-width:74px;
+}
+.dc-example-prefix-indent {
+  padding-left:1.8em;
+}
+.dc-example-amount-lose {
+  font-weight:700;
+  color:var(--ink-mid);
+  text-decoration:line-through;
+  text-decoration-color:rgba(0,0,0,0.3);
+  text-decoration-thickness:2px;
+}
+.dc-example-cross {
+  font-weight:900;
+  color:var(--ink-mid);
+  font-size:1.1em;
+  margin:0 2px;
+}
+.dc-example-unuse-text {
+  font-weight:700;
+  color:var(--ink);
+  font-size:.95em;
+}
+.dc-example-use-tag {
+  font-weight:700;
+  color:#C0272D;
+  font-size:.85em;
+  letter-spacing:.04em;
+}
+.dc-example-bend {
+  display:block;
+  width:clamp(80px,10vw,120px);
+  height:auto;
+  margin:4px 0 10px auto;
+  margin-right:clamp(40px,10vw,96px);
+}
+/* 例示テキスト（旧・互換） */
 .dc-example-text {
   max-width:700px;
   margin:0 auto 8px;
@@ -3448,16 +3506,29 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <p class="dc-band-title"><span class="dc-title-sub">WEB予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w-outline" aria-hidden="true">W</span><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
       <p class="dc-simple-slot">WEB予約でスロットを2回挑戦！<strong>好きな方</strong>を選んで使えます</p>
 
-      <!-- 例示 -->
-      <div class="dc-example-text">
-        <p class="dc-example-line">例）1回目 1,100円OFF ／ 2回目 <span class="dc-example-circle">5,500円OFF</span></p>
-        <p class="dc-example-use-text">こちらを使用！</p>
+      <!-- 例示（縦積み） -->
+      <div class="dc-example-new">
+        <div class="dc-example-row dc-example-row-win">
+          <span class="dc-example-prefix">例）1回目</span>
+          <span class="dc-example-circle">5,500円OFF</span>
+          <span class="dc-example-use-tag">← こちらを使用！</span>
+        </div>
+        <div class="dc-example-row dc-example-row-lose">
+          <span class="dc-example-prefix dc-example-prefix-indent">2回目</span>
+          <span class="dc-example-amount-lose">1,100円OFF</span>
+          <span class="dc-example-cross">×</span>
+          <span class="dc-example-unuse-text">使わなかった方は…</span>
+        </div>
+        <svg class="dc-example-bend" viewBox="0 0 120 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path d="M 95 6 L 60 6 L 60 58" stroke="#C0272D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="54,52 66,52 60,66" fill="#C0272D"/>
+        </svg>
       </div>
 
       <div class="dc-gift">
         <div class="dc-photo"><img src="images/watasu.png" alt="クーポンを渡す"></div>
         <div class="dc-gift-text">
-          <p class="dc-simple-merit">使わなかった1枚は家族や友人にプレゼントできます</p>
+          <p class="dc-simple-merit">家族や友人にプレゼントできます</p>
           <p class="dc-simple-bonus">使用期間は<span class="dc-date-big">6/7<span class="dc-date-day">（日）</span></span>まで！</p>
         </div>
       </div>
