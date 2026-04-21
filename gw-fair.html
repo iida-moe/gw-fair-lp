@@ -4161,15 +4161,8 @@ function toggleMoreShops(){
 window.addEventListener('scroll',function(){
   const fb=document.getElementById('shopBackFixed');
   if(!fb||!shopAccordionOpen)return;
-  const list=document.getElementById('shopMoreList');
-  if(!list)return;
-  const cards=list.querySelectorAll('.shop-card');
-  if(!cards.length)return;
-  const lastCard=cards[cards.length-1];
-  const lastRect=lastCard.getBoundingClientRect();
-  const listRect=list.getBoundingClientRect();
-  const show=listRect.top<400&&lastRect.top>400;
-  fb.classList.toggle('visible',show);
+  // アコーディオンが開いていればスクロール位置に関わらず常に表示
+  if(!fb.classList.contains('visible'))fb.classList.add('visible');
   updateBackBtnPos();
 });
 window.addEventListener('resize',updateBackBtnPos);
