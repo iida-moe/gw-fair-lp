@@ -1968,11 +1968,28 @@ footer {
   .enkin-item-label { font-size:12px !important;bottom:10px !important; }
   .enkin-op-plus { width:22px !important;height:22px !important; }
   .enkin-op-arrow {
-    width:36px !important;height:20px !important;
-    transform:rotate(90deg);
+    width:22px !important;height:30px !important;
+    transform:none !important;
     order:4;
     flex:0 0 100%;
-    margin:4px auto 8px !important;
+    margin:6px auto 6px !important;
+  }
+  .enkin-op-arrow::before {
+    left:50% !important;right:auto !important;
+    top:0 !important;
+    width:3px !important;height:22px !important;
+    transform:translateX(-50%) !important;
+    background:currentColor !important;
+  }
+  .enkin-op-arrow::after {
+    left:50% !important;right:auto !important;
+    top:auto !important;bottom:0 !important;
+    width:0 !important;height:0 !important;
+    border-left:8px solid transparent !important;
+    border-right:8px solid transparent !important;
+    border-top:10px solid currentColor !important;
+    border-bottom:none !important;
+    transform:translateX(-50%) !important;
   }
   .enkin-eq-text {
     font-size:14px !important;white-space:normal !important;
