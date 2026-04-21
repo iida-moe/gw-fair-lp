@@ -2907,6 +2907,23 @@ footer {
 .enkin-check-icon {
   color:var(--green);font-weight:900;font-size:1.2em;
 }
+.enkin-visual-note {
+  max-width:720px;
+  width:100%;
+  margin:0 auto;
+  padding:0 16px;
+  text-align:left;
+}
+.enkin-visual-note .enkin-about-text {
+  font-size:clamp(13px,1.5vw,16px);
+  line-height:1.7;
+  margin-bottom:6px;
+}
+.enkin-visual-note .enkin-about-notes {
+  font-size:clamp(11px,1.3vw,13px);
+  color:var(--ink-mid);
+  line-height:1.7;
+}
 .enkin-about {
   margin-top:clamp(12px,1.5vw,20px);
   padding-top:clamp(10px,1.5vw,16px);
@@ -3326,6 +3343,13 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <span class="enkin-op enkin-op-arrow">→</span>
           <span class="enkin-eq-text">セット価格のまま</span>
         </div>
+        <div class="enkin-visual-note">
+          <p class="enkin-about-text">アイメガネの価格表示はレンズとフレームがセットになった価格となっております。</p>
+          <ul class="enkin-about-notes">
+            <li>標準レンズの場合（遠用・近用・遠近・中近・近々いずれも対象）</li>
+            <li>薄型・コーティング・レンズのグレード変更等は別途料金</li>
+          </ul>
+        </div>
         <div class="enkin-main-block">
           <p class="enkin-headline"><span class="enkin-headline-big">遠近両用レンズ</span>にしても</p>
           <div class="enkin-zero-row">
@@ -3337,11 +3361,6 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       </div>
       <div class="enkin-about">
         <p class="enkin-about-text"><strong>遠近両用レンズとは：</strong>境目がなく、遠くから手元まで、ほとんどの距離をカバーできる便利なレンズです。</p>
-        <p class="enkin-about-text">アイメガネの価格表示はレンズとフレームがセットになった価格となっております。</p>
-        <ul class="enkin-about-notes">
-          <li>標準レンズの場合（遠用・近用・遠近・中近・近々いずれも対象）</li>
-          <li>薄型・コーティング・レンズのグレード変更等は別途料金</li>
-        </ul>
       </div>
      </div>
     </div>
