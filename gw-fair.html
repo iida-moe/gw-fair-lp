@@ -1116,6 +1116,8 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:.85em;
   letter-spacing:.04em;
 }
+.use-arrow-d { display:inline-block;margin-right:4px; }
+.use-arrow-m { display:none; }
 .dc-example-bend-anchor {
   display:inline-block;
   position:relative;
@@ -2057,6 +2059,14 @@ footer {
     flex-wrap:wrap !important;
     gap:0 12px !important;
   }
+  .dc-example-use-tag {
+    flex:0 0 100%;
+    text-align:right;
+    font-size:11px !important;
+    margin-top:4px;
+  }
+  .use-arrow-d { display:none; }
+  .use-arrow-m { display:inline-block;margin-right:2px; }
   .dc-example-item {
     flex:1 !important;
     min-width:0;
@@ -3727,7 +3737,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <span class="dc-example-label-ex">例）</span>
           <span class="dc-example-time">1回目</span>
           <span class="dc-example-circle">5,500円OFF</span>
-          <span class="dc-example-use-tag">← こちらを使用！</span>
+          <span class="dc-example-use-tag"><span class="use-arrow-d">←</span><span class="use-arrow-m">↑</span>こちらを使用！</span>
         </div>
         <div class="dc-example-row dc-example-row-lose">
           <span class="dc-example-label-ex dc-example-label-hidden">例）</span>
