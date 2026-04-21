@@ -2429,13 +2429,26 @@ footer {
   text-orientation:mixed;
 }
 .shop-back-arrows {
-  font-size:1.2em;
-  margin-bottom:8px;
-  display:inline-block;
-  line-height:1;
-  transform:rotate(90deg);
-  transform-origin:center;
+  display:block;
+  width:14px;
+  height:16px;
+  margin:0 auto 8px;
+  position:relative;
+  font-size:0;
 }
+.shop-back-arrows::before,
+.shop-back-arrows::after {
+  content:'';
+  position:absolute;
+  left:50%;
+  width:9px;
+  height:9px;
+  border-left:2px solid currentColor;
+  border-top:2px solid currentColor;
+  transform:translateX(-50%) rotate(45deg);
+}
+.shop-back-arrows::before { top:-1px; }
+.shop-back-arrows::after  { top:5px; }
 .shop-back-top-fixed:hover {
   opacity:.5;
   color:var(--green-dk);
