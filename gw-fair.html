@@ -4152,7 +4152,7 @@ function toggleMoreShops(){
   if(fb){
     if(isOpen){
       updateBackBtnPos();
-      setTimeout(()=>fb.classList.add('visible'),100);
+      // スクロールハンドラに表示判定を任せる（リスト途中で表示、終わったら非表示）
     } else {
       fb.classList.remove('visible');
     }
@@ -4161,8 +4161,16 @@ function toggleMoreShops(){
 window.addEventListener('scroll',function(){
   const fb=document.getElementById('shopBackFixed');
   if(!fb||!shopAccordionOpen)return;
-  // アコーディオンが開いていればスクロール位置に関わらず常に表示
-  if(!fb.classList.contains('visible'))fb.classList.add('visible');
+  const list=document.getElementById('shopMoreList');
+  if(!list)return;
+  const cards=list.querySelectorAll('.shop-card');
+  if(!cards.length)return;
+  // リスト先頭がビューポート上部に到達したら表示、リスト末尾が画面外に出たら非表示
+  const listRect=list.getBoundingClientRect();
+  const lastRect=cards[cards.length-1].getBoundingClientRect();
+  const threshold=window.innerHeight*0.4;
+  const show=listRect.top<threshold&&lastRect.bottom>threshold;
+  fb.classList.toggle('visible',show);
   updateBackBtnPos();
 });
 window.addEventListener('resize',updateBackBtnPos);
