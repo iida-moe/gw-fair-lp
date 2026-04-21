@@ -2642,21 +2642,24 @@ footer {
   transition:all .2s;
 }
 .shop-btn-tel:hover { background:#C0272D;color:#fff; }
-/* WEB予約下のWチャンスバッジ */
-.shop-btn-web-col,
-.shop-hero-btn-col {
-  flex:1;
-  display:flex;
+/* WEB予約ボタン内のWチャンスバッジ */
+.shop-btn-web,
+.shop-hero-btn-web {
+  display:flex !important;
   flex-direction:column;
   align-items:center;
-  gap:4px;
+  justify-content:center;
+  gap:2px;
+  line-height:1.2;
 }
-.shop-btn-web-col .shop-btn-web,
-.shop-hero-btn-col .shop-hero-btn-web { width:100%; }
+.shop-btn-web-main {
+  font-size:inherit;
+  font-weight:inherit;
+}
 .shop-btn-w-badge {
   color:var(--gold);
   font-weight:900;
-  font-size:12px;
+  font-size:11px;
   font-style:italic;
   letter-spacing:.04em;
   line-height:1;
@@ -2665,6 +2668,12 @@ footer {
   font-family:'Montserrat',sans-serif;
   font-size:1.25em;
   font-weight:800;
+}
+.shop-btn-tel,
+.shop-hero-btn-tel {
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
 }
 .shop-card-distance {
   font-size:13px;
@@ -3988,10 +3997,10 @@ function renderShops(list){
       <p class="shop-card-addr">${s.addr}</p>
       ${s.distanceKm!=null?`<p class="shop-card-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
       <div class="shop-card-btns">
-        <div class="shop-btn-web-col">
-          <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">WEB予約</a>
+        <a href="${s.web}" target="_blank" rel="noopener" class="shop-btn-web">
+          <span class="shop-btn-web-main">WEB予約</span>
           <span class="shop-btn-w-badge"><span class="shop-btn-w-initial">W</span>チャンス！</span>
-        </div>
+        </a>
         <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-btn-tel">電話予約</a>
       </div>
     </div>
@@ -4008,10 +4017,10 @@ function renderHeroShop(s,userZip){
         <p class="shop-hero-addr">${s.addr}</p>
         ${s.distanceKm!=null?`<p class="shop-hero-distance">お住まいから約 <strong>${s.distanceKm.toFixed(1)} km</strong></p>`:''}
         <div class="shop-hero-btns">
-          <div class="shop-hero-btn-col">
-            <a href="${s.web}" target="_blank" rel="noopener" class="shop-hero-btn shop-hero-btn-web">WEB予約</a>
+          <a href="${s.web}" target="_blank" rel="noopener" class="shop-hero-btn shop-hero-btn-web">
+            <span class="shop-btn-web-main">WEB予約</span>
             <span class="shop-btn-w-badge"><span class="shop-btn-w-initial">W</span>チャンス！</span>
-          </div>
+          </a>
           <a href="tel:${s.tel.replace(/-/g,'')}" class="shop-hero-btn shop-hero-btn-tel">電話予約</a>
         </div>
       </div>
