@@ -2259,6 +2259,32 @@ footer {
   .shop-initial { grid-template-columns:1fr !important;gap:12px !important; }
   .shop-back-rail { display:none !important; }
   .shop-more-list-outer .shop-more-list { grid-template-columns:1fr !important; }
+  /* スマホでの戻るボタン: 画面右下に横書きピル形 */
+  .shop-back-top-fixed {
+    top:auto !important;
+    bottom:80px !important;
+    right:12px !important;
+    left:auto !important;
+    transform:scale(0.85) !important;
+    background:var(--green-dk);
+    color:#fff !important;
+    border-radius:999px;
+    padding:10px 16px !important;
+    box-shadow:0 4px 14px rgba(0,0,0,0.25);
+  }
+  .shop-back-top-fixed.visible { transform:scale(1) !important; }
+  .shop-back-top-fixed .shop-back-text {
+    writing-mode:horizontal-tb !important;
+    font-size:12px;
+    letter-spacing:.04em;
+  }
+  .shop-back-arrows { display:none !important; }
+  .shop-back-top-fixed::before {
+    content:'↑';
+    display:inline-block;
+    margin-right:6px;
+    font-weight:900;
+  }
 
   /* ── 最終CTA ── */
   .fci { padding:48px 16px 80px; }
