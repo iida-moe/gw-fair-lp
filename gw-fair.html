@@ -1988,6 +1988,26 @@ footer {
   .enkin-about-notes { font-size:11px !important; }
 
   /* ── Wチャンス ── */
+  .dc-example-bend-anchor { display:none !important; }
+  .dc-example-new { padding-bottom:52px !important;position:relative; }
+  .dc-example-new::before {
+    content:'';
+    position:absolute;
+    bottom:20px;left:50%;
+    width:3px;height:32px;
+    background:#C0272D;
+    transform:translateX(-50%);
+  }
+  .dc-example-new::after {
+    content:'';
+    position:absolute;
+    bottom:8px;left:50%;
+    width:0;height:0;
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+    border-top:14px solid #C0272D;
+    transform:translateX(-50%);
+  }
   .dc-gift {
     flex-direction:column !important;
     gap:8px !important;
