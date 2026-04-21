@@ -1079,14 +1079,20 @@ a:focus:not(:focus-visible) { outline: none; }
   margin-bottom:6px;
   flex-wrap:wrap;
 }
-.dc-example-prefix {
+.dc-example-label-ex {
   font-weight:700;
   color:var(--ink-mid);
   letter-spacing:.04em;
-  min-width:74px;
+  margin-right:4px;
 }
-.dc-example-prefix-indent {
-  padding-left:1.8em;
+.dc-example-label-hidden {
+  visibility:hidden;
+}
+.dc-example-time {
+  font-weight:700;
+  color:var(--ink-mid);
+  letter-spacing:.04em;
+  margin-right:8px;
 }
 .dc-example-amount-lose {
   font-weight:700;
@@ -1111,9 +1117,12 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .dc-example-bend {
   display:block;
-  width:clamp(60px,9vw,100px);
-  height:clamp(90px,14vw,150px);
-  margin:clamp(-8px,-0.5vw,0px) clamp(20px,4vw,56px) clamp(4px,0.8vw,10px) auto;
+  width:clamp(160px,26vw,280px);
+  height:clamp(90px,13vw,150px);
+  margin:clamp(-24px,-2vw,-10px) clamp(30px,6vw,80px) clamp(-64px,-8vw,-44px) auto;
+  position:relative;
+  z-index:2;
+  pointer-events:none;
 }
 /* 例示テキスト（旧・互換） */
 .dc-example-text {
@@ -3505,21 +3514,23 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <!-- 例示（縦積み） -->
       <div class="dc-example-new">
         <div class="dc-example-row dc-example-row-win">
-          <span class="dc-example-prefix">例）1回目</span>
+          <span class="dc-example-label-ex">例）</span>
+          <span class="dc-example-time">1回目</span>
           <span class="dc-example-circle">5,500円OFF</span>
           <span class="dc-example-use-tag">← こちらを使用！</span>
         </div>
         <div class="dc-example-row dc-example-row-lose">
-          <span class="dc-example-prefix dc-example-prefix-indent">2回目</span>
+          <span class="dc-example-label-ex dc-example-label-hidden">例）</span>
+          <span class="dc-example-time">2回目</span>
           <span class="dc-example-amount-lose">1,100円OFF</span>
           <span class="dc-example-cross">×</span>
           <span class="dc-example-unuse-text">使わなかった方は…</span>
         </div>
-        <svg class="dc-example-bend" viewBox="0 0 60 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M 6 8 L 52 8 L 52 92 L 10 92" stroke="#C0272D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-          <polygon points="14,84 14,100 2,92" fill="#C0272D"/>
-        </svg>
       </div>
+      <svg class="dc-example-bend" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M 4 8 L 92 8 L 92 92 L 10 92" stroke="#C0272D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+        <polygon points="14,84 14,100 2,92" fill="#C0272D"/>
+      </svg>
 
       <div class="dc-gift">
         <div class="dc-photo"><img src="images/watasu.png" alt="クーポンを渡す"></div>
