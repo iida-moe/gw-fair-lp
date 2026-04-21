@@ -1115,16 +1115,23 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:.85em;
   letter-spacing:.04em;
 }
+.dc-example-bend-anchor {
+  display:inline-block;
+  position:relative;
+  width:clamp(80px,13vw,120px);
+  height:0;
+  vertical-align:middle;
+  margin-left:6px;
+}
 .dc-example-bend {
   display:block;
-  width:40%;
-  max-width:280px;
-  min-width:180px;
-  height:clamp(130px,18vw,190px);
-  margin:-30px 5% -60px auto;
-  position:relative;
-  z-index:2;
+  position:absolute;
+  left:0;
+  top:-14px;
+  width:100%;
+  height:clamp(130px,18vw,180px);
   pointer-events:none;
+  z-index:2;
 }
 /* 例示テキスト（旧・互換） */
 .dc-example-text {
@@ -3527,12 +3534,14 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <span class="dc-example-amount-lose">1,100円OFF</span>
           <span class="dc-example-cross">×</span>
           <span class="dc-example-unuse-text">使わなかった方は…</span>
+          <span class="dc-example-bend-anchor" aria-hidden="true">
+            <svg class="dc-example-bend" viewBox="0 0 100 140" preserveAspectRatio="none">
+              <path d="M 6 10 L 92 10 L 92 128 L 30 128" stroke="#C0272D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+              <polygon points="34,120 34,136 20,128" fill="#C0272D"/>
+            </svg>
+          </span>
         </div>
       </div>
-      <svg class="dc-example-bend" viewBox="0 0 100 140" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M 6 10 L 92 10 L 92 128 L 40 128" stroke="#C0272D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-        <polygon points="44,120 44,136 30,128" fill="#C0272D"/>
-      </svg>
 
       <div class="dc-gift">
         <div class="dc-photo"><img src="images/watasu.png" alt="クーポンを渡す"></div>
