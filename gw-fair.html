@@ -3050,11 +3050,11 @@ footer {
   min-height:0;
 }
 .enkin-item {
-  display:flex;
-  flex-direction:column;
+  display:grid;
+  grid-template-rows:1fr auto;
+  justify-items:center;
   align-items:center;
-  justify-content:center;
-  gap:8px;
+  row-gap:8px;
   height:clamp(118px,14vw,150px);
 }
 .enkin-icon {
