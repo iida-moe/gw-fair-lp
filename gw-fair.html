@@ -1880,9 +1880,8 @@ footer {
   .enkin-zero-yen { font-size:24px !important; }
   .pex-enkin-zero { font-size:44px !important;margin:0 4px !important; }
   .enkin-visual {
-    border-left:none !important;
-    border-top:1px solid var(--border);
-    padding:12px 0 0 !important;
+    border:none !important;
+    padding:0 !important;
     min-height:0 !important;
     width:100%;
     justify-content:center;
@@ -2787,22 +2786,23 @@ footer {
   margin:0 auto;
 }
 .enkin-hero {
-  display:flex;align-items:center;justify-content:center;
-  gap:clamp(30px,6vw,100px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(24px,4vw,48px);
   margin-bottom:clamp(24px,3vw,40px);
   padding:clamp(16px,2.5vw,32px) 0;
 }
 .enkin-main-block {
-  display:flex;flex-direction:column;align-items:flex-start;
+  display:flex;flex-direction:column;align-items:center;
   margin:0;
   width:fit-content;
+  text-align:center;
 }
 /* 遠近両用レンズにしても（上段サブ） */
 .enkin-headline {
   font-size:clamp(16px,2vw,22px);font-weight:700;
   color:var(--ink);line-height:1.2;
-  margin:0 0 4px;
-  text-align:left;
+  margin:0 0 8px;
+  text-align:center;
 }
 .enkin-headline-big {
   font-size:1.5em;
@@ -2838,11 +2838,10 @@ footer {
 .enkin-visual {
   display:flex;align-items:center;justify-content:center;
   gap:clamp(10px,1.5vw,18px);
-  padding:0 0 0 clamp(20px,3vw,40px);
+  padding:0;
   border:none;
-  border-left:1px solid var(--border);
   margin:0;
-  min-height:140px;
+  min-height:0;
 }
 .enkin-item {
   display:flex;flex-direction:column;align-items:center;gap:4px;
@@ -3284,14 +3283,6 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <div class="pex-enkin rv">
      <div class="enkin-content">
       <div class="enkin-hero">
-        <div class="enkin-main-block">
-          <p class="enkin-headline"><span class="enkin-headline-big">遠近両用レンズ</span>にしても</p>
-          <div class="enkin-zero-row">
-            <span class="enkin-zero-label">追加料金</span>
-            <span class="pex-enkin-zero">0</span>
-            <span class="enkin-zero-yen">円</span>
-          </div>
-        </div>
         <div class="enkin-visual">
           <div class="enkin-item">
             <img src="images/logo/megane.png" alt="メガネ" class="enkin-icon">
@@ -3304,6 +3295,14 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           </div>
           <span class="enkin-op">=</span>
           <span class="enkin-eq-text">セット価格のまま</span>
+        </div>
+        <div class="enkin-main-block">
+          <p class="enkin-headline"><span class="enkin-headline-big">遠近両用レンズ</span>にしても</p>
+          <div class="enkin-zero-row">
+            <span class="enkin-zero-label">追加料金</span>
+            <span class="pex-enkin-zero">0</span>
+            <span class="enkin-zero-yen">円</span>
+          </div>
         </div>
       </div>
       <div class="enkin-about">
