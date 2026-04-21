@@ -1122,7 +1122,7 @@ a:focus:not(:focus-visible) { outline: none; }
   width:clamp(60px,9vw,90px);
   height:0;
   vertical-align:middle;
-  margin-left:clamp(4px,1.5vw,16px);
+  margin-left:calc(-1 * clamp(10px,1.5vw,16px) - 2px);
 }
 .dc-example-bend {
   display:block;
