@@ -3975,38 +3975,32 @@ window.addEventListener('scroll',function(){
   updateBackBtnPos();
 });
 window.addEventListener('resize',updateBackBtnPos);
-function searchShop(){
-  const z1=document.getElementById('zip1').value.trim();
-  const z2=document.getElementById('zip2').value.trim();
-  const zip=z1+z2;
-  const countEl=document.getElementById('shop-count');
+// HeartRails APIで7桁郵便番号→緯度経度を取得(建物レベル精度)
+async function fetchZipCoord(zip7){
+  try{
+    const res=await fetch(`https://geoapi.heartrails.com/api/json?method=searchByPostal&postal=${zip7}`);
+    const data=await res.json();
+    const loc=data?.response?.location?.[0];
+    if(loc && loc.x && loc.y){
+      return {lat:parseFloat(loc.y),lng:parseFloat(loc.x),addr:`${loc.prefecture}${loc.city}${loc.town}`};
+    }
+  }catch(e){}
+  return null;
+}
+function renderSearchResult(userLat,userLng,labelHtml){
   const resEl=document.getElementById('shop-results');
-  if(zip.length<3){
-    showInitialShops();
-    return;
-  }
-  // ユーザー位置をプレフィックスから推定
-  const center=ZIP_CENTERS[z1];
-  if(!center){
-    countEl.style.display='block';
-    countEl.textContent='この郵便番号（上3桁）の位置情報が見つかりませんでした。';
-    resEl.innerHTML='<p class="shop-empty">別の番号を試すか、下の「店舗一覧を見る」からお近くの店舗をお探しください。</p>';
-    return;
-  }
-  const [userLat,userLng]=center;
-  // 全店舗に距離を計算
+  const countEl=document.getElementById('shop-count');
   const ranked=SHOPS.map(s=>({
     ...s,
     distanceKm:haversineKm(userLat,userLng,s.lat,s.lng)
   })).sort((a,b)=>a.distanceKm-b.distanceKm);
-  const zipAddr='〒'+z1+(z2?'-'+z2:'');
   countEl.style.display='block';
-  countEl.innerHTML=`<span class="shop-count-zip">${zipAddr}</span> から近い順<br><small class="shop-count-note">※表示される距離は直線距離です。実際の道のりとは異なる場合があります。</small>`;
+  countEl.innerHTML=`${labelHtml}<br><small class="shop-count-note">※表示される距離は直線距離です。実際の道のりとは異なる場合があります。</small>`;
   const hero=ranked[0];
   const others=ranked.slice(1,5);
   const rest=ranked.slice(5);
   resEl.innerHTML=`
-    ${renderHeroShop(hero,z1)}
+    ${renderHeroShop(hero)}
     <div class="shop-others-grid">${renderShops(others)}</div>
     ${rest.length>0?`
     <div class="shop-more-wrap">
@@ -4019,6 +4013,39 @@ function searchShop(){
     </div>
     `:''}
   `;
+}
+async function searchShop(){
+  const z1=document.getElementById('zip1').value.trim();
+  const z2=document.getElementById('zip2').value.trim();
+  const zip=z1+z2;
+  const countEl=document.getElementById('shop-count');
+  const resEl=document.getElementById('shop-results');
+  if(zip.length<3){
+    showInitialShops();
+    return;
+  }
+  // 7桁揃ってたら外部APIで精密座標を取得
+  if(zip.length===7){
+    countEl.style.display='block';
+    countEl.textContent='位置情報を取得中…';
+    resEl.innerHTML='';
+    const coord=await fetchZipCoord(zip);
+    if(coord){
+      renderSearchResult(coord.lat,coord.lng,
+        `<span class="shop-count-zip">〒${z1}-${z2}</span>（${coord.addr}）から近い順`);
+      return;
+    }
+  }
+  // フォールバック: 3桁プレフィックスで推定
+  const center=ZIP_CENTERS[z1];
+  if(!center){
+    countEl.style.display='block';
+    countEl.textContent='この郵便番号の位置情報が見つかりませんでした。';
+    resEl.innerHTML='<p class="shop-empty">別の番号を試すか、下の「店舗一覧を見る」からお近くの店舗をお探しください。</p>';
+    return;
+  }
+  renderSearchResult(center[0],center[1],
+    `<span class="shop-count-zip">〒${z1}${z2?'-'+z2:''}</span> から近い順`);
 }
 document.getElementById('zip1').addEventListener('input',function(){if(this.value.length>=3)document.getElementById('zip2').focus();});
 document.getElementById('zip1').addEventListener('keydown',function(e){
