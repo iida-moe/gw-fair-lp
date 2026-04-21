@@ -1090,10 +1090,7 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .dc-example-amount-lose {
   font-weight:700;
-  color:var(--ink-mid);
-  text-decoration:line-through;
-  text-decoration-color:rgba(0,0,0,0.3);
-  text-decoration-thickness:2px;
+  color:var(--ink);
 }
 .dc-example-cross {
   font-weight:900;
@@ -1114,10 +1111,9 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .dc-example-bend {
   display:block;
-  width:clamp(80px,10vw,120px);
-  height:auto;
-  margin:4px 0 10px auto;
-  margin-right:clamp(40px,10vw,96px);
+  width:min(480px,90%);
+  height:clamp(70px,10vw,110px);
+  margin:clamp(4px,0.8vw,10px) auto clamp(8px,1.5vw,14px);
 }
 /* 例示テキスト（旧・互換） */
 .dc-example-text {
@@ -3519,9 +3515,9 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           <span class="dc-example-cross">×</span>
           <span class="dc-example-unuse-text">使わなかった方は…</span>
         </div>
-        <svg class="dc-example-bend" viewBox="0 0 120 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <path d="M 95 6 L 60 6 L 60 58" stroke="#C0272D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <polygon points="54,52 66,52 60,66" fill="#C0272D"/>
+        <svg class="dc-example-bend" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 40 8 L 290 8 L 290 82 L 40 82" stroke="#C0272D" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="50,72 50,92 28,82" fill="#C0272D"/>
         </svg>
       </div>
 
