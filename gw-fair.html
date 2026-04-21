@@ -1890,7 +1890,7 @@ footer {
   }
   .enkin-icon { width:56px !important; }
   .enkin-icon-lens { width:46px !important; }
-  .enkin-item { height:74px !important;gap:6px !important; }
+  .enkin-item { height:74px !important;gap:3px !important; }
   .enkin-item-label { font-size:11px !important; }
   .enkin-op { font-size:20px !important; }
   .enkin-eq-text { font-size:13px !important; }
@@ -2866,11 +2866,11 @@ footer {
 }
 .enkin-item {
   display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-  gap:8px;
+  gap:4px;
   height:clamp(118px,14vw,150px);
 }
 .enkin-icon {
-  width:clamp(88px,12vw,120px);height:auto;
+  width:clamp(108px,14vw,140px);height:auto;
   filter:invert(30%) sepia(15%) saturate(1200%) hue-rotate(100deg) brightness(0.6);
 }
 .enkin-icon-lens {
@@ -2883,6 +2883,32 @@ footer {
   font-family:'Montserrat',sans-serif;
   font-size:clamp(28px,4vw,40px);font-weight:400;
   color:var(--green);line-height:1;
+}
+.enkin-op-plus {
+  display:inline-block;
+  width:clamp(22px,3vw,32px);
+  height:clamp(22px,3vw,32px);
+  position:relative;
+  font-size:0;
+  color:var(--green);
+}
+.enkin-op-plus::before,
+.enkin-op-plus::after {
+  content:'';
+  position:absolute;
+  background:currentColor;
+}
+.enkin-op-plus::before {
+  left:0;right:0;
+  top:50%;
+  height:2.5px;
+  transform:translateY(-50%);
+}
+.enkin-op-plus::after {
+  top:0;bottom:0;
+  left:50%;
+  width:2.5px;
+  transform:translateX(-50%);
 }
 .enkin-op-arrow {
   font-size:0;
@@ -3385,7 +3411,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
               <img src="images/logo/megane.png" alt="メガネ" class="enkin-icon">
               <span class="enkin-item-label">フレーム</span>
             </div>
-            <span class="enkin-op">+</span>
+            <span class="enkin-op enkin-op-plus">+</span>
             <div class="enkin-item">
               <img src="images/logo/rennzu.png" alt="レンズ" class="enkin-icon enkin-icon-lens">
               <span class="enkin-item-label">標準レンズ</span>
