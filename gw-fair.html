@@ -2204,7 +2204,12 @@ footer {
   #period .sec { padding:48px 16px; }
   .period-card { padding:24px 14px; }
   .period-dates { margin-bottom:24px; }
-  .period-date-col { padding:0 10px; }
+  .period-date-col {
+    padding:0 6px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
   .period-date-label {
     font-size:13px !important;
     letter-spacing:.04em !important;
@@ -2214,7 +2219,7 @@ footer {
     font-weight:700 !important;
   }
   .period-date-value {
-    font-size:clamp(22px,6.5vw,32px);
+    font-size:clamp(20px,6vw,30px);
     white-space:nowrap;
     line-height:1.1 !important;
   }
