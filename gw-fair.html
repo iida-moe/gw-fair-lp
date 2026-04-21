@@ -3050,14 +3050,22 @@ footer {
   min-height:0;
 }
 .enkin-item {
-  display:grid;
-  grid-template-rows:1fr 24px;
-  justify-items:center;
+  position:relative;
+  display:flex;
+  flex-direction:column;
   align-items:center;
+  justify-content:center;
   height:clamp(118px,14vw,150px);
-  overflow:hidden;
+  padding-bottom:28px;
 }
-.enkin-item-label { align-self:start;line-height:1; }
+.enkin-item-label {
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  line-height:1;
+  white-space:nowrap;
+}
 .enkin-icon {
   width:clamp(108px,14vw,140px);height:auto;
   max-height:100%;
