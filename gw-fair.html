@@ -3055,10 +3055,13 @@ footer {
   justify-items:center;
   align-items:center;
   height:clamp(118px,14vw,150px);
+  overflow:hidden;
 }
-.enkin-item-label { align-self:start; }
+.enkin-item-label { align-self:start;line-height:1; }
 .enkin-icon {
   width:clamp(108px,14vw,140px);height:auto;
+  max-height:100%;
+  object-fit:contain;
   filter:invert(30%) sepia(15%) saturate(1200%) hue-rotate(100deg) brightness(0.6);
 }
 .enkin-icon-lens {
