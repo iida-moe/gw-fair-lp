@@ -2907,6 +2907,13 @@ footer {
 .enkin-check-icon {
   color:var(--green);font-weight:900;font-size:1.2em;
 }
+.enkin-set {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(10px,1.5vw,16px);
+  width:100%;
+}
 .enkin-visual-note {
   max-width:720px;
   width:100%;
@@ -3330,25 +3337,27 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <div class="pex-enkin rv">
      <div class="enkin-content">
       <div class="enkin-hero">
-        <div class="enkin-visual">
-          <div class="enkin-item">
-            <img src="images/logo/megane.png" alt="メガネ" class="enkin-icon">
-            <span class="enkin-item-label">フレーム</span>
+        <div class="enkin-set">
+          <div class="enkin-visual">
+            <div class="enkin-item">
+              <img src="images/logo/megane.png" alt="メガネ" class="enkin-icon">
+              <span class="enkin-item-label">フレーム</span>
+            </div>
+            <span class="enkin-op">+</span>
+            <div class="enkin-item">
+              <img src="images/logo/rennzu.png" alt="レンズ" class="enkin-icon">
+              <span class="enkin-item-label">標準レンズ</span>
+            </div>
+            <span class="enkin-op enkin-op-arrow">→</span>
+            <span class="enkin-eq-text">セット価格のまま</span>
           </div>
-          <span class="enkin-op">+</span>
-          <div class="enkin-item">
-            <img src="images/logo/rennzu.png" alt="レンズ" class="enkin-icon">
-            <span class="enkin-item-label">標準レンズ</span>
+          <div class="enkin-visual-note">
+            <p class="enkin-about-text">アイメガネの価格表示はレンズとフレームがセットになった価格となっております。</p>
+            <ul class="enkin-about-notes">
+              <li>標準レンズの場合（遠用・近用・遠近・中近・近々いずれも対象）</li>
+              <li>薄型・コーティング・レンズのグレード変更等は別途料金</li>
+            </ul>
           </div>
-          <span class="enkin-op enkin-op-arrow">→</span>
-          <span class="enkin-eq-text">セット価格のまま</span>
-        </div>
-        <div class="enkin-visual-note">
-          <p class="enkin-about-text">アイメガネの価格表示はレンズとフレームがセットになった価格となっております。</p>
-          <ul class="enkin-about-notes">
-            <li>標準レンズの場合（遠用・近用・遠近・中近・近々いずれも対象）</li>
-            <li>薄型・コーティング・レンズのグレード変更等は別途料金</li>
-          </ul>
         </div>
         <div class="enkin-main-block">
           <p class="enkin-headline"><span class="enkin-headline-big">遠近両用レンズ</span>にしても</p>
