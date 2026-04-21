@@ -581,6 +581,11 @@ a:focus:not(:focus-visible) { outline: none; }
   flex:1;
 }
 .prize-amount small { font-size:.5em;font-weight:700;padding:0 8px; }
+.prize-odds-pct {
+  display:inline-block;
+  min-width:2.6em;
+  text-align:right;
+}
 .prize-odds {
   font-size:clamp(13px,2.3vw,18px);font-weight:600;
   color:var(--ink-lt);
@@ -3211,10 +3216,10 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
   <div class="sec">
     <h2 class="st rv">スロットクーポン<em>内容</em></h2>
     <div class="prize-list rv">
-      <div class="prize-row prize-row-1st"><span class="prize-rank">1等</span><span class="prize-amount"><small>¥</small>5,500 <small>OFF</small></span><span class="prize-odds">当選確率 10%</span></div>
-      <div class="prize-row prize-row-2nd"><span class="prize-rank">2等</span><span class="prize-amount"><small>¥</small>3,300 <small>OFF</small></span><span class="prize-odds">当選確率 39%</span></div>
-      <div class="prize-row prize-row-3rd"><span class="prize-rank">3等</span><span class="prize-amount"><small>¥</small>1,100 <small>OFF</small></span><span class="prize-odds">当選確率 50%</span></div>
-      <div class="prize-row prize-row-4th prize-row-last"><span class="prize-rank">4等</span><span class="prize-amount"><small>¥</small>550 <small>OFF</small></span><span class="prize-odds">当選確率 1%</span></div>
+      <div class="prize-row prize-row-1st"><span class="prize-rank">1等</span><span class="prize-amount"><small>¥</small>5,500 <small>OFF</small></span><span class="prize-odds">当選確率 <span class="prize-odds-pct">10%</span></span></div>
+      <div class="prize-row prize-row-2nd"><span class="prize-rank">2等</span><span class="prize-amount"><small>¥</small>3,300 <small>OFF</small></span><span class="prize-odds">当選確率 <span class="prize-odds-pct">39%</span></span></div>
+      <div class="prize-row prize-row-3rd"><span class="prize-rank">3等</span><span class="prize-amount"><small>¥</small>1,100 <small>OFF</small></span><span class="prize-odds">当選確率 <span class="prize-odds-pct">50%</span></span></div>
+      <div class="prize-row prize-row-4th prize-row-last"><span class="prize-rank">4等</span><span class="prize-amount"><small>¥</small>550 <small>OFF</small></span><span class="prize-odds">当選確率 <span class="prize-odds-pct">1%</span></span></div>
     </div>
   </div>
 </section>
