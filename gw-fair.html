@@ -1888,7 +1888,7 @@ footer {
     flex-wrap:wrap;
     gap:8px !important;
   }
-  .enkin-icon { width:44px !important; }
+  .enkin-icon { width:56px !important; }
   .enkin-item-label { font-size:11px !important; }
   .enkin-op { font-size:20px !important; }
   .enkin-eq-text { font-size:13px !important; }
@@ -2866,7 +2866,7 @@ footer {
   display:flex;flex-direction:column;align-items:center;gap:4px;
 }
 .enkin-icon {
-  width:clamp(72px,10vw,100px);height:auto;
+  width:clamp(88px,12vw,120px);height:auto;
   filter:invert(30%) sepia(15%) saturate(1200%) hue-rotate(100deg) brightness(0.6);
 }
 .enkin-item-label {
@@ -2881,8 +2881,8 @@ footer {
   font-size:0;
   display:inline-flex;
   align-items:center;
-  width:clamp(32px,4.5vw,54px);
-  height:clamp(24px,3.2vw,36px);
+  width:clamp(36px,5vw,60px);
+  height:clamp(20px,2.8vw,30px);
   position:relative;
   color:var(--green);
   -webkit-text-stroke:0;
@@ -2890,8 +2890,9 @@ footer {
 .enkin-op-arrow::before {
   content:'';
   position:absolute;
-  left:0;right:26%;
+  left:0;
   top:50%;
+  width:100%;
   height:2.5px;
   background:currentColor;
   transform:translateY(-50%);
@@ -2899,13 +2900,14 @@ footer {
 .enkin-op-arrow::after {
   content:'';
   position:absolute;
-  right:2px;
+  right:0;
   top:50%;
-  width:10px;
-  height:10px;
-  border-right:2.5px solid currentColor;
-  border-top:2.5px solid currentColor;
-  transform:translateY(-50%) rotate(45deg);
+  width:0;
+  height:0;
+  border-top:7px solid transparent;
+  border-bottom:7px solid transparent;
+  border-left:10px solid currentColor;
+  transform:translateY(-50%);
 }
 .enkin-eq-text {
   font-size:clamp(15px,2vw,20px);font-weight:800;
