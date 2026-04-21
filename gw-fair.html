@@ -4193,7 +4193,7 @@ function renderSearchResult(userLat,userLng,labelHtml){
     distanceKm:haversineKm(userLat,userLng,s.lat,s.lng)
   })).sort((a,b)=>a.distanceKm-b.distanceKm);
   countEl.style.display='block';
-  countEl.innerHTML=`${labelHtml}<br><small class="shop-count-note">※表示される距離は直線距離です。実際の道のりとは異なる場合があります。</small>`;
+  countEl.innerHTML=`${labelHtml}<br><small class="shop-count-note">※表示される距離は直線距離です。<br class="br-sp">実際の道のりとは異なる場合があります。</small>`;
   const hero=ranked[0];
   const others=ranked.slice(1,5);
   const rest=ranked.slice(5);
