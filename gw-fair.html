@@ -1118,6 +1118,8 @@ a:focus:not(:focus-visible) { outline: none; }
 }
 .use-arrow-d { display:inline-block;margin-right:4px; }
 .use-arrow-m { display:none; }
+.br-sp { display:none; }
+@media (max-width:640px) { .br-sp { display:inline; } }
 .dc-example-bend-anchor {
   display:inline-block;
   position:relative;
@@ -3729,7 +3731,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <!-- ダブルチャンス帯 -->
     <div class="dc-band rv">
       <p class="dc-band-title"><span class="dc-title-sub">WEB予約で</span><br><span class="dc-title-main"><span class="dc-w-wrap"><span class="dc-w-outline" aria-hidden="true">W</span><span class="dc-w">W</span><span class="dc-w-ruby">ダブル</span></span>チャンス！</span></p>
-      <p class="dc-simple-slot">WEB予約でスロットを2回挑戦！<strong>好きな方</strong>を選んで使えます</p>
+      <p class="dc-simple-slot">WEB予約でスロットを2回挑戦！<br class="br-sp"><strong>好きな方</strong>を選んで使えます</p>
 
       <!-- 例示（縦積み） -->
       <div class="dc-example-new">
