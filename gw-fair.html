@@ -1858,7 +1858,6 @@ footer {
     border-top:14px solid #C0272D !important;
   }
   .pex-one-arrow::after { display:none !important; }
-  .pex-img-note { font-size:10px;margin:20px 0 2px !important;color:var(--ink) !important; }
 
   /* ── 遠近両用セクション ── */
   .pex-enkin {
@@ -2588,16 +2587,6 @@ footer {
   flex-shrink:0;
   display:flex;align-items:center;
 }
-.pex-img-note {
-  font-size:12px;
-  color:var(--ink);
-  text-align:left;
-  max-width:1200px;
-  margin:0 auto -48px;
-  padding-left:4px;
-  position:relative;
-  z-index:2;
-}
 @media(max-width:640px){
   .pex-compare { flex-direction:column;gap:16px; }
   .pex-box { flex-direction:row;min-height:120px; }
@@ -2669,6 +2658,20 @@ footer {
 }
 .pex-one-photo img { width:100%;height:100%;object-fit:cover;object-position:center center;position:absolute;inset:0; }
 .pex-one-photo img[src=""] { display:none; }
+.pex-photo-note {
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  z-index:2;
+  font-size:10px;
+  font-weight:500;
+  color:#fff;
+  background:rgba(0,0,0,0.45);
+  padding:3px 9px;
+  border-radius:3px;
+  letter-spacing:.02em;
+  pointer-events:none;
+}
 .pex-one-normal, .pex-one-now {
   display:flex;flex-direction:column;justify-content:center;
   padding:clamp(16px,2.5vw,24px) clamp(16px,2.5vw,28px);
@@ -3231,12 +3234,11 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <p class="pex-sub-text rv">GW期間中にお店でスロットにチャレンジ！<br>最大5,500円OFFクーポンをGETしよう</p>
 
 
-    <p class="pex-img-note rv">※写真はイメージです</p>
     <!-- 横長1枚カード -->
     <div class="pex-one rv">
       <div class="pex-sp-img"><img src="images/price/price-card-megane.png" alt="メガネセット 通常13,200円が今だけ7,700円"></div>
       <div class="pex-one-category">メガネ</div>
-      <div class="pex-one-photo"><img src="images/price/price-megane.png" alt="メガネ写真" style="object-position:center center;"></div>
+      <div class="pex-one-photo"><img src="images/price/price-megane.png" alt="メガネ写真" style="object-position:center center;"><span class="pex-photo-note">※写真はイメージです</span></div>
       <div class="pex-one-body">
         <span class="pex-one-top-label">1等（5,500円OFF）当選したら…</span>
         <div class="pex-one-body-row">
@@ -3259,7 +3261,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
     <div class="pex-one rv" style="margin-top:clamp(16px,3vw,24px);">
       <div class="pex-sp-img"><img src="images/price/price-card-SG.png" alt="サングラス 通常11,000円が今だけ7,700円"></div>
       <div class="pex-one-category">サングラス</div>
-      <div class="pex-one-photo"><img src="images/price/price-SG.png" alt="サングラス写真"></div>
+      <div class="pex-one-photo"><img src="images/price/price-SG.png" alt="サングラス写真"><span class="pex-photo-note">※写真はイメージです</span></div>
       <div class="pex-one-body">
         <span class="pex-one-top-label">1等（5,500円OFF）当選したら…</span>
         <div class="pex-one-body-row">
