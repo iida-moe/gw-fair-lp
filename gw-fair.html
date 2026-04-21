@@ -1889,6 +1889,7 @@ footer {
     gap:8px !important;
   }
   .enkin-icon { width:56px !important; }
+  .enkin-icon-lens { width:46px !important; }
   .enkin-item-label { font-size:11px !important; }
   .enkin-op { font-size:20px !important; }
   .enkin-eq-text { font-size:13px !important; }
@@ -2869,6 +2870,9 @@ footer {
   width:clamp(88px,12vw,120px);height:auto;
   filter:invert(30%) sepia(15%) saturate(1200%) hue-rotate(100deg) brightness(0.6);
 }
+.enkin-icon-lens {
+  width:clamp(72px,9.8vw,100px);
+}
 .enkin-item-label {
   font-size:clamp(12px,1.5vw,15px);font-weight:700;color:var(--ink);letter-spacing:.04em;
 }
@@ -3380,7 +3384,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
             </div>
             <span class="enkin-op">+</span>
             <div class="enkin-item">
-              <img src="images/logo/rennzu.png" alt="レンズ" class="enkin-icon">
+              <img src="images/logo/rennzu.png" alt="レンズ" class="enkin-icon enkin-icon-lens">
               <span class="enkin-item-label">標準レンズ</span>
             </div>
             <span class="enkin-op enkin-op-arrow">→</span>
