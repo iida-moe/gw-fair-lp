@@ -1137,6 +1137,11 @@ a:focus:not(:focus-visible) { outline: none; }
 .use-arrow-m { display:none; }
 .br-sp { display:none; }
 @media (max-width:640px) { .br-sp { display:inline; } }
+.fct-sp { display:none; }
+@media (max-width:640px) {
+  .fct-pc { display:none; }
+  .fct-sp { display:inline; }
+}
 .dc-example-bend-anchor {
   display:inline-block;
   position:relative;
@@ -3980,7 +3985,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 <!-- フローティングCTA -->
 <div class="float-cta" id="floatCta">
   <div class="float-cta-inner">
-    <div class="float-cta-right">WEB予約で<span class="float-w-chance"><span class="float-w">W</span>チャンス</span></div>
+    <div class="float-cta-right"><span class="fct-pc">Web予約で<strong>スロット2回</strong>まわせる</span><span class="fct-sp">WEB予約で</span><span class="float-w-chance"><span class="float-w">W</span>チャンス<span class="fct-pc">！</span></span></div>
     <div class="float-cta-left">
       <span class="float-cta-label">GWフェア 4/29〜5/6</span>
       <a href="#shop-search" class="float-cta-btn">今すぐ予約</a>
