@@ -702,17 +702,22 @@ a:focus:not(:focus-visible) { outline: none; }
   padding:clamp(32px,5.5vw,48px) clamp(28px,5.5vw,48px) clamp(24px,3.5vw,32px);
   position:relative;z-index:1;
 }
-/* 日付2カラム */
+/* 日付縦積み */
 .period-dates {
-  display:flex;align-items:flex-start;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:clamp(20px,3vw,28px);
   margin-bottom:clamp(28px,5vw,40px);
 }
 .period-date-col {
-  flex:1;text-align:center;
+  text-align:center;
   padding:0 clamp(12px,2vw,24px);
+  width:100%;
 }
 .period-date-col + .period-date-col {
-  border-left:2px solid var(--green);
+  border-top:3px solid var(--green-dk);
+  padding-top:clamp(20px,3vw,28px);
 }
 .period-date-label {
   font-size:18px;font-weight:800;
