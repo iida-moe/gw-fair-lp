@@ -4210,7 +4210,7 @@ function checkBackBtnVisibility(){
   const listRect=list.getBoundingClientRect();
   const lastRect=cards[cards.length-1].getBoundingClientRect();
   const vh=window.innerHeight;
-  const show=listRect.top<vh*0.8&&lastRect.bottom>vh*0.2;
+  const show=listRect.top<vh*0.8&&lastRect.top>vh*0.4;
   fb.classList.toggle('visible',show);
   updateBackBtnPos();
 }
