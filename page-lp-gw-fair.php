@@ -538,7 +538,7 @@ a:focus:not(:focus-visible) { outline: none; }
   color:#B8860B;
 }
 .prize-row-1st .prize-amount {
-  font-size:clamp(44px,11vw,86px);
+  font-size:clamp(48px,12vw,100px);
   color:#B8860B;
 }
 .prize-row-1st .prize-odds {
@@ -551,7 +551,7 @@ a:focus:not(:focus-visible) { outline: none; }
   color:var(--green);
 }
 .prize-row-2nd .prize-amount {
-  font-size:clamp(32px,8vw,56px);
+  font-size:clamp(34px,8.5vw,64px);
   color:var(--green-dk);
 }
 /* 3等 */
@@ -560,7 +560,7 @@ a:focus:not(:focus-visible) { outline: none; }
   color:#4A9EB5;
 }
 .prize-row-3rd .prize-amount {
-  font-size:clamp(27px,6.8vw,44px);
+  font-size:clamp(28px,7vw,52px);
   color:#4A9EB5;
 }
 /* 4等 */
@@ -569,7 +569,7 @@ a:focus:not(:focus-visible) { outline: none; }
   color:var(--ink-lt);
 }
 .prize-row-4th .prize-amount {
-  font-size:clamp(22px,5.5vw,36px);
+  font-size:clamp(24px,6vw,42px);
   color:var(--ink-lt);
 }
 /* 共通ベース */
@@ -709,17 +709,22 @@ a:focus:not(:focus-visible) { outline: none; }
   padding:clamp(32px,5.5vw,48px) clamp(28px,5.5vw,48px) clamp(24px,3.5vw,32px);
   position:relative;z-index:1;
 }
-/* 日付2カラム */
+/* 日付縦積み */
 .period-dates {
-  display:flex;align-items:flex-start;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:clamp(20px,3vw,28px);
   margin-bottom:clamp(28px,5vw,40px);
 }
 .period-date-col {
-  flex:1;text-align:center;
+  text-align:center;
   padding:0 clamp(12px,2vw,24px);
+  width:100%;
 }
 .period-date-col + .period-date-col {
-  border-left:2px solid var(--green);
+  border-top:3px solid var(--green-dk);
+  padding-top:clamp(20px,3vw,28px);
 }
 .period-date-label {
   font-size:18px;font-weight:800;
@@ -734,6 +739,13 @@ a:focus:not(:focus-visible) { outline: none; }
 .period-date-value span {
   font-size:0.4em;font-weight:700;color:var(--ink-mid);
   vertical-align:0.15em;margin:0 1px;
+}
+.period-date-value .dow-paren {
+  font-size:.5em !important;
+  vertical-align:baseline !important;
+  margin:0 !important;
+  color:var(--ink-mid);
+  font-weight:700;
 }
 .period-date-value .period-date-sep {
   font-size:.7em !important;
@@ -901,15 +913,18 @@ a:focus:not(:focus-visible) { outline: none; }
   box-shadow:0 8px 24px rgba(192,39,45,0.4),0 4px 12px rgba(0,0,0,0.15);
   font-size:clamp(18px,2vw,22px) !important;
   padding:16px 52px !important;
+  order:2;
+  align-self:center;
 }
 .fcta-notes {
   list-style:none;
-  padding:0;margin:clamp(20px,2.5vw,28px) auto 0;
+  padding:0;margin:0 auto clamp(20px,2.5vw,28px);
   max-width:820px;
   text-align:left;
   font-size:clamp(12px,1.5vw,15px);
   color:var(--ink-lt);
   line-height:1.9;
+  order:1;
 }
 .fcta-notes li {
   position:relative;
@@ -1144,6 +1159,11 @@ a:focus:not(:focus-visible) { outline: none; }
 .use-arrow-m { display:none; }
 .br-sp { display:none; }
 @media (max-width:640px) { .br-sp { display:inline; } }
+.fct-sp { display:none; }
+@media (max-width:640px) {
+  .fct-pc { display:none; }
+  .fct-sp { display:inline; }
+}
 .dc-example-bend-anchor {
   display:inline-block;
   position:relative;
@@ -1786,7 +1806,7 @@ footer {
     align-items:center;
     order:2;
     position:absolute;
-    bottom:31%;
+    bottom:20%;
     left:0;right:0;
     z-index:10;
     background:none;
@@ -1895,8 +1915,8 @@ footer {
   .pex-one-category {
     writing-mode:horizontal-tb !important;
     text-orientation:initial !important;
-    padding:6px 16px !important;
-    font-size:11px !important;
+    padding:10px 16px !important;
+    font-size:15px !important;
     letter-spacing:.2em;
     border-radius:0 !important;
     order:1;
@@ -2221,16 +2241,29 @@ footer {
   /* ── キャンペーン概要 ── */
   #period .sec { padding:48px 16px; }
   .period-card { padding:24px 14px; }
-  .period-dates { margin-bottom:24px; }
+  .period-dates {
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:20px;
+    margin-bottom:24px;
+  }
   .period-date-col {
     padding:0 6px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:space-between;
-    min-height:120px;
+    text-align:center !important;
+    min-height:auto;
+    width:100%;
   }
-  .period-dates { align-items:stretch !important; }
+  .period-date-col + .period-date-col {
+    border-left:none !important;
+    border-top:3px solid var(--green-dk);
+    padding-top:20px;
+  }
+  .period-date-col:first-child .period-date-value {
+    font-size:clamp(30px,9.5vw,42px) !important;
+  }
   .period-date-label {
     font-size:13px !important;
     letter-spacing:.04em !important;
@@ -2254,7 +2287,7 @@ footer {
     white-space:nowrap;
     display:inline-block;
   }
-  .period-target-line { font-size:11px !important;white-space:nowrap;letter-spacing:0; }
+  .period-target-line { font-size:11px !important;white-space:nowrap;letter-spacing:0;margin-bottom:8px !important; }
   .period-cond-list li { font-size:12px; }
   .period-cond-list li:first-child { font-size:13px; }
 
@@ -2281,41 +2314,61 @@ footer {
   .fck::before,
   .fck::after { width:40px; }
   .fch-lead { font-size:22px;margin-bottom:12px; }
-  .fch { font-size:clamp(26px,7.5vw,38px);white-space:normal; }
+  .fch { font-size:clamp(26px,7.5vw,38px);white-space:normal;margin-bottom:0 !important; }
   .fch em::after { height:2px; }
   .fch-num { font-size:1.6em; }
   .fch-tail { font-size:.9em; }
   .fcp { font-size:14px;line-height:1.9;margin-bottom:28px; }
   #fcta .btn-h { font-size:17px;padding:18px 0;width:100%;max-width:320px;display:block;text-align:center; }
+  /* スマホ順序: 注釈(左揃え) → CTA(中央) */
+  .fcta-notes { order:1;margin:0 0 12px !important;font-size:12px !important;align-self:stretch; }
+  .fcta-btn { order:2;margin-top:0 !important;align-self:center; }
 
   /* ── フローティングCTA ── */
-  .float-cta { padding:10px 16px; }
-  .float-cta-inner { justify-content:center;gap:0; }
-  .float-cta-left { flex-direction:row;gap:0;flex:none; }
+  .float-cta { padding:14px 16px; }
+  .float-cta-inner { justify-content:center;gap:0;position:relative; }
+  .float-cta-right {
+    display:flex !important;
+    align-items:center;
+    font-size:12px !important;
+    line-height:1.3;
+    letter-spacing:0;
+    padding-right:110px;
+  }
+  .float-cta-right .float-w-chance {
+    font-size:13px;
+    margin-left:4px;
+  }
+  .float-cta-left {
+    position:absolute;
+    right:0;top:50%;
+    transform:translateY(-50%);
+    flex-direction:row;gap:0;flex:none;
+  }
   .float-cta-btn {
-    font-size:15px;padding:12px 40px;
+    font-size:13px;padding:8px 16px;
     white-space:nowrap;
     text-align:center;
   }
-  .float-cta-right { display:none; }
 
   /* ── フッター ── */
-  footer { padding:40px 20px 16px; }
+  footer { padding:28px 20px 12px; }
   .footer-inner {
     grid-template-columns:1fr;
-    gap:24px;
-    text-align:center;
+    gap:14px;
+    text-align:left;
   }
-  .footer-col { text-align:center; }
-  .footer-brand { text-align:center !important; }
-  .footer-logo { width:min(320px,75%);margin:0 auto 20px;display:block; }
-  .footer-company { font-size:14px;text-align:center; }
-  .footer-address { font-size:12px;text-align:center; }
-  .footer-links { align-items:center;gap:14px;padding-top:0 !important;text-align:center; }
+  .footer-col { text-align:left; }
+  .footer-brand { text-align:left !important; }
+  .footer-logo { width:min(300px,70%);margin:0 0 10px;display:block; }
+  .footer-company { font-size:14px;text-align:left;margin-bottom:2px; }
+  .footer-address { font-size:12px;text-align:left;margin:0; }
+  .footer-links { align-items:flex-start;gap:10px;padding-top:0 !important;text-align:left; }
   .footer-links a { font-size:14px; }
-  .footer-cta { align-items:stretch; }
-  .footer-cta-btn { text-align:center;width:100%;max-width:320px; }
-  .footer-copy { padding-bottom:72px;font-size:10px; }
+  .footer-cta { align-items:center !important;text-align:center !important;padding-top:8px !important;gap:10px !important; }
+  .footer-cta-lead { text-align:center !important;margin:0; }
+  .footer-cta-btn { text-align:center;width:100%;max-width:320px;margin:0 auto; }
+  .footer-copy { padding-bottom:40px;margin-top:12px;font-size:10px; }
 
   /* ── 注意事項 ── */
   .notes-band { padding:20px 16px; }
@@ -3896,12 +3949,12 @@ footer {
       <div class="period-dates">
         <div class="period-date-col">
           <p class="period-date-label">開催期間</p>
-          <p class="period-date-value" style="white-space:nowrap;"><span class="date-part">4/29<span>火</span></span><span class="period-date-sep">〜</span><span class="date-part">5/6<span>火</span></span></p>
+          <p class="period-date-value" style="white-space:nowrap;"><span class="date-part">4/29<span class="dow-paren">（火）</span></span><span class="period-date-sep">〜</span><span class="date-part">5/6<span class="dow-paren">（火）</span></span></p>
           <p class="period-date-sub period-date-sub-highlight">全店舗で開催</p>
         </div>
         <div class="period-date-col">
           <p class="period-date-label">クーポン有効期限</p>
-          <p class="period-date-value" style="white-space:nowrap;">6/7<span>日</span><span class="period-date-until">まで</span></p>
+          <p class="period-date-value" style="white-space:nowrap;">6/7<span class="dow-paren">（日）</span><span class="period-date-until">まで</span></p>
           <p class="period-date-sub period-date-sub-highlight">フェア後もご利用OK</p>
         </div>
       </div>
@@ -3960,9 +4013,7 @@ footer {
 <!-- フローティングCTA -->
 <div class="float-cta" id="floatCta">
   <div class="float-cta-inner">
-    <div class="float-cta-right">
-      Web予約で<strong>スロット2回</strong>まわせる<span class="float-w-chance"><span class="float-w">W</span>チャンス！</span>
-    </div>
+    <div class="float-cta-right"><span class="fct-pc">Web予約で<strong>スロット2回</strong>まわせる</span><span class="fct-sp">WEB予約で</span><span class="float-w-chance"><span class="float-w">W</span>チャンス<span class="fct-pc">！</span></span></div>
     <div class="float-cta-left">
       <span class="float-cta-label">GWフェア 4/29〜5/6</span>
       <a href="#shop-search" class="float-cta-btn">今すぐ予約</a>
@@ -3986,7 +4037,7 @@ footer {
       <a href="https://www.ai-group.net/privacy/" target="_blank" rel="noopener">プライバシーポリシー ↗</a>
     </div>
     <div class="footer-col footer-cta">
-      <p class="footer-cta-lead">GWフェアのご予約は<br>お近くの店舗へ</p>
+      <p class="footer-cta-lead">GWフェアのご予約はお近くの店舗へ</p>
       <a href="#shop-search" class="footer-cta-btn">店舗を探して予約する</a>
     </div>
   </div>
@@ -4155,7 +4206,7 @@ function checkBackBtnVisibility(){
   const listRect=list.getBoundingClientRect();
   const lastRect=cards[cards.length-1].getBoundingClientRect();
   const vh=window.innerHeight;
-  const show=listRect.top<vh*0.8&&lastRect.bottom>vh*0.2;
+  const show=listRect.top<vh*0.8&&lastRect.top>vh*0.4;
   fb.classList.toggle('visible',show);
   updateBackBtnPos();
 }
@@ -4245,15 +4296,15 @@ document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key=
 // デフォルトで6店舗表示 + アコーディオン
 showInitialShops();
 
-// フローティングCTA: ヒーロー通過後〜フッター到達前まで表示
+// フローティングCTA: ヒーロー通過後〜最終CTA到達前まで表示
 const fc = document.getElementById('floatCta');
 const hero = document.getElementById('hero');
-const footerEl = document.querySelector('footer');
+const fctaEl = document.getElementById('fcta');
 window.addEventListener('scroll', () => {
   const passedHero = window.scrollY > hero.offsetHeight - 100;
-  const footerTop = footerEl ? footerEl.getBoundingClientRect().top : Infinity;
-  const beforeFooter = footerTop > window.innerHeight;
-  fc.classList.toggle('visible', passedHero && beforeFooter);
+  const fctaTop = fctaEl ? fctaEl.getBoundingClientRect().top : Infinity;
+  const beforeFcta = fctaTop > window.innerHeight;
+  fc.classList.toggle('visible', passedHero && beforeFcta);
 }, { passive: true });
 </script>
 </body>
