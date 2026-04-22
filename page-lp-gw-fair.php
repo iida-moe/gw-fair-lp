@@ -3838,7 +3838,7 @@ footer {
       </div>
 
       <div class="dc-gift">
-        <div class="dc-photo"><img src="<?php echo $lp_assets; ?>/watasu.png" alt="クーポンを渡す"></div>
+        <div class="dc-photo"><img src="<?php echo $lp_assets; ?>/price/watasu.png" alt="クーポンを渡す"></div>
         <div class="dc-gift-text">
           <p class="dc-simple-merit">家族や友人にプレゼントできます</p>
           <p class="dc-simple-bonus">使用期間は<span class="dc-date-big">6/7<span class="dc-date-day">（日）</span></span>まで！</p>

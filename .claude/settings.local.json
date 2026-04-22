@@ -6,7 +6,26 @@
       "Bash(git push:*)",
       "Bash(gh api:*)",
       "Bash(grep -iE \"zoff|jins|眼鏡市場|メガネスーパー|パリミキ|999\\\\.\" /c/Users/m-iida/Desktop/gw-fair-lp/_old/*.html)",
-      "Read(//c/Users/m-iida/Desktop/**)"
+      "Read(//c/Users/m-iida/Desktop/**)",
+      "Bash(python3 -c \"from PIL import Image; im=Image.open\\('c:/Users/m-iida/Desktop/gw-fair-lp/images/price/price-card-megane.png'\\); print\\(im.size\\)\")",
+      "Bash(ls -la \"c:/Users/m-iida/Desktop/gw-fair-lp/\"*.html \"c:/Users/m-iida/Desktop/gw-fair-lp/\"*.php)",
+      "Bash(pdftotext \"C:/Users/m-iida/Downloads/LINE WORKS/260313_brand_guideline_CDE.pdf\" -)",
+      "Bash(pip install:*)",
+      "Bash(python -c ':*)",
+      "Bash(ls /c/Python*/python.exe)",
+      "Read(//c/Program Files/**)",
+      "Bash(ls /c/Users/m-iida/AppData/Local/Programs/Python/*/python.exe)",
+      "Bash(pip --version)",
+      "Bash(pip3 --version)",
+      "Bash(wsl python3:*)",
+      "Bash(/c/Users/m-iida/AppData/Local/Programs/Python/Python*/python.exe -c \"print\\('hello'\\)\")",
+      "Bash(/mingw64/bin/python3 -c \"print\\('hello'\\)\")",
+      "Bash(ls -la \"c:/Users/m-iida/Desktop/nosepad_lp/\"ファイテンロゴ*)",
+      "Bash(ls -la c:/Users/m-iida/Desktop/nosepad_lp/*ロゴ*)",
+      "Bash(start \"\" \"c:/Users/m-iida/Desktop/nosepad_lp/index.html\")",
+      "Bash(identify \"c:/Users/m-iida/Desktop/nosepad_lp/images/phiten-logo.png\")",
+      "Bash(git commit -m ' *)",
+      "Bash(awk '/<section id=\"hero\">/,/<\\\\/section>/{print NR\": \"$0}' gw-fair.html)"
     ]
   }
 }

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>GWフェア バナー案プレビュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#3A7A4F; --green-dk:#2E5A3A; --green-lt:#5E9E72;
+  --gold:#D4A820; --gold-bg:#FFF8E1;
+  --red:#C0272D; --red-dk:#A01E24;
+  --ink:#1a1a2e; --ink-mid:#555; --ink-lt:#888;
+  --bg:#F7F7F5; --border:#e0e0e0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#eee;
+  padding:40px 20px;
+  color:var(--ink);
+}
+h1{font-size:24px;margin-bottom:8px}
+.page-lead{color:var(--ink-mid);margin-bottom:32px;font-size:14px;line-height:1.7}
+
+h2.cat{
+  font-size:18px;margin:48px 0 16px;padding-left:12px;
+  border-left:4px solid var(--green);
+}
+.grid{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.card{
+  background:#fff;border-radius:12px;padding:16px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.card-title{font-size:13px;font-weight:700;margin-bottom:8px;color:var(--ink)}
+.card-meta{font-size:11px;color:var(--ink-lt);margin-bottom:10px}
+.card-note{font-size:11px;color:var(--ink-mid);margin-top:8px;line-height:1.5}
+
+/* ═══ バナー基盤 ═══ */
+.banner{
+  position:relative;overflow:hidden;
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--ink);
+}
+.sq{width:540px;height:540px}
+.wide{width:960px;height:300px}
+.news{width:600px;height:450px}
+
+/* 赤グラデ帯(共通) */
+.red-ribbon{
+  background:linear-gradient(135deg,var(--red) 0%,var(--red-dk) 100%);
+  color:#fff;
+}
+
+/* ═══ 1:1 案A「数字推し・ミニマル白」═══ */
+.sq-a{background:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:48px 44px;border:1px solid var(--border)}
+.sq-a .head{text-align:center}
+.sq-a .gw-label{
+  display:inline-block;font-family:'Montserrat',sans-serif;font-weight:800;
+  letter-spacing:.1em;color:var(--green);font-size:22px;margin-bottom:8px;
+}
+.sq-a .date{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:20px;
+  color:var(--ink);letter-spacing:.05em;
+}
+.sq-a .main{text-align:center}
+.sq-a .off-num{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  color:var(--red);font-size:148px;line-height:.9;letter-spacing:-.02em;
+}
+.sq-a .off-yen{font-family:'Noto Sans JP',sans-serif;font-size:56px;font-weight:900;color:var(--red)}
+.sq-a .off-label{
+  font-size:26px;font-weight:900;color:var(--ink);margin-top:4px;letter-spacing:.04em;
+}
+.sq-a .foot{text-align:center}
+.sq-a .foot-lead{
+  font-size:18px;font-weight:700;color:var(--ink-mid);margin-bottom:8px;letter-spacing:.05em;
+}
+.sq-a .foot-main{
+  display:inline-block;background:var(--green);color:#fff;
+  font-size:22px;font-weight:900;padding:10px 24px;border-radius:6px;letter-spacing:.05em;
+}
+
+/* ═══ 1:1 案B「商品写真+5,500円OFF・緑×ゴールド」═══ */
+.sq-b{
+  background:linear-gradient(135deg,#2E5A3A 0%,#3A7A4F 50%,#2E5A3A 100%);
+  color:#fff;display:flex;flex-direction:column;
+  padding:26px 30px;overflow:hidden;
+}
+.sq-b::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,rgba(212,168,32,.2) 0%,transparent 65%);
+  pointer-events:none;
+}
+.sq-b::after{
+  content:"";position:absolute;top:-60px;right:-60px;width:220px;height:220px;
+  background:radial-gradient(circle,rgba(255,232,140,.3) 0%,transparent 70%);
+  pointer-events:none;
+}
+.sq-b .sqb-head{
+  position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;
+  padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.22);
+}
+.sq-b .sqb-brand{display:flex;flex-direction:column;gap:4px}
+.sq-b .sqb-gw{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--gold);font-size:24px;letter-spacing:.06em;line-height:1}
+.sq-b .sqb-shop{font-size:11px;color:rgba(255,255,255,.9);letter-spacing:.25em;font-weight:600}
+.sq-b .sqb-dt{text-align:right;font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:22px;letter-spacing:.02em;line-height:1}
+.sq-b .sqb-dt small{display:block;font-size:10px;color:rgba(255,255,255,.75);letter-spacing:.25em;margin-top:4px;font-weight:500}
+.sq-b .sqb-photos{
+  position:relative;z-index:1;display:flex;justify-content:center;align-items:center;
+  gap:20px;padding:18px 0 10px;
+}
+.sq-b .sqb-photos img{
+  height:128px;width:auto;object-fit:contain;padding:4px;
+  background:radial-gradient(ellipse at center,rgba(255,248,220,.25) 0%,rgba(255,248,220,.1) 45%,transparent 72%);
+  filter:drop-shadow(0 0 22px rgba(255,250,230,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.4));
+}
+.sq-b .sqb-target{
+  position:relative;z-index:1;text-align:center;
+  font-size:14px;font-weight:700;color:#fff;letter-spacing:.35em;padding:6px 0;
+  border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);
+  margin-bottom:10px;
+}
+.sq-b .sqb-price{
+  position:relative;z-index:1;display:flex;align-items:baseline;justify-content:center;gap:2px;
+  background:linear-gradient(135deg,#FFF2A8 0%,#FFD54F 30%,#D4A820 60%,#FFE88C 85%,#FFF7C2 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 14px rgba(255,215,0,.45));
+}
+.sq-b .sqb-price .max{font-size:20px;font-weight:900;align-self:center;margin-right:4px;letter-spacing:.08em}
+.sq-b .sqb-price .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:88px;line-height:1;letter-spacing:-.02em}
+.sq-b .sqb-price .yen{font-size:30px;font-weight:900}
+.sq-b .sqb-price .off{font-family:'Montserrat',sans-serif;font-weight:900;font-size:40px;margin-left:2px}
+.sq-b .sqb-foot{
+  position:relative;z-index:1;text-align:center;color:#fff;
+  font-size:14px;font-weight:700;letter-spacing:.06em;
+  margin-top:auto;padding-top:10px;line-height:1.5;
+}
+.sq-b .sqb-foot small{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.15em;margin-top:2px}
+
+/* ═══ 1:1 案C「スロット・ポップ訴求」═══ */
+.sq-c{background:#fff;padding:40px;overflow:hidden}
+.sq-c::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(58,122,79,.04) 40px,rgba(58,122,79,.04) 80px);
+}
+.sq-c .wrap{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.sq-c .top-row{display:flex;justify-content:space-between;align-items:center}
+.sq-c .tag-date{
+  background:var(--ink);color:#fff;padding:8px 16px;border-radius:4px;
+  font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:.05em;
+}
+.sq-c .tag-gw{
+  background:var(--gold);color:var(--ink);padding:8px 16px;border-radius:4px;
+  font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;letter-spacing:.08em;
+}
+.sq-c .center{text-align:center;padding:16px 0}
+.sq-c .slot-display{
+  display:inline-flex;gap:8px;padding:12px 20px;
+  background:linear-gradient(180deg,#FFF8E1 0%,#fff 100%);
+  border:3px solid var(--gold);border-radius:12px;
+  box-shadow:0 4px 16px rgba(212,168,32,.25);margin-bottom:20px;
+}
+.sq-c .slot-display span{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:56px;color:var(--red);
+  min-width:48px;text-align:center;line-height:1;
+}
+.sq-c .big-copy{font-size:34px;font-weight:900;color:var(--ink);line-height:1.3;letter-spacing:.02em}
+.sq-c .big-copy .hi{color:var(--red);font-size:42px}
+.sq-c .sub-copy{font-size:17px;color:var(--ink-mid);margin-top:12px;font-weight:500;letter-spacing:.05em}
+.sq-c .bottom-row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.sq-c .amount{
+  font-family:'Montserrat',sans-serif;font-weight:900;color:var(--red);
+  font-size:54px;line-height:1;letter-spacing:-.02em;
+}
+.sq-c .amount small{font-size:22px;font-weight:700}
+.sq-c .amount-label{font-size:14px;color:var(--ink-mid);font-weight:700;margin-top:4px}
+.sq-c .cta{
+  background:var(--green);color:#fff;padding:16px 20px;border-radius:8px;
+  font-size:15px;font-weight:900;line-height:1.4;text-align:center;letter-spacing:.03em;
+}
+
+/* ═══ 横長 案A「左情報＋右メガネ」═══ */
+.wide-a{background:#fff;display:flex;border:1px solid var(--border)}
+.wide-a .left{
+  flex:1.2;padding:32px 40px;display:flex;flex-direction:column;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,#F7F7F5 0%,#fff 100%);
+  border-right:1px solid var(--border);position:relative;
+}
+.wide-a .left::before{
+  content:"";position:absolute;left:0;top:24px;bottom:24px;width:4px;background:var(--green);
+}
+.wide-a .lbl{
+  font-family:'Montserrat',sans-serif;font-weight:800;
+  color:var(--green);letter-spacing:.1em;font-size:14px;
+}
+.wide-a .dates{font-family:'Montserrat',sans-serif;font-weight:800;font-size:36px;color:var(--ink);letter-spacing:.02em;line-height:1}
+.wide-a .dates-jp{font-size:13px;color:var(--ink-mid);letter-spacing:.15em}
+.wide-a .headline{font-size:28px;font-weight:900;color:var(--ink);line-height:1.25;margin-top:4px}
+.wide-a .headline .off{color:var(--red);font-family:'Montserrat',sans-serif;font-size:44px}
+.wide-a .right{
+  flex:1;background:linear-gradient(135deg,var(--green) 0%,var(--green-dk) 100%);
+  color:#fff;padding:32px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;
+}
+.wide-a .right::before{
+  content:"";position:absolute;inset:0;opacity:.15;
+  background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,.4) 20px,rgba(255,255,255,.4) 22px);
+}
+.wide-a .right-wrap{position:relative;z-index:1}
+.wide-a .r-lead{font-size:14px;color:rgba(255,255,255,.85);margin-bottom:10px;letter-spacing:.15em}
+.wide-a .r-main{font-size:26px;font-weight:900;line-height:1.35;margin-bottom:14px}
+.wide-a .r-main .hi{color:var(--gold);font-family:'Montserrat',sans-serif;font-size:32px}
+.wide-a .r-cta{
+  display:inline-block;background:#fff;color:var(--red);
+  padding:10px 22px;border-radius:6px;font-size:14px;font-weight:900;letter-spacing:.05em;
+}
+
+/* ═══ 横長 案B「商品写真+5,500円OFF・緑×ゴールド」═══ */
+.wide-b{
+  background:linear-gradient(135deg,#2E5A3A 0%,#3A7A4F 50%,#2E5A3A 100%);
+  color:#fff;padding:0;display:flex;align-items:stretch;overflow:hidden;
+}
+.wide-b::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at 70% 50%,rgba(212,168,32,.22) 0%,transparent 60%);
+  pointer-events:none;
+}
+.wide-b::after{
+  content:"";position:absolute;top:-40px;right:-40px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(255,232,140,.3) 0%,transparent 70%);
+  pointer-events:none;
+}
+.wide-b .wb-left{
+  width:26%;padding:28px 26px;
+  display:flex;flex-direction:column;justify-content:center;gap:3px;
+  border-right:1px solid rgba(255,255,255,.25);
+  position:relative;z-index:1;
+}
+.wide-b .wb-brand{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--gold);font-size:30px;letter-spacing:.05em;line-height:1}
+.wide-b .wb-shop{font-size:11px;color:rgba(255,255,255,.9);letter-spacing:.25em;margin-top:4px;font-weight:600}
+.wide-b .wb-div{width:28px;height:1px;background:rgba(255,255,255,.4);margin:10px 0}
+.wide-b .wb-dt{font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:22px;letter-spacing:.02em;line-height:1}
+.wide-b .wb-dt-sub{font-size:10px;color:rgba(255,255,255,.75);letter-spacing:.25em;margin-top:3px}
+.wide-b .wb-photos{
+  width:32%;position:relative;z-index:1;
+  display:flex;justify-content:center;align-items:center;gap:14px;padding:20px 10px;
+}
+.wide-b .wb-photos img{
+  height:160px;width:auto;object-fit:contain;padding:4px;
+  background:radial-gradient(ellipse at center,rgba(255,248,220,.25) 0%,rgba(255,248,220,.1) 45%,transparent 72%);
+  filter:drop-shadow(0 0 24px rgba(255,250,230,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.4));
+}
+.wide-b .wb-right{
+  flex:1;padding:22px 26px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;z-index:1;
+}
+.wide-b .wb-target{
+  font-size:12px;font-weight:700;color:#fff;letter-spacing:.3em;
+  padding:5px 14px;border:1px solid rgba(255,255,255,.4);border-radius:4px;
+  margin-bottom:10px;
+}
+.wide-b .wb-price{
+  display:flex;align-items:baseline;gap:2px;
+  background:linear-gradient(135deg,#FFF2A8 0%,#FFD54F 30%,#D4A820 60%,#FFE88C 85%,#FFF7C2 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 16px rgba(255,215,0,.5));
+}
+.wide-b .wb-price .max{font-size:18px;font-weight:900;align-self:center;margin-right:4px;letter-spacing:.05em}
+.wide-b .wb-price .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:78px;line-height:1;letter-spacing:-.02em}
+.wide-b .wb-price .yen{font-size:28px;font-weight:900}
+.wide-b .wb-price .off{font-family:'Montserrat',sans-serif;font-weight:900;font-size:36px;margin-left:3px}
+.wide-b .wb-sub{font-size:12px;color:rgba(255,255,255,.9);letter-spacing:.1em;margin-top:6px;font-weight:500}
+
+/* ═══ ニュース欄 案A「1:1のアレンジ」═══ */
+.news-a{background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:space-between;padding:36px 40px}
+.news-a .top{display:flex;justify-content:space-between;align-items:center}
+.news-a .lbl{font-family:'Montserrat',sans-serif;font-weight:800;color:var(--green);letter-spacing:.1em;font-size:16px}
+.news-a .date-chip{font-family:'Montserrat',sans-serif;background:var(--ink);color:#fff;padding:6px 14px;font-size:14px;font-weight:700;border-radius:4px;letter-spacing:.05em}
+.news-a .mid{text-align:center}
+.news-a .big{font-size:38px;font-weight:900;color:var(--ink);line-height:1.3;letter-spacing:.02em}
+.news-a .big .hi{color:var(--red);font-family:'Montserrat',sans-serif;font-size:74px}
+.news-a .big .hi small{font-size:30px;font-weight:800}
+.news-a .sub{font-size:18px;color:var(--ink-mid);margin-top:6px;letter-spacing:.08em;font-weight:500}
+.news-a .bot{text-align:center}
+.news-a .cta{display:inline-block;background:var(--green);color:#fff;padding:12px 28px;font-size:17px;font-weight:900;border-radius:6px;letter-spacing:.05em}
+
+/* ═══ ニュース欄 案B「商品写真+5,500円OFF・緑×ゴールド」═══ */
+.news-b{
+  background:linear-gradient(135deg,#2E5A3A 0%,#3A7A4F 50%,#2E5A3A 100%);
+  color:#fff;border:none;padding:24px 30px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.news-b::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,rgba(212,168,32,.2) 0%,transparent 65%);
+  pointer-events:none;
+}
+.news-b::after{
+  content:"";position:absolute;top:-50px;right:-50px;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(255,232,140,.3) 0%,transparent 70%);
+  pointer-events:none;
+}
+.news-b .nb-head{
+  position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end;
+  padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.22);
+}
+.news-b .nb-brand{display:flex;flex-direction:column;gap:3px}
+.news-b .nb-gw{font-family:'Montserrat',sans-serif;font-weight:900;color:var(--gold);font-size:26px;letter-spacing:.06em;line-height:1}
+.news-b .nb-shop{font-size:11px;color:rgba(255,255,255,.9);letter-spacing:.25em;font-weight:600}
+.news-b .nb-dt{text-align:right;font-family:'Montserrat',sans-serif;font-weight:700;color:#fff;font-size:22px;letter-spacing:.02em;line-height:1}
+.news-b .nb-dt small{display:block;font-size:10px;color:rgba(255,255,255,.75);letter-spacing:.25em;margin-top:4px;font-weight:500}
+.news-b .nb-photos{
+  position:relative;z-index:1;display:flex;justify-content:center;align-items:center;
+  gap:20px;padding:14px 0 8px;
+}
+.news-b .nb-photos img{
+  height:118px;width:auto;object-fit:contain;padding:4px;
+  background:radial-gradient(ellipse at center,rgba(255,248,220,.25) 0%,rgba(255,248,220,.1) 45%,transparent 72%);
+  filter:drop-shadow(0 0 22px rgba(255,250,230,.45)) drop-shadow(0 6px 14px rgba(0,0,0,.4));
+}
+.news-b .nb-target{
+  position:relative;z-index:1;text-align:center;
+  font-size:13px;font-weight:700;color:#fff;letter-spacing:.35em;padding:5px 0;
+  border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25);
+  margin-bottom:10px;
+}
+.news-b .nb-price{
+  position:relative;z-index:1;display:flex;align-items:baseline;justify-content:center;gap:2px;
+  background:linear-gradient(135deg,#FFF2A8 0%,#FFD54F 30%,#D4A820 60%,#FFE88C 85%,#FFF7C2 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 14px rgba(255,215,0,.45));
+}
+.news-b .nb-price .max{font-size:18px;font-weight:900;align-self:center;margin-right:4px;letter-spacing:.08em}
+.news-b .nb-price .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:78px;line-height:1;letter-spacing:-.02em}
+.news-b .nb-price .yen{font-size:26px;font-weight:900}
+.news-b .nb-price .off{font-family:'Montserrat',sans-serif;font-weight:900;font-size:36px;margin-left:2px}
+.news-b .nb-bot{
+  position:relative;z-index:1;text-align:center;color:#fff;
+  font-size:13px;font-weight:700;letter-spacing:.06em;
+  margin-top:auto;padding-top:10px;line-height:1.5;
+}
+.news-b .nb-bot small{display:block;font-size:11px;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.15em;margin-top:2px}
+</style>
+</head>
+<body>
+
+<h1>GWフェア バナー案プレビュー</h1>
+<p class="page-lead">
+  各案は実寸比率でレイアウトしてあります（プレビューは縮小表示）。<br>
+  気に入ったデザインの方向性を教えてください。採用案を決めたら、Canvaで作る時の参考にできる「レイアウト指示書」を出します。
+</p>
+
+<!-- ════════ 1:1 正方形 ════════ -->
+<h2 class="cat">① 1:1 正方形（メタ広告 / LINE / GBP 共通）</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-title">案A — 数字推し・ミニマル白</div>
+    <div class="card-meta">1080×1080 / 白背景・赤数字強調</div>
+    <div class="banner sq sq-a">
+      <div class="head">
+        <div class="gw-label">GW FAIR</div>
+        <div class="date">4.29 <small style="color:var(--ink-lt)">—</small> 5.6</div>
+      </div>
+      <div class="main">
+        <div><span class="off-num">5,500</span><span class="off-yen">円</span></div>
+        <div class="off-label">最 大 O F F</div>
+      </div>
+      <div class="foot">
+        <div class="foot-lead">スロットクーポン 全員プレゼント</div>
+        <div class="foot-main">ご予約で W チャンス</div>
+      </div>
+    </div>
+    <div class="card-note">シンプル・派手さ控えめ。数字の訴求力が強い。SNSフィードで目立ちやすい。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">案B ★ — 5,500円OFF主役・緑×ゴールド</div>
+    <div class="card-meta">1080×1080 / 緑グラデ・ゴールドきらり</div>
+    <div class="banner sq sq-b">
+      <div class="sqb-head">
+        <div class="sqb-brand">
+          <div class="sqb-gw">GW FAIR</div>
+          <div class="sqb-shop">ア イ メ ガ ネ</div>
+        </div>
+        <div class="sqb-dt">4.29 — 5.6<small>G O L D E N W E E K</small></div>
+      </div>
+      <div class="sqb-photos">
+        <img src="images/hero/megane-toumei.png" alt="メガネ">
+        <img src="images/hero/SG-toumei.png" alt="サングラス">
+      </div>
+      <div class="sqb-target">メ ガ ネ ＆ サ ン グ ラ ス</div>
+      <div class="sqb-price">
+        <span class="max">最大</span><span class="num">5,500</span><span class="yen">円</span><span class="off">OFF</span>
+      </div>
+      <div class="sqb-foot">
+        スロットクーポン 全員プレゼント
+        <small>ご予約で W チャンス</small>
+      </div>
+    </div>
+    <div class="card-note">メガネ＆サングラス写真入り。眼鏡屋キャンペーンと一目で分かる。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">案C — スロット訴求・ポップ寄り</div>
+    <div class="card-meta">1080×1080 / 白背景・スロット見立て</div>
+    <div class="banner sq sq-c">
+      <div class="wrap">
+        <div class="top-row">
+          <div class="tag-gw">GW FAIR</div>
+          <div class="tag-date">4.29 - 5.6</div>
+        </div>
+        <div class="center">
+          <div class="slot-display"><span>7</span><span>7</span><span>7</span></div>
+          <div class="big-copy">引いて<span class="hi">お得</span>に<br>スロットクーポン</div>
+          <div class="sub-copy">全員もらえる 予約でWチャンス</div>
+        </div>
+        <div class="bottom-row">
+          <div>
+            <div class="amount">5,500<small>円OFF</small></div>
+            <div class="amount-label">最大割引額</div>
+          </div>
+          <div class="cta">来店予約<br>受付中</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-note">スロットの遊び心を全面に。キャンペーン感が一番伝わる。</div>
+  </div>
+
+</div>
+
+<!-- ════════ 横長 ════════ -->
+<h2 class="cat">② 横長バナー（HP トップ用 / 3.2:1）</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-title">案A — 左情報＋右キャンペーン</div>
+    <div class="card-meta">1920×600 / 2カラム分割</div>
+    <div class="banner wide wide-a">
+      <div class="left">
+        <div class="lbl">GW FAIR 2026</div>
+        <div class="dates">4.29 → 5.6</div>
+        <div class="dates-jp">W E D - T U E</div>
+        <div class="headline">最大<span class="off">5,500</span>円OFF</div>
+      </div>
+      <div class="right">
+        <div class="right-wrap">
+          <div class="r-lead">S L O T  C O U P O N</div>
+          <div class="r-main">スロットクーポン<br><span class="hi">全員</span>にプレゼント</div>
+          <div class="r-cta">▶ 今すぐ来店予約</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-note">情報が整理されていて読みやすい。PCトップで目立ちつつ邪魔にならない。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">案B ★ — 5,500円OFF主役・緑×ゴールド</div>
+    <div class="card-meta">1920×600 / 緑グラデ・ゴールドきらり</div>
+    <div class="banner wide wide-b">
+      <div class="wb-left">
+        <div class="wb-brand">GW FAIR</div>
+        <div class="wb-shop">ア イ メ ガ ネ</div>
+        <div class="wb-div"></div>
+        <div class="wb-dt">4.29 — 5.6</div>
+        <div class="wb-dt-sub">G O L D E N W E E K</div>
+      </div>
+      <div class="wb-photos">
+        <img src="images/hero/megane-toumei.png" alt="メガネ">
+        <img src="images/hero/SG-toumei.png" alt="サングラス">
+      </div>
+      <div class="wb-right">
+        <div class="wb-target">メガネ ＆ サングラス</div>
+        <div class="wb-price">
+          <span class="max">最大</span><span class="num">5,500</span><span class="yen">円</span><span class="off">OFF</span>
+        </div>
+        <div class="wb-sub">スロットクーポン 全員プレゼント ／ 予約でWチャンス</div>
+      </div>
+    </div>
+    <div class="card-note">左:日付／中央:商品写真／右:5,500円OFF。3区画で情報整理、眼鏡屋と即認識。</div>
+  </div>
+
+</div>
+
+<!-- ════════ ニュース欄 ════════ -->
+<h2 class="cat">③ HPニュース欄用（4:3気味 / 1200×900）</h2>
+<div class="grid">
+
+  <div class="card">
+    <div class="card-title">案A — 1:1案Aのニュース展開</div>
+    <div class="card-meta">1200×900 / 白背景・情報整理</div>
+    <div class="banner news news-a">
+      <div class="top">
+        <div class="lbl">GW FAIR 2026</div>
+        <div class="date-chip">4.29 - 5.6</div>
+      </div>
+      <div class="mid">
+        <div class="big">最大 <span class="hi">5,500<small>円</small></span> OFF</div>
+        <div class="sub">スロットクーポン 全員プレゼント</div>
+      </div>
+      <div class="bot">
+        <div class="cta">ご予約でWチャンス</div>
+      </div>
+    </div>
+    <div class="card-note">一覧サムネで見た時に情報がスッと入る。他のお知らせと並んでも浮かない。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">案B ★ — 5,500円OFF主役・緑×ゴールド</div>
+    <div class="card-meta">1200×900 / 緑グラデ・ゴールドきらり</div>
+    <div class="banner news news-b">
+      <div class="nb-head">
+        <div class="nb-brand">
+          <div class="nb-gw">GW FAIR</div>
+          <div class="nb-shop">ア イ メ ガ ネ</div>
+        </div>
+        <div class="nb-dt">4.29 — 5.6<small>G O L D E N W E E K</small></div>
+      </div>
+      <div class="nb-photos">
+        <img src="images/hero/megane-toumei.png" alt="メガネ">
+        <img src="images/hero/SG-toumei.png" alt="サングラス">
+      </div>
+      <div class="nb-target">メ ガ ネ ＆ サ ン グ ラ ス</div>
+      <div class="nb-price">
+        <span class="max">最大</span><span class="num">5,500</span><span class="yen">円</span><span class="off">OFF</span>
+      </div>
+      <div class="nb-bot">
+        スロットクーポン 全員プレゼント
+        <small>ご予約で W チャンス</small>
+      </div>
+    </div>
+    <div class="card-note">1:1と同じ構成を4:3に展開。3サイズでシリーズ感のある統一デザイン。</div>
+  </div>
+
+</div>
+
+<div style="margin-top:60px;padding:24px;background:#fff;border-radius:8px;font-size:13px;color:var(--ink-mid);line-height:1.8">
+  <strong style="color:var(--ink)">📌 次のステップ</strong><br>
+  1. 気に入った方向性を教えてください（例：「1:1は案B、横長は案A」）<br>
+  2. 必要なら文言やサイズの微調整を反映<br>
+  3. 確定したらCanva用のレイアウト指示書（配色コード・フォントサイズ・余白）を出します<br>
+  4. または、ブラウザのフルページスクショで直接書き出す方法も可
+</div>
+
+</body>
+</html>
