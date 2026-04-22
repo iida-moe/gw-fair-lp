@@ -4249,15 +4249,15 @@ document.getElementById('zip2').addEventListener('keydown',function(e){if(e.key=
 // デフォルトで6店舗表示 + アコーディオン
 showInitialShops();
 
-// フローティングCTA: ヒーロー通過後〜フッター到達前まで表示
+// フローティングCTA: ヒーロー通過後〜最終CTA到達前まで表示
 const fc = document.getElementById('floatCta');
 const hero = document.getElementById('hero');
-const footerEl = document.querySelector('footer');
+const fctaEl = document.getElementById('fcta');
 window.addEventListener('scroll', () => {
   const passedHero = window.scrollY > hero.offsetHeight - 100;
-  const footerTop = footerEl ? footerEl.getBoundingClientRect().top : Infinity;
-  const beforeFooter = footerTop > window.innerHeight;
-  fc.classList.toggle('visible', passedHero && beforeFooter);
+  const fctaTop = fctaEl ? fctaEl.getBoundingClientRect().top : Infinity;
+  const beforeFcta = fctaTop > window.innerHeight;
+  fc.classList.toggle('visible', passedHero && beforeFcta);
 }, { passive: true });
 </script>
 </body>
