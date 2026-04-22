@@ -2021,8 +2021,13 @@ footer {
   }
   .enkin-visual-note { text-align:left !important; }
   .enkin-visual-note .enkin-about-text { font-size:12px !important; }
-  .enkin-visual-note .enkin-about-notes { font-size:12px !important;line-height:1.6 !important;text-align:left !important; }
-  .enkin-visual-note .enkin-about-notes li { text-align:left !important; }
+  .enkin-visual-note .enkin-about-notes { line-height:1.6 !important;text-align:left !important; }
+  .enkin-visual-note .enkin-about-notes li {
+    text-align:left !important;
+    font-size:clamp(9px,2.65vw,11px) !important;
+    white-space:nowrap;
+    letter-spacing:-0.01em;
+  }
   .enkin-about { margin-top:8px !important;padding-top:8px !important; }
   .enkin-about-text { font-size:13px !important; }
   .enkin-about-notes { font-size:11px !important; }
@@ -3778,8 +3783,8 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
           </div>
           <div class="enkin-visual-note">
             <ul class="enkin-about-notes">
-              <li>標準レンズは遠用・近用・遠近・中近・近々・アシスト<br class="br-sp">いずれも対象</li>
-              <li>薄型・コーティング<br class="br-sp">レンズのグレード変更等は別途料金</li>
+              <li>標準レンズは遠用・近用・遠近・中近・近々・アシストいずれも対象</li>
+              <li>薄型・コーティング・レンズのグレード変更等は別途料金</li>
             </ul>
           </div>
         </div>
