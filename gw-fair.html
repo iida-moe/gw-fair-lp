@@ -728,6 +728,13 @@ a:focus:not(:focus-visible) { outline: none; }
   font-size:0.4em;font-weight:700;color:var(--ink-mid);
   vertical-align:0.15em;margin:0 1px;
 }
+.period-date-value .dow-paren {
+  font-size:.5em !important;
+  vertical-align:baseline !important;
+  margin:0 !important;
+  color:var(--ink-mid);
+  font-weight:700;
+}
 .period-date-value .period-date-sep {
   font-size:.7em !important;
   font-weight:700 !important;
@@ -3938,12 +3945,12 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
       <div class="period-dates">
         <div class="period-date-col">
           <p class="period-date-label">開催期間</p>
-          <p class="period-date-value" style="white-space:nowrap;"><span class="date-part">4/29<span>火</span></span><span class="period-date-sep">〜</span><span class="date-part">5/6<span>火</span></span></p>
+          <p class="period-date-value" style="white-space:nowrap;"><span class="date-part">4/29<span class="dow-paren">（火）</span></span><span class="period-date-sep">〜</span><span class="date-part">5/6<span class="dow-paren">（火）</span></span></p>
           <p class="period-date-sub period-date-sub-highlight">全店舗で開催</p>
         </div>
         <div class="period-date-col">
           <p class="period-date-label">クーポン有効期限</p>
-          <p class="period-date-value" style="white-space:nowrap;">6/7<span>日</span><span class="period-date-until">まで</span></p>
+          <p class="period-date-value" style="white-space:nowrap;">6/7<span class="dow-paren">（日）</span><span class="period-date-until">まで</span></p>
           <p class="period-date-sub period-date-sub-highlight">フェア後もご利用OK</p>
         </div>
       </div>
