@@ -2283,10 +2283,23 @@ footer {
   }
   .shop-back-arrows { display:none !important; }
   .shop-back-top-fixed::before {
-    content:'↑';
+    content:'';
     display:inline-block;
-    margin-right:6px;
-    font-weight:900;
+    width:7px;
+    height:7px;
+    border-left:2px solid currentColor;
+    border-top:2px solid currentColor;
+    transform:rotate(-45deg);
+    margin-right:10px;
+    vertical-align:middle;
+    position:relative;
+    top:1px;
+  }
+  .shop-back-top-fixed .shop-back-text {
+    line-height:1.35;
+  }
+  .shop-back-top-fixed .shop-back-text .sbt-line {
+    display:block;
   }
 
   /* ── 最終CTA ── */
@@ -3969,7 +3982,7 @@ document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.
 </section>
 
 <!-- 検索に戻る（固定） -->
-<a href="#shop-search" class="shop-back-top-fixed" id="shopBackFixed"><span class="shop-back-arrows">«</span><span class="shop-back-text">郵便番号検索に戻る</span></a>
+<a href="#shop-search" class="shop-back-top-fixed" id="shopBackFixed"><span class="shop-back-arrows">«</span><span class="shop-back-text"><span class="sbt-line">郵便番号検索に</span><span class="sbt-line">戻る</span></span></a>
 
 <!-- フローティングCTA -->
 <div class="float-cta" id="floatCta">
@@ -4152,27 +4165,28 @@ function toggleMoreShops(){
   if(fb){
     if(isOpen){
       updateBackBtnPos();
-      // スクロールハンドラに表示判定を任せる（リスト途中で表示、終わったら非表示）
+      // アコーディオン開いたら少し待って表示判定を実行
+      setTimeout(checkBackBtnVisibility,200);
     } else {
       fb.classList.remove('visible');
     }
   }
 }
-window.addEventListener('scroll',function(){
+function checkBackBtnVisibility(){
   const fb=document.getElementById('shopBackFixed');
   if(!fb||!shopAccordionOpen)return;
   const list=document.getElementById('shopMoreList');
   if(!list)return;
   const cards=list.querySelectorAll('.shop-card');
   if(!cards.length)return;
-  // リスト先頭がビューポート上部に到達したら表示、リスト末尾が画面外に出たら非表示
   const listRect=list.getBoundingClientRect();
   const lastRect=cards[cards.length-1].getBoundingClientRect();
-  const threshold=window.innerHeight*0.4;
-  const show=listRect.top<threshold&&lastRect.bottom>threshold;
+  const vh=window.innerHeight;
+  const show=listRect.top<vh*0.8&&lastRect.bottom>vh*0.2;
   fb.classList.toggle('visible',show);
   updateBackBtnPos();
-});
+}
+window.addEventListener('scroll',checkBackBtnVisibility,{passive:true});
 window.addEventListener('resize',updateBackBtnPos);
 // HeartRails APIで7桁郵便番号→緯度経度を取得(建物レベル精度)
 async function fetchZipCoord(zip7){
