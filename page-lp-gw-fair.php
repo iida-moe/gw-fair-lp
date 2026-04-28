@@ -3719,7 +3719,7 @@ footer {
     <span class="h-offer-bottom-label"><strong style="color:#C0272D;font-size:1.1em;">ご来店者全員に</strong>クーポンプレゼント</span>
     <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
     <div class="hero-sp-cta-wrap">
-      <a href="#shop-search" class="btn-h">お近くの店舗で予約</a>
+      <a href="#shop-search" class="btn-h">お近くの店舗を予約</a>
       <p class="h-note" style="padding-left:0;">※税込11,000円以上でお一人様につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
     </div>
   </div>
@@ -3747,7 +3747,7 @@ footer {
     <div class="h-cta-row">
       <div class="h-cta-wrap">
         <a href="#shop-search" class="btn-h">
-          お近くの店舗で予約
+          お近くの店舗を予約
         </a>
       </div>
     </div>
