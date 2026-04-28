@@ -2222,7 +2222,7 @@ footer {
   .howto-cards { gap:12px;align-items:center; }
   .howto-card { padding:20px 16px;gap:14px;width:100%; }
   .howto-step-num { font-size:clamp(18px,4.5vw,24px); }
-  .howto-desc { font-size:clamp(14px,3.8vw,18px); }
+  .howto-desc { font-size:clamp(15px,4.2vw,20px); }
   .howto-note { font-size:11px; }
   .howto-card-icon { width:48px;height:48px; }
 
@@ -2531,7 +2531,7 @@ footer {
   width:fit-content;
 }
 .howto-desc {
-  font-size:clamp(16px,4vw,20px);font-weight:700;
+  font-size:clamp(17px,4.4vw,22px);font-weight:700;
   color:var(--ink);line-height:1.7;
 }
 .howto-hl {
