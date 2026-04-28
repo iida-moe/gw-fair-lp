@@ -3720,7 +3720,7 @@ footer {
     <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
     <div class="hero-sp-cta-wrap">
       <a href="#shop-search" class="btn-h">お近くの店舗を予約</a>
-      <p class="h-note" style="padding-left:0;">※税込11,000円以上でお一人様につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
+      <p class="h-note" style="padding-left:0;">※税込11,000円以上で一件につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
     </div>
   </div>
   <div class="hw">
@@ -3740,7 +3740,7 @@ footer {
     <div class="h-offer">
       <span class="h-offer-bottom-label"><strong style="color:#C0272D;font-size:1.1em;">ご来店者全員に</strong>クーポンプレゼント</span>
       <span class="h-offer-line"><span class="h-offer-label">最大</span><span class="h-offer-num">5,500</span><span class="h-offer-unit">円OFF</span></span>
-      <p class="h-note">※税込11,000円以上でお一人様につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
+      <p class="h-note">※税込11,000円以上で一件につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
     </div>
 
     <!-- ⑤ CTA -->
@@ -3933,7 +3933,7 @@ footer {
         <div class="howto-card-text">
           <div class="howto-step-num">STEP 3</div>
           <p class="howto-desc"><span class="howto-hl">お会計時にクーポン</span>を提示して<br>お得にお買い物</p>
-          <p class="howto-note">※税込11,000円以上でお一人様につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
+          <p class="howto-note">※税込11,000円以上で一件につき1枚利用可<br>※クーポン有効期限：2026年6月7日（日）まで<br>※スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</p>
         </div>
       </div>
 
@@ -3960,7 +3960,7 @@ footer {
       <div class="period-info">
         <p class="period-target-line"><strong>対象：</strong>メガネ・サングラス・コンタクト・補聴器・アクセサリー</p>
         <ul class="period-notes">
-          <li>税込11,000円以上でお一人様につき1枚利用可</li>
+          <li>税込11,000円以上で一件につき1枚利用可</li>
           <li>クーポン有効期限：2026年6月7日（日）まで</li>
           <li>スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</li>
         </ul>
@@ -3999,7 +3999,7 @@ footer {
     <h2 class="fch rv">最大<strong class="fch-num">5,500</strong><span class="fch-unit">円OFF</span><br class="br-sp"><span class="fch-tail">クーポン</span></h2>
     <a href="#shop-search" class="btn-h fcta-btn rv">今すぐ来店予約する</a>
     <ul class="fcta-notes rv">
-      <li>税込11,000円以上でお一人様につき1枚利用可</li>
+      <li>税込11,000円以上で一件につき1枚利用可</li>
       <li>クーポン有効期限：2026年6月7日（日）まで</li>
       <li>スロット抽選クーポンを除く他のクーポンとの併用は1種類のみ可</li>
     </ul>
