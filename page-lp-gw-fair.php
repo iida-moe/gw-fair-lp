@@ -3955,7 +3955,6 @@ footer {
         <div class="period-date-col">
           <p class="period-date-label">クーポン有効期限</p>
           <p class="period-date-value" style="white-space:nowrap;">6/7<span class="dow-paren">（日）</span><span class="period-date-until">まで</span></p>
-          <p class="period-date-sub period-date-sub-highlight">フェア後もご利用OK</p>
         </div>
       </div>
       <div class="period-info">
