@@ -3841,7 +3841,7 @@ footer {
           </div>
           <div class="enkin-visual-note">
             <ul class="enkin-about-notes">
-              <li>標準レンズは遠用・近用・遠近・中近・近々・アシストいずれも対象</li>
+              <li>標準レンズは遠用・近用・遠近・中近・近々・アシストすべて対象</li>
               <li>薄型・コーティング・レンズのグレード変更等は別途料金</li>
             </ul>
           </div>
