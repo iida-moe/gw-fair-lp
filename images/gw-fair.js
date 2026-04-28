@@ -16,7 +16,6 @@ const SHOPS = [
   { name:'アイメガネ鴻巣ウニクス店', zip:'369', addr:'〒369-0116 埼玉県鴻巣市北新宿225-1', web:'https://www.aimegane.com/qualification/7358/', tel:'048-547-0001', lat:36.112509, lng:139.436912, img:'images/shops/kounousuunikusu.png' },
   { name:'アイメガネ熊谷ティアラ店', zip:'360', addr:'〒360-0037 埼玉県熊谷市筑波3-202', web:'https://www.aimegane.com/qualification/7359/', tel:'048-525-0001', lat:36.139479, lng:139.389063, img:'images/shops/kumagaya.png' },
   { name:'アイメガネ深谷上柴西店', zip:'366', addr:'〒366-0052 埼玉県深谷市上柴町西3-7-9', web:'https://www.aimegane.com/qualification/6681/', tel:'048-572-0001', lat:36.18414, lng:139.300285, img:'images/shops/fukaya.png' },
-  { name:'アイメガネ本庄南大通り店', zip:'367', addr:'〒367-0044 埼玉県本庄市見福3-13-12', web:'https://www.aimegane.com/shop/', tel:'0495-21-0001', lat:36.22822, lng:139.178223, img:'images/shops/honjo.webp' },
   { name:'アイメガネ富士見鶴馬店', zip:'354', addr:'〒354-0021 埼玉県富士見市鶴馬1-25-1', web:'https://www.aimegane.com/qualification/7158/', tel:'049-251-0001', lat:35.851697, lng:139.541735, img:'images/shops/fuzimi.png' },
   { name:'アイメガネ川越的場店', zip:'350', addr:'〒350-1101 埼玉県川越市的場823-1', web:'https://www.aimegane.com/qualification/7159/', tel:'049-233-0001', lat:35.914154, lng:139.42809, img:'images/shops/kawagoe.png' },
   { name:'アイメガネ坂戸にっさい店', zip:'350', addr:'〒350-0269 埼玉県坂戸市にっさい花みず木3-11-2', web:'https://www.aimegane.com/qualification/6940/', tel:'049-280-0001', lat:35.969359, lng:139.368666, img:'images/shops/sakado.png' },
